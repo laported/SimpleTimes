@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1EA2289D14703E6C00283AD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289C14703E6C00283AD0 /* UIKit.framework */; };
+		1EA2289F14703E6C00283AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289E14703E6C00283AD0 /* Foundation.framework */; };
+		1EA228A114703E6C00283AD0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA228A014703E6C00283AD0 /* CoreGraphics.framework */; };
+		1EA228A714703E6C00283AD0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EA228A514703E6C00283AD0 /* InfoPlist.strings */; };
+		1EA228AA14703E6C00283AD0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228A914703E6C00283AD0 /* main.m */; };
+		1EA228AD14703E6C00283AD0 /* SimpleTimesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228AC14703E6C00283AD0 /* SimpleTimesAppDelegate.m */; };
+		1EA228B014703E6C00283AD0 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EA228AE14703E6C00283AD0 /* MainWindow.xib */; };
+		1EA228B314703E6C00283AD0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228B214703E6C00283AD0 /* RootViewController.m */; };
+		1EA228B614703E6C00283AD0 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EA228B414703E6C00283AD0 /* RootViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1EA2289814703E6C00283AD0 /* SimpleTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA2289C14703E6C00283AD0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1EA2289E14703E6C00283AD0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1EA228A014703E6C00283AD0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1EA228A414703E6C00283AD0 /* SimpleTimes-Info.plist */ = {isa = PBXFileReference; path = "SimpleTimes-Info.plist"; sourceTree = "<group>"; };
+		1EA228A614703E6C00283AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1EA228A814703E6C00283AD0 /* SimpleTimes-Prefix.pch */ = {isa = PBXFileReference; path = "SimpleTimes-Prefix.pch"; sourceTree = "<group>"; };
+		1EA228A914703E6C00283AD0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1EA228AB14703E6C00283AD0 /* SimpleTimesAppDelegate.h */ = {isa = PBXFileReference; path = SimpleTimesAppDelegate.h; sourceTree = "<group>"; };
+		1EA228AC14703E6C00283AD0 /* SimpleTimesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimpleTimesAppDelegate.m; sourceTree = "<group>"; };
+		1EA228AF14703E6C00283AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		1EA228B114703E6C00283AD0 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		1EA228B214703E6C00283AD0 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		1EA228B514703E6C00283AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1EA2289514703E6C00283AD0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA2289D14703E6C00283AD0 /* UIKit.framework in Frameworks */,
+				1EA2289F14703E6C00283AD0 /* Foundation.framework in Frameworks */,
+				1EA228A114703E6C00283AD0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1EA2288D14703E6C00283AD0 = {
+			isa = PBXGroup;
+			children = (
+				1EA228A214703E6C00283AD0 /* SimpleTimes */,
+				1EA2289B14703E6C00283AD0 /* Frameworks */,
+				1EA2289914703E6C00283AD0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1EA2289914703E6C00283AD0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1EA2289814703E6C00283AD0 /* SimpleTimes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1EA2289B14703E6C00283AD0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EA2289C14703E6C00283AD0 /* UIKit.framework */,
+				1EA2289E14703E6C00283AD0 /* Foundation.framework */,
+				1EA228A014703E6C00283AD0 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1EA228A214703E6C00283AD0 /* SimpleTimes */ = {
+			isa = PBXGroup;
+			children = (
+				1EA228AB14703E6C00283AD0 /* SimpleTimesAppDelegate.h */,
+				1EA228AC14703E6C00283AD0 /* SimpleTimesAppDelegate.m */,
+				1EA228AE14703E6C00283AD0 /* MainWindow.xib */,
+				1EA228B114703E6C00283AD0 /* RootViewController.h */,
+				1EA228B214703E6C00283AD0 /* RootViewController.m */,
+				1EA228B414703E6C00283AD0 /* RootViewController.xib */,
+				1EA228A314703E6C00283AD0 /* Supporting Files */,
+			);
+			path = SimpleTimes;
+			sourceTree = "<group>";
+		};
+		1EA228A314703E6C00283AD0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1EA228A414703E6C00283AD0 /* SimpleTimes-Info.plist */,
+				1EA228A514703E6C00283AD0 /* InfoPlist.strings */,
+				1EA228A814703E6C00283AD0 /* SimpleTimes-Prefix.pch */,
+				1EA228A914703E6C00283AD0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1EA2289714703E6C00283AD0 /* SimpleTimes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EA228B914703E6C00283AD0 /* Build configuration list for PBXNativeTarget "SimpleTimes" */;
+			buildPhases = (
+				1EA2289414703E6C00283AD0 /* Sources */,
+				1EA2289514703E6C00283AD0 /* Frameworks */,
+				1EA2289614703E6C00283AD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleTimes;
+			productName = SimpleTimes;
+			productReference = 1EA2289814703E6C00283AD0 /* SimpleTimes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1EA2288F14703E6C00283AD0 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1EA2289214703E6C00283AD0 /* Build configuration list for PBXProject "SimpleTimes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1EA2288D14703E6C00283AD0;
+			productRefGroup = 1EA2289914703E6C00283AD0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1EA2289714703E6C00283AD0 /* SimpleTimes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1EA2289614703E6C00283AD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA228A714703E6C00283AD0 /* InfoPlist.strings in Resources */,
+				1EA228B014703E6C00283AD0 /* MainWindow.xib in Resources */,
+				1EA228B614703E6C00283AD0 /* RootViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1EA2289414703E6C00283AD0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA228AA14703E6C00283AD0 /* main.m in Sources */,
+				1EA228AD14703E6C00283AD0 /* SimpleTimesAppDelegate.m in Sources */,
+				1EA228B314703E6C00283AD0 /* RootViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1EA228A514703E6C00283AD0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EA228A614703E6C00283AD0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1EA228AE14703E6C00283AD0 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EA228AF14703E6C00283AD0 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		1EA228B414703E6C00283AD0 /* RootViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EA228B514703E6C00283AD0 /* en */,
+			);
+			name = RootViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1EA228B714703E6C00283AD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1EA228B814703E6C00283AD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		1EA228BA14703E6C00283AD0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleTimes/SimpleTimes-Prefix.pch";
+				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1EA228BB14703E6C00283AD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpleTimes/SimpleTimes-Prefix.pch";
+				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1EA2289214703E6C00283AD0 /* Build configuration list for PBXProject "SimpleTimes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EA228B714703E6C00283AD0 /* Debug */,
+				1EA228B814703E6C00283AD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EA228B914703E6C00283AD0 /* Build configuration list for PBXNativeTarget "SimpleTimes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EA228BA14703E6C00283AD0 /* Debug */,
+				1EA228BB14703E6C00283AD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1EA2288F14703E6C00283AD0 /* Project object */;
+}
