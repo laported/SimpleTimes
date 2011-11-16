@@ -12,8 +12,14 @@
 @interface RaceResult : NSObject {
     NSString* _time;
     NSString* _stroke;
+    /*
+    NSString* _course;
+    int _age;
+    int _powerpoints;
+    NSString* _standard;
+    */
     int _distance;
-    BOOL _shortcourse;
+    BOOL _shortcourse; /* deprecated */
     NSDate* _date;
     NSString* _meet;
 }

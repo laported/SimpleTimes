@@ -32,6 +32,7 @@
 		1EA228E6147054B100283AD0 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA228E5147054B100283AD0 /* libz.1.2.3.dylib */; };
 		1EA228E91470555600283AD0 /* MISwimDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228E81470555600283AD0 /* MISwimDBProxy.m */; };
 		1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EC14706C7500283AD0 /* ROHTMLTable.m */; };
+		1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,8 @@
 		1EA228E81470555600283AD0 /* MISwimDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MISwimDBProxy.m; path = DataProviders/MISwimDBProxy.m; sourceTree = SOURCE_ROOT; };
 		1EA228EB14706C7500283AD0 /* ROHTMLTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ROHTMLTable.h; path = DataProviders/ROHTMLTable.h; sourceTree = SOURCE_ROOT; };
 		1EA228EC14706C7500283AD0 /* ROHTMLTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROHTMLTable.m; path = DataProviders/ROHTMLTable.m; sourceTree = SOURCE_ROOT; };
+		1EA228EE1474293E00283AD0 /* USASwimmingDBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USASwimmingDBProxy.h; path = DataProviders/USASwimmingDBProxy.h; sourceTree = SOURCE_ROOT; };
+		1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = USASwimmingDBProxy.m; path = DataProviders/USASwimmingDBProxy.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 		1EA228EA1470555F00283AD0 /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
+				1EA228EE1474293E00283AD0 /* USASwimmingDBProxy.h */,
+				1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */,
 				1EA228EB14706C7500283AD0 /* ROHTMLTable.h */,
 				1EA228EC14706C7500283AD0 /* ROHTMLTable.m */,
 				1EA228E71470555600283AD0 /* MISwimDBProxy.h */,
@@ -276,6 +281,7 @@
 				1EA228DE147053B400283AD0 /* ASIAuthenticationDialog.m in Sources */,
 				1EA228E91470555600283AD0 /* MISwimDBProxy.m in Sources */,
 				1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */,
+				1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

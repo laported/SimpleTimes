@@ -31,6 +31,24 @@
     return self;
 }
 
+- (NSComparisonResult)compareByTime:(RaceResult *)otherObject
+{
+    return [otherObject.time caseInsensitiveCompare:self.time];
+    /* TODO
+	NSTimeInterval diff = [self.time timeIntervalSinceDate:otherObject.time];
+	if (diff > 0)
+	{
+		return NSOrderedDescending;
+	}
+    
+	if (diff < 0)
+	{
+		return NSOrderedAscending;
+	}
+    
+	return NSOrderedSame;*/
+}
+
 - (void)dealloc {
     [_stroke release];
     _stroke = nil;

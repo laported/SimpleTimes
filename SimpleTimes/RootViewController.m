@@ -14,7 +14,13 @@
 
 @synthesize allTimes = _allTimes;
 @synthesize athletes = _athletes;
+@synthesize strokes = _strokes;
+@synthesize distances = _distances;
 @synthesize queue = _queue;
+@synthesize selectedAthlete = _selectedAthlete;
+@synthesize selectedStroke = _selectedStroke;
+@synthesize selectedDistance = _selectedDistance;
+@synthesize CurrentTitle = _currentTitle;
 
 - (void)viewDidLoad
 {
@@ -24,16 +30,76 @@
     //self.allTimes = [NSMutableArray array];
     //[self addRows];  
     
-    selectedAthlete = 0;
+    //self.selectedAthlete = 0;
     
-    self.title = @"Times";
-    self.allTimes = [NSMutableArray array];
-    self.queue = [[[NSOperationQueue alloc] init] autorelease];
-    self.athletes = [NSArray arrayWithObjects:@"11655",  // benjamin
-                                              //@"11657",  // matthew
-                                              //@"11656",  // kelly
-                                              nil];    
-    [self refresh];    
+    if (nil == self.CurrentTitle) {
+        self.title = @"Select Athlete";
+    } else {
+        self.title = self.CurrentTitle;
+    }
+    
+    // Create a NSDictionary
+    //NSArray *keys = [NSArray arrayWithObjects:@"11655", @"11657", @"11656", nil];
+    //NSArray *objs = [NSArray arrayWithObjects:@"Benjamin", @"Matthew", @"Kelly", nil];
+    //self.athletes = [NSDictionary dictionaryWithObjects:objs forKeys:keys];
+    // Iterate it
+    //for (id key in dict) {
+    //    NSLog(@"key: %@   value:%@", key, [dict objectForKey:key]);
+    //}
+    if (self.selectedAthlete == 0) {
+        self.athletes = [NSArray arrayWithObjects:
+                         [NSArray arrayWithObjects:@"Benjamin LaPorte", @"11655", nil],
+                         [NSArray arrayWithObjects:@"Matthew LaPorte", @"11657", nil],
+                         [NSArray arrayWithObjects:@"Kelly LaPorte", @"11656", nil],
+                         nil];
+    
+        for (int i=0;i<[self.athletes count];i++) {
+            int insertIdx = 0; 
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+        }
+    } else if (self.selectedStroke == 0) {
+        self.strokes = [NSArray arrayWithObjects:
+                       [NSArray arrayWithObjects:@"Freestyle", @"1", nil],
+                       [NSArray arrayWithObjects:@"Backstroke", @"2", nil],
+                       [NSArray arrayWithObjects:@"Breaststroke", @"3", nil],
+                       [NSArray arrayWithObjects:@"Fly", @"4", nil],
+                       [NSArray arrayWithObjects:@"IM", @"5", nil],
+                       nil];
+    } else if (self.selectedDistance == 0) {
+        switch (self.selectedStroke) {
+            case 1: // Free
+                self.distances = [NSArray arrayWithObjects:
+                        [NSArray arrayWithObjects:@"25", @"25", nil],
+                        [NSArray arrayWithObjects:@"50", @"50", nil],
+                        [NSArray arrayWithObjects:@"100", @"100", nil],
+                        [NSArray arrayWithObjects:@"200", @"200", nil],
+                        [NSArray arrayWithObjects:@"500", @"500", nil],
+                        [NSArray arrayWithObjects:@"1000", @"1000", nil],
+                        [NSArray arrayWithObjects:@"1650", @"1650", nil],
+                        nil];
+                break;
+            case 5: // IM
+                self.distances = [NSArray arrayWithObjects:
+                                  [NSArray arrayWithObjects:@"100", @"100", nil],
+                                  [NSArray arrayWithObjects:@"200", @"200", nil],
+                                  [NSArray arrayWithObjects:@"400", @"400", nil],
+                                  nil];
+                break;
+            default: // Fly, Breast, Back
+                self.distances = [NSArray arrayWithObjects:
+                                  [NSArray arrayWithObjects:@"25", @"25", nil],
+                                  [NSArray arrayWithObjects:@"50", @"50", nil],
+                                  [NSArray arrayWithObjects:@"100", @"100", nil],
+                                  [NSArray arrayWithObjects:@"200", @"200", nil],
+                                  nil];
+                break;
+        }
+   } else {
+        self.allTimes = [NSMutableArray array];
+        self.queue = [[[NSOperationQueue alloc] init] autorelease];
+        [self refresh];    
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,7 +138,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_allTimes count];
+    if (self.selectedAthlete == 0) {
+        return [self.athletes count];
+    } else if (self.selectedStroke == 0) {
+        return [self.strokes count];
+    } else if (self.selectedDistance == 0) {
+        return [self.distances count];
+    } else {
+        return [_allTimes count];
+    }
 }
 
 // Customize the appearance of table view cells.
@@ -85,15 +159,30 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    RaceResult *race = [_allTimes objectAtIndex:indexPath.row];
+    if (self.selectedAthlete == 0) {
+        // We are displaying the athlete list
+        cell.textLabel.text = [[self.athletes objectAtIndex:indexPath.row] objectAtIndex:0];       
+        cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
+
+    } else if (self.selectedStroke == 0) {
+        // We are displaying the stroke list
+        cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
+        cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+    } else if (self.selectedDistance == 0) {
+        // We are displaying the stroke list
+        cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
+        cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+    } else {
+        RaceResult *race = [_allTimes objectAtIndex:indexPath.row];
     
-    NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    NSString *raceDateString = [dateFormatter stringFromDate:race.date];
+        NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+        NSString *raceDateString = [dateFormatter stringFromDate:race.date];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
+        cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
+    }
     
     return cell;
 }
@@ -141,6 +230,55 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.selectedAthlete == 0) {
+        // Get ready to display this athletes times
+        //Prepare to tableview.
+        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+        
+        //Increment the Current View
+        rvController.selectedAthlete = [[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+        
+        //Set the title;
+        rvController.CurrentTitle = @"Strokes";
+        
+        //Push the new table view on the stack
+        [self.navigationController pushViewController:rvController animated:YES];
+        
+        [rvController release];
+    } else if (self.selectedStroke == 0) {
+        // Get ready to display this distance
+        //Prepare to tableview.
+        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+        
+        //Increment the Current View
+        rvController.selectedStroke = [[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+        rvController.selectedAthlete = self.selectedAthlete;
+        
+        //Set the title;
+        rvController.CurrentTitle = @"Distance";
+        
+        //Push the new table view on the stack
+        [self.navigationController pushViewController:rvController animated:YES];
+        
+        [rvController release];
+    } else if (self.selectedDistance == 0) {
+        // Get ready to display this distance
+        //Prepare to tableview.
+        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+        
+        //Increment the Current View
+        rvController.selectedDistance = [[[self.distances objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+        rvController.selectedStroke = self.selectedStroke;
+        rvController.selectedAthlete = self.selectedAthlete;
+        
+        //Set the title;
+        rvController.CurrentTitle = @"Times";
+        
+        //Push the new table view on the stack
+        [self.navigationController pushViewController:rvController animated:YES];
+        
+        [rvController release];
+    }
     /*
     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
     // ...
@@ -150,60 +288,28 @@
 	*/
 }
 
-- (void)addRows {  
-    /*
-    RaceResult *race1 = [[[RaceResult alloc] initWithTime:34.54 
-                                                    meet:@"DCAC Red White & Blue" 
-                                                    date:[NSDate date]
-                                                  stroke:@"Fly"
-                                                distance:50
-                                             shortcourse:YES] autorelease];
-    
-    RaceResult *race2 = [[[RaceResult alloc] initWithTime:224.58 
-                                                     meet:@"DCAC Red White & Blue" 
-                                                     date:[NSDate date]
-                                                   stroke:@"Freestyle"
-                                                 distance:200
-                                              shortcourse:YES] autorelease];
-    
-    RaceResult *race3 = [[[RaceResult alloc] initWithTime:624.00 
-                                                     meet:@"DCAC Red White & Blue" 
-                                                     date:[NSDate date]
-                                                   stroke:@"Freestyle"
-                                                 distance:500
-                                              shortcourse:YES] autorelease];
-
-    [_allTimes insertObject:race1 atIndex:0];
-    [_allTimes insertObject:race2 atIndex:0];
-    [_allTimes insertObject:race3 atIndex:0];    
-     */
-}
-
 // Add new method
 - (void)refresh {
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
     
-    for (NSString *athlete in _athletes) {
+    NSArray* times = [proxy getAllTimesForAthlete:self.selectedAthlete:self.selectedStroke:self.selectedDistance];
         
-        NSArray* times = [proxy getAllTimesForAthlete:(int)[athlete intValue]];
-        
-        NSLog(@"Number of results: %d",[times count]);
-        for (int i=0;i<[times count];i++) {
-            //NSLog([all_times objectAtIndex:i]);
+    NSLog(@"Number of results: %d",[times count]);
+    for (int i=0;i<[times count];i++) {
+        //NSLog([all_times objectAtIndex:i]);
 
-            RaceResult *race = [times objectAtIndex:i];
+        RaceResult *race = [times objectAtIndex:i];
             
-            int insertIdx = 0;                    
-            [_allTimes insertObject:race atIndex:insertIdx];
-            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
-        }
+        int insertIdx = 0;                    
+        [_allTimes insertObject:race atIndex:insertIdx];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+    }
         
         // TODO: ASync
         //NSURL *url = [NSURL URLWithString:feed];
         //ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
         //[request setDelegate:self];
         //[_queue addOperation:request];
-    }    
 }
 
 /* -- ASI Completion delegates
