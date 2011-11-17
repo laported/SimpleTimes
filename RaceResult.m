@@ -17,8 +17,12 @@
 @synthesize time = _time;
 @synthesize distance = _distance; 
 @synthesize shortcourse = _shortcourse;
+@synthesize course = _course;
+@synthesize age = _age;
+@synthesize powerpoints = _powerpoints;
+@synthesize standard = _standard;
 
-- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSDate*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse;
+- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSDate*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard
 {
     if ((self = [super init])) {
         _time = time;
@@ -27,6 +31,10 @@
         _date = [date copy];
         _meet = [meet copy];
         _stroke = [stroke copy];
+        _course = [course copy];
+        _standard = [standard copy];
+        _age = age;
+        _powerpoints = powerpoints;
     }
     return self;
 }
@@ -60,6 +68,10 @@
     _time = nil;
     _distance = 0;
     _shortcourse = YES;
+    [_course release];
+    _course = nil;
+    [_standard release];
+    _standard = nil;
     [super dealloc];
 }
 

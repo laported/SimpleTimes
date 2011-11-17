@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "RaceResult.h"
 #import "MISwimDBProxy.h"
+#import "USASwimmingDBProxy.h"
 
 @implementation RootViewController
 
@@ -291,6 +292,7 @@
 // Add new method
 - (void)refresh {
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+    //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
     NSArray* times = [proxy getAllTimesForAthlete:self.selectedAthlete:self.selectedStroke:self.selectedDistance];
         
