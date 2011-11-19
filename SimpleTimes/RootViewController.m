@@ -14,7 +14,9 @@
 @implementation RootViewController
 
 @synthesize allTimes = _allTimes;
+@synthesize allSplits = _allSplits;
 @synthesize athletes = _athletes;
+@synthesize allRaceIds = _allRaceIds;
 @synthesize strokes = _strokes;
 @synthesize distances = _distances;
 @synthesize queue = _queue;
@@ -22,32 +24,22 @@
 @synthesize selectedStroke = _selectedStroke;
 @synthesize selectedDistance = _selectedDistance;
 @synthesize CurrentTitle = _currentTitle;
+@synthesize selectedRace = _selectedRace;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    //self.title = @"Times";
-    //self.allTimes = [NSMutableArray array];
-    //[self addRows];  
-    
-    //self.selectedAthlete = 0;
-    
     if (nil == self.CurrentTitle) {
-        self.title = @"Select Athlete";
+        self.title = @"Select Swimmer";
     } else {
         self.title = self.CurrentTitle;
     }
     
-    // Create a NSDictionary
-    //NSArray *keys = [NSArray arrayWithObjects:@"11655", @"11657", @"11656", nil];
-    //NSArray *objs = [NSArray arrayWithObjects:@"Benjamin", @"Matthew", @"Kelly", nil];
-    //self.athletes = [NSDictionary dictionaryWithObjects:objs forKeys:keys];
-    // Iterate it
-    //for (id key in dict) {
-    //    NSLog(@"key: %@   value:%@", key, [dict objectForKey:key]);
-    //}
     if (self.selectedAthlete == 0) {
+//        MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+  //      NSArray* athletes = [proxy getAllAthletesWithLastName:@"Laporte"];
+        
         self.athletes = [NSArray arrayWithObjects:
                          [NSArray arrayWithObjects:@"Benjamin LaPorte", @"11655", nil],
                          [NSArray arrayWithObjects:@"Matthew LaPorte", @"11657", nil],
@@ -65,8 +57,9 @@
                        [NSArray arrayWithObjects:@"Breaststroke", @"3", nil],
                        [NSArray arrayWithObjects:@"Fly", @"4", nil],
                        [NSArray arrayWithObjects:@"IM", @"5", nil],
+                       [NSArray arrayWithObjects:@"Top times all strokes", @"99", nil],
                        nil];
-    } else if (self.selectedDistance == 0) {
+    } else if ((self.selectedDistance == 0) && (self.selectedStroke < 99)) {
         switch (self.selectedStroke) {
             case 1: // Free
                 self.distances = [NSArray arrayWithObjects:
@@ -96,9 +89,22 @@
                 break;
         }
    } else {
-        self.allTimes = [NSMutableArray array];
-        self.queue = [[[NSOperationQueue alloc] init] autorelease];
-        [self refresh];    
+       if (self.selectedRace > 0) {
+           // Get a list of best times for each stroke
+           self.allTimes = [NSMutableArray array];
+           self.queue = [[[NSOperationQueue alloc] init] autorelease];
+           [self refreshSplitTimes];
+       } else if (self.selectedStroke == 99) {
+           // Get a list of best times for each stroke
+           self.allTimes = [NSMutableArray array];
+           self.queue = [[[NSOperationQueue alloc] init] autorelease];
+           [self refreshAllBestTimes];
+       } else {
+           // getting data for a particular stroke and distance
+           self.allTimes = [NSMutableArray array];
+           self.queue = [[[NSOperationQueue alloc] init] autorelease];
+           [self refresh];
+       }
     }
     
 }
@@ -143,8 +149,12 @@
         return [self.athletes count];
     } else if (self.selectedStroke == 0) {
         return [self.strokes count];
+    } else if (self.selectedStroke >= 99) {
+        return [_allTimes count];   // all best times
     } else if (self.selectedDistance == 0) {
         return [self.distances count];
+    } else if (self.selectedRace > 0) {
+        return [_allSplits count];
     } else {
         return [_allTimes count];
     }
@@ -164,15 +174,19 @@
         // We are displaying the athlete list
         cell.textLabel.text = [[self.athletes objectAtIndex:indexPath.row] objectAtIndex:0];       
         cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
-
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (self.selectedStroke == 0) {
         // We are displaying the stroke list
         cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
         cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
-    } else if (self.selectedDistance == 0) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if ((self.selectedDistance == 0) && (self.selectedStroke < 99)) {
         // We are displaying the stroke list
         cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
         cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if (self.selectedRace > 0) {
+        cell.textLabel.text = [_allSplits objectAtIndex:indexPath.row];       
     } else {
         RaceResult *race = [_allTimes objectAtIndex:indexPath.row];
     
@@ -183,6 +197,9 @@
     
         cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
+        if (race.distance >= 200) {
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
     }
     
     return cell;
@@ -256,13 +273,16 @@
         rvController.selectedAthlete = self.selectedAthlete;
         
         //Set the title;
-        rvController.CurrentTitle = @"Distance";
+        if (rvController.selectedStroke < 99)
+            rvController.CurrentTitle = @"Distance";
+        else
+            rvController.CurrentTitle = @"Top Times";
         
         //Push the new table view on the stack
         [self.navigationController pushViewController:rvController animated:YES];
         
         [rvController release];
-    } else if (self.selectedDistance == 0) {
+    } else if ((self.selectedDistance == 0) && (self.selectedStroke < 99)) {
         // Get ready to display this distance
         //Prepare to tableview.
         RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
@@ -274,6 +294,24 @@
         
         //Set the title;
         rvController.CurrentTitle = @"Times";
+        
+        //Push the new table view on the stack
+        [self.navigationController pushViewController:rvController animated:YES];
+        
+        [rvController release];
+    } else if (self.selectedDistance >= 200) {
+        // Get ready to show splits data
+        //Prepare to tableview.
+        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+        
+        // Increment the Current View
+        rvController.selectedDistance = self.selectedDistance;
+        rvController.selectedStroke = self.selectedStroke;
+        rvController.selectedAthlete = self.selectedAthlete;
+        RaceResult* race = [self.allTimes objectAtIndex:indexPath.row];
+        rvController.selectedRace = race.key;
+        //Set the title;
+        rvController.CurrentTitle = @"Split Times";
         
         //Push the new table view on the stack
         [self.navigationController pushViewController:rvController animated:YES];
@@ -312,6 +350,39 @@
         //ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
         //[request setDelegate:self];
         //[_queue addOperation:request];
+}
+
+- (void)refreshAllBestTimes {
+    MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+    //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
+    
+    NSArray* times = [proxy getFastestTimesForAthlete:self.selectedAthlete]; // todo
+    
+    NSLog(@"Number of results: %d",[times count]);
+    for (int i=0;i<[times count];i++) {
+        //NSLog([all_times objectAtIndex:i]);
+        
+        RaceResult *race = [times objectAtIndex:i];
+        
+        int insertIdx = 0;                    
+        [_allTimes insertObject:race atIndex:insertIdx];
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+    }
+    
+}
+
+- (void)refreshSplitTimes {
+    MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+    //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
+    
+    _allSplits = [proxy getSplitsForRace:self.selectedRace]; 
+    
+    NSLog(@"Number of results: %d",[_allSplits count]);
+    for (int i=0;i<[_allSplits count];i++) {
+        int insertIdx = 0;                    
+        [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
+    }
+    
 }
 
 /* -- ASI Completion delegates

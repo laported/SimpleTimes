@@ -33,6 +33,7 @@
 		1EA228E91470555600283AD0 /* MISwimDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228E81470555600283AD0 /* MISwimDBProxy.m */; };
 		1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EC14706C7500283AD0 /* ROHTMLTable.m */; };
 		1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */; };
+		1EA228F314759D6500283AD0 /* Athlete.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228F214759D6400283AD0 /* Athlete.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,8 @@
 		1EA228EC14706C7500283AD0 /* ROHTMLTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROHTMLTable.m; path = DataProviders/ROHTMLTable.m; sourceTree = SOURCE_ROOT; };
 		1EA228EE1474293E00283AD0 /* USASwimmingDBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USASwimmingDBProxy.h; path = DataProviders/USASwimmingDBProxy.h; sourceTree = SOURCE_ROOT; };
 		1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = USASwimmingDBProxy.m; path = DataProviders/USASwimmingDBProxy.m; sourceTree = SOURCE_ROOT; };
+		1EA228F114759D6400283AD0 /* Athlete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Athlete.h; path = SimpleTimes/Athlete.h; sourceTree = "<group>"; };
+		1EA228F214759D6400283AD0 /* Athlete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Athlete.m; path = SimpleTimes/Athlete.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,8 +115,7 @@
 				1EA228E11470549200283AD0 /* SystemConfiguration.framework */,
 				1EA228DF1470548200283AD0 /* CFNetwork.framework */,
 				1EA228BF1470534300283AD0 /* ASIHTTPRequest */,
-				1EA228BC14703EB400283AD0 /* RaceResult.h */,
-				1EA228BD14703EB400283AD0 /* RaceResult.m */,
+				1EA228F414759DB300283AD0 /* Models */,
 				1EA228A214703E6C00283AD0 /* SimpleTimes */,
 				1EA2289B14703E6C00283AD0 /* Frameworks */,
 				1EA2289914703E6C00283AD0 /* Products */,
@@ -206,6 +208,17 @@
 			name = DataProviders;
 			sourceTree = "<group>";
 		};
+		1EA228F414759DB300283AD0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1EA228F114759D6400283AD0 /* Athlete.h */,
+				1EA228F214759D6400283AD0 /* Athlete.m */,
+				1EA228BD14703EB400283AD0 /* RaceResult.m */,
+				1EA228BC14703EB400283AD0 /* RaceResult.h */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,6 +295,7 @@
 				1EA228E91470555600283AD0 /* MISwimDBProxy.m in Sources */,
 				1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */,
 				1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */,
+				1EA228F314759D6500283AD0 /* Athlete.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,11 +365,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleTimes/SimpleTimes-Prefix.pch";
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -365,10 +381,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleTimes/SimpleTimes-Prefix.pch";
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -394,6 +412,7 @@
 				1EA228BB14703E6C00283AD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

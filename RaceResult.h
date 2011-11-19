@@ -13,6 +13,7 @@
     NSString* _time;
     NSString* _stroke;
     
+    int _key;
     NSString* _course;
     int _age;
     int _powerpoints;
@@ -27,6 +28,7 @@
 @property (copy) NSString *meet;
 @property (copy) NSDate *date;
 @property (copy) NSString *stroke;
+@property int key;
 @property (copy) NSString *time;
 @property  int distance;
 @property BOOL shortcourse; /* deprectaed */

@@ -21,8 +21,9 @@
 @synthesize age = _age;
 @synthesize powerpoints = _powerpoints;
 @synthesize standard = _standard;
+@synthesize key = _key;
 
-- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSDate*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard
+- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSDate*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard key:(int)key
 {
     if ((self = [super init])) {
         _time = time;
@@ -32,6 +33,7 @@
         _meet = [meet copy];
         _stroke = [stroke copy];
         _course = [course copy];
+        _key = key;
         _standard = [standard copy];
         _age = age;
         _powerpoints = powerpoints;
@@ -42,20 +44,23 @@
 - (NSComparisonResult)compareByTime:(RaceResult *)otherObject
 {
     return [otherObject.time caseInsensitiveCompare:self.time];
-    /* TODO
-	NSTimeInterval diff = [self.time timeIntervalSinceDate:otherObject.time];
-	if (diff > 0)
-	{
-		return NSOrderedDescending;
-	}
-    
-	if (diff < 0)
-	{
-		return NSOrderedAscending;
-	}
-    
-	return NSOrderedSame;*/
 }
+
+- (NSComparisonResult)compareByDistance:(RaceResult *)otherObject
+{
+     if (self.distance < otherObject.distance)
+     {
+         return NSOrderedDescending;
+     }
+     
+     if (self.distance > otherObject.distance)
+     {
+     return NSOrderedAscending;
+     }
+     
+     return NSOrderedSame;
+}
+
 
 - (void)dealloc {
     [_stroke release];
