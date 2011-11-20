@@ -10,7 +10,7 @@
 
 @interface RootViewController : UITableViewController {
     NSMutableArray *_allTimes; 
-    NSArray *_allSplits; 
+    NSMutableArray *_allSplits; 
     NSMutableArray *_allRaceIds;
     NSOperationQueue *_queue;
     NSMutableArray *_athletes;
@@ -24,7 +24,7 @@
 }
 
 @property (retain) NSMutableArray *allTimes;
-@property (retain) NSArray *allSplits;
+@property (retain) NSMutableArray *allSplits;
 @property (retain) NSMutableArray *allRaceIds;
 @property (retain) NSOperationQueue *queue;
 @property (retain) NSMutableArray *athletes;

@@ -375,11 +375,12 @@
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
-    _allSplits = [proxy getSplitsForRace:self.selectedRace]; 
-    
-    NSLog(@"Number of results: %d",[_allSplits count]);
-    for (int i=0;i<[_allSplits count];i++) {
-        int insertIdx = 0;                    
+    NSArray *splits = [proxy getSplitsForRace:self.selectedRace]; 
+    _allSplits = [splits copy];
+    NSLog(@"Number of results: %d",[splits count]);
+    for (int i=0;i<[splits count];i++) {
+        int insertIdx = 0;  
+        //[_allSplits insertObject:[splits objectAtIndex:i] atIndex:insertIdx];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
     }
     
@@ -429,6 +430,8 @@
     [super dealloc];
     [_allTimes release];
     _allTimes = nil;
+    [_allSplits release];
+    _allSplits = nil;
     [_queue release];
     _queue = nil;
     [_athletes release];
