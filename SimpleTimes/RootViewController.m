@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import "RaceResult.h"
+#import "Split.h"
 #import "MISwimDBProxy.h"
 #import "USASwimmingDBProxy.h"
 
@@ -186,7 +187,9 @@
         cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (self.selectedRace > 0) {
-        cell.textLabel.text = [_allSplits objectAtIndex:indexPath.row];       
+        Split *split = [_allSplits objectAtIndex:indexPath.row];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", split.distance, split.time_cumulative]; 
+        cell.detailTextLabel.text = split.time_split;
     } else {
         RaceResult *race = [_allTimes objectAtIndex:indexPath.row];
     
@@ -376,10 +379,13 @@
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
     NSArray *splits = [proxy getSplitsForRace:self.selectedRace]; 
-    _allSplits = [splits copy];
-    NSLog(@"Number of results: %d",[splits count]);
+    //_allSplits = [splits copy];
+    _allSplits = [[NSMutableArray alloc] init]; //[NSMutableArray array];
+    NSLog(@"Number of Split results: %d",[splits count]);
     for (int i=0;i<[splits count];i++) {
-        int insertIdx = 0;  
+        int insertIdx = 0; 
+        Split* split = [splits objectAtIndex:i];
+        [_allSplits insertObject:split atIndex:insertIdx];
         //[_allSplits insertObject:[splits objectAtIndex:i] atIndex:insertIdx];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
     }
