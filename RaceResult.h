@@ -40,4 +40,6 @@
 - (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard
 ;
 
+- (BOOL)hasSplits;
+
 @end

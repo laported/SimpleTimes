@@ -41,6 +41,10 @@
     return self;
 }
 
+- (BOOL)hasSplits {
+    return (self.key > 0);
+}
+
 - (NSComparisonResult)compareByTime:(RaceResult *)otherObject
 {
     return [otherObject.time caseInsensitiveCompare:self.time];

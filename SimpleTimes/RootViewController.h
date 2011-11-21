@@ -21,6 +21,8 @@
     int _selectedStroke;
     int _selectedDistance;
     NSString *_currentTitle;
+    NSMutableArray* _IMStrokes;
+    int _viewstate;
 }
 
 @property (retain) NSMutableArray *allTimes;
@@ -30,10 +32,14 @@
 @property (retain) NSMutableArray *athletes;
 @property (retain) NSMutableArray *strokes;
 @property (retain) NSMutableArray *distances;
+@property (retain) NSMutableArray *IMStrokes;
 @property int selectedRace;
 @property int selectedAthlete;
 @property int selectedStroke;
 @property int selectedDistance;
 @property (retain) NSString *CurrentTitle;
+@property int viewstate;
+
+- (IBAction) EditTable:(id)sender;
 
 @end

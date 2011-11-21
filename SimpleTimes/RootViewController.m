@@ -26,6 +26,15 @@
 @synthesize selectedDistance = _selectedDistance;
 @synthesize CurrentTitle = _currentTitle;
 @synthesize selectedRace = _selectedRace;
+@synthesize IMStrokes = _IMStrokes;
+@synthesize viewstate = _viewstate;
+
+// VIEWSTATEs
+#define VS_ATHLETES 1
+#define VS_STROKES  2
+#define VS_DISTANCE 3
+#define VS_RESULTS  4
+#define VS_SPLITS   5
 
 - (void)viewDidLoad
 {
@@ -33,13 +42,18 @@
     
     if (nil == self.CurrentTitle) {
         self.title = @"Select Swimmer";
+        self.viewstate = VS_ATHLETES;
     } else {
         self.title = self.CurrentTitle;
     }
     
+    // TODO: This should be a class var not an ivar
+    self.IMStrokes = [NSArray arrayWithObjects:@"Fly",@"Back",@"Breast",@"Freestyle", nil];
+    
     if (self.selectedAthlete == 0) {
-//        MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
-  //      NSArray* athletes = [proxy getAllAthletesWithLastName:@"Laporte"];
+        
+        UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
+        [self.navigationItem setLeftBarButtonItem:addButton];
         
         self.athletes = [NSArray arrayWithObjects:
                          [NSArray arrayWithObjects:@"Benjamin LaPorte", @"11655", nil],
@@ -146,18 +160,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.selectedAthlete == 0) {
-        return [self.athletes count];
-    } else if (self.selectedStroke == 0) {
-        return [self.strokes count];
-    } else if (self.selectedStroke >= 99) {
-        return [_allTimes count];   // all best times
-    } else if (self.selectedDistance == 0) {
-        return [self.distances count];
-    } else if (self.selectedRace > 0) {
-        return [_allSplits count];
-    } else {
-        return [_allTimes count];
+    switch (self.viewstate) {
+        case VS_ATHLETES:
+            return [self.athletes count];
+        case VS_STROKES:
+            return [self.strokes count];
+        case VS_DISTANCE:
+            return [self.distances count];
+        case VS_RESULTS:
+            return [_allTimes count];
+        case VS_SPLITS:
+            return [_allSplits count];
+        default:
+            NSLog(@"ERROR: numberOfRowsInSection UNKNOWN!!! for viewstate=%d",self.viewstate);
+            return 0;
     }
 }
 
@@ -165,44 +181,66 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    RaceResult *race;
+    Split *split;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    if (self.selectedAthlete == 0) {
-        // We are displaying the athlete list
-        cell.textLabel.text = [[self.athletes objectAtIndex:indexPath.row] objectAtIndex:0];       
-        cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else if (self.selectedStroke == 0) {
-        // We are displaying the stroke list
-        cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
-        cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else if ((self.selectedDistance == 0) && (self.selectedStroke < 99)) {
-        // We are displaying the stroke list
-        cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
-        cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else if (self.selectedRace > 0) {
-        Split *split = [_allSplits objectAtIndex:indexPath.row];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", split.distance, split.time_cumulative]; 
-        cell.detailTextLabel.text = split.time_split;
-    } else {
-        RaceResult *race = [_allTimes objectAtIndex:indexPath.row];
-    
-        NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-        [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        NSString *raceDateString = [dateFormatter stringFromDate:race.date];
-    
-        cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
-        if (race.distance >= 200) {
+    switch (self.viewstate) {
+        case VS_ATHLETES:
+            // We are displaying the athlete list
+            cell.textLabel.text = [[self.athletes objectAtIndex:indexPath.row] objectAtIndex:0];       
+            cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
+            break;
+        case VS_STROKES:
+            // We are displaying the stroke list
+            cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
+            cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        case VS_DISTANCE:
+            // We are displaying the stroke list
+            cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
+            cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        case VS_RESULTS:
+            race = [_allTimes objectAtIndex:indexPath.row];
+            
+            NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+            [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+            [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+            NSString *raceDateString = [dateFormatter stringFromDate:race.date];
+            
+            cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
+            if ([race hasSplits]) {
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            }
+            break;
+        case VS_SPLITS:
+            split = [_allSplits objectAtIndex:indexPath.row];
+            /* Is this an IM???? */
+            if (self.selectedStroke == 5) {
+                // Add the current stroke
+                int divisor = self.selectedDistance / 4;
+                int stroke_index = ([split.distance intValue]-1) / divisor;
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@)", split.distance, split.time_cumulative,[self.IMStrokes objectAtIndex:stroke_index]]; 
+            } else {
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", split.distance, split.time_cumulative]; 
+            }
+            cell.detailTextLabel.text = split.time_split;
+            break;
+        default:
+            NSLog(@"ERROR: cellForRowAtIndexPath UNKNOWN!!! for viewstate=%d",self.viewstate);
+            cell.textLabel.text = @"Internal Error :(";
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"Details: cellForRowAtIndexPath/%d",self.viewstate];
+            break;
+            
     }
     
     return cell;
@@ -251,75 +289,98 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.selectedAthlete == 0) {
-        // Get ready to display this athletes times
-        //Prepare to tableview.
-        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
-        
-        //Increment the Current View
-        rvController.selectedAthlete = [[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
-        
-        //Set the title;
-        rvController.CurrentTitle = @"Strokes";
-        
-        //Push the new table view on the stack
-        [self.navigationController pushViewController:rvController animated:YES];
-        
-        [rvController release];
-    } else if (self.selectedStroke == 0) {
-        // Get ready to display this distance
-        //Prepare to tableview.
-        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
-        
-        //Increment the Current View
-        rvController.selectedStroke = [[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
-        rvController.selectedAthlete = self.selectedAthlete;
-        
-        //Set the title;
-        if (rvController.selectedStroke < 99)
-            rvController.CurrentTitle = @"Distance";
-        else
-            rvController.CurrentTitle = @"Top Times";
-        
-        //Push the new table view on the stack
-        [self.navigationController pushViewController:rvController animated:YES];
-        
-        [rvController release];
-    } else if ((self.selectedDistance == 0) && (self.selectedStroke < 99)) {
-        // Get ready to display this distance
-        //Prepare to tableview.
-        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
-        
-        //Increment the Current View
-        rvController.selectedDistance = [[[self.distances objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
-        rvController.selectedStroke = self.selectedStroke;
-        rvController.selectedAthlete = self.selectedAthlete;
-        
-        //Set the title;
-        rvController.CurrentTitle = @"Times";
-        
-        //Push the new table view on the stack
-        [self.navigationController pushViewController:rvController animated:YES];
-        
-        [rvController release];
-    } else if (self.selectedDistance >= 200) {
-        // Get ready to show splits data
-        //Prepare to tableview.
-        RootViewController *rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
-        
-        // Increment the Current View
-        rvController.selectedDistance = self.selectedDistance;
-        rvController.selectedStroke = self.selectedStroke;
-        rvController.selectedAthlete = self.selectedAthlete;
-        RaceResult* race = [self.allTimes objectAtIndex:indexPath.row];
-        rvController.selectedRace = race.key;
-        //Set the title;
-        rvController.CurrentTitle = @"Split Times";
-        
-        //Push the new table view on the stack
-        [self.navigationController pushViewController:rvController animated:YES];
-        
-        [rvController release];
+    RootViewController *rvController;
+    RaceResult* race;
+    
+    // Alloc the next view controller
+    switch (self.viewstate) {
+        case VS_ATHLETES:
+            // We are on the "List of Athletes" table. 
+            // Get ready to display this athlete's times
+            rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+            
+            //Increment the Current View
+            rvController.selectedAthlete = [[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+            rvController.CurrentTitle = @"Strokes";
+            rvController.viewstate = VS_STROKES;
+            
+            //Push the new table view on the stack
+            [self.navigationController pushViewController:rvController animated:YES];
+            [rvController release];
+            break;
+            
+        case VS_STROKES:
+            // We are on the "List of strokes" table.
+            // We either want to display a list of distances (If selecting single stroke,
+            // or we want to display a list of all best times 
+            // Get ready to display this distance
+            //Prepare to tableview.
+            rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+            
+            //Increment the Current View
+            rvController.selectedStroke = [[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+            rvController.selectedAthlete = self.selectedAthlete;
+            if (rvController.selectedStroke < 99) {
+                rvController.CurrentTitle = @"Distance";
+                rvController.viewstate = VS_DISTANCE;
+            } else {
+                rvController.CurrentTitle = @"Top Times";
+                rvController.viewstate = VS_RESULTS;
+            }
+            
+            //Push the new table view on the stack
+            [self.navigationController pushViewController:rvController animated:YES];            
+            [rvController release];
+            break;
+            
+        case VS_DISTANCE:
+            // We are on the "List of distances" table.
+            // We want to transition next to the results for this stroke and distance
+            // Get ready to display this distance
+            //Prepare to tableview.
+            rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+            
+            //Increment the Current View
+            rvController.selectedDistance = [[[self.distances objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+            rvController.selectedStroke = self.selectedStroke;
+            rvController.selectedAthlete = self.selectedAthlete;
+            rvController.viewstate = VS_RESULTS;
+            
+            //Set the title;
+            rvController.CurrentTitle = @"Times";            
+            //Push the new table view on the stack
+            [self.navigationController pushViewController:rvController animated:YES];
+            
+            [rvController release];
+            break;
+
+        case VS_RESULTS:
+            // Split data available for this result??
+            
+            race = [self.allTimes objectAtIndex:indexPath.row];
+            if (race.distance > 50) {
+                // Get ready to show splits data
+                rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
+                
+                // Increment the Current View
+                rvController.selectedDistance = self.selectedDistance;
+                rvController.selectedStroke = self.selectedStroke;
+                rvController.selectedAthlete = self.selectedAthlete;
+                rvController.selectedRace = race.key;
+                //Set the title;
+                rvController.CurrentTitle = @"Split Times";
+                rvController.viewstate = VS_SPLITS;
+                
+                //Push the new table view on the stack
+                [self.navigationController pushViewController:rvController animated:YES];            
+                [rvController release];
+            }
+            break;
+            
+        case VS_SPLITS:
+        default:
+            // nothing to do here
+            break;
     }
     /*
     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -431,6 +492,25 @@
     // For example: self.myOutlet = nil;
 }
 
+- (IBAction) EditTable:(id)sender{
+    if(self.editing)
+    {
+        [super setEditing:NO animated:NO];
+        // TODO [tblSimpleTable setEditing:NO animated:NO];
+        // TODO [tblSimpleTable reloadData];
+        [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+        [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
+    }
+    else
+    {
+        [super setEditing:YES animated:YES];
+        //TODO[tblSimpleTable setEditing:YES animated:YES];
+        //TODO[tblSimpleTable reloadData];
+        [self.navigationItem.leftBarButtonItem setTitle:@"Done"];
+        [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
+    }
+}
+
 - (void)dealloc
 {
     [super dealloc];
@@ -442,6 +522,8 @@
     _queue = nil;
     [_athletes release];
     _athletes = nil;
+    [_IMStrokes release];
+    _IMStrokes = nil;
 }
 
 @end
