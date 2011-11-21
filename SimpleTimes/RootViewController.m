@@ -3,7 +3,7 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 11/13/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 laporte6.org. All rights reserved.
 //
 
 #import "RootViewController.h"
@@ -28,6 +28,7 @@
 @synthesize selectedRace = _selectedRace;
 @synthesize IMStrokes = _IMStrokes;
 @synthesize viewstate = _viewstate;
+@synthesize rows = _rows;
 
 // VIEWSTATEs
 #define VS_ATHLETES 1
@@ -55,6 +56,10 @@
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
         [self.navigationItem setLeftBarButtonItem:addButton];
         
+        // TODO: List will initially be empty. New view to select Athlete will come
+        // up when hitting [Edit] button, then (+) Add New Swimmer
+        
+        // Hard code the athlete selection
         self.athletes = [NSArray arrayWithObjects:
                          [NSArray arrayWithObjects:@"Benjamin LaPorte", @"11655", nil],
                          [NSArray arrayWithObjects:@"Matthew LaPorte", @"11657", nil],
@@ -160,21 +165,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    self.rows = 0;
     switch (self.viewstate) {
         case VS_ATHLETES:
-            return [self.athletes count];
+            self.rows = [self.athletes count];      
+            break;
         case VS_STROKES:
-            return [self.strokes count];
+            self.rows = [self.strokes count];
+            break;
         case VS_DISTANCE:
-            return [self.distances count];
+            self.rows = [self.distances count];
+            break;
         case VS_RESULTS:
-            return [_allTimes count];
+            self.rows = [_allTimes count];
+            break;
         case VS_SPLITS:
-            return [_allSplits count];
+            self.rows = [_allSplits count];
+            break;
         default:
             NSLog(@"ERROR: numberOfRowsInSection UNKNOWN!!! for viewstate=%d",self.viewstate);
-            return 0;
+            break;
     }
+    if(self.editing) 
+        self.rows++;
+    return self.rows;
 }
 
 // Customize the appearance of table view cells.
@@ -189,58 +203,65 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    switch (self.viewstate) {
-        case VS_ATHLETES:
-            // We are displaying the athlete list
-            cell.textLabel.text = [[self.athletes objectAtIndex:indexPath.row] objectAtIndex:0];       
-            cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        case VS_STROKES:
-            // We are displaying the stroke list
-            cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
-            cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        case VS_DISTANCE:
-            // We are displaying the stroke list
-            cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
-            cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            break;
-        case VS_RESULTS:
-            race = [_allTimes objectAtIndex:indexPath.row];
-            
-            NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-            [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
-            [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-            NSString *raceDateString = [dateFormatter stringFromDate:race.date];
-            
-            cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
-            if ([race hasSplits]) {
+    // Are we in edit mode????
+    NSLog(@"self.rows=%d, indexPath=%d",self.rows,indexPath.row);
+    if (self.editing && (indexPath.row == (self.rows-1))) {
+        cell.textLabel.text = @"Add new swimmer";
+        return cell;
+    } else {
+        switch (self.viewstate) {
+            case VS_ATHLETES:
+                // We are displaying the athlete list
+                cell.textLabel.text = [[self.athletes objectAtIndex:indexPath.row] objectAtIndex:0];       
+                cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            }
-            break;
-        case VS_SPLITS:
-            split = [_allSplits objectAtIndex:indexPath.row];
-            /* Is this an IM???? */
-            if (self.selectedStroke == 5) {
-                // Add the current stroke
-                int divisor = self.selectedDistance / 4;
-                int stroke_index = ([split.distance intValue]-1) / divisor;
-                cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@)", split.distance, split.time_cumulative,[self.IMStrokes objectAtIndex:stroke_index]]; 
-            } else {
-                cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", split.distance, split.time_cumulative]; 
-            }
-            cell.detailTextLabel.text = split.time_split;
-            break;
-        default:
-            NSLog(@"ERROR: cellForRowAtIndexPath UNKNOWN!!! for viewstate=%d",self.viewstate);
-            cell.textLabel.text = @"Internal Error :(";
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"Details: cellForRowAtIndexPath/%d",self.viewstate];
-            break;
-            
+                break;
+            case VS_STROKES:
+                // We are displaying the stroke list
+                cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
+                cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                break;
+            case VS_DISTANCE:
+                // We are displaying the stroke list
+                cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
+                cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                break;
+            case VS_RESULTS:
+                race = [_allTimes objectAtIndex:indexPath.row];
+                
+                NSDateFormatter * dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+                [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+                [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+                NSString *raceDateString = [dateFormatter stringFromDate:race.date];
+                
+                cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
+                if ([race hasSplits]) {
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                }
+                break;
+            case VS_SPLITS:
+                split = [_allSplits objectAtIndex:indexPath.row];
+                /* Is this an IM???? */
+                if (self.selectedStroke == 5) {
+                    // Add the current stroke
+                    int divisor = self.selectedDistance / 4;
+                    int stroke_index = ([split.distance intValue]-1) / divisor;
+                    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@)", split.distance, split.time_cumulative,[self.IMStrokes objectAtIndex:stroke_index]]; 
+                } else {
+                    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", split.distance, split.time_cumulative]; 
+                }
+                cell.detailTextLabel.text = split.time_split;
+                break;
+            default:
+                NSLog(@"ERROR: cellForRowAtIndexPath UNKNOWN!!! for viewstate=%d",self.viewstate);
+                cell.textLabel.text = @"Internal Error :(";
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"Details: cellForRowAtIndexPath/%d",self.viewstate];
+                break;
+                
+        }
     }
     
     return cell;
@@ -492,20 +513,51 @@
     // For example: self.myOutlet = nil;
 }
 
+// Update the data model according to edit actions delete or insert.
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableView* tableView = (UITableView*)[self view];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.athletes removeObjectAtIndex:indexPath.row];
+        NSLog(@"Delete at %d",indexPath.row);
+        [tableView reloadData];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // TODO: Need to push a new view controller for athlete selection here
+        [self.athletes insertObject:[NSArray arrayWithObjects:@"Babba Booie", @"11655", nil] atIndex:[self.athletes count]];
+        [tableView reloadData];
+    }
+}
+
+// The editing style for a row is the kind of button displayed to the left of the cell when in editing mode.
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // No editing style if not editing or the index path is nil.
+    if (self.editing == NO || !indexPath) return UITableViewCellEditingStyleNone;
+    // Determine the editing style based on whether the cell is a placeholder for adding content or already
+    // existing content. Existing content can be deleted.
+    if (self.editing && indexPath.row == (self.rows-1)) {
+        return UITableViewCellEditingStyleInsert;
+    } else {
+        return UITableViewCellEditingStyleDelete;
+    }
+    return UITableViewCellEditingStyleNone;
+}
+
 - (IBAction) EditTable:(id)sender{
+    UITableView* tableView = (UITableView*)[self view];
     if(self.editing)
     {
         [super setEditing:NO animated:NO];
-        // TODO [tblSimpleTable setEditing:NO animated:NO];
-        // TODO [tblSimpleTable reloadData];
+        [tableView setEditing:NO animated:NO];
+        [tableView reloadData];
         [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
         [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
     }
     else
     {
         [super setEditing:YES animated:YES];
-        //TODO[tblSimpleTable setEditing:YES animated:YES];
-        //TODO[tblSimpleTable reloadData];
+        [tableView setEditing:YES animated:YES];
+        [tableView reloadData];
         [self.navigationItem.leftBarButtonItem setTitle:@"Done"];
         [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStyleDone];
     }

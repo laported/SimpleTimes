@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E1FCCF7147975B600CD8316 /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCF6147975B600CD8316 /* Split.m */; };
+		1E1FCCFB1479E85600CD8316 /* TimeStandard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCFA1479E85600CD8316 /* TimeStandard.m */; };
 		1EA2289D14703E6C00283AD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289C14703E6C00283AD0 /* UIKit.framework */; };
 		1EA2289F14703E6C00283AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289E14703E6C00283AD0 /* Foundation.framework */; };
 		1EA228A114703E6C00283AD0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA228A014703E6C00283AD0 /* CoreGraphics.framework */; };
@@ -40,6 +41,8 @@
 /* Begin PBXFileReference section */
 		1E1FCCF5147975B600CD8316 /* Split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Split.h; sourceTree = "<group>"; };
 		1E1FCCF6147975B600CD8316 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Split.m; sourceTree = "<group>"; };
+		1E1FCCF91479E85600CD8316 /* TimeStandard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeStandard.h; sourceTree = "<group>"; };
+		1E1FCCFA1479E85600CD8316 /* TimeStandard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeStandard.m; sourceTree = "<group>"; };
 		1EA2289814703E6C00283AD0 /* SimpleTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA2289C14703E6C00283AD0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1EA2289E14703E6C00283AD0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -220,6 +223,8 @@
 				1EA228BC14703EB400283AD0 /* RaceResult.h */,
 				1E1FCCF5147975B600CD8316 /* Split.h */,
 				1E1FCCF6147975B600CD8316 /* Split.m */,
+				1E1FCCF91479E85600CD8316 /* TimeStandard.h */,
+				1E1FCCFA1479E85600CD8316 /* TimeStandard.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */,
 				1EA228F314759D6500283AD0 /* Athlete.m in Sources */,
 				1E1FCCF7147975B600CD8316 /* Split.m in Sources */,
+				1E1FCCFB1479E85600CD8316 /* TimeStandard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

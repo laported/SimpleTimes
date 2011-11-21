@@ -23,6 +23,7 @@
     NSString *_currentTitle;
     NSMutableArray* _IMStrokes;
     int _viewstate;
+    int _rows;
 }
 
 @property (retain) NSMutableArray *allTimes;
@@ -39,6 +40,7 @@
 @property int selectedDistance;
 @property (retain) NSString *CurrentTitle;
 @property int viewstate;
+@property int rows;
 
 - (IBAction) EditTable:(id)sender;
 
