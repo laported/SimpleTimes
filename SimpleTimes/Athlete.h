@@ -12,13 +12,17 @@
     NSString* _lastname;
     NSString* _firstname;
     NSString* _club;
+    int _age;
+    NSString* _gender;
     int _key;
 }
 
 @property (copy) NSString *lastname;
 @property (copy) NSString *firstname;
 @property (copy) NSString *club;
-@property  int key;
+@property (copy) NSString *gender;
+@property int key;
+@property int age;
 
 - (id)initWithLastName:(NSString*)lastName firstName:(NSString*)firstName club:(NSString*)club key:(int)key
 ;

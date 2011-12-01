@@ -13,7 +13,9 @@
     
 }
 
--(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke ;
++(float) getFloatTimeFromStringTime:(NSString*)sTime;
+
++(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time;
 
 
 @end

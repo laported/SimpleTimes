@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1E1FCCF7147975B600CD8316 /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCF6147975B600CD8316 /* Split.m */; };
 		1E1FCCFB1479E85600CD8316 /* TimeStandard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCFA1479E85600CD8316 /* TimeStandard.m */; };
+		1E1FCD011480009C00CD8316 /* AddSwimmerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCFF1480009C00CD8316 /* AddSwimmerViewController.m */; };
+		1E1FCD021480009C00CD8316 /* AddSwimmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */; };
+		1E1FCD051482B65100CD8316 /* Swimmers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD041482B65100CD8316 /* Swimmers.m */; };
+		1E1FCD0F1487009500CD8316 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1FCD0E1487009400CD8316 /* CoreData.framework */; };
+		1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */; };
+		1E1FCD1814871D0300CD8316 /* AthleteCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD1714871D0300CD8316 /* AthleteCD.m */; };
 		1EA2289D14703E6C00283AD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289C14703E6C00283AD0 /* UIKit.framework */; };
 		1EA2289F14703E6C00283AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289E14703E6C00283AD0 /* Foundation.framework */; };
 		1EA228A114703E6C00283AD0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA228A014703E6C00283AD0 /* CoreGraphics.framework */; };
@@ -43,6 +49,15 @@
 		1E1FCCF6147975B600CD8316 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Split.m; sourceTree = "<group>"; };
 		1E1FCCF91479E85600CD8316 /* TimeStandard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeStandard.h; sourceTree = "<group>"; };
 		1E1FCCFA1479E85600CD8316 /* TimeStandard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeStandard.m; sourceTree = "<group>"; };
+		1E1FCCFE1480009B00CD8316 /* AddSwimmerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSwimmerViewController.h; sourceTree = "<group>"; };
+		1E1FCCFF1480009C00CD8316 /* AddSwimmerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSwimmerViewController.m; sourceTree = "<group>"; };
+		1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSwimmerViewController.xib; sourceTree = "<group>"; };
+		1E1FCD031482B65100CD8316 /* Swimmers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swimmers.h; sourceTree = "<group>"; };
+		1E1FCD041482B65100CD8316 /* Swimmers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimmers.m; sourceTree = "<group>"; };
+		1E1FCD0E1487009400CD8316 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleSwimModel.xcdatamodel; sourceTree = "<group>"; };
+		1E1FCD1614871D0300CD8316 /* AthleteCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthleteCD.h; sourceTree = "<group>"; };
+		1E1FCD1714871D0300CD8316 /* AthleteCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthleteCD.m; sourceTree = "<group>"; };
 		1EA2289814703E6C00283AD0 /* SimpleTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA2289C14703E6C00283AD0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1EA2289E14703E6C00283AD0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -100,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E1FCD0F1487009500CD8316 /* CoreData.framework in Frameworks */,
 				1EA228E6147054B100283AD0 /* libz.1.2.3.dylib in Frameworks */,
 				1EA228E4147054A000283AD0 /* MobileCoreServices.framework in Frameworks */,
 				1EA228E21470549200283AD0 /* SystemConfiguration.framework in Frameworks */,
@@ -116,6 +132,7 @@
 		1EA2288D14703E6C00283AD0 = {
 			isa = PBXGroup;
 			children = (
+				1E1FCD0E1487009400CD8316 /* CoreData.framework */,
 				1EA228E5147054B100283AD0 /* libz.1.2.3.dylib */,
 				1EA228E3147054A000283AD0 /* MobileCoreServices.framework */,
 				1EA228E11470549200283AD0 /* SystemConfiguration.framework */,
@@ -154,6 +171,9 @@
 				1EA228AE14703E6C00283AD0 /* MainWindow.xib */,
 				1EA228B114703E6C00283AD0 /* RootViewController.h */,
 				1EA228B214703E6C00283AD0 /* RootViewController.m */,
+				1E1FCCFE1480009B00CD8316 /* AddSwimmerViewController.h */,
+				1E1FCCFF1480009C00CD8316 /* AddSwimmerViewController.m */,
+				1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */,
 				1EA228EA1470555F00283AD0 /* DataProviders */,
 				1EA228B414703E6C00283AD0 /* RootViewController.xib */,
 				1EA228A314703E6C00283AD0 /* Supporting Files */,
@@ -218,6 +238,9 @@
 			isa = PBXGroup;
 			children = (
 				1EA228F114759D6400283AD0 /* Athlete.h */,
+				1E1FCD1614871D0300CD8316 /* AthleteCD.h */,
+				1E1FCD1714871D0300CD8316 /* AthleteCD.m */,
+				1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */,
 				1EA228F214759D6400283AD0 /* Athlete.m */,
 				1EA228BD14703EB400283AD0 /* RaceResult.m */,
 				1EA228BC14703EB400283AD0 /* RaceResult.h */,
@@ -225,6 +248,8 @@
 				1E1FCCF6147975B600CD8316 /* Split.m */,
 				1E1FCCF91479E85600CD8316 /* TimeStandard.h */,
 				1E1FCCFA1479E85600CD8316 /* TimeStandard.m */,
+				1E1FCD031482B65100CD8316 /* Swimmers.h */,
+				1E1FCD041482B65100CD8316 /* Swimmers.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -279,6 +304,7 @@
 				1EA228A714703E6C00283AD0 /* InfoPlist.strings in Resources */,
 				1EA228B014703E6C00283AD0 /* MainWindow.xib in Resources */,
 				1EA228B614703E6C00283AD0 /* RootViewController.xib in Resources */,
+				1E1FCD021480009C00CD8316 /* AddSwimmerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +334,10 @@
 				1EA228F314759D6500283AD0 /* Athlete.m in Sources */,
 				1E1FCCF7147975B600CD8316 /* Split.m in Sources */,
 				1E1FCCFB1479E85600CD8316 /* TimeStandard.m in Sources */,
+				1E1FCD011480009C00CD8316 /* AddSwimmerViewController.m in Sources */,
+				1E1FCD051482B65100CD8316 /* Swimmers.m in Sources */,
+				1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */,
+				1E1FCD1814871D0300CD8316 /* AthleteCD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +457,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */,
+			);
+			currentVersion = 1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */;
+			path = SimpleSwimModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1EA2288F14703E6C00283AD0 /* Project object */;
 }

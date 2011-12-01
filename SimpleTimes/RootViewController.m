@@ -7,16 +7,19 @@
 //
 
 #import "RootViewController.h"
+#import "AddSwimmerViewController.h"
 #import "RaceResult.h"
+#import "Athlete.h"
 #import "Split.h"
 #import "MISwimDBProxy.h"
 #import "USASwimmingDBProxy.h"
+#import "TimeStandard.h"
 
 @implementation RootViewController
 
 @synthesize allTimes = _allTimes;
 @synthesize allSplits = _allSplits;
-@synthesize athletes = _athletes;
+//@synthesize athletes = _athletes;
 @synthesize allRaceIds = _allRaceIds;
 @synthesize strokes = _strokes;
 @synthesize distances = _distances;
@@ -31,11 +34,12 @@
 @synthesize rows = _rows;
 
 // VIEWSTATEs
-#define VS_ATHLETES 1
-#define VS_STROKES  2
-#define VS_DISTANCE 3
-#define VS_RESULTS  4
-#define VS_SPLITS   5
+#define VS_ATHLETES   1
+#define VS_STROKES    2
+#define VS_DISTANCE   3
+#define VS_RESULTS    4
+#define VS_SPLITS     5
+#define VS_ADDSWIMMER 6
 
 - (void)viewDidLoad
 {
@@ -44,6 +48,8 @@
     if (nil == self.CurrentTitle) {
         self.title = @"Select Swimmer";
         self.viewstate = VS_ATHLETES;
+        theSwimmers = [[Swimmers alloc] init];
+        [theSwimmers load];        
     } else {
         self.title = self.CurrentTitle;
     }
@@ -60,13 +66,13 @@
         // up when hitting [Edit] button, then (+) Add New Swimmer
         
         // Hard code the athlete selection
-        self.athletes = [NSArray arrayWithObjects:
-                         [NSArray arrayWithObjects:@"Benjamin LaPorte", @"11655", nil],
-                         [NSArray arrayWithObjects:@"Matthew LaPorte", @"11657", nil],
-                         [NSArray arrayWithObjects:@"Kelly LaPorte", @"11656", nil],
-                         nil];
+   //     self.athletes = [NSMutableArray arrayWithObjects:
+     //                    [NSMutableArray arrayWithObjects:@"Benjamin LaPorte", @"11655", nil],
+     //                    [NSMutableArray arrayWithObjects:@"Matthew LaPorte", @"11657", nil],
+       //                  [NSMutableArray arrayWithObjects:@"Kelly LaPorte", @"11656", nil],
+         //                nil];
     
-        for (int i=0;i<[self.athletes count];i++) {
+        for (int i=0;i<[theSwimmers.athletes count];i++) {
             int insertIdx = 0; 
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
         }
@@ -131,6 +137,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if (self.viewstate == VS_ADDSWIMMER) {
+        self.viewstate = VS_ATHLETES;
+    }
     [super viewWillAppear:animated];
 }
 
@@ -149,13 +158,13 @@
 	[super viewDidDisappear:animated];
 }
 
-/*
  // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	// Return YES for supported orientations.
-	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return (interfaceOrientation == UIInterfaceOrientationPortrait) ||
+           (interfaceOrientation == UIInterfaceOrientationLandscapeLeft) ||
+           (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
- */
 
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -168,7 +177,7 @@
     self.rows = 0;
     switch (self.viewstate) {
         case VS_ATHLETES:
-            self.rows = [self.athletes count];      
+            self.rows = [theSwimmers.athletes count];      
             break;
         case VS_STROKES:
             self.rows = [self.strokes count];
@@ -196,6 +205,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     RaceResult *race;
+    Athlete* athlete;
     Split *split;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -212,7 +222,8 @@
         switch (self.viewstate) {
             case VS_ATHLETES:
                 // We are displaying the athlete list
-                cell.textLabel.text = [[self.athletes objectAtIndex:indexPath.row] objectAtIndex:0];       
+                athlete = [theSwimmers.athletes objectAtIndex:indexPath.row];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",athlete.firstname, athlete.lastname];       
                 cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
@@ -235,8 +246,11 @@
                 [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
                 [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
                 NSString *raceDateString = [dateFormatter stringFromDate:race.date];
+                float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+                int nStroke = [race intStrokeValue];
+                NSString *timestd = [TimeStandard getTimeStandardWithAge:self.selectedAthlete.age distance:race.distance stroke:nStroke gender:self.selectedAthlete.gender time:ftime];
                 
-                cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@", race.distance, race.stroke, race.time];       
+                cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@ %@", race.distance, race.stroke, race.time, timestd];       
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
                 if ([race hasSplits]) {
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -321,7 +335,7 @@
             rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
             
             //Increment the Current View
-            rvController.selectedAthlete = [[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+            rvController.selectedAthlete = [theSwimmers.athletes objectAtIndex:indexPath.row];
             rvController.CurrentTitle = @"Strokes";
             rvController.viewstate = VS_STROKES;
             
@@ -417,7 +431,7 @@
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
-    NSArray* times = [proxy getAllTimesForAthlete:self.selectedAthlete:self.selectedStroke:self.selectedDistance];
+    NSArray* times = [proxy getAllTimesForAthlete:self.selectedAthlete.key:self.selectedStroke:self.selectedDistance];
         
     NSLog(@"Number of results: %d",[times count]);
     for (int i=0;i<[times count];i++) {
@@ -441,7 +455,7 @@
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
-    NSArray* times = [proxy getFastestTimesForAthlete:self.selectedAthlete]; // todo
+    NSArray* times = [proxy getFastestTimesForAthlete:self.selectedAthlete.key]; // todo
     
     NSLog(@"Number of results: %d",[times count]);
     for (int i=0;i<[times count];i++) {
@@ -519,13 +533,19 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableView* tableView = (UITableView*)[self view];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.athletes removeObjectAtIndex:indexPath.row];
+        [theSwimmers.athletes removeObjectAtIndex:indexPath.row];
         NSLog(@"Delete at %d",indexPath.row);
         [tableView reloadData];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // TODO: Need to push a new view controller for athlete selection here
-        [self.athletes insertObject:[NSArray arrayWithObjects:@"Babba Booie", @"11655", nil] atIndex:[self.athletes count]];
-        [tableView reloadData];
+        asController = [[AddSwimmerViewController alloc] initWithNibName:@"AddSwimmerViewController" bundle:[NSBundle mainBundle]];
+        self.viewstate = VS_ADDSWIMMER;
+        [self.navigationController pushViewController:asController animated:YES];
+//        [asController release];
+  //      asController = nil;
+        
+        //[self.athletes insertObject:[NSArray arrayWithObjects:@"Babba Booie", @"11655", nil] atIndex:[self.athletes count]];
+        //[tableView reloadData];
     }
 }
 
@@ -572,8 +592,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     _allSplits = nil;
     [_queue release];
     _queue = nil;
-    [_athletes release];
-    _athletes = nil;
+    [_selectedAthlete release];
+    _selectedAthlete = nil;
+    //[_athletes release];
+    //_athletes = nil;
     [_IMStrokes release];
     _IMStrokes = nil;
 }

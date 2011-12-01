@@ -45,6 +45,26 @@
     return (self.key > 0);
 }
 
+-(int) intStrokeValue {
+    if ([self.stroke isEqualToString:@"Free"])
+        return 1;
+    
+    if ([self.stroke isEqualToString:@"Back"])
+        return 2;
+
+    if ([self.stroke isEqualToString:@"Breast"])
+        return 3;
+    
+    if ([self.stroke isEqualToString:@"Fly"])
+        return 4;
+
+    if ([self.stroke isEqualToString:@"IM"])
+        return 5;
+    
+    NSLog(@"OOPS!! Could not convert stroke to int value!!!!: %@",self.stroke);
+    assert(false);
+}
+
 - (NSComparisonResult)compareByTime:(RaceResult *)otherObject
 {
     return [otherObject.time caseInsensitiveCompare:self.time];

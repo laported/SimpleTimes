@@ -15,6 +15,8 @@
 @synthesize firstname=_firstname;
 @synthesize club=_club;
 @synthesize key=_key;
+@synthesize age=_age;
+@synthesize gender=_gender;
 
 - (id)initWithLastName:(NSString*)lastName firstName:(NSString*)firstName club:(NSString*)club key:(int)key {
     if ((self = [super init])) {
@@ -33,7 +35,10 @@
     _lastname = nil;
     [_club release];
     _club = nil;
+    [_gender release];
+    _gender = nil;
     _key = 0;
+    _age = 0;
     [super dealloc];
 }
 
