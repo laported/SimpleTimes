@@ -10,16 +10,21 @@
 
 
 @interface Swimmers : NSObject {
-    NSMutableArray *_athletes;    
+    NSMutableArray *_athletes;  
+    NSArray *_athletesCD;
+    int _count;
 }
 
 @property (retain) NSMutableArray *athletes;
+@property (retain) NSArray *athletesCD;
 
 -(void)loadWithContext:(NSManagedObjectContext *)context;
 -(void)load;
+-(int) count;
 
 #ifdef DEBUG
 +(void) seedTestDataUsingContext:(NSManagedObjectContext *)context ;
++(void) deleteAllUsingContext:(NSManagedObjectContext *)context;
 #endif
 
 @end

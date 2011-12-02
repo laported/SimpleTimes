@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AddSwimmerViewController.h"
 #import "Swimmers.h"
-#import "Athlete.h"
+#import "AthleteCD.h"
 
 @interface RootViewController : UITableViewController {
     NSMutableArray *_allTimes; 
@@ -20,7 +20,8 @@
     NSMutableArray *_strokes;
     NSMutableArray *_distances;
     int _selectedRace;
-    Athlete* _selectedAthlete;
+    //Athlete* _selectedAthlete;
+    AthleteCD* _selectedAthleteCD;
     int _selectedStroke;
     int _selectedDistance;
     NSString *_currentTitle;
@@ -28,6 +29,7 @@
     int _viewstate;
     int _rows;
     UIViewController* asController;
+    NSManagedObjectContext* _managedObjectContext;
 }
 
 @property (retain) NSMutableArray *allTimes;
@@ -38,12 +40,14 @@
 @property (retain) NSMutableArray *distances;
 @property (retain) NSMutableArray *IMStrokes;
 @property int selectedRace;
-@property (retain) Athlete* selectedAthlete;
+//@property (retain) Athlete* selectedAthlete;
+@property (retain) AthleteCD* selectedAthleteCD;
 @property int selectedStroke;
 @property int selectedDistance;
 @property (retain) NSString *CurrentTitle;
 @property int viewstate;
 @property int rows;
+@property (retain) NSManagedObjectContext *managedObjectContext;
 
 - (IBAction) EditTable:(id)sender;
 

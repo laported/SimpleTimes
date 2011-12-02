@@ -41,7 +41,7 @@
 		1EA228E91470555600283AD0 /* MISwimDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228E81470555600283AD0 /* MISwimDBProxy.m */; };
 		1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EC14706C7500283AD0 /* ROHTMLTable.m */; };
 		1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */; };
-		1EA228F314759D6500283AD0 /* Athlete.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228F214759D6400283AD0 /* Athlete.m */; };
+		1ED8168E14888142006268C2 /* iPhoneIcon_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,8 +106,7 @@
 		1EA228EC14706C7500283AD0 /* ROHTMLTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROHTMLTable.m; path = DataProviders/ROHTMLTable.m; sourceTree = SOURCE_ROOT; };
 		1EA228EE1474293E00283AD0 /* USASwimmingDBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USASwimmingDBProxy.h; path = DataProviders/USASwimmingDBProxy.h; sourceTree = SOURCE_ROOT; };
 		1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = USASwimmingDBProxy.m; path = DataProviders/USASwimmingDBProxy.m; sourceTree = SOURCE_ROOT; };
-		1EA228F114759D6400283AD0 /* Athlete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Athlete.h; path = SimpleTimes/Athlete.h; sourceTree = "<group>"; };
-		1EA228F214759D6400283AD0 /* Athlete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Athlete.m; path = SimpleTimes/Athlete.m; sourceTree = "<group>"; };
+		1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Small.png; path = SimpleTimes/iPhoneIcon_Small.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +131,7 @@
 		1EA2288D14703E6C00283AD0 = {
 			isa = PBXGroup;
 			children = (
+				1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */,
 				1E1FCD0E1487009400CD8316 /* CoreData.framework */,
 				1EA228E5147054B100283AD0 /* libz.1.2.3.dylib */,
 				1EA228E3147054A000283AD0 /* MobileCoreServices.framework */,
@@ -237,11 +237,9 @@
 		1EA228F414759DB300283AD0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1EA228F114759D6400283AD0 /* Athlete.h */,
 				1E1FCD1614871D0300CD8316 /* AthleteCD.h */,
 				1E1FCD1714871D0300CD8316 /* AthleteCD.m */,
 				1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */,
-				1EA228F214759D6400283AD0 /* Athlete.m */,
 				1EA228BD14703EB400283AD0 /* RaceResult.m */,
 				1EA228BC14703EB400283AD0 /* RaceResult.h */,
 				1E1FCCF5147975B600CD8316 /* Split.h */,
@@ -264,6 +262,7 @@
 				1EA2289414703E6C00283AD0 /* Sources */,
 				1EA2289514703E6C00283AD0 /* Frameworks */,
 				1EA2289614703E6C00283AD0 /* Resources */,
+				1ED8168C14886FAF006268C2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -305,10 +304,27 @@
 				1EA228B014703E6C00283AD0 /* MainWindow.xib in Resources */,
 				1EA228B614703E6C00283AD0 /* RootViewController.xib in Resources */,
 				1E1FCD021480009C00CD8316 /* AddSwimmerViewController.xib in Resources */,
+				1ED8168E14888142006268C2 /* iPhoneIcon_Small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1ED8168C14886FAF006268C2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1EA2289414703E6C00283AD0 /* Sources */ = {
@@ -331,7 +347,6 @@
 				1EA228E91470555600283AD0 /* MISwimDBProxy.m in Sources */,
 				1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */,
 				1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */,
-				1EA228F314759D6500283AD0 /* Athlete.m in Sources */,
 				1E1FCCF7147975B600CD8316 /* Split.m in Sources */,
 				1E1FCCFB1479E85600CD8316 /* TimeStandard.m in Sources */,
 				1E1FCD011480009C00CD8316 /* AddSwimmerViewController.m in Sources */,
@@ -415,6 +430,7 @@
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -430,6 +446,7 @@
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

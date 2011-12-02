@@ -9,7 +9,6 @@
 #import "RootViewController.h"
 #import "AddSwimmerViewController.h"
 #import "RaceResult.h"
-#import "Athlete.h"
 #import "Split.h"
 #import "MISwimDBProxy.h"
 #import "USASwimmingDBProxy.h"
@@ -24,7 +23,8 @@
 @synthesize strokes = _strokes;
 @synthesize distances = _distances;
 @synthesize queue = _queue;
-@synthesize selectedAthlete = _selectedAthlete;
+//@synthesize selectedAthlete = _selectedAthlete;
+@synthesize selectedAthleteCD = _selectedAthleteCD;
 @synthesize selectedStroke = _selectedStroke;
 @synthesize selectedDistance = _selectedDistance;
 @synthesize CurrentTitle = _currentTitle;
@@ -32,6 +32,7 @@
 @synthesize IMStrokes = _IMStrokes;
 @synthesize viewstate = _viewstate;
 @synthesize rows = _rows;
+@synthesize managedObjectContext = _managedObjectContext;
 
 // VIEWSTATEs
 #define VS_ATHLETES   1
@@ -45,11 +46,13 @@
 {
     [super viewDidLoad];
     
+    assert( self.managedObjectContext != nil );
+    
     if (nil == self.CurrentTitle) {
         self.title = @"Select Swimmer";
         self.viewstate = VS_ATHLETES;
         theSwimmers = [[Swimmers alloc] init];
-        [theSwimmers load];        
+        [theSwimmers loadWithContext:self.managedObjectContext];        
     } else {
         self.title = self.CurrentTitle;
     }
@@ -57,22 +60,12 @@
     // TODO: This should be a class var not an ivar
     self.IMStrokes = [NSArray arrayWithObjects:@"Fly",@"Back",@"Breast",@"Freestyle", nil];
     
-    if (self.selectedAthlete == 0) {
+    if (self.viewstate == VS_ATHLETES) {
         
         UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(EditTable:)];
         [self.navigationItem setLeftBarButtonItem:addButton];
         
-        // TODO: List will initially be empty. New view to select Athlete will come
-        // up when hitting [Edit] button, then (+) Add New Swimmer
-        
-        // Hard code the athlete selection
-   //     self.athletes = [NSMutableArray arrayWithObjects:
-     //                    [NSMutableArray arrayWithObjects:@"Benjamin LaPorte", @"11655", nil],
-     //                    [NSMutableArray arrayWithObjects:@"Matthew LaPorte", @"11657", nil],
-       //                  [NSMutableArray arrayWithObjects:@"Kelly LaPorte", @"11656", nil],
-         //                nil];
-    
-        for (int i=0;i<[theSwimmers.athletes count];i++) {
+        for (int i=0;i<[theSwimmers count];i++) {
             int insertIdx = 0; 
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
         }
@@ -177,7 +170,7 @@
     self.rows = 0;
     switch (self.viewstate) {
         case VS_ATHLETES:
-            self.rows = [theSwimmers.athletes count];      
+            self.rows = [theSwimmers count];      
             break;
         case VS_STROKES:
             self.rows = [self.strokes count];
@@ -205,7 +198,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     RaceResult *race;
-    Athlete* athlete;
+    AthleteCD* athlete;
     Split *split;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -222,9 +215,9 @@
         switch (self.viewstate) {
             case VS_ATHLETES:
                 // We are displaying the athlete list
-                athlete = [theSwimmers.athletes objectAtIndex:indexPath.row];
+                athlete = [theSwimmers.athletesCD objectAtIndex:indexPath.row];
                 cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",athlete.firstname, athlete.lastname];       
-                cell.detailTextLabel.text = @""; //[[self.athletes objectAtIndex:indexPath.row] objectAtIndex:1];
+                cell.detailTextLabel.text = @""; 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
             case VS_STROKES:
@@ -248,7 +241,7 @@
                 NSString *raceDateString = [dateFormatter stringFromDate:race.date];
                 float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
                 int nStroke = [race intStrokeValue];
-                NSString *timestd = [TimeStandard getTimeStandardWithAge:self.selectedAthlete.age distance:race.distance stroke:nStroke gender:self.selectedAthlete.gender time:ftime];
+                NSString *timestd = [TimeStandard getTimeStandardWithAge:[self.selectedAthleteCD ageAtDate:race.date] distance:race.distance stroke:nStroke gender:self.selectedAthleteCD.gender time:ftime];
                 
                 cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@ %@", race.distance, race.stroke, race.time, timestd];       
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
@@ -335,7 +328,8 @@
             rvController = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:[NSBundle mainBundle]];
             
             //Increment the Current View
-            rvController.selectedAthlete = [theSwimmers.athletes objectAtIndex:indexPath.row];
+            rvController.selectedAthleteCD = [theSwimmers.athletesCD objectAtIndex:indexPath.row];
+            rvController.managedObjectContext = self.managedObjectContext;
             rvController.CurrentTitle = @"Strokes";
             rvController.viewstate = VS_STROKES;
             
@@ -354,7 +348,8 @@
             
             //Increment the Current View
             rvController.selectedStroke = [[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
-            rvController.selectedAthlete = self.selectedAthlete;
+            rvController.managedObjectContext = self.managedObjectContext;
+            rvController.selectedAthleteCD = self.selectedAthleteCD;
             if (rvController.selectedStroke < 99) {
                 rvController.CurrentTitle = @"Distance";
                 rvController.viewstate = VS_DISTANCE;
@@ -377,8 +372,9 @@
             
             //Increment the Current View
             rvController.selectedDistance = [[[self.distances objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
+            rvController.managedObjectContext = self.managedObjectContext;
             rvController.selectedStroke = self.selectedStroke;
-            rvController.selectedAthlete = self.selectedAthlete;
+            rvController.selectedAthleteCD = self.selectedAthleteCD;
             rvController.viewstate = VS_RESULTS;
             
             //Set the title;
@@ -400,8 +396,9 @@
                 // Increment the Current View
                 rvController.selectedDistance = self.selectedDistance;
                 rvController.selectedStroke = self.selectedStroke;
-                rvController.selectedAthlete = self.selectedAthlete;
+                rvController.selectedAthleteCD = self.selectedAthleteCD;
                 rvController.selectedRace = race.key;
+                rvController.managedObjectContext = self.managedObjectContext;
                 //Set the title;
                 rvController.CurrentTitle = @"Split Times";
                 rvController.viewstate = VS_SPLITS;
@@ -431,7 +428,7 @@
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
-    NSArray* times = [proxy getAllTimesForAthlete:self.selectedAthlete.key:self.selectedStroke:self.selectedDistance];
+    NSArray* times = [proxy getAllTimesForAthlete:[self.selectedAthleteCD.miswimid intValue]:self.selectedStroke:self.selectedDistance];
         
     NSLog(@"Number of results: %d",[times count]);
     for (int i=0;i<[times count];i++) {
@@ -455,7 +452,7 @@
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
-    NSArray* times = [proxy getFastestTimesForAthlete:self.selectedAthlete.key]; // todo
+    NSArray* times = [proxy getFastestTimesForAthlete:[self.selectedAthleteCD.miswimid intValue]]; // todo
     
     NSLog(@"Number of results: %d",[times count]);
     for (int i=0;i<[times count];i++) {
@@ -533,7 +530,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableView* tableView = (UITableView*)[self view];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [theSwimmers.athletes removeObjectAtIndex:indexPath.row];
+        // TODO Add delete method in Swimmers class [theSwimmers.athletes removeObjectAtIndex:indexPath.row];
         NSLog(@"Delete at %d",indexPath.row);
         [tableView reloadData];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -592,8 +589,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     _allSplits = nil;
     [_queue release];
     _queue = nil;
-    [_selectedAthlete release];
-    _selectedAthlete = nil;
+    //[_selectedAthlete release];
+    //_selectedAthlete = nil;
+    [_selectedAthleteCD release];
+    _selectedAthleteCD = nil;
+    [_managedObjectContext release];
+    _managedObjectContext = nil;
     //[_athletes release];
     //_athletes = nil;
     [_IMStrokes release];

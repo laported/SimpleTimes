@@ -7,30 +7,36 @@
 //
 
 #import "Swimmers.h"
-#import "Athlete.h"
 #import "AthleteCD.h"
 
 @implementation Swimmers
 
 @synthesize athletes = _athletes;
+@synthesize athletesCD = _athletesCD;
 
 -(void)loadWithContext:(NSManagedObjectContext *)context {
     
     // Load all AthleteCD objects from the store
+    _count = 0;
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"AthleteCD" 
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (AthleteCD *ath in fetchedObjects) {
+    self.athletesCD = [context executeFetchRequest:fetchRequest error:&error];
+    for (AthleteCD *ath in self.athletesCD) {
         NSLog(@"Name: %@ %@", ath.firstname, ath.lastname);
         NSLog(@"Birthdate: %@", ath.birthdate);
+        _count++;
     }        
     [fetchRequest release];
     
 }
 
+-(int) count {
+    return _count;
+}
+/*
 /// @deprecated
 -(void)load {
     
@@ -51,8 +57,16 @@
                      a1,a2,a3,nil];
     
 }
-
+*/
 #ifdef DEBUG
++(void) deleteAllUsingContext:(NSManagedObjectContext *)context {
+    NSFetchRequest * fetch = [[[NSFetchRequest alloc] init] autorelease];
+    [fetch setEntity:[NSEntityDescription entityForName:@"AthleteCD" inManagedObjectContext:context]];
+    NSArray * result = [context executeFetchRequest:fetch error:nil];
+    for (id a in result)
+        [context deleteObject:a];
+}
+
 +(void) seedTestDataUsingContext:(NSManagedObjectContext *)context {
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

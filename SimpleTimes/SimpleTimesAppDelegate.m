@@ -13,7 +13,6 @@
 
 @implementation SimpleTimesAppDelegate
 
-
 @synthesize window=_window;
 
 @synthesize navigationController=_navigationController;
@@ -22,17 +21,21 @@
 @synthesize managedObjectContext=__managedObjectContext;
 @synthesize managedObjectModel=__managedObjectModel;
 @synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
+@synthesize rootVC=_rootVC;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 #ifdef DEBUG
+    //[Swimmers deleteAllUsingContext:[self managedObjectContext]];
     //[Swimmers seedTestDataUsingContext:[self managedObjectContext]];
-    Swimmers* theSwimmers = [[Swimmers alloc] init];
-    [theSwimmers loadWithContext:[self managedObjectContext]];
+    //Swimmers* theSwimmers = [[Swimmers alloc] init];
+    //[theSwimmers loadWithContext:[self managedObjectContext]];
 #endif
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
-    self.window.rootViewController = self.navigationController;
+    //self.window.rootViewController = self.navigationController;
+    [self.window addSubview: self.navigationController.view];
+    self.rootVC.managedObjectContext = self.managedObjectContext;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -162,7 +165,10 @@
         return __persistentStoreCoordinator;
     }
     
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"SimpleTimes.sqlite"];
+    NSString *s1 = [self applicationStringDocumentsDirectory];
+    NSString *s2 = [s1 stringByAppendingPathComponent:@"SimpleTimes.sqlite"];
+    NSURL* storeURL = [NSURL fileURLWithPath:s2];
+    //NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"SimpleTimes.sqlite"];
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -201,11 +207,19 @@
 #pragma mark - Application's Documents directory
 
 /**
- Returns the URL to the application's Documents directory.
+ Returns the URL to the application's Documents directory. iOS 4 only
  */
-- (NSURL *)applicationDocumentsDirectory
+- (NSURL *)applicationUrlDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+// iOS 3 compatible
+- (NSString *)applicationStringDocumentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    return [paths objectAtIndex:0];
+    //return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end

@@ -20,4 +20,6 @@
 @property (nonatomic, retain) NSNumber * miswimid;
 @property (nonatomic, retain) NSString * gender;
 
+-(int) ageAtDate:(NSDate*)date;
+
 @end
