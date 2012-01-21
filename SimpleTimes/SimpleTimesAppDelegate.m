@@ -3,10 +3,11 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 11/13/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 laporte6.org. All rights reserved.
 //
 
 #import "SimpleTimesAppDelegate.h"
+
 #ifdef DEBUG
 #import "Swimmers.h"
 #endif
@@ -142,18 +143,7 @@
     __managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
     return __managedObjectModel;
 }
-/*
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (__managedObjectModel != nil)
-    {
-        return __managedObjectModel;
-    }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"SimpleTimes" withExtension:@"momd"];
-    __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];    
-    return __managedObjectModel;
-}
-*/
+
 /**
  Returns the persistent store coordinator for the application.
  If the coordinator doesn't already exist, it is created and the application's store added to it.
@@ -168,7 +158,6 @@
     NSString *s1 = [self applicationStringDocumentsDirectory];
     NSString *s2 = [s1 stringByAppendingPathComponent:@"SimpleTimes.sqlite"];
     NSURL* storeURL = [NSURL fileURLWithPath:s2];
-    //NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"SimpleTimes.sqlite"];
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -214,12 +203,10 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-// iOS 3 compatible
 - (NSString *)applicationStringDocumentsDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     return [paths objectAtIndex:0];
-    //return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 @end

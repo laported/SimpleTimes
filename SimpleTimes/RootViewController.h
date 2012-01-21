@@ -11,16 +11,17 @@
 #import "Swimmers.h"
 #import "AthleteCD.h"
 
+@class AddSwimmerViewController;
+
 @interface RootViewController : UITableViewController {
     NSMutableArray *_allTimes; 
     NSMutableArray *_allSplits; 
     NSMutableArray *_allRaceIds;
     NSOperationQueue *_queue;
-    Swimmers *theSwimmers;
+    Swimmers *_theSwimmers;
     NSMutableArray *_strokes;
     NSMutableArray *_distances;
     int _selectedRace;
-    //Athlete* _selectedAthlete;
     AthleteCD* _selectedAthleteCD;
     int _selectedStroke;
     int _selectedDistance;
@@ -28,7 +29,7 @@
     NSMutableArray* _IMStrokes;
     int _viewstate;
     int _rows;
-    UIViewController* asController;
+    AddSwimmerViewController* _asController;
     NSManagedObjectContext* _managedObjectContext;
 }
 
@@ -40,15 +41,22 @@
 @property (retain) NSMutableArray *distances;
 @property (retain) NSMutableArray *IMStrokes;
 @property int selectedRace;
-//@property (retain) Athlete* selectedAthlete;
 @property (retain) AthleteCD* selectedAthleteCD;
+@property (retain) Swimmers* theSwimmers;
 @property int selectedStroke;
 @property int selectedDistance;
 @property (retain) NSString *CurrentTitle;
 @property int viewstate;
 @property int rows;
 @property (retain) NSManagedObjectContext *managedObjectContext;
+@property (retain) AddSwimmerViewController* asController;
 
 - (IBAction) EditTable:(id)sender;
+// onRefresh is invoked when the refresh button is pressed
+- (void)onRefresh:(id)sender ;
+// refresh is for updating the view
+- (void)refresh ;
+- (void)refreshSplitTimes ;
+- (void)refreshAllBestTimes;
 
 @end

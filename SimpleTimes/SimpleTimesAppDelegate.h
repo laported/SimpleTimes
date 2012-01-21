@@ -3,7 +3,7 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 11/13/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 laporte6.org. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -18,7 +18,9 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+- (NSURL *)applicationUrlDocumentsDirectory;
+// iOS 3 compatible
+- (NSString *)applicationStringDocumentsDirectory;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;

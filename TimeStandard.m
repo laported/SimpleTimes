@@ -38,6 +38,36 @@ const float eleven_twelve__m_b [5][8] = {
     {  0.0,   0.0,   83.69, 183.09, 383.69, 0.0,    0.0,    0.0   }   // IM
 };
 
+// TODO - these are boys right now
+const float eleven_twelve_w_q1 [5][8] = {
+    // 25     50     100    200     400    500     1000    1650
+    {  0.0,   28.09, 61.59, 134.59, 0.0,    360.59, 0.0,    0.0   },  // free
+    {  0.0,   33.29, 71.69, 154.79, 0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   37.79, 81.69, 179.99, 0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   32.09, 73.99, 175.89, 0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   72.79, 155.49, 335.79, 0.0,    0.0,    0.0   }   // IM
+};
+
+// TODO - these are boys right now
+const float eleven_twelve_w_q2 [5][8] = {
+    // 25     50     100    200     400    500     1000    1650
+    {  0.0,   30.59, 69.19, 152.99, 0.0,    402.19, 0.0,    0.0   },  // free
+    {  0.0,   37.09, 80.19, 189.59, 0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   41.99, 92.09, 205.79, 0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   36.29, 86.69, 203.99, 0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   80.29, 175.69, 390.89, 0.0,    0.0,    0.0   }   // IM
+};
+
+// TODO - these are boys right now
+const float eleven_twelve_w_b [5][8] = {
+    // 25     50     100    200     400    500      1000    1650
+    {  0.0,   33.39, 73.09, 158.89, 0.0,    425.49, 890.09, 1497.49   },  // free
+    {  0.0,   39.49, 85.79, 178.39, 0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   44.29, 95.09, 201.69, 0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   38.19, 85.79, 181.19, 0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   83.69, 183.09, 383.69, 0.0,    0.0,    0.0   }   // IM
+};
+
 // 13-14 M ---------------------------------------------------------------------
 const float thirteen_fourteen_m_q1 [5][8] = {
     // 25     50     100    200     400    500     1000     1650
@@ -69,9 +99,14 @@ const float thirteen_fourteen_m_b [5][8] = {
 
 +(float) getFloatTimeFromStringTime:(NSString*)sTime {
 
-    NSArray* parts = [sTime componentsSeparatedByString:@":"];
     float ret = 0;
     int idx = 0;
+    
+    if([sTime isEqualToString:@"DQ"]){
+        return 9999999999;
+    }
+    
+    NSArray* parts = [sTime componentsSeparatedByString:@":"];
     if ([parts count] == 2) {
         // get the minutes
         ret = [[parts objectAtIndex:0] floatValue] * 60.0;

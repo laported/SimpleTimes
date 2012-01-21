@@ -8,6 +8,7 @@
 
 #import "Swimmers.h"
 #import "AthleteCD.h"
+#import "MISwimDBProxy.h"
 
 @implementation Swimmers
 
@@ -28,6 +29,9 @@
         NSLog(@"Name: %@ %@", ath.firstname, ath.lastname);
         NSLog(@"Birthdate: %@", ath.birthdate);
         _count++;
+#ifdef DEBUG
+//        [self updateAllRaceResultsForAthlete:ath inContext:context];
+#endif
     }        
     [fetchRequest release];
     
@@ -36,6 +40,121 @@
 -(int) count {
     return _count;
 }
+
+-(BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 {
+    unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents* components1 = [calendar components:flags fromDate:r1.date];
+    NSDate* dateOnly1 = [calendar dateFromComponents:components1];
+    
+    NSDateComponents* components2 = [calendar components:flags fromDate:r2.date];
+    NSDate* dateOnly2 = [calendar dateFromComponents:components2];
+    
+    // TODO: Any releases needed for calendar stuff???? 
+    NSLog(@"Comparing %@ to %@",dateOnly1,dateOnly2);
+    if ([dateOnly1 compare:dateOnly2] != NSOrderedSame)
+        return FALSE;
+    
+    NSLog(@"Comparing '%@' to '%@'",r1.meet,r2.meet);
+    if (![r1.meet isEqualToString:r2.meet])
+        return FALSE;
+    
+    NSLog(@"Comparing '%@' to '%@'",r1.stroke,r2.stroke);
+    if (![r1.stroke isEqualToString:r2.stroke])
+        return FALSE;
+    
+    if ([r1.distance intValue] != r2.distance)
+        return FALSE;
+    
+    return TRUE;
+}
+
+-(BOOL) isRaceInStore:(RaceResultMI*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete {
+    
+    BOOL isInStore = FALSE;
+    // athlete.races is a list of all the athlete's races    
+    NSSet *raceSet = athlete.races;
+    NSArray *raceArray = [raceSet allObjects];
+    
+    for (RaceResult *raceDB in raceArray) {
+        if ([self isSameRaceInDB:raceDB asMIRace:race]) {
+            isInStore = TRUE;
+            break;
+        }
+    }
+  
+    return isInStore;
+}
+
+-(void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context {
+    NSLog(@"storeRace");
+    
+    RaceResult *race = (RaceResult *)[NSEntityDescription insertNewObjectForEntityForName:@"RaceResult" inManagedObjectContext:context];
+    race.time        = raceMI.time;
+    race.stroke      = raceMI.stroke;
+    race.course      = raceMI.course;
+    race.standard    = raceMI.standard;
+    race.meet        = raceMI.meet;
+    race.date        = raceMI.date;
+    race.splitskey   = [NSNumber numberWithInt:raceMI.key];
+    race.powerpoints = [NSNumber numberWithInt:0]; // not suppored by MI DB
+    race.distance    = [NSNumber numberWithInt:raceMI.distance];
+    race.athlete     = athlete;
+    
+    NSError *error;
+    
+    // here's where the actual save happens, and if it doesn't we print something out to the console
+    if (![context save:&error])
+    {
+        NSLog(@"Problem saving: %@", [error localizedDescription]);
+    }
+}
+
+-(void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext *)context {
+    // algorithm for fetching from MI SWIM website:
+    //
+    // with the athlete id:
+    //   getAllTimesForAthlete()
+    //   for (time in times[] do) {
+    //      Race key will be 'meet date' + 'meet name'
+    //      if (notInDB()) {
+    //         createDBRecord()
+    //         insertDBRecord()
+    //      }
+    //   }
+    MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+    //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
+    
+    NSArray* times = [proxy getAllTimesForAthlete:[athlete.miswimid intValue]]; 
+    for (RaceResultMI *result in times) {
+        // Is this in the DB already????
+        if (![self isRaceInStore:result inContext:context athlete:athlete]) {
+            [self storeRace:result forAthlete:athlete inContext:context];
+        }
+    }
+}
+
++(int) intStrokeValue:(NSString*)stroke {
+    if ([stroke isEqualToString:@"Free"])
+        return 1;
+    
+    if ([stroke isEqualToString:@"Back"])
+        return 2;
+    
+    if ([stroke isEqualToString:@"Breast"])
+        return 3;
+    
+    if ([stroke isEqualToString:@"Fly"])
+        return 4;
+    
+    if ([stroke isEqualToString:@"IM"])
+        return 5;
+    
+    NSLog(@"OOPS!! Could not convert stroke to int value!!!!: %@",stroke);
+    assert(false);
+}
+
 /*
 /// @deprecated
 -(void)load {
