@@ -270,12 +270,14 @@
                 cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
+                
             case VS_DISTANCE:
                 // We are displaying the stroke list
                 cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
                 cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
+                
             case VS_RESULTS:
                 race = [_allTimes objectAtIndex:indexPath.row];
                 
@@ -293,14 +295,21 @@
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                 break;
+                
             case VS_SPLITS:
                 split = [_allSplits objectAtIndex:indexPath.row];
                 /* Is this an IM???? */
                 if (self.selectedStroke == 5) {
-                    // Add the current stroke
+                    // IM: Add the current stroke for this split
                     int divisor = self.selectedDistance / 4;
                     int stroke_index = ([split.distance intValue]-1) / divisor;
-                    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@)", split.distance, split.time_cumulative,[self.IMStrokes objectAtIndex:stroke_index]]; 
+                    // 100 IMs may not have splits on the 25s, so we may need
+                    // to adjust the display to show combined strokes
+                    if (([split.distance intValue] == 100) && ([_allSplits count] == 2)) {
+                        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@ + %@)", split.distance, split.time_cumulative,[self.IMStrokes objectAtIndex:stroke_index],[self.IMStrokes objectAtIndex:stroke_index+1]]; 
+                    } else {
+                        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@)", split.distance, split.time_cumulative,[self.IMStrokes objectAtIndex:stroke_index]]; 
+                    }
                 } else {
                     cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", split.distance, split.time_cumulative];
                 }
@@ -314,6 +323,7 @@
                     cell.detailTextLabel.text = split.time_split;
                 }
                 break;
+                
             default:
                 NSLog(@"ERROR: cellForRowAtIndexPath UNKNOWN!!! for viewstate=%d",self.viewstate);
                 cell.textLabel.text = @"Internal Error :(";
@@ -332,22 +342,6 @@
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        // Delete the row from the data source.
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert)
-    {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }   
 }
 */
 
@@ -472,13 +466,6 @@
             // nothing to do here
             break;
     }
-    /*
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-    // ...
-    // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
-	*/
 }
 
 // ------------------------------------------------------
@@ -525,7 +512,7 @@
     NSArray *       times = [raceSet allObjects];
     
     int distances[] = { 25, 50, 100, 200, 500, 1000, 1650 };
-    strokes   = [NSArray arrayWithObjects:@"Fly", @"Back", @"Breast", @"Free", nil];
+    strokes   = [NSArray arrayWithObjects:@"Fly", @"Back", @"Breast", @"Free", @"IM", nil];
 
     for (int i=0;i<sizeof(distances)/sizeof(distances[0]);i++) {
         for (int j=0;j<[strokes count]; j++) {
@@ -569,7 +556,6 @@
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
     NSArray *splits = [proxy getSplitsForRace:self.selectedRace]; 
-    //_allSplits = [splits copy];
     _allSplits = [[NSMutableArray alloc] init]; //[NSMutableArray array];
     NSLog(@"Number of Split results: %d",[splits count]);
     for (int i=0;i<[splits count];i++) {
@@ -582,7 +568,6 @@
             split.distance = [NSString stringWithFormat:@"%d",([splits count]-i)*25];
         }
         [_allSplits insertObject:split atIndex:insertIdx];
-        //[_allSplits insertObject:[splits objectAtIndex:i] atIndex:insertIdx];
         [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
     }
     
@@ -633,7 +618,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableView* tableView = (UITableView*)[self view];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // TODO crumb Add delete method in Swimmers class [theSwimmers.athletes removeObjectAtIndex:indexPath.row];
         NSLog(@"Delete at %d",indexPath.row);
         
         // TODO Add an 'Are you sure?' dialog
@@ -646,9 +630,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             
         }
 
+        // remove from the data store
         [self.theSwimmers loadWithContext:self.managedObjectContext];
         
-        [tableView reloadData];
+        // ----------
+        // todo: remove results from data store and cached dcoument results??
+        // ----------
+        
+        // remove from the table view
+        // Delete the row from the data source.
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+        //[tableView reloadData];
         
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Push a new view controller for athlete selection here
@@ -705,8 +698,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     //_selectedAthlete = nil;
     [_selectedAthleteCD release];
     _selectedAthleteCD = nil;
-    [_managedObjectContext release];
-    _managedObjectContext = nil;
+    // TODO: Crashing here ------------
+    // [_managedObjectContext release];
+    // _managedObjectContext = nil;
+    // --------------------------------
     //[_athletes release];
     //_athletes = nil;
     [_IMStrokes release];
