@@ -13,6 +13,7 @@
 #import "MISwimDBProxy.h"
 #import "USASwimmingDBProxy.h"
 #import "TimeStandard.h"
+#import "SVProgressHUD.h"
 
 @implementation RootViewController
 
@@ -33,14 +34,16 @@
 @synthesize rows = _rows;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize asController = _asController;
+@synthesize getbdayController = _getbdayController;
 
 // VIEWSTATEs
-#define VS_ATHLETES   1
-#define VS_STROKES    2
-#define VS_DISTANCE   3
-#define VS_RESULTS    4
-#define VS_SPLITS     5
-#define VS_ADDSWIMMER 6
+#define VS_ATHLETES     1
+#define VS_STROKES      2
+#define VS_DISTANCE     3
+#define VS_RESULTS      4
+#define VS_SPLITS       5
+#define VS_ADDSWIMMER   6
+#define VS_GETBIRTHDATE 7
 
 - (void)viewDidLoad
 {
@@ -69,6 +72,7 @@
             int insertIdx = 0; 
             [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:insertIdx inSection:0]] withRowAnimation:UITableViewRowAnimationRight];
         }
+        
     } else if (self.selectedStroke == 0) {
         self.strokes = [NSArray arrayWithObjects:
                        [NSArray arrayWithObjects:@"Personal Best", @"99", nil],
@@ -126,46 +130,52 @@
        }
     }
     
-    UIBarButtonItem* button = [[[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(onRefresh:)] autorelease];
-    self.navigationItem.rightBarButtonItem = button;
 }
 
 - (void)onRefresh:(id)sender {
+    
+    //self.queue = [[[NSOperationQueue alloc] init] autorelease];
+    
+    //[SVProgressHUD showWithStatus:@"Checking for updated times"];
     
     // download all times and populate the database
     [self.theSwimmers updateAllRaceResultsForAthlete:self.selectedAthleteCD inContext:self.managedObjectContext];
     [self refresh];
     
+    //[SVProgressHUD dismiss];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     /* Are we coming back from the 'Add Swimmer' dialog ? */
     if (self.viewstate == VS_ADDSWIMMER) {
+        
+        // TODO: only do this if user picked a swimmer...
+        self.viewstate = VS_GETBIRTHDATE;
+        // Push a new view controller for birthdate selection here
+        self.getbdayController = [[GetBirthdayViewController alloc] initWithNibName:@"GetBirthdayViewController" bundle:[NSBundle mainBundle]];
+        [self.navigationController pushViewController:self.getbdayController animated:YES];
+
+    } else if (self.viewstate == VS_GETBIRTHDATE) {
         self.viewstate = VS_ATHLETES;
         NSLog(@"firstname: %@ lastname: %@ miID:%d",self.asController.firstname.text,self.asController.lastname.text,self.asController.miSwimId);
         // 1. Add swimmer name to list of athletes
         // 2. Lookup swimmer online
-        // 3. Download times
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM-dd-yyyy"];
-        
+        // 3. Download times        
         AthleteCD *ath1 = [NSEntityDescription
                            insertNewObjectForEntityForName:@"AthleteCD" 
                            inManagedObjectContext:self.managedObjectContext];
         ath1.firstname = self.asController.firstname.text;
         ath1.lastname = self.asController.lastname.text;
-        ath1.club = self.asController.club; // TODO
-        ath1.birthdate = [dateFormatter dateFromString:@"07-23-1995"]; // TODO!!!!!
+        ath1.club = self.asController.club; 
+        ath1.birthdate = self.getbdayController.selectedDate;
         ath1.miswimid = [[NSNumber alloc] initWithInt:self.asController.miSwimId];
         ath1.gender = self.asController.gender;
         NSError *error;
         if (![self.managedObjectContext save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-        
-        [dateFormatter release];
-        
+                
         // reload
         [self.theSwimmers release];
         self.theSwimmers = [[Swimmers alloc] init];
@@ -176,6 +186,9 @@
         
         [self.tableView reloadData];
         
+    } else if (self.viewstate == VS_STROKES) {
+        UIBarButtonItem* button = [[[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(onRefresh:)] autorelease];
+        self.navigationItem.rightBarButtonItem = button;
     }
     [super viewWillAppear:animated];
 }
@@ -244,6 +257,8 @@
     RaceResult *race;
     AthleteCD* athlete;
     Split *split;
+    CUTS cuts;
+    NSString* details;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -260,21 +275,30 @@
             case VS_ATHLETES:
                 // We are displaying the athlete list
                 athlete = [self.theSwimmers.athletesCD objectAtIndex:indexPath.row];
-                cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",athlete.firstname, athlete.lastname];       
-                cell.detailTextLabel.text = athlete.club; 
+                [athlete countCuts:&cuts];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",athlete.firstname, athlete.lastname];    
+                if (cuts.jos > 0 || cuts.states > 0 || cuts.sectionals > 0 || cuts.nationals > 0) {
+                    NSString* jos = cuts.jos > 0 ? [NSString stringWithFormat:@"%d JO cuts ",cuts.jos] : @"";
+                    NSString* states = cuts.states > 0 ? [NSString stringWithFormat:@"%d State cuts ",cuts.states] : @"";
+                    NSString* sectionals = cuts.sectionals > 0 ? [NSString stringWithFormat:@"%d sectional cuts ",cuts.sectionals] : @"";
+                    NSString* nationals = cuts.nationals > 0 ? [NSString stringWithFormat:@"%d national cuts ",cuts.nationals] : @"";
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@%@%@%@",athlete.club,jos,states,sectionals,nationals];
+                } else {
+                    cell.detailTextLabel.text = athlete.club; 
+                }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
             case VS_STROKES:
                 // We are displaying the stroke list
                 cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
-                cell.detailTextLabel.text = @""; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+                cell.detailTextLabel.text = @""; 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
                 
             case VS_DISTANCE:
                 // We are displaying the stroke list
                 cell.textLabel.text = [[self.distances objectAtIndex:indexPath.row] objectAtIndex:0];       
-                cell.detailTextLabel.text = @"Short course yards"; //[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1];
+                cell.detailTextLabel.text = @"Short course yards"; 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
                 
@@ -303,7 +327,7 @@
                     // IM: Add the current stroke for this split
                     int divisor = self.selectedDistance / 4;
                     int stroke_index = ([split.distance intValue]-1) / divisor;
-                    // 100 IMs may not have splits on the 25s, so we may need
+                    // 100 IMs will probably not have splits on the 25s, so we may need
                     // to adjust the display to show combined strokes
                     if (([split.distance intValue] == 100) && ([_allSplits count] == 2)) {
                         cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@ + %@)", split.distance, split.time_cumulative,[self.IMStrokes objectAtIndex:stroke_index],[self.IMStrokes objectAtIndex:stroke_index+1]]; 
@@ -505,6 +529,7 @@
 }
 
 - (void)refreshAllBestTimes {
+    /*
     NSMutableArray* strokes;
     NSMutableArray* all_requested_times = [NSMutableArray array];
     NSArray*        all_sorted_requested_times = nil;
@@ -529,7 +554,7 @@
 
                 float comptime = [TimeStandard getFloatTimeFromStringTime:race.time];
                 if (comptime < besttime) {
-                    /* this race is the new best */
+                    // this race is the new best 
                     bestrace = race;
                     besttime = comptime;
                 }
@@ -539,11 +564,12 @@
             }
         }
     }
-    all_sorted_requested_times = [all_requested_times sortedArrayUsingSelector:@selector(compareByDistance:)];        
-    for (int i=0;i<[all_sorted_requested_times count];i++) {
-        //NSLog([all_times objectAtIndex:i]);
+    all_sorted_requested_times = [all_requested_times sortedArrayUsingSelector:@selector(compareByDistance:)];
+    */
+    NSArray* best_times = [self.selectedAthleteCD personalBests];
+    for (int i=0;i<[best_times count];i++) {
         
-        RaceResult *race = [all_sorted_requested_times objectAtIndex:i];
+        RaceResult *race = [best_times objectAtIndex:i];
         
         int insertIdx = 0;                    
         [_allTimes insertObject:race atIndex:insertIdx];

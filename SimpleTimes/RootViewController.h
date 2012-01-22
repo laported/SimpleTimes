@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AddSwimmerViewController.h"
+#import "GetBirthdayViewController.h"
 #import "Swimmers.h"
 #import "AthleteCD.h"
 
 @class AddSwimmerViewController;
+@class GetBirthdayViewController;
 
 @interface RootViewController : UITableViewController {
     NSMutableArray *_allTimes; 
@@ -30,6 +32,7 @@
     int _viewstate;
     int _rows;
     AddSwimmerViewController* _asController;
+    GetBirthdayViewController* _getbdayController;
     NSManagedObjectContext* _managedObjectContext;
 }
 
@@ -50,6 +53,7 @@
 @property int rows;
 @property (retain) NSManagedObjectContext *managedObjectContext;
 @property (retain) AddSwimmerViewController* asController;
+@property (retain) GetBirthdayViewController* getbdayController;
 
 - (IBAction) EditTable:(id)sender;
 // onRefresh is invoked when the refresh button is pressed
