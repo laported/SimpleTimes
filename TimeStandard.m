@@ -11,6 +11,34 @@
 
 @implementation TimeStandard
 
+const float nine_ten_w_q1 [5][8] = {
+    // 25     50     100    200     400    500     1000    1650
+    {  0.0,   31.49, 69.49, 151.59, 0.0,    410.59, 0.0,    0.0   },  // free
+    {  0.0,   37.09, 80.09, 0.0,    0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   42.09, 92.49, 0.0,    0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   35.89, 86.29, 0.0,    0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   79.99, 174.39, 0.0,    0.0,    0.0,    0.0   }   // IM
+};
+
+// +TODO: These are the Q1 times -----------
+const float nine_ten_w_q2 [5][8] = {
+    // 25     50     100    200     400    500     1000    1650
+    {  0.0,   31.49, 69.49, 151.59, 0.0,    410.59, 0.0,    0.0   },  // free
+    {  0.0,   37.09, 80.09, 0.0,    0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   42.09, 92.49, 0.0,    0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   35.89, 86.29, 0.0,    0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   79.99, 174.39, 0.0,    0.0,    0.0,    0.0   }   // IM
+};
+const float nine_ten_w_b [5][8] = {
+    // 25     50     100    200     400    500     1000    1650
+    {  0.0,   31.49, 69.49, 151.59, 0.0,    410.59, 0.0,    0.0   },  // free
+    {  0.0,   37.09, 80.09, 0.0,    0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   42.09, 92.49, 0.0,    0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   35.89, 86.29, 0.0,    0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   79.99, 174.39, 0.0,    0.0,    0.0,    0.0   }   // IM
+};
+// -TODO: These are the Q1 times -----------
+
 const float eleven_twelve_m_q1 [5][8] = {
     // 25     50     100    200     400    500     1000    1650
     {  0.0,   28.09, 61.59, 134.59, 0.0,    360.59, 0.0,    0.0   },  // free
@@ -124,6 +152,34 @@ const float thirteen_fourteen_w_b [5][8] = {
     {  0.0,   0.0,   0.0,   163.69, 350.59, 0.0,    0.0,    0.0   }   // IM
 };
 
+const float fifteen_eighteen_w_q1 [5][8] = {
+    // 25     50     100    200     400    500     1000     1650
+    {  0.0,   25.59, 55.59, 120.79, 0.0,    323.29, 680.99, 1138.89 },  // free
+    {  0.0,   0.0,   63.09, 136.99, 0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   0.0,   73.09, 159.69, 0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   0.0,   62.09, 143.39, 0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   0.0,   136.99, 294.29, 0.0,    0.0,    0.0   }   // IM
+};
+
+const float fifteen_eighteen_w_q2 [5][8] = {
+    // 25     50     100    200     400    500      1000    1650
+    {  0.0,   27.59, 59.89, 131.69, 0.0,    350.99, 753.39, 1257.09 },  // free
+    {  0.0,   0.0,   69.59, 149.89, 0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   0.0,   80.69, 175.09, 0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   0.0,   70.29, 168.59, 0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   0.0,   148.99, 326.89, 0.0,    0.0,    0.0   }   // IM
+};
+
+// TODO - these are q1s right now
+const float fifteen_eighteen_w_b [5][8] = {
+    // 25     50     100    200     400    500      1000    1650
+    {  0.0,   25.59, 55.59, 120.79, 0.0,    323.29, 680.99, 1138.89 },  // free
+    {  0.0,   0.0,   63.09, 136.99, 0.0,    0.0,    0.0,    0.0   },  // back
+    {  0.0,   0.0,   73.09, 159.69, 0.0,    0.0,    0.0,    0.0   },  // breast
+    {  0.0,   0.0,   62.09, 143.39, 0.0,    0.0,    0.0,    0.0   },  // fly
+    {  0.0,   0.0,   0.0,   136.99, 294.29, 0.0,    0.0,    0.0   }   // IM
+};
+
 +(float) getFloatTimeFromStringTime:(NSString*)sTime {
 
     float ret = 0;
@@ -179,7 +235,19 @@ const float thirteen_fourteen_w_b [5][8] = {
             break;
         case 9:
         case 10:
-            // TODO
+            if ([gender isEqualToString:@"m"]) {
+                // TODO
+            } else {
+                if (time <= nine_ten_w_q1[stroke-1][distanceidx]) {
+                    return @"Q1";
+                }
+                if (time <= nine_ten_w_q2[stroke-1][distanceidx]) {
+                    return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-nine_ten_w_q1[stroke-1][distanceidx]];
+                }
+                if (time <= nine_ten_w_b[stroke-1][distanceidx]) {
+                    return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-nine_ten_w_q2[stroke-1][distanceidx]];
+                }
+            }
             break;
         case 11:
         case 12:
@@ -231,6 +299,20 @@ const float thirteen_fourteen_w_b [5][8] = {
             break;
         default:
             // 15-18, or Open
+            if ([gender isEqualToString:@"m"]) {
+                // TODO
+            } else {
+                if (time <= fifteen_eighteen_w_q1[stroke-1][distanceidx]) {
+                    return @"Q1";
+                }
+                if (time <= fifteen_eighteen_w_q2[stroke-1][distanceidx]) {
+                    return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-fifteen_eighteen_w_q1[stroke-1][distanceidx]];
+                }
+                if (time <= fifteen_eighteen_w_b[stroke-1][distanceidx]) {
+                    return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-fifteen_eighteen_w_q2[stroke-1][distanceidx]];
+                }
+            }
+            break;
             break;
     }
     return @"";

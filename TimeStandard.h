@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define JO_DATE         "2012-03-01" // TODO
+#define STATE_DATE      "2012-03-14" // TODO
+#define SECTIONALS_DATE "2012-03-28" // TODO
+#define NATIONALS_DATE  "2012-04-14" // TODO
 
 @interface TimeStandard : NSObject {
     
