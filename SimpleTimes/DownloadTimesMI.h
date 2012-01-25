@@ -11,10 +11,12 @@
 
 @interface DownloadTimesMI : NSOperation {
     AthleteCD* theAthlete;
+    id listener;
 }
 
 @property(retain) AthleteCD* theAthlete;
+@property(retain) id         listener;
 
-- (id)initWithAthlete:(AthleteCD*)athlete;
+- (id)initWithAthlete:(AthleteCD*)athlete:(id)AndListener;
 
 @end

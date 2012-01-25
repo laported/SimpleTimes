@@ -25,6 +25,7 @@
     NSMutableArray *_distances;
     int _selectedRace;
     AthleteCD* _selectedAthleteCD;
+    AthleteCD* _addedAthleteCD;
     int _selectedStroke;
     int _selectedDistance;
     NSString *_currentTitle;

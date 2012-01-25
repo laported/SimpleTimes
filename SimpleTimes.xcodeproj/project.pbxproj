@@ -15,6 +15,13 @@
 		1E1FCD0F1487009500CD8316 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1FCD0E1487009400CD8316 /* CoreData.framework */; };
 		1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */; };
 		1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */; };
+		1E27E4B114CBB24C001D4F5F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E27E4AE14CBB24C001D4F5F /* SVProgressHUD.bundle */; };
+		1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */; };
+		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
+		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
+		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
+		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
+		1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */; };
 		1E8AE75C14C1D71700E01C50 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8AE75B14C1D71700E01C50 /* libz.dylib */; };
 		1EA2289D14703E6C00283AD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289C14703E6C00283AD0 /* UIKit.framework */; };
 		1EA2289F14703E6C00283AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289E14703E6C00283AD0 /* Foundation.framework */; };
@@ -60,6 +67,16 @@
 		1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleSwimModel.xcdatamodel; sourceTree = "<group>"; };
 		1E26FCF3148CE65D002F6FE7 /* AddSwimmerResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSwimmerResult.h; sourceTree = "<group>"; };
 		1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSwimmerResult.m; sourceTree = "<group>"; };
+		1E27E4AE14CBB24C001D4F5F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		1E27E4AF14CBB24C001D4F5F /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTimesMI.h; sourceTree = "<group>"; };
+		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
+		1E71FCAC14CB21E80036D12B /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = ../GetBirthdayViewController.h; sourceTree = "<group>"; };
+		1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = ../GetBirthdayViewController.m; sourceTree = "<group>"; };
+		1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GetBirthdayViewController.xib; path = ../GetBirthdayViewController.xib; sourceTree = "<group>"; };
 		1E8AE75B14C1D71700E01C50 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1E8F7D7814C9E8D20054486E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1EA2289814703E6C00283AD0 /* SimpleTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */,
 				1E8AE75C14C1D71700E01C50 /* libz.dylib in Frameworks */,
 				1E1FCD0F1487009500CD8316 /* CoreData.framework in Frameworks */,
 				1EA228E4147054A000283AD0 /* MobileCoreServices.framework in Frameworks */,
@@ -136,13 +154,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E27E4AD14CBB24C001D4F5F /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1E27E4AE14CBB24C001D4F5F /* SVProgressHUD.bundle */,
+				1E27E4AF14CBB24C001D4F5F /* SVProgressHUD.h */,
+				1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		1EA2288D14703E6C00283AD0 = {
 			isa = PBXGroup;
 			children = (
+				1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */,
 				1E8AE75B14C1D71700E01C50 /* libz.dylib */,
 				1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */,
 				1E1FCD0E1487009400CD8316 /* CoreData.framework */,
 				1EA228E5147054B100283AD0 /* libz.1.2.3.dylib */,
+				1E27E4AD14CBB24C001D4F5F /* SVProgressHUD */,
 				1EA228E3147054A000283AD0 /* MobileCoreServices.framework */,
 				1EA228E11470549200283AD0 /* SystemConfiguration.framework */,
 				1EA228DF1470548200283AD0 /* CFNetwork.framework */,
@@ -176,6 +206,9 @@
 		1EA228A214703E6C00283AD0 /* SimpleTimes */ = {
 			isa = PBXGroup;
 			children = (
+				1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */,
+				1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */,
+				1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */,
 				1EA228AB14703E6C00283AD0 /* SimpleTimesAppDelegate.h */,
 				1EA228EB14706C7500283AD0 /* ROHTMLTable.h */,
 				1EA228EC14706C7500283AD0 /* ROHTMLTable.m */,
@@ -183,6 +216,7 @@
 				1EA228AE14703E6C00283AD0 /* MainWindow.xib */,
 				1EA228B114703E6C00283AD0 /* RootViewController.h */,
 				1EA228B214703E6C00283AD0 /* RootViewController.m */,
+				1E71FCAC14CB21E80036D12B /* TODO.txt */,
 				1E1FCCFE1480009B00CD8316 /* AddSwimmerViewController.h */,
 				1E1FCCFF1480009C00CD8316 /* AddSwimmerViewController.m */,
 				1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */,
@@ -236,6 +270,8 @@
 		1EA228EA1470555F00283AD0 /* DataProviders */ = {
 			isa = PBXGroup;
 			children = (
+				1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */,
+				1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */,
 				1EA228EE1474293E00283AD0 /* USASwimmingDBProxy.h */,
 				1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */,
 				1EA228E71470555600283AD0 /* MISwimDBProxy.h */,
@@ -322,6 +358,9 @@
 				1EA228B614703E6C00283AD0 /* RootViewController.xib in Resources */,
 				1E1FCD021480009C00CD8316 /* AddSwimmerViewController.xib in Resources */,
 				1ED8168E14888142006268C2 /* iPhoneIcon_Small.png in Resources */,
+				1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */,
+				1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */,
+				1E27E4B114CBB24C001D4F5F /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +411,9 @@
 				1EB19E1D148A68A200BE6620 /* RaceResult.m in Sources */,
 				1EB19E20148A68CB00BE6620 /* AthleteCD.m in Sources */,
 				1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */,
+				1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */,
+				1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */,
+				1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +461,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
-				PROVISIONING_PROFILE = "5BC72312-3822-4BA5-A5B6-5B8E63914F10";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -436,7 +477,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "5BC72312-3822-4BA5-A5B6-5B8E63914F10";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -458,7 +498,6 @@
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5BC72312-3822-4BA5-A5B6-5B8E63914F10";
 				SDKROOT = iphoneos4.3;
 				WRAPPER_EXTENSION = app;
 			};
@@ -480,7 +519,6 @@
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5BC72312-3822-4BA5-A5B6-5B8E63914F10";
 				SDKROOT = iphoneos4.3;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

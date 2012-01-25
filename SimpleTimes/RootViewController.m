@@ -13,7 +13,10 @@
 #import "MISwimDBProxy.h"
 #import "USASwimmingDBProxy.h"
 #import "TimeStandard.h"
+#import "DownloadTimesMI.h"
 #import "SVProgressHUD.h"
+
+#define ASYNC_REFRESH
 
 @implementation RootViewController
 
@@ -132,17 +135,57 @@
     
 }
 
+/* 
+ * timesDownloaded
+ *
+ * Invoked asynchronously in two situations:
+ * 1. When the user adds a new swimmer (self.selectedCD will be nil)
+ * 2. When the user selects the 'Refresh' button for a paricular swimmer
+ */
+- (void)timesDownloaded:(NSArray*)times
+{
+    int numadded;
+    
+    if (self.viewstate == VS_ATHLETES) {
+        // adding results for new swimmer
+        numadded = [Swimmers updateAllRaceResultsForAthlete:_addedAthleteCD withResults:times inContext:self.managedObjectContext];
+        [self.tableView reloadData];
+    } else {
+        // Updating results for single swimmer
+        numadded = [Swimmers updateAllRaceResultsForAthlete:self.selectedAthleteCD withResults:times inContext:self.managedObjectContext];
+        [self refresh];
+    }
+        
+    [self.queue release];
+
+    NSTimeInterval nsti = 3.5;
+    if (numadded > 0) {
+        NSString* msg = [NSString stringWithFormat:@"Added %d new race times",numadded];
+        [SVProgressHUD dismissWithSuccess:msg afterDelay:nsti];
+    } else {
+        [SVProgressHUD dismissWithSuccess:@"No new race times found" afterDelay:nsti];
+    }
+}
+
 - (void)onRefresh:(id)sender {
+
+#ifdef ASYNC_REFRESH
+    self.queue = [[NSOperationQueue alloc] init];
     
-    //self.queue = [[[NSOperationQueue alloc] init] autorelease];
-    
-    //[SVProgressHUD showWithStatus:@"Checking for updated times"];
+    [SVProgressHUD showWithStatus:@"Checking for updated times"];
     
     // download all times and populate the database
-    [self.theSwimmers updateAllRaceResultsForAthlete:self.selectedAthleteCD inContext:self.managedObjectContext];
-    [self refresh];
+    DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:self.selectedAthleteCD:self];
+    [self.queue addOperation:dtm];
+    [dtm release];
     
-    //[SVProgressHUD dismiss];
+#else
+    [self.theSwimmers updateAllRaceResultsForAthlete:self.selectedAthleteCD inContext:self.managedObjectContext];
+
+    // update the display
+    //[self refresh];
+#endif
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -175,16 +218,35 @@
         if (![self.managedObjectContext save:&error]) {
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
         }
-                
+        [SVProgressHUD showWithStatus:@"Downloading race results..." maskType:SVProgressHUDMaskTypeBlack];        
+        
+        // save ath record for use in the timesDownloaded callback
+        _addedAthleteCD = ath1;
+        
         // reload
         [self.theSwimmers release];
-        self.theSwimmers = [[Swimmers alloc] init];
+        self.theSwimmers = [[Swimmers alloc] init];        
         [self.theSwimmers loadWithContext:self.managedObjectContext]; 
+
+#ifdef ASYNC_REFRESH
+        self.queue = [[NSOperationQueue alloc] init];
         
+        // download all times into the database for the new swimmer
+        DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:ath1:self];
+        [self.queue addOperation:dtm];
+        [dtm release];
+        
+        // TODO 20120123 
+        // ------------- Need to debug adding new swimer asynchronously
+        
+#else
         // download all times and populate the database
         [self.theSwimmers updateAllRaceResultsForAthlete:ath1 inContext:self.managedObjectContext];
-        
+        [self.theSwimmers loadWithContext:self.managedObjectContext]; 
         [self.tableView reloadData];
+        
+        [SVProgressHUD dismiss];
+#endif
         
     } else if (self.viewstate == VS_STROKES) {
         UIBarButtonItem* button = [[[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(onRefresh:)] autorelease];
@@ -227,7 +289,8 @@
     self.rows = 0;
     switch (self.viewstate) {
         case VS_ATHLETES:
-            self.rows = [self.theSwimmers count];      
+            self.rows = [self.theSwimmers count];
+            NSLog(@"numRows: %d",self.rows);
             break;
         case VS_STROKES:
             self.rows = [self.strokes count];
@@ -245,8 +308,10 @@
             NSLog(@"ERROR: numberOfRowsInSection UNKNOWN!!! for viewstate=%d",self.viewstate);
             break;
     }
-    if(self.editing) 
+    if(self.editing) { 
         self.rows++;
+        NSLog(@"Editing=true, numRows: %d",self.rows);
+    }
     return self.rows;
 }
 
@@ -258,7 +323,6 @@
     AthleteCD* athlete;
     Split *split;
     CUTS cuts;
-    NSString* details;
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -266,8 +330,9 @@
     }
     
     // Are we in edit mode????
-    NSLog(@"self.rows=%d, indexPath=%d",self.rows,indexPath.row);
+    NSLog(@"cellForRowAtIndexPath/self.rows=%d, indexPath=%d",self.rows,indexPath.row);
     if (self.editing && (indexPath.row == (self.rows-1))) {
+        NSLog(@"%@",@"cellForRowAtIndexPath/'Add new Swimmer'");
         cell.textLabel.text = @"Add new swimmer";
         return cell;
     } else {
@@ -276,6 +341,7 @@
                 // We are displaying the athlete list
                 athlete = [self.theSwimmers.athletesCD objectAtIndex:indexPath.row];
                 [athlete countCuts:&cuts];
+                NSLog(@"cellForRowAtIndexPath/last=%@,first=%@",athlete.lastname,athlete.firstname);
                 cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",athlete.firstname, athlete.lastname];    
                 if (cuts.jos > 0 || cuts.states > 0 || cuts.sectionals > 0 || cuts.nationals > 0) {
                     NSString* jos = cuts.jos > 0 ? [NSString stringWithFormat:@"%d JO cuts ",cuts.jos] : @"";
@@ -401,7 +467,7 @@
             rvController.selectedAthleteCD = [self.theSwimmers.athletesCD objectAtIndex:indexPath.row];
             rvController.managedObjectContext = self.managedObjectContext;
             NSLog(@"VS_ATHLETES->VS_STROKES: %@",self.managedObjectContext);
-            rvController.CurrentTitle = @"Strokes";
+            rvController.CurrentTitle = rvController.selectedAthleteCD.firstname;
             rvController.viewstate = VS_STROKES;
             rvController.theSwimmers = self.theSwimmers;
             
@@ -529,43 +595,6 @@
 }
 
 - (void)refreshAllBestTimes {
-    /*
-    NSMutableArray* strokes;
-    NSMutableArray* all_requested_times = [NSMutableArray array];
-    NSArray*        all_sorted_requested_times = nil;
-    NSSet*          raceSet = self.selectedAthleteCD.races;
-    NSArray *       times = [raceSet allObjects];
-    
-    int distances[] = { 25, 50, 100, 200, 500, 1000, 1650 };
-    strokes   = [NSArray arrayWithObjects:@"Fly", @"Back", @"Breast", @"Free", @"IM", nil];
-
-    for (int i=0;i<sizeof(distances)/sizeof(distances[0]);i++) {
-        for (int j=0;j<[strokes count]; j++) {
-            float       besttime = 9999999999.0;
-            RaceResult* bestrace = nil;
-            RaceResult* race = nil;
-            for (int k=0;k<[times count];k++) {
-                race = [times objectAtIndex:k];
-                
-                if ([race.distance intValue] != distances[i])
-                    continue;
-                if ([Swimmers intStrokeValue:race.stroke] != [Swimmers intStrokeValue:[strokes objectAtIndex:j]])
-                    continue;
-
-                float comptime = [TimeStandard getFloatTimeFromStringTime:race.time];
-                if (comptime < besttime) {
-                    // this race is the new best 
-                    bestrace = race;
-                    besttime = comptime;
-                }
-            }
-            if (bestrace != nil) {
-                [all_requested_times addObject:bestrace];
-            }
-        }
-    }
-    all_sorted_requested_times = [all_requested_times sortedArrayUsingSelector:@selector(compareByDistance:)];
-    */
     NSArray* best_times = [self.selectedAthleteCD personalBests];
     for (int i=0;i<[best_times count];i++) {
         
@@ -660,7 +689,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         [self.theSwimmers loadWithContext:self.managedObjectContext];
         
         // ----------
-        // todo: remove results from data store and cached dcoument results??
+        // todo: remove results from data store and cached document results??
         // ----------
         
         // remove from the table view
@@ -691,7 +720,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleNone;
 }
 
-- (IBAction) EditTable:(id)sender{
+- (IBAction) EditTable:(id)sender {
     UITableView* tableView = (UITableView*)[self view];
     if(self.editing)
     {

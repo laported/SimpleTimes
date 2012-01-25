@@ -12,27 +12,29 @@
 #import "RaceResultMI.h"
 
 @interface Swimmers : NSObject {
-    NSMutableArray* _athletes;  
     NSArray*        _athletesCD;
     int             _count;
 }
 
-@property (retain) NSMutableArray *athletes;
 @property (retain) NSArray *athletesCD;
 
--(void) loadWithContext:(NSManagedObjectContext *)context;
--(int)  count;
+- (void) loadWithContext:(NSManagedObjectContext *)context;
+- (int)  count;
 
 #ifdef DEBUG
-+(void) seedTestDataUsingContext:(NSManagedObjectContext *)context ;
-+(void) deleteAllUsingContext:(NSManagedObjectContext *)context;
++ (void) seedTestDataUsingContext:(NSManagedObjectContext *)context ;
++ (void) deleteAllUsingContext:(NSManagedObjectContext *)context;
 #endif
 
++ (int)  updateAllRaceResultsForAthlete:(AthleteCD*)athlete withResults:(NSArray*)times inContext:(NSManagedObjectContext *)context ;
+
 // Int values 1 = Freestyle, 2 = Back, 3 = Breast, 4 = Fly, 5 = IM
-+ (int)intStrokeValue:(NSString*)stroke;
++ (int)  intStrokeValue:(NSString*)stroke;
++ (BOOL) isRaceInStore:(RaceResultMI*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete;
++ (void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context;
 
--(BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 ;
++ (BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 ;
 
--(void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext *)context;
+- (void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext *)context;
 
 @end

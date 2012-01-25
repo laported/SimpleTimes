@@ -12,11 +12,15 @@
 
 @implementation Swimmers
 
-@synthesize athletes = _athletes;
 @synthesize athletesCD = _athletesCD;
 
 -(void)loadWithContext:(NSManagedObjectContext *)context {
     
+    //todo
+    //if (_athletesCD != nil) {
+    //    [_athletesCD release];
+    //}
+
     // Load all AthleteCD objects from the store
     _count = 0;
     NSError *error;
@@ -41,7 +45,7 @@
     return _count;
 }
 
--(BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 {
++(BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 {
     unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
     NSCalendar* calendar = [NSCalendar currentCalendar];
     
@@ -70,8 +74,8 @@
     return TRUE;
 }
 
--(BOOL) isRaceInStore:(RaceResultMI*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete {
-    
++(BOOL) isRaceInStore:(RaceResultMI*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete 
+{    
     BOOL isInStore = FALSE;
     // athlete.races is a list of all the athlete's races    
     NSSet *raceSet = athlete.races;
@@ -87,7 +91,8 @@
     return isInStore;
 }
 
--(void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context {
++(void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context 
+{
     NSLog(@"storeRace");
     
     RaceResult *race = (RaceResult *)[NSEntityDescription insertNewObjectForEntityForName:@"RaceResult" inManagedObjectContext:context];
@@ -126,13 +131,21 @@
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
     //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
     
-    NSArray* times = [proxy getAllTimesForAthlete:[athlete.miswimid intValue]]; 
+    NSArray* times = [proxy getAllTimesForAthlete:[athlete.miswimid intValue]];
+    [Swimmers updateAllRaceResultsForAthlete:athlete withResults:times inContext:context];
+}
+
++(int) updateAllRaceResultsForAthlete:(AthleteCD*)athlete withResults:(NSArray*)times inContext:(NSManagedObjectContext *)context 
+{
+    int added = 0;
     for (RaceResultMI *result in times) {
         // Is this in the DB already????
         if (![self isRaceInStore:result inContext:context athlete:athlete]) {
             [self storeRace:result forAthlete:athlete inContext:context];
+            added++;
         }
     }
+    return added;
 }
 
 +(int) intStrokeValue:(NSString*)stroke {
