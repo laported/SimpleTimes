@@ -18,9 +18,11 @@
             progressIndicator, 
             status, 
             athletes;
-@synthesize miSwimId = _miSwimId;
-@synthesize gender   = _gender;
-@synthesize club     = _club;
+@synthesize miSwimId      = _miSwimId;
+@synthesize gender        = _gender;
+@synthesize club          = _club;
+@synthesize birthdate     = _birthdate; 
+@synthesize madeSelection = _madeSelection;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +30,7 @@
     if (self) {
         // Custom initialization
         _multipleResults = nil;
+        _madeSelection = false;
     }
     return self;
 }
@@ -38,6 +41,7 @@
     self.miSwimId = [swimmer.miId intValue];
     self.gender = swimmer.gender;
     self.club = swimmer.clubshort;
+    self.birthdate = NULL;  // TODO
 }
 
 - (IBAction)addButtonSelected:(id)sender {
@@ -58,6 +62,7 @@
             self.gender = s.gender;
             self.club = s.clubshort;
         }
+        _madeSelection = true;
         [self.navigationController popViewControllerAnimated:YES];
     } else if ([array count] > 1) {
         // dismiss the keyboard
@@ -190,7 +195,8 @@
     self.miSwimId = [swimmer.miId intValue];
     self.gender = swimmer.gender;
     self.club = swimmer.clubshort;
-
+    self.madeSelection = true;
+    
     // dismiss this view
     [self.navigationController popViewControllerAnimated:YES];    
 }

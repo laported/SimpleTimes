@@ -56,15 +56,15 @@
     NSDate* dateOnly2 = [calendar dateFromComponents:components2];
     
     // TODO: Any releases needed for calendar stuff???? 
-    NSLog(@"Comparing %@ to %@",dateOnly1,dateOnly2);
+    //NSLog(@"Comparing %@ to %@",dateOnly1,dateOnly2);
     if ([dateOnly1 compare:dateOnly2] != NSOrderedSame)
         return FALSE;
     
-    NSLog(@"Comparing '%@' to '%@'",r1.meet,r2.meet);
+    //NSLog(@"Comparing '%@' to '%@'",r1.meet,r2.meet);
     if (![r1.meet isEqualToString:r2.meet])
         return FALSE;
     
-    NSLog(@"Comparing '%@' to '%@'",r1.stroke,r2.stroke);
+    //NSLog(@"Comparing '%@' to '%@'",r1.stroke,r2.stroke);
     if (![r1.stroke isEqualToString:r2.stroke])
         return FALSE;
     

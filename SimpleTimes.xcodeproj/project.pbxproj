@@ -19,6 +19,8 @@
 		1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */; };
 		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
 		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
+		1E6BF14C14D369D1006D428C /* RootViewControlleriPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF14A14D369D1006D428C /* RootViewControlleriPad.m */; };
+		1E6BF14D14D369D1006D428C /* RootViewControlleriPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF14B14D369D1006D428C /* RootViewControlleriPad.xib */; };
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
 		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
 		1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */; };
@@ -73,6 +75,9 @@
 		1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTimesMI.h; sourceTree = "<group>"; };
 		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
+		1E6BF14914D369D1006D428C /* RootViewControlleriPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewControlleriPad.h; sourceTree = "<group>"; };
+		1E6BF14A14D369D1006D428C /* RootViewControlleriPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewControlleriPad.m; sourceTree = "<group>"; };
+		1E6BF14B14D369D1006D428C /* RootViewControlleriPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootViewControlleriPad.xib; sourceTree = "<group>"; };
 		1E71FCAC14CB21E80036D12B /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = ../GetBirthdayViewController.h; sourceTree = "<group>"; };
 		1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = ../GetBirthdayViewController.m; sourceTree = "<group>"; };
@@ -212,6 +217,9 @@
 				1EA228AB14703E6C00283AD0 /* SimpleTimesAppDelegate.h */,
 				1EA228EB14706C7500283AD0 /* ROHTMLTable.h */,
 				1EA228EC14706C7500283AD0 /* ROHTMLTable.m */,
+				1E6BF14914D369D1006D428C /* RootViewControlleriPad.h */,
+				1E6BF14A14D369D1006D428C /* RootViewControlleriPad.m */,
+				1E6BF14B14D369D1006D428C /* RootViewControlleriPad.xib */,
 				1EA228AC14703E6C00283AD0 /* SimpleTimesAppDelegate.m */,
 				1EA228AE14703E6C00283AD0 /* MainWindow.xib */,
 				1EA228B114703E6C00283AD0 /* RootViewController.h */,
@@ -361,6 +369,7 @@
 				1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */,
 				1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */,
 				1E27E4B114CBB24C001D4F5F /* SVProgressHUD.bundle in Resources */,
+				1E6BF14D14D369D1006D428C /* RootViewControlleriPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +423,7 @@
 				1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */,
 				1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */,
 				1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */,
+				1E6BF14C14D369D1006D428C /* RootViewControlleriPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -19,6 +19,8 @@
     NSMutableArray *_allTimes; 
     NSMutableArray *_allSplits; 
     NSMutableArray *_allRaceIds;
+    NSMutableArray *_allStrokes;
+    NSMutableArray *_allDistances;
     NSOperationQueue *_queue;
     Swimmers *_theSwimmers;
     NSMutableArray *_strokes;

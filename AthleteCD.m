@@ -21,12 +21,12 @@
 @dynamic races;
 
 -(int) ageAtDate:(NSDate*)date {
-    NSLog(@"ageAtDateString: age=%@ date=%@",self.birthdate,date);
+    //NSLog(@"ageAtDateString: age=%@ date=%@",self.birthdate,date);
     NSInteger years = [[[NSCalendar currentCalendar] components: NSYearCalendarUnit
                                                        fromDate: self.birthdate
                                                          toDate: date
                                                         options: 0] year];
-    NSLog(@"returning %d",years);
+    //NSLog(@"returning %d",years);
     return (int)years;
 }
 
@@ -65,7 +65,7 @@
         timestd = [TimeStandard getTimeStandardWithAge:[self ageAtDate:dateOfJOMeet] distance:[race.distance intValue] stroke:nStroke gender:self.gender time:ftime];
         
         if ([timestd hasPrefix:@"Q2"]) {
-            NSLog(@"JO Cut: %@ : %@ : %@",race.distance,race.stroke,race.time);
+            //NSLog(@"JO Cut: %@ : %@ : %@",race.distance,race.stroke,race.time);
             cuts->jos++;
         }
     }
@@ -110,6 +110,26 @@
     all_sorted_requested_times = [all_requested_times sortedArrayUsingSelector:@selector(compareByDistance:)];        
 
     return all_sorted_requested_times;
+}
+
+// an array of (unique) stroke names for which this athlete has results
+- (NSArray*) allStrokesWithResults
+{
+    //NSSet*          raceSet = self.races;
+    //NSArray *       times = [raceSet allObjects];
+    
+    // TODO We should be able to do a query against the DB for this....something like
+    // select distinct(stroke) from raceSet 
+    
+    // for now, return everything
+    return [NSArray arrayWithObjects:@"Fly", @"Back", @"Breast", @"Free", @"IM", nil];
+}
+
+- (NSArray*) allDistancesForStroke:(int)stroke
+{
+    // TODO We should be able to do a query against the DB for this....something like
+    // select distinct(distance) from raceSet where stroke = s 
+    return NULL;    // todo 
 }
 
 @end

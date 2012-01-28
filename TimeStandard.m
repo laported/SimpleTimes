@@ -8,177 +8,218 @@
 
 #import "TimeStandard.h"
 
-
 @implementation TimeStandard
 
-const float nine_ten_w_q1 [5][8] = {
-    // 25     50     100    200     400    500     1000    1650
-    {  0.0,   31.49, 69.49, 151.59, 0.0,    410.59, 0.0,    0.0   },  // free
-    {  0.0,   37.09, 80.09, 0.0,    0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   42.09, 92.49, 0.0,    0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   35.89, 86.29, 0.0,    0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   79.99, 174.39, 0.0,    0.0,    0.0,    0.0   }   // IM
+const char* sz_nine_ten_w_q1 [5][8] = {
+    // 25     50       100        200        400      500        1000     1650
+    {  NULL,  "31.49", "1:09.49", "2:31.59", NULL,    "6:50.59", NULL,    NULL   },  // free
+    {  NULL,  "37.09", "1:20.09", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
+    {  NULL,  "42.09", "1:32.49", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
+    {  NULL,  "35.89", "1:26.29", NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
+    {  NULL,  NULL,    "1:19.99", "2:54.39", NULL,    NULL,      NULL,    NULL   }   // IM
 };
 
-// +TODO: These are the Q1 times -----------
-const float nine_ten_w_q2 [5][8] = {
-    // 25     50     100    200     400    500     1000    1650
-    {  0.0,   31.49, 69.49, 151.59, 0.0,    410.59, 0.0,    0.0   },  // free
-    {  0.0,   37.09, 80.09, 0.0,    0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   42.09, 92.49, 0.0,    0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   35.89, 86.29, 0.0,    0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   79.99, 174.39, 0.0,    0.0,    0.0,    0.0   }   // IM
+const char* sz_nine_ten_w_q2 [5][8] = {
+    // 25     50        100        200        400      500        1000    1650
+    {  NULL,   "33.59", "1:15.99", "2:50.09", NULL,    "7:42.89", NULL,    NULL   },  // free
+    {  NULL,   "40.39", "1:27.79", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
+    {  NULL,   "45.59", "1:42.79", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
+    {  NULL,   "39.79", "1:40.99", NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
+    {  NULL,   NULL,    "1:26.59", "3:16.09", NULL,    NULL,      NULL,    NULL   }   // IM
 };
-const float nine_ten_w_b [5][8] = {
-    // 25     50     100    200     400    500     1000    1650
-    {  0.0,   31.49, 69.49, 151.59, 0.0,    410.59, 0.0,    0.0   },  // free
-    {  0.0,   37.09, 80.09, 0.0,    0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   42.09, 92.49, 0.0,    0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   35.89, 86.29, 0.0,    0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   79.99, 174.39, 0.0,    0.0,    0.0,    0.0   }   // IM
-};
-// -TODO: These are the Q1 times -----------
-
-const float eleven_twelve_m_q1 [5][8] = {
-    // 25     50     100    200     400    500     1000    1650
-    {  0.0,   28.09, 61.59, 134.59, 0.0,    360.59, 0.0,    0.0   },  // free
-    {  0.0,   33.29, 71.69, 154.79, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   37.79, 81.69, 179.99, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   32.09, 73.99, 175.89, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   72.79, 155.49, 335.79, 0.0,    0.0,    0.0   }   // IM
+const char* sz_nine_ten_w_b [5][8] = {
+    // 25     50        100        200        400      500        1000    1650
+    {  NULL,   "39.79", "1:31.29", "3:20.19", NULL,    "8:30.49", NULL,   NULL   },  // free
+    {  NULL,   "48.79", "1:45.69", NULL,      NULL,    NULL,      NULL,   NULL   },  // back
+    {  NULL,   "53.59", "1:59.99", NULL,      NULL,    NULL,      NULL,   NULL   },  // breast
+    {  NULL,   "48.79", "1:57.49", NULL,      NULL,    NULL,      NULL,   NULL   },  // fly
+    {  NULL,   NULL,    "1:44.99", "3:42.69", NULL,    NULL,      NULL,   NULL   }   // IM
 };
 
-const float eleven_twelve_m_q2 [5][8] = {
-    // 25     50     100    200     400    500     1000    1650
-    {  0.0,   30.59, 69.19, 152.99, 0.0,    402.19, 0.0,    0.0   },  // free
-    {  0.0,   37.09, 80.19, 189.59, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   41.99, 92.09, 205.79, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   36.29, 86.69, 203.99, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   80.29, 175.69, 390.89, 0.0,    0.0,    0.0   }   // IM
+const char* sz_nine_ten_m_q1 [5][8] = {
+    // 25     50       100        200        400      500        1000     1650
+    {  NULL,  "31.59", "1:10.29", "2:34.99", NULL,    "6:55.99", NULL,    NULL   },  // free
+    {  NULL,  "37.39", "1:20.59", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
+    {  NULL,  "48.09", "1:34.19", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
+    {  NULL,  "36.89", "1:29.99", NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
+    {  NULL,  NULL,    "1:21.09", "2:56.49", NULL,    NULL,      NULL,    NULL   }   // IM
+};
+const char* sz_nine_ten_m_q2 [5][8] = {
+    // 25     50        100        200        400      500        1000    1650
+    {  NULL,   "34.59", "1:19.09", "2:55.69", NULL,    "8:05.99", NULL,    NULL   },  // free
+    {  NULL,   "41.69", "1:32.29", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
+    {  NULL,   "48.09", "1:44.29", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
+    {  NULL,   "42.69", "1:40.59", NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
+    {  NULL,   NULL,    "1:30.99", "3:24.69", NULL,    NULL,      NULL,    NULL   }   // IM
+};
+const char* sz_nine_ten_m_b [5][8] = {
+    // 25     50        100        200        400      500        1000    1650
+    {  NULL,   "38.89", "1:29.19", "3:09.89", NULL,    "8:25.79", NULL,   NULL   },  // free
+    {  NULL,   "49.19", "1:42.89", NULL,      NULL,    NULL,      NULL,   NULL   },  // back
+    {  NULL,   "53.59", "1:55.69", NULL,      NULL,    NULL,      NULL,   NULL   },  // breast
+    {  NULL,   "47.29", "1:55.19", NULL,      NULL,    NULL,      NULL,   NULL   },  // fly
+    {  NULL,   NULL,    "1:41.29", "3:40.89", NULL,    NULL,      NULL,   NULL   }   // IM
 };
 
-const float eleven_twelve_m_b [5][8] = {
-    // 25     50     100    200     400    500      1000    1650
-    {  0.0,   33.39, 73.09, 158.89, 0.0,    425.49, 890.09, 1497.49   },  // free
-    {  0.0,   39.49, 85.79, 178.39, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   44.29, 95.09, 201.69, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   38.19, 85.79, 181.19, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   83.69, 183.09, 383.69, 0.0,    0.0,    0.0   }   // IM
+const char* sz_eleven_twelve_m_q1 [5][8] = {
+    // 25      50     100          200        400       500        1000    1650
+    {  NULL,   "28.09", "1:01.59", "2:14.59", NULL,     "6:00.59", NULL,   NULL   },  // free
+    {  NULL,   "33.29", "1:11.69", "2:34.79", NULL,      NULL,     NULL,   NULL   },  // back
+    {  NULL,   "37.79", "1:21.69", "2:59.99", NULL,      NULL,     NULL,   NULL   },  // breast
+    {  NULL,   "32.09", "1:13.99", "2:55.89", NULL,      NULL,     NULL,   NULL   },  // fly
+    {  NULL,   NULL,    "1:12.79", "2:35.49", "5:35.79", NULL,     NULL,   NULL   }   // IM
 };
 
-const float eleven_twelve_w_q1 [5][8] = {
-    // 25     50     100    200     400    500     1000    1650
-    {  0.0,   27.89, 60.79, 133.39, 0.0,    353.49, 0.0,    0.0   },  // free
-    {  0.0,   32.59, 70.09, 150.89, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   36.59, 80.19, 171.99, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   31.09, 71.29, 165.49, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   70.79, 152.09, 325.59, 0.0,    0.0,    0.0   }   // IM
+const char* sz_eleven_twelve_m_q2 [5][8] = {
+    // 25     50       100        200        400        500        1000    1650
+    {  NULL,  "30.59", "1:09.19", "2:32.99", NULL,      "6:42.19", NULL,   NULL   },  // free
+    {  NULL,  "37.09", "1:20.19", "3:09.59", NULL,      NULL,      NULL,   NULL   },  // back
+    {  NULL,  "41.99", "1:32.09", "3:25.79", NULL,      NULL,      NULL,   NULL   },  // breast
+    {  NULL,  "36.29", "1:26.69", "3:23.99", NULL,      NULL,      NULL,   NULL   },  // fly
+    {  NULL,   NULL,   "1:20.29", "2:55.69", "6:30.89", NULL,      NULL,   NULL   }   // IM
 };
 
-const float eleven_twelve_w_q2 [5][8] = {
-    // 25     50     100    200     400    500     1000    1650
-    {  0.0,   29.09, 65.09, 144.39, 0.0,    387.99, 0.0,    0.0   },  // free
-    {  0.0,   35.09, 76.39, 168.09, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   39.99, 87.69, 191.09, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   34.19, 82.99, 192.59, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   76.29, 167.59, 379.89, 0.0,    0.0,    0.0   }   // IM
+const char* sz_eleven_twelve_m_b [5][8] = {
+    // 25     50       100        200        400        500        1000        1650
+    {  NULL,  "33.39", "1:13.09", "2:38.89", NULL,      "7:05.49", "14:50.09", "24:57.49"   },  // free
+    {  NULL,  "39.49", "1:25.79", "2:58.39", NULL,      NULL,      NULL,       NULL   },  // back
+    {  NULL,  "44.29", "1:35.09", "3:21.69", NULL,      NULL,      NULL,       NULL   },  // breast
+    {  NULL,  "38.19", "1:25.79", "3:01.19", NULL,      NULL,      NULL,       NULL   },  // fly
+    {  NULL,  NULL,    "1:23.69", "3:03.09", "6:23.69", NULL,      NULL,       NULL   }   // IM
 };
 
-// TODO - these are boys right now
-const float eleven_twelve_w_b [5][8] = {
-    // 25     50     100    200     400    500      1000    1650
-    {  0.0,   33.39, 73.09, 158.89, 0.0,    425.49, 890.09, 1497.49   },  // free
-    {  0.0,   39.49, 85.79, 178.39, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   44.29, 95.09, 201.69, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   38.19, 85.79, 181.19, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   83.69, 183.09, 383.69, 0.0,    0.0,    0.0   }   // IM
+const char* sz_eleven_twelve_w_q1 [5][8] = {
+    // 25     50       100        200        400        500        1000        1650
+    {  NULL,  "27.89", "1:00.79", "2:13.39", NULL,      "5:53.49", "15:00.29", "25:16.19" },  // free
+    {  NULL,  "32.59", "1:10.09", "2:30.89", NULL,      NULL,      NULL,       NULL       },  // back
+    {  NULL,  "36.59", "1:20.19", "2:51.99", NULL,      NULL,      NULL,       NULL       },  // breast
+    {  NULL,  "31.09", "1:11.29", "2:45.49", NULL,      NULL,      NULL,       NULL       },  // fly
+    {  NULL,  NULL,    "1:10.79", "2:32.09", "5:25.59", NULL,      NULL,       NULL       }   // IM
+};
+const char* sz_eleven_twelve_w_q2 [5][8] = {
+    // 25     50       100        200        400        500        1000        1650
+    {  NULL,  "29.09", "1:05.09", "2:24.39", NULL,      "6:27.99", NULL,       NULL       },  // free
+    {  NULL,  "35.09", "1:16.39", "2:48.09", NULL,      NULL,      NULL,       NULL       },  // back
+    {  NULL,  "39.99", "1:27.69", "3:11.09", NULL,      NULL,      NULL,       NULL       },  // breast
+    {  NULL,  "34.19", "1:22.99", "3:12.59", NULL,      NULL,      NULL,       NULL       },  // fly
+    {  NULL,  NULL,    "1:16.29", "2:47.59", "6:19.89", NULL,      NULL,       NULL       }   // IM
+};
+const char* sz_eleven_twelve_w_b [5][8] = {
+    // 25     50       100        200        400        500        1000        1650
+    {  NULL,  "34.29", "1:13.59", "2:43.19", NULL,      "7:10.79", "15:00.29", "25:16.19" },  // free
+    {  NULL,  "39.59", "1:27.99", "3:01.89", NULL,      NULL,      NULL,       NULL       },  // back
+    {  NULL,  "44.09", "1:36.39", "3:26.39", NULL,      NULL,      NULL,       NULL       },  // breast
+    {  NULL,  "37.79", "1:27.19", "3:04.99", NULL,      NULL,      NULL,       NULL       },  // fly
+    {  NULL,  NULL,    "1:26.29", "3:03.79", "6:32.19", NULL,      NULL,       NULL       }   // IM
 };
 
 // 13-14 M ---------------------------------------------------------------------
-const float thirteen_fourteen_m_q1 [5][8] = {
-    // 25     50     100    200     400    500     1000     1650
-    {  0.0,   25.29, 54.89, 119.99, 0.0,    325.09, 679.99, 1157.99 },  // free
-    {  0.0,   0.0,   65.09, 140.99, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   73.99, 161.99, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   64.79, 147.99, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   142.09, 303.89, 0.0,    0.0,    0.0   }   // IM
+const char* sz_thirteen_fourteen_m_q1 [5][8] = {
+    // 25     50        100        200        400      500        1000        1650
+    {  NULL,   "25.29", "54.89",   "1:59.99", NULL,    "5:25.09", "11:19.99", "19:17.99" },  // free
+    {  NULL,   NULL,    "1:04.09", "2:18.09", NULL,    NULL,    NULL,    NULL   },  // back
+    {  NULL,   NULL,    "1:12.49", "2:38.09", NULL,    NULL,    NULL,    NULL   },  // breast
+    {  NULL,   NULL,    "1:02.39", "2:26.69", NULL,    NULL,    NULL,    NULL  },  // fly
+    {  NULL,   NULL,    NULL,      "2:16.89", "4:59.99", NULL,    NULL,  NULL   }   // IM
 };
 
-const float thirteen_fourteen_m_q2 [5][8] = {
+const char* sz_thirteen_fourteen_m_q2 [5][8] = {
+    // 25     50       100        200        400        500        1000        1650
+    {  NULL,  "27.09", "58.89",   "2:11.09", NULL,      "5:53.69", "12:35.59", "21:19.99" },  // free
+    {  NULL,   NULL,   "1:10.99", "2:35.99", NULL,      NULL,      NULL,       NULL   },  // back
+    {  NULL,   NULL,   "1:19.49", "2:54.49", NULL,      NULL,      NULL,       NULL  },  // breast
+    {  NULL,   NULL,   "1:09.99", "2:41.99", NULL,      NULL,      NULL,       NULL  },  // fly
+    {  NULL,   NULL,   NULL,      "2:28.99", "5:24.99", NULL,      NULL,       NULL   }   // IM
+};
+const char* sz_thirteen_fourteen_m_b [5][8] = {
+    // 25     50       100        200        400        500        1000        1650
+    {  NULL,  "30.69", "1:06.99", "2:26.09", NULL,      "6:31.09", "13:32.49", "22:28.29" },  // free
+    {  NULL,   NULL,   "1:14.89", "2:41.29", NULL,      NULL,      NULL,       NULL   },  // back
+    {  NULL,   NULL,   "1:24.09", "3:02.39", NULL,      NULL,      NULL,       NULL  },  // breast
+    {  NULL,   NULL,   "1:13.29", "2:43.69", NULL,      NULL,      NULL,       NULL  },  // fly
+    {  NULL,   NULL,   NULL,      "2:43.69", "5:50.59", NULL,      NULL,       NULL   }   // IM
+};
+const char* sz_thirteen_fourteen_w_q1 [5][8] = {
+    // 25     50        100        200        400      500        1000        1650
+    {  NULL,   "26.39", "57.09",   "2:03.89", NULL,    "5:32.99", "11:35.99", "19:35.99" },  // free
+    {  NULL,   NULL,    "1:05.09", "2:20.99", NULL,    NULL,    NULL,    NULL   },  // back
+    {  NULL,   NULL,    "1:13.99", "2:41.99", NULL,    NULL,    NULL,    NULL   },  // breast
+    {  NULL,   NULL,    "1:04.79", "2:27.99", NULL,    NULL,    NULL,    NULL  },  // fly
+    {  NULL,   NULL,    NULL,      "2:22.09", "5:03.89", NULL,    NULL,  NULL   }   // IM
+};
+
+const char* sz_thirteen_fourteen_w_q2 [5][8] = {
+    // 25     50        100        200       400        500         1000       1650
+    {  NULL,  "27.59", "59.89",   "2:11.69", NULL,      "5:50.99", "12:33.39", "20:57.09" },  // free
+    {  NULL,   NULL,   "1:09.59", "2:29.89", NULL,      NULL,      NULL,       NULL   },  // back
+    {  NULL,   NULL,   "1:20.69", "2:55.09", NULL,      NULL,      NULL,       NULL  },  // breast
+    {  NULL,   NULL,   "1:10.29", "2:48.59", NULL,      NULL,      NULL,       NULL  },  // fly
+    {  NULL,   NULL,   NULL,      "2:28.99", "5:26.89", NULL,      NULL,       NULL   }   // IM
+};
+const char* thirteen_fourteen_w_b [5][8] = {
+    // 25     50       100         200       400        500        1000        1650
+    {  NULL,  "33.39", "1:12.49", "2:36.09", NULL,      "6:51.79", "14:08.89", "23:34.19" },  // free
+    {  NULL,   NULL,   "1:19.89", "2:51.79", NULL,      NULL,      NULL,       NULL   },  // back
+    {  NULL,   NULL,   "1:30.59", "3:14.59", NULL,      NULL,      NULL,       NULL  },  // breast
+    {  NULL,   NULL,   "1:19.09", "2:53.39", NULL,      NULL,      NULL,       NULL  },  // fly
+    {  NULL,   NULL,   NULL,      "2:55.49", "6:10.79", NULL,      NULL,       NULL   }   // IM
+};
+
+const char* sz_fifteen_eighteen_m_q1 [5][8] = {
+    // 25     50        100        200        400        500        1000        1650
+    {  NULL,   "23.29", "50.59",   "1:51.89", NULL,      "5:03.99", "10:40.19", "18:10.49" },  // free
+    {  NULL,   NULL,    "58.99",   "2:09.19", NULL,      NULL,    NULL,    NULL   },  // back
+    {  NULL,   NULL,    "1:06.69", "2:27.99", NULL,      NULL,    NULL,    NULL   },  // breast
+    {  NULL,   NULL,    "57.09",   "2:15.99", NULL,      NULL,    NULL,    NULL   },  // fly
+    {  NULL,   NULL,    NULL,      "2:06.99", "4:40.99", NULL,    NULL,    NULL   }   // IM
+};
+const char* sz_fifteen_eighteen_m_q2 [5][8] = {
+    // 25     50       100        200        400        500        1000        1650
+    {  NULL,  "27.09", "58.89",   "2:11.09", NULL,      "5:53.69", "12:35.59", "21:19.99" },  // free
+    {  NULL,   NULL,   "1:10.99", "2:35.99", NULL,      NULL,      NULL,       NULL   },  // back
+    {  NULL,   NULL,   "1:19.49", "2:54.49", NULL,      NULL,      NULL,       NULL  },  // breast
+    {  NULL,   NULL,   "1:09.99", "2:41.99", NULL,      NULL,      NULL,       NULL  },  // fly
+    {  NULL,   NULL,   NULL,      "2:28.99", "5:24.99", NULL,      NULL,       NULL   }   // IM
+};
+const char* sz_fifteen_eighteen_m_b [5][8] = {
+    // 25     50        100        200        400        500        1000        1650
+    {  NULL,   "29.49", "1:04.39", "2:20.09", NULL,      "6:18.39", "13:04.19", "21:55.89" },  // free
+    {  NULL,   NULL,    "1:11.29", "2:34.39", NULL,      NULL,    NULL,    NULL   },  // back
+    {  NULL,   NULL,    "1:20.39", "2:55.09", NULL,      NULL,    NULL,    NULL   },  // breast
+    {  NULL,   NULL,    "1:10.09", "2:35.59", NULL,      NULL,    NULL,    NULL   },  // fly
+    {  NULL,   NULL,    NULL,      "2:37.69", "5:35.79", NULL,    NULL,    NULL   }   // IM
+};
+
+const char* sz_fifteen_eighteen_w_q1 [5][8] = {
+    // 25     50        100        200        400        500        1000        1650
+    {  NULL,   "25.59", "55.59",   "2:00.79", NULL,      "5:23.29", "11:20.99", "18:58.89" },  // free
+    {  NULL,   NULL,    "1:03.09", "2:16.99", NULL,      NULL,    NULL,    NULL   },  // back
+    {  NULL,   NULL,    "1:13.09", "2:39.69", NULL,      NULL,    NULL,    NULL   },  // breast
+    {  NULL,   NULL,    "1:02.09", "2:23.39", NULL,      NULL,    NULL,    NULL   },  // fly
+    {  NULL,   NULL,    NULL,      "2:16.99", "4:54.29", NULL,    NULL,    NULL   }   // IM
+};
+const char* sz_fifteen_eighteen_w_q2 [5][8] = {
     // 25     50     100    200     400    500      1000    1650
-    {  0.0,   27.09, 58.89, 131.09, 0.0,    353.69, 755.59, 1279.99 },  // free
-    {  0.0,   0.0,   70.99, 155.99, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   79.49, 174.49, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   69.99, 161.99, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   148.99, 324.99, 0.0,    0.0,    0.0   }   // IM
+    {  NULL,  "27.59", "59.89",   "2:11.69", NULL,      "5:50.99", "12:33.39", "20:57.09" },  // free
+    {  NULL,   NULL,   "1:09.59", "2:29.89", NULL,      NULL,      NULL,       NULL   },  // back
+    {  NULL,   NULL,   "1:20.69", "2:55.09", NULL,      NULL,      NULL,       NULL  },  // breast
+    {  NULL,   NULL,   "1:10.29", "2:48.59", NULL,      NULL,      NULL,       NULL  },  // fly
+    {  NULL,   NULL,   NULL,      "2:28.99", "5:26.89", NULL,      NULL,       NULL   }   // IM
+};
+const char* sz_fifteen_eighteen_w_b [5][8] = {
+    // 25     50        100        200        400        500         1000       1650
+    {  NULL,   "32.69", "1:10.89", "2:32.09", NULL,      "6:45.29", "13:55.19", "23:18.79" },  // free
+    {  NULL,   NULL,    "1:17.69", "2:47.89", NULL,      NULL,      NULL,    NULL   },  // back
+    {  NULL,   NULL,    "1:28.29", "3:09.99", NULL,      NULL,      NULL,    NULL   },  // breast
+    {  NULL,   NULL,    "1:17.39", "2:48.59", NULL,      NULL,      NULL,    NULL   },  // fly
+    {  NULL,   NULL,    NULL,      "2:51.49", "6:01.49", NULL,      NULL,    NULL   }   // IM
 };
 
-const float thirteen_fourteen_m_b [5][8] = {
-    // 25     50     100    200     400    500      1000    1650
-    {  0.0,   30.69, 66.99, 146.09, 0.0,    391.09, 812.49, 1348.29   },  // free
-    {  0.0,   0.0,   74.89, 161.29, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   84.09, 182.39, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   73.29, 163.69, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   163.69, 350.59, 0.0,    0.0,    0.0   }   // IM
-};
-
-// TODO - these are boys right now
-const float thirteen_fourteen_w_q1 [5][8] = {
-    // 25     50     100    200     400    500     1000     1650
-    {  0.0,   25.29, 54.89, 119.99, 0.0,    325.09, 679.99, 1157.99 },  // free
-    {  0.0,   0.0,   65.09, 140.99, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   73.99, 161.99, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   64.79, 147.99, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   142.09, 303.89, 0.0,    0.0,    0.0   }   // IM
-};
-
-// TODO - these are boys right now
-const float thirteen_fourteen_w_q2 [5][8] = {
-    // 25     50     100    200     400    500      1000    1650
-    {  0.0,   27.09, 58.89, 131.09, 0.0,    353.69, 755.59, 1279.99 },  // free
-    {  0.0,   0.0,   70.99, 155.99, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   79.49, 174.49, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   69.99, 161.99, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   148.99, 324.99, 0.0,    0.0,    0.0   }   // IM
-};
-
-// TODO - these are boys right now
-const float thirteen_fourteen_w_b [5][8] = {
-    // 25     50     100    200     400    500      1000    1650
-    {  0.0,   30.69, 66.99, 146.09, 0.0,    391.09, 812.49, 1348.29   },  // free
-    {  0.0,   0.0,   74.89, 161.29, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   84.09, 182.39, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   73.29, 163.69, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   163.69, 350.59, 0.0,    0.0,    0.0   }   // IM
-};
-
-const float fifteen_eighteen_w_q1 [5][8] = {
-    // 25     50     100    200     400    500     1000     1650
-    {  0.0,   25.59, 55.59, 120.79, 0.0,    323.29, 680.99, 1138.89 },  // free
-    {  0.0,   0.0,   63.09, 136.99, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   73.09, 159.69, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   62.09, 143.39, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   136.99, 294.29, 0.0,    0.0,    0.0   }   // IM
-};
-
-const float fifteen_eighteen_w_q2 [5][8] = {
-    // 25     50     100    200     400    500      1000    1650
-    {  0.0,   27.59, 59.89, 131.69, 0.0,    350.99, 753.39, 1257.09 },  // free
-    {  0.0,   0.0,   69.59, 149.89, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   80.69, 175.09, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   70.29, 168.59, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   148.99, 326.89, 0.0,    0.0,    0.0   }   // IM
-};
-
-// TODO - these are q1s right now
-const float fifteen_eighteen_w_b [5][8] = {
-    // 25     50     100    200     400    500      1000    1650
-    {  0.0,   25.59, 55.59, 120.79, 0.0,    323.29, 680.99, 1138.89 },  // free
-    {  0.0,   0.0,   63.09, 136.99, 0.0,    0.0,    0.0,    0.0   },  // back
-    {  0.0,   0.0,   73.09, 159.69, 0.0,    0.0,    0.0,    0.0   },  // breast
-    {  0.0,   0.0,   62.09, 143.39, 0.0,    0.0,    0.0,    0.0   },  // fly
-    {  0.0,   0.0,   0.0,   136.99, 294.29, 0.0,    0.0,    0.0   }   // IM
-};
++(float) getFloatTimeFromCStringTime:(const char*)sz 
+{
+    NSString* s = [NSString stringWithUTF8String:sz == NULL ? "0" : sz];
+    return [TimeStandard getFloatTimeFromStringTime:s];
+}
 
 +(float) getFloatTimeFromStringTime:(NSString*)sTime {
 
@@ -209,6 +250,13 @@ const float fifteen_eighteen_w_b [5][8] = {
 
 +(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time {
     int distanceidx;
+    const char* sz_q1 [5][8] = { NULL };
+    const char* sz_q2 [5][8] = { NULL };
+    const char* sz_b [5][8] = { NULL };
+    
+    // quick sanity check on the array values
+    memcpy(sz_q1,sz_nine_ten_w_q1,sizeof(sz_q1));
+    assert( strcmp("31.49",sz_q1[0][1]) == 0);
     
     switch (distance) {
         case 25:   distanceidx = 0; break;
@@ -238,82 +286,65 @@ const float fifteen_eighteen_w_b [5][8] = {
             if ([gender isEqualToString:@"m"]) {
                 // TODO
             } else {
-                if (time <= nine_ten_w_q1[stroke-1][distanceidx]) {
-                    return @"Q1";
-                }
-                if (time <= nine_ten_w_q2[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-nine_ten_w_q1[stroke-1][distanceidx]];
-                }
-                if (time <= nine_ten_w_b[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-nine_ten_w_q2[stroke-1][distanceidx]];
-                }
+                memcpy(sz_q1,sz_nine_ten_w_q1,sizeof(sz_q1));
+                memcpy(sz_q2,sz_nine_ten_w_q2,sizeof(sz_q2));
+                memcpy(sz_b,sz_nine_ten_w_b,sizeof(sz_b));
             }
             break;
         case 11:
         case 12:
             if ([gender isEqualToString:@"m"]) {
-                if (time <= eleven_twelve_m_q1[stroke-1][distanceidx]) {
-                    return @"Q1";
-                }
-                if (time <= eleven_twelve_m_q2[stroke-1][distanceidx]) {
-                   return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-eleven_twelve_m_q1[stroke-1][distanceidx]];
-                }
-                if (time <= eleven_twelve_m_b[stroke-1][distanceidx]) {
-                   return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-eleven_twelve_m_q2[stroke-1][distanceidx]];
-                }
+                memcpy(sz_q1,sz_eleven_twelve_m_q1,sizeof(sz_q1));
+                memcpy(sz_q2,sz_eleven_twelve_m_q2,sizeof(sz_q2));
+                memcpy(sz_b,sz_eleven_twelve_m_b,sizeof(sz_b));
             } else {
-                if (time <= eleven_twelve_w_q1[stroke-1][distanceidx]) {
-                    return @"Q1";
-                }
-                if (time <= eleven_twelve_w_q2[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-eleven_twelve_w_q1[stroke-1][distanceidx]];
-                }
-                if (time <= eleven_twelve_w_b[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-eleven_twelve_w_q2[stroke-1][distanceidx]];
-                }
+                memcpy(sz_q1,sz_eleven_twelve_w_q1,sizeof(sz_q1));
+                memcpy(sz_q2,sz_eleven_twelve_w_q2,sizeof(sz_q2));
+                memcpy(sz_b,sz_eleven_twelve_w_b,sizeof(sz_b));
             }
             break;
+            
         case 13:
         case 14:
             if ([gender isEqualToString:@"m"]) {
-                if (time <= thirteen_fourteen_m_q1[stroke-1][distanceidx]) {
-                    return @"Q1";
-                }
-                if (time <= thirteen_fourteen_m_q2[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-thirteen_fourteen_m_q1[stroke-1][distanceidx]];
-                }
-                if (time <= thirteen_fourteen_m_b[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-thirteen_fourteen_m_q2[stroke-1][distanceidx]];
-                }
+                memcpy(sz_q1,sz_thirteen_fourteen_m_q1,sizeof(sz_q1));
+                memcpy(sz_q2,sz_thirteen_fourteen_m_q2,sizeof(sz_q2));
+                memcpy(sz_b,sz_thirteen_fourteen_m_b,sizeof(sz_b));
             } else {
-                if (time <= thirteen_fourteen_w_q1[stroke-1][distanceidx]) {
-                    return @"Q1";
-                }
-                if (time <= thirteen_fourteen_w_q2[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-thirteen_fourteen_w_q1[stroke-1][distanceidx]];
-                }
-                if (time <= thirteen_fourteen_w_b[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-thirteen_fourteen_w_q2[stroke-1][distanceidx]];
-                }
+                memcpy(sz_q1,sz_thirteen_fourteen_w_q1,sizeof(sz_q1));
+                memcpy(sz_q2,sz_thirteen_fourteen_w_q2,sizeof(sz_q2));
+                memcpy(sz_b,sz_thirteen_fourteen_m_b,sizeof(sz_b));
             }
             break;
         default:
             // 15-18, or Open
             if ([gender isEqualToString:@"m"]) {
-                // TODO
+                memcpy(sz_q1,sz_fifteen_eighteen_m_q1,sizeof(sz_q1));
+                memcpy(sz_q2,sz_fifteen_eighteen_m_q2,sizeof(sz_q2));
+                memcpy(sz_b,sz_fifteen_eighteen_m_b,sizeof(sz_b));
             } else {
-                if (time <= fifteen_eighteen_w_q1[stroke-1][distanceidx]) {
-                    return @"Q1";
-                }
-                if (time <= fifteen_eighteen_w_q2[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-fifteen_eighteen_w_q1[stroke-1][distanceidx]];
-                }
-                if (time <= fifteen_eighteen_w_b[stroke-1][distanceidx]) {
-                    return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-fifteen_eighteen_w_q2[stroke-1][distanceidx]];
-                }
+                memcpy(sz_q1,sz_fifteen_eighteen_w_q1,sizeof(sz_q1));
+                memcpy(sz_q2,sz_fifteen_eighteen_w_q2,sizeof(sz_q2));
+                memcpy(sz_b,sz_fifteen_eighteen_w_b,sizeof(sz_b));
             }
+            
             break;
-            break;
+    }
+    
+    if (sz_q1 != NULL) {
+        float fQ1 = [TimeStandard getFloatTimeFromCStringTime:sz_q1[stroke-1][distanceidx]];
+        float fQ2 = [TimeStandard getFloatTimeFromCStringTime:sz_q2[stroke-1][distanceidx]];
+        float fB = [TimeStandard getFloatTimeFromCStringTime:sz_b[stroke-1][distanceidx]];
+        if (time <= fQ1) {
+            return @"Q1";
+        }
+        if (time <= fQ2) {
+            return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-fQ1];
+        }
+        if (time <= fB) {
+            return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-fQ2];
+        }
+
     }
     return @"";
 }

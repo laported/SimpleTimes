@@ -245,6 +245,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         // 6 Points
         // 7 Date
         // 8 Meet
+                
         for (int i=0;i<[parser numRows];i++) {
             //NSLog(@"Meet: %@ / %@\n",[parser cell:i :7],[parser cell:i :8]);
             //NSLog(@"   %@ %@ %@\n\n",[parser cell:i :1],[parser cell:i :2],[parser cell:i :4]);
@@ -299,7 +300,6 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     
     // Grab the times from the website
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:urlQuery];
-    //todo[request setDelegate::self];
     [request startSynchronous];
     NSError *error = [request error];
     if (!error) {
@@ -407,12 +407,11 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             NSString* clubshort = [parser cell:i :8];
             NSString* clublong = [parser cell:i :9];
             NSString* gender = [[parser cell:i :4] lowercaseString];
-            NSString* dob = @"";
+            NSString* dob = @""; // Get DOB from user later - it's not exposed by the MI Swim website
             NSString* miId = @"";
             if (i > 0) {
                 miId = [self getMiId:[parser rowLink:i-1]]; // -1 beacuse header row does not have a link assoc w/it
             }
-            // TODO: Get DOB from user????
             if( ([firstname length] == 0) || [first_sanitized caseInsensitiveCompare:first] == NSOrderedSame ) {
                 if (([first caseInsensitiveCompare:@"first"] == NSOrderedSame) &&
                     ([last caseInsensitiveCompare:@"last"] == NSOrderedSame))

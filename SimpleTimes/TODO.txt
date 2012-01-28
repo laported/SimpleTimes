@@ -1,0 +1,4 @@
+TODO:
+[X] Refactor code in RootViewController refreshAllBestTimes() to use athlete personalBests()
+[X] Need to be able to specify birthdate when initially selecting a swimmer
+[X] Hard-code birthdate in order to test the cuts() function

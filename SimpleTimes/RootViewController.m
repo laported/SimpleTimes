@@ -193,12 +193,23 @@
     /* Are we coming back from the 'Add Swimmer' dialog ? */
     if (self.viewstate == VS_ADDSWIMMER) {
         
-        // TODO: only do this if user picked a swimmer...
-        self.viewstate = VS_GETBIRTHDATE;
-        // Push a new view controller for birthdate selection here
-        self.getbdayController = [[GetBirthdayViewController alloc] initWithNibName:@"GetBirthdayViewController" bundle:[NSBundle mainBundle]];
-        [self.navigationController pushViewController:self.getbdayController animated:YES];
-
+        // Did the user pick a swimmer??
+        if (self.asController.madeSelection) {
+            // Do we have a birthdate? (MI Swim provider does not supply it)
+            if (self.asController.birthdate == NULL) {
+                self.viewstate = VS_GETBIRTHDATE;
+                // Do we have a birthdate?
+                // Push a new view controller for birthdate selection here
+                self.getbdayController = [[GetBirthdayViewController alloc] initWithNibName:@"GetBirthdayViewController" bundle:[NSBundle mainBundle]];
+                [self.navigationController pushViewController:self.getbdayController animated:YES];
+            } else {
+                assert( false );    // TODO: Recode if we support other data providers
+            }
+        } else {
+            // nothing selected
+            self.viewstate = VS_ATHLETES;
+        }
+        
     } else if (self.viewstate == VS_GETBIRTHDATE) {
         self.viewstate = VS_ATHLETES;
         NSLog(@"firstname: %@ lastname: %@ miID:%d",self.asController.firstname.text,self.asController.lastname.text,self.asController.miSwimId);
@@ -315,6 +326,17 @@
     return self.rows;
 }
 
+- (NSString*) cutsWithStars:(int)numStars andPrefix:(NSString*)prefix
+{
+    NSString *aStar = @"\u2605";
+    NSString *stars = prefix;
+    for (int i=0;i<numStars;i++)
+    {
+        stars = [stars stringByAppendingString:aStar];
+    }
+    return stars;
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -334,6 +356,7 @@
     if (self.editing && (indexPath.row == (self.rows-1))) {
         NSLog(@"%@",@"cellForRowAtIndexPath/'Add new Swimmer'");
         cell.textLabel.text = @"Add new swimmer";
+         cell.detailTextLabel.text = @"";
         return cell;
     } else {
         switch (self.viewstate) {
@@ -344,11 +367,13 @@
                 NSLog(@"cellForRowAtIndexPath/last=%@,first=%@",athlete.lastname,athlete.firstname);
                 cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",athlete.firstname, athlete.lastname];    
                 if (cuts.jos > 0 || cuts.states > 0 || cuts.sectionals > 0 || cuts.nationals > 0) {
-                    NSString* jos = cuts.jos > 0 ? [NSString stringWithFormat:@"%d JO cuts ",cuts.jos] : @"";
-                    NSString* states = cuts.states > 0 ? [NSString stringWithFormat:@"%d State cuts ",cuts.states] : @"";
-                    NSString* sectionals = cuts.sectionals > 0 ? [NSString stringWithFormat:@"%d sectional cuts ",cuts.sectionals] : @"";
-                    NSString* nationals = cuts.nationals > 0 ? [NSString stringWithFormat:@"%d national cuts ",cuts.nationals] : @"";
-                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@%@%@%@",athlete.club,jos,states,sectionals,nationals];
+                    NSString* jos = cuts.jos > 0 ? [self cutsWithStars:cuts.jos andPrefix:@"JO"] : @"";
+                    NSString* states = cuts.states > 0 ? [self cutsWithStars:cuts.states andPrefix:@"ST"] : @"";
+                    NSString* sectionals = cuts.sectionals > 0 ? [self cutsWithStars:cuts.sectionals andPrefix:@"SE"] : @"";
+                    NSString* nationals = cuts.nationals > 0 ? [self cutsWithStars:cuts.nationals andPrefix:@"NA"] : @"";
+                    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ %@",athlete.firstname, athlete.lastname, athlete.club]; 
+                    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",nationals,sectionals,states,jos];
+                    //cell.detailTextLabel.textColor = [UIColor colorWithRed:218.0/255.0 green:165.0/255.0 blue:32.0/255.0 alpha:1.0];
                 } else {
                     cell.detailTextLabel.text = athlete.club; 
                 }
@@ -724,10 +749,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableView* tableView = (UITableView*)[self view];
     if(self.editing)
     {
+        NSString* title = [self.theSwimmers count] == 0 ? @"Add Swimmer" : @"Edit";
         [super setEditing:NO animated:NO];
         [tableView setEditing:NO animated:NO];
         [tableView reloadData];
-        [self.navigationItem.leftBarButtonItem setTitle:@"Edit"];
+        [self.navigationItem.leftBarButtonItem setTitle:title];
         [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
     }
     else
