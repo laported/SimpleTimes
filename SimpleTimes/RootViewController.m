@@ -356,7 +356,7 @@
     if (self.editing && (indexPath.row == (self.rows-1))) {
         NSLog(@"%@",@"cellForRowAtIndexPath/'Add new Swimmer'");
         cell.textLabel.text = @"Add new swimmer";
-         cell.detailTextLabel.text = @"";
+        cell.detailTextLabel.text = @"";
         return cell;
     } else {
         switch (self.viewstate) {
@@ -374,11 +374,13 @@
                     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ %@",athlete.firstname, athlete.lastname, athlete.club]; 
                     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",nationals,sectionals,states,jos];
                     //cell.detailTextLabel.textColor = [UIColor colorWithRed:218.0/255.0 green:165.0/255.0 blue:32.0/255.0 alpha:1.0];
+                    cell.detailTextLabel.textColor = [UIColor colorWithRed:255.0/255.0 green:153.0/255.0 blue:18.0/255.0 alpha:1.0];
                 } else {
                     cell.detailTextLabel.text = athlete.club; 
                 }
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
+                
             case VS_STROKES:
                 // We are displaying the stroke list
                 cell.textLabel.text = [[self.strokes objectAtIndex:indexPath.row] objectAtIndex:0];       
