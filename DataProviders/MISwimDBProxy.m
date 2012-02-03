@@ -245,11 +245,61 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         // 6 Points
         // 7 Date
         // 8 Meet
-                
+        
+        ///// temp hack ---------------------------------------------------------
+        if (athleteId == 11657) {
+            // add matthew's HS times
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"MM/dd/yyyy"];
+            NSDate *myDate = [df dateFromString:@"01/26/2012"];
+            
+            RaceResultMI* r = [[[RaceResultMI alloc] initWithTime:@"5:12.75"
+                                                             meet:@"SHS @ Novi HS" 
+                                                             date:myDate
+                                                           stroke:@"Free"
+                                                         distance:500
+                                                      shortcourse:YES    // todo
+                                                           course:@"SCY"
+                                                              age:14     // todo
+                                                      powerpoints:0
+                                                         standard:@"Q1"
+                                                              key:0
+                                ] autorelease];
+            [all_times addObject:r];
+            RaceResultMI* r2 = [[[RaceResultMI alloc] initWithTime:@"2:00.95"
+                                                              meet:@"SHS @ Novi HS" 
+                                                              date:myDate
+                                                            stroke:@"Free"
+                                                          distance:200
+                                                       shortcourse:YES    // todo
+                                                            course:@"SCY"
+                                                               age:14     // todo
+                                                       powerpoints:0
+                                                          standard:@"Q2"
+                                                               key:0
+                                 ] autorelease];
+            [all_times addObject:r2];
+            NSDate *myDate2 = [df dateFromString:@"01/24/2012"];
+            RaceResultMI* r3 = [[[RaceResultMI alloc] initWithTime:@"57.22"
+                                                              meet:@"SHS v Churchill HS" 
+                                                              date:myDate2
+                                                            stroke:@"Free"
+                                                          distance:100
+                                                       shortcourse:YES    // todo
+                                                            course:@"SCY"
+                                                               age:14     // todo
+                                                       powerpoints:0
+                                                          standard:@"Q2"
+                                                               key:0
+                                 ] autorelease];
+            [all_times addObject:r3];
+        }
+        ///// temp hack ---------------------------------------------------------
+        
         for (int i=0;i<[parser numRows];i++) {
             //NSLog(@"Meet: %@ / %@\n",[parser cell:i :7],[parser cell:i :8]);
             //NSLog(@"   %@ %@ %@\n\n",[parser cell:i :1],[parser cell:i :2],[parser cell:i :4]);
-            NSLog(@"Splits: %@",[parser rowLink:i]);
+            //NSLog(@"Splits: %@",[parser rowLink:i]);
             
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             [df setDateFormat:@"MM/dd/yyyy"];
@@ -265,7 +315,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                         shortcourse:YES    // todo
                                                              course:@"SCY"
                                                                 age:10     // todo
-                                                        powerpoints:0
+                                                            powerpoints:[[parser cell:i :6] intValue]
                                                            standard:@"??"
                                                                 key:((dist > 50) ? [self getSplitsKey:[parser rowLink:i]] : 0)
                                     ] autorelease];
@@ -321,7 +371,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         // Parse the table
         ROHTMLTable* parser = [[ROHTMLTable alloc] init];
         [parser initFromString:table];
-        NSLog(@"%@", table);
+        //NSLog(@"%@", table);
         
         // Column defs
         // 0 Link to splits data
@@ -393,7 +443,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     if (!error) {
         NSString *response = [request responseString];
         NSString *table = [self getAthleteTable:response];
-        NSLog(@"%@", table);
+        //NSLog(@"%@", table);
         
         // Parse the table
         ROHTMLTable* parser = [[ROHTMLTable alloc] init];

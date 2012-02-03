@@ -28,12 +28,12 @@
 
 - (NSComparisonResult)compareByDistance:(RaceResult *)otherObject
 {
-    if ([self.distance intValue] < [otherObject.distance intValue])
+    if ([self.distance intValue] > [otherObject.distance intValue])
     {
         return NSOrderedDescending;
     }
     
-    if ([self.distance intValue] > [otherObject.distance intValue])
+    if ([self.distance intValue] < [otherObject.distance intValue])
     {
         return NSOrderedAscending;
     }

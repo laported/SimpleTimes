@@ -190,6 +190,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     /* Are we coming back from the 'Add Swimmer' dialog ? */
     if (self.viewstate == VS_ADDSWIMMER) {
         
@@ -260,10 +262,21 @@
 #endif
         
     } else if (self.viewstate == VS_STROKES) {
-        UIBarButtonItem* button = [[[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain target:self action:@selector(onRefresh:)] autorelease];
-        self.navigationItem.rightBarButtonItem = button;
+       /* Add a Reload button that will re-download results from the web */
+       // Initialize the UIButton
+       UIImage *buttonImage = [UIImage imageNamed:@"reload_v2.png"];
+       UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
+       [aButton setImage:buttonImage forState:UIControlStateNormal];
+       aButton.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
+       
+       // Initialize the UIBarButtonItem
+       UIBarButtonItem* aBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:aButton];
+       
+       // Set the Target and Action for aButton
+       [aButton addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventTouchUpInside];
+
+        self.navigationItem.rightBarButtonItem = aBarButtonItem;
     }
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -337,6 +350,17 @@
     return stars;
 }
 
+-(NSString*) shortenMeetName:(NSString*)longname
+{
+    NSString* shortname;
+    if ([longname hasPrefix:@"201"] || [longname hasPrefix:@"200"]) {
+        shortname = [longname substringWithRange:NSMakeRange(5, [longname length]-5)];
+    } else {
+        shortname = longname;
+    }
+    return shortname;
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -348,7 +372,15 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        UITableViewCellStyle style;
+        if (self.viewstate == VS_RESULTS) {
+            style = UITableViewCellStyleValue2;
+        } else if (self.viewstate == VS_SPLITS) {
+            style = UITableViewCellStyleValue1;
+        } else {
+            style = UITableViewCellStyleSubtitle;
+        }
+        cell = [[[UITableViewCell alloc] initWithStyle:style reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Are we in edit mode????
@@ -405,12 +437,23 @@
                 float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
                 int nStroke = [Swimmers intStrokeValue:race.stroke];
                 NSString *timestd = [TimeStandard getTimeStandardWithAge:[self.selectedAthleteCD ageAtDate:race.date] distance:[race.distance intValue] stroke:nStroke gender:self.selectedAthleteCD.gender time:ftime];
-                
+                /*
                 cell.textLabel.text = [NSString stringWithFormat:@"%d %@ - %@ %@", [race.distance intValue], race.stroke, race.time, timestd];       
-                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", raceDateString, race.meet];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", raceDateString, race.meet];
                 if ([race.splitskey intValue] > 0) { 
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                } */
+                cell.detailTextLabel.numberOfLines = 2;
+                cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@\n%@ %@", [race.distance intValue], race.stroke, race.time, timestd]; 
+                NSString* meetShort = [self shortenMeetName:race.meet];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@\n%@", raceDateString, meetShort];
+                if ([race.splitskey intValue] > 0) { 
+                   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
+                cell.textLabel.numberOfLines = 2;
+                cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;             
                 break;
                 
             case VS_SPLITS:
@@ -623,7 +666,7 @@
 
 - (void)refreshAllBestTimes {
     NSArray* best_times = [self.selectedAthleteCD personalBests];
-    for (int i=0;i<[best_times count];i++) {
+    for (int i=[best_times count]-1;i>=0;i--) {
         
         RaceResult *race = [best_times objectAtIndex:i];
         

@@ -16,33 +16,21 @@
 
 -(void)loadWithContext:(NSManagedObjectContext *)context {
     
-    //todo
-    //if (_athletesCD != nil) {
-    //    [_athletesCD release];
-    //}
-
     // Load all AthleteCD objects from the store
-    _count = 0;
     NSError *error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"AthleteCD" 
                                               inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     self.athletesCD = [context executeFetchRequest:fetchRequest error:&error];
-    for (AthleteCD *ath in self.athletesCD) {
-        NSLog(@"Name: %@ %@", ath.firstname, ath.lastname);
-        NSLog(@"Birthdate: %@", ath.birthdate);
-        _count++;
-#ifdef DEBUG
-//        [self updateAllRaceResultsForAthlete:ath inContext:context];
-#endif
-    }        
+    NSLog(@"Swimmers:loadWithContext() athletesCD=%08x, fetchRequest=%08x",(unsigned int)self.athletesCD,(unsigned int)fetchRequest);
+    
     [fetchRequest release];
     
 }
 
 -(int) count {
-    return _count;
+    return [self.athletesCD count];
 }
 
 +(BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 {
@@ -93,8 +81,6 @@
 
 +(void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context 
 {
-    NSLog(@"storeRace");
-    
     RaceResult *race = (RaceResult *)[NSEntityDescription insertNewObjectForEntityForName:@"RaceResult" inManagedObjectContext:context];
     race.time        = raceMI.time;
     race.stroke      = raceMI.stroke;

@@ -18,6 +18,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        textMM.keyboardType = UIKeyboardTypeDecimalPad;
+        textDD.keyboardType = UIKeyboardTypeDecimalPad;
+        textYYYY.keyboardType = UIKeyboardTypeDecimalPad;
     }
     return self;
 }

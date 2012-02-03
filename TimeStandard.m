@@ -82,10 +82,10 @@ const char* sz_eleven_twelve_m_q2 [5][8] = {
 const char* sz_eleven_twelve_m_b [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "33.39", "1:13.09", "2:38.89", NULL,      "7:05.49", "14:50.09", "24:57.49"   },  // free
-    {  NULL,  "39.49", "1:25.79", "2:58.39", NULL,      NULL,      NULL,       NULL   },  // back
-    {  NULL,  "44.29", "1:35.09", "3:21.69", NULL,      NULL,      NULL,       NULL   },  // breast
-    {  NULL,  "38.19", "1:25.79", "3:01.19", NULL,      NULL,      NULL,       NULL   },  // fly
-    {  NULL,  NULL,    "1:23.69", "3:03.09", "6:23.69", NULL,      NULL,       NULL   }   // IM
+    {  NULL,  "39.49", "1:25.79", "2:58.39", NULL,      NULL,      NULL,       NULL         },  // back
+    {  NULL,  "44.29", "1:35.09", "3:21.69", NULL,      NULL,      NULL,       NULL         },  // breast
+    {  NULL,  "38.19", "1:25.79", "3:01.19", NULL,      NULL,      NULL,       NULL         },  // fly
+    {  NULL,  NULL,    "1:23.69", "3:03.09", "6:23.69", NULL,      NULL,       NULL         }   // IM
 };
 
 const char* sz_eleven_twelve_w_q1 [5][8] = {
@@ -269,6 +269,7 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
         case 1650: distanceidx = 7; break;
         default: assert(false); distanceidx = 0; break;
     }
+   
     switch (age) {
         case 0:
         case 1:
@@ -279,18 +280,19 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
         case 6:
         case 7:
         case 8:
-            // TODO
-            break;
         case 9:
         case 10:
             if ([gender isEqualToString:@"m"]) {
-                // TODO
+               memcpy(sz_q1,sz_nine_ten_m_q1,sizeof(sz_q1));
+               memcpy(sz_q2,sz_nine_ten_m_q2,sizeof(sz_q2));
+               memcpy(sz_b,sz_nine_ten_m_b,sizeof(sz_b));
             } else {
                 memcpy(sz_q1,sz_nine_ten_w_q1,sizeof(sz_q1));
                 memcpy(sz_q2,sz_nine_ten_w_q2,sizeof(sz_q2));
                 memcpy(sz_b,sz_nine_ten_w_b,sizeof(sz_b));
             }
             break;
+          
         case 11:
         case 12:
             if ([gender isEqualToString:@"m"]) {
@@ -316,6 +318,7 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
                 memcpy(sz_b,sz_thirteen_fourteen_m_b,sizeof(sz_b));
             }
             break;
+          
         default:
             // 15-18, or Open
             if ([gender isEqualToString:@"m"]) {
@@ -346,6 +349,7 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
         }
 
     }
+   
     return @"";
 }
 

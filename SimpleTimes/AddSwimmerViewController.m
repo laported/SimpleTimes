@@ -48,7 +48,7 @@
     NSArray* array = [NSMutableArray array];
     NSLog(@"Add button pressed. firstname: %@ lastname: %@",firstname.text,lastname.text);
     // enable the progress UIs
-    self.status.text = @"Verifying name...";
+    self.status.text = @"Searching...";
     [self.progressIndicator setHidden:NO];
     [self.status setHidden:NO];
     MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
@@ -63,7 +63,6 @@
             self.club = s.clubshort;
         }
         _madeSelection = true;
-        [self.navigationController popViewControllerAnimated:YES];
     } else if ([array count] > 1) {
         // dismiss the keyboard
         if([self.firstname isFirstResponder]){
@@ -88,6 +87,7 @@
         // no results found
         // TODO
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)dealloc

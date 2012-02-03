@@ -13,7 +13,6 @@
 
 @interface Swimmers : NSObject {
     NSArray*        _athletesCD;
-    int             _count;
 }
 
 @property (retain) NSArray *athletesCD;

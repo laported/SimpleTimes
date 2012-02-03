@@ -7,6 +7,8 @@
 //
 
 #import "SimpleTimesAppDelegate.h"
+#import "DetailSwimmerViewController.h"
+#import "EnterRaceResultController.h"
 
 #ifdef DEBUG
 #import "Swimmers.h"
@@ -14,6 +16,8 @@
 
 @implementation SimpleTimesAppDelegate
 
+@synthesize splitViewController = _splitViewController;
+@synthesize tabBarController = _tabBarController;
 @synthesize window=_window;
 
 @synthesize navigationController=_navigationController;
@@ -35,8 +39,24 @@
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
     //self.window.rootViewController = self.navigationController;
-    [self.window addSubview: self.navigationController.view];
-    self.rootVC.managedObjectContext = self.managedObjectContext;
+    
+    if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
+        [self.window addSubview: self.splitViewController.view];
+        self.rootVC.managedObjectContext = self.managedObjectContext;
+        /*
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        // Override point for customization after application launch.
+        UIViewController *viewController1 = [[DetailSwimmerViewController alloc] initWithNibName:@"DetailSwimmerViewController" bundle:nil];
+        UIViewController *viewController2 = [[EnterRaceResultController alloc] initWithNibName:@"EnterRaceResultController" bundle:nil];
+        self.tabBarController = [[UITabBarController alloc] init];
+        self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
+        self.window.rootViewController = self.tabBarController;
+         */
+
+    } else {
+        [self.window addSubview: self.navigationController.view];
+        self.rootVC.managedObjectContext = self.managedObjectContext;
+    }
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -87,6 +107,8 @@
     [__managedObjectContext release];
     [__managedObjectModel release];
     [__persistentStoreCoordinator release];
+    [_rootVC release];
+    [_splitViewController release];
     [super dealloc];
 }
 

@@ -60,26 +60,26 @@
         
         if ([timestd hasPrefix:@"Q1"]) {
             cuts->states++;
+            continue;
         }
         
         timestd = [TimeStandard getTimeStandardWithAge:[self ageAtDate:dateOfJOMeet] distance:[race.distance intValue] stroke:nStroke gender:self.gender time:ftime];
         
         if ([timestd hasPrefix:@"Q2"]) {
-            //NSLog(@"JO Cut: %@ : %@ : %@",race.distance,race.stroke,race.time);
+            NSLog(@"JO Cut: %@ %@ : %@ : %@",self.lastname, race.distance,race.stroke,race.time);
             cuts->jos++;
         }
     }
 }
 
 - (NSArray*)personalBests {
-    NSMutableArray* strokes;
     NSMutableArray* all_requested_times = [NSMutableArray array];
     NSArray*        all_sorted_requested_times = nil;
     NSSet*          raceSet = self.races;
     NSArray *       times = [raceSet allObjects];
     
-    int distances[] = { 25, 50, 100, 200, 500, 1000, 1650 };
-    strokes   = [NSArray arrayWithObjects:@"Fly", @"Back", @"Breast", @"Free", @"IM", nil];
+    int distances[] = { 25, 50, 100, 200, 400, 500, 1000, 1650 };
+    NSArray* strokes   = [[NSArray alloc] initWithObjects:@"Fly", @"Back", @"Breast", @"Free", @"IM", nil];
     
     for (int i=0;i<sizeof(distances)/sizeof(distances[0]);i++) {
         for (int j=0;j<[strokes count]; j++) {
@@ -109,6 +109,12 @@
     
     all_sorted_requested_times = [all_requested_times sortedArrayUsingSelector:@selector(compareByDistance:)];        
 
+    //NSLog(@"personalBests: releasing %08x",(unsigned int)all_requested_times);
+    //[all_requested_times release];
+    
+    NSLog(@"personalBests:%@ times %08x, strokes %08x",self.firstname,(unsigned int)times,(unsigned int)strokes);
+    NSLog(@"personalBests:%@ returning %08x",self.firstname,(unsigned int)all_sorted_requested_times);
+    [strokes release];
     return all_sorted_requested_times;
 }
 

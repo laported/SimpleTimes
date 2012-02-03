@@ -52,12 +52,12 @@
 
 - (NSComparisonResult)compareByDistance:(RaceResultMI *)otherObject
 {
-     if (self.distance < otherObject.distance)
+     if (self.distance > otherObject.distance)
      {
          return NSOrderedDescending;
      }
      
-     if (self.distance > otherObject.distance)
+     if (self.distance < otherObject.distance)
      {
      return NSOrderedAscending;
      }

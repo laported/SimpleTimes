@@ -1,0 +1,3807 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript" TYPE="TEXT/JAVASCRIPT" SRC="aAthResultsWithPSMR.js">
+<!--
+//-->
+</SCRIPT>
+<SCRIPT language=vbscript>
+	Function PSMRExport()
+		sqlParam = document.form2.HiddenSQL.value
+		LastParam = document.form2.HiddenLast.value
+		FirstParam = document.form2.HiddenFirst.value
+		Athlete = document.form2.Athhidden.value
+		DBParam = document.form2.hiddenDB.value
+		strURL="aPSMRExport.asp"
+		
+		StrURL=strURL + "?LAST=" & LastParam & "&First=" & FirstParam & "&DB=" & DBParam & "&ATHLETE=" & Athlete & "&SQL=" & sqlParam 
+	  window.open strURL,"_self"
+	end Function
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" TYPE="TEXT/JAVASCRIPT" SRC="aAthResultsWithPSMR.js">
+</SCRIPT>
+<link rel="stylesheet" href="print.css" type="text/css" media="print">
+
+		<link rel="stylesheet" href="aTMO.css" type="text/css">
+
+<style type="text/css" media="screen">
+	.showprint { display:none;font-family: "Times New Roman", Times, serif;
+		background-color:white;
+		color: black;
+		font-style: normal;
+		font-weight: bold}
+	.wrapper {
+		margin: 0 auto;
+		width: 960px;
+		text-align: left;
+}</style>
+</HEAD>
+<BODY bgcolor="#003366" text="FFFFFF">
+<form action=checkproductd()  method=get id=form2 name=form2>
+<div class="wrapper">
+
+
+<script language="JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function MM_findObj(n, d) { //v4.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && document.getElementById) x=document.getElementById(n); return x;
+}
+//-->
+</script>
+<STYLE type="text/css">
+A:link {text-decoration:none;color:white;};
+A:visited {text-decoration:none;color:white;};
+A:hover {text-decoration:none;color:yellow;};
+.menu {  font-family: Arial, Helvetica, sans-serif; font-size: 12px;  line-height: 15px; font-weight: bold;
+</STYLE>
+      
+<span  style="float:left;margin-left:0;" align="left" id="noprint">
+  
+<table width="1000" border="0" cellpadding="2" height="57" bgcolor="#003366">
+    <tr valign="top">
+      
+    <td width="12" height="20" class="menu"></td>
+    <td align="left"  height="20" class="menu" width="1925">
+			<b><font face="Times New Roman, Times, serif" size="3" color="#FFFFFF">&nbsp;Hy-Tek's </FONT><FONT COLOR="FFFF99" SIZE="3">Team Stats </FONT><FONT COLOR="FFFFFF" SIZE="3"><i>Online</i></font></b>&nbsp;
+			<font color="#FFFF99" SIZE="2"><b>
+      for Michigan Swimming LSC Office Copy                           
+        &nbsp;&nbsp;&nbsp;&nbsp;<font size="1" COLOR="#FFFFFF">	Version 2.0C</font>			</b></font>
+			</td>
+    </tr>
+    <tr valign="top">
+     <td width="12" height="23" class="menu"></td>
+      <td width="1925" height="23" class="menu">
+     
+		<a href="index.asp?STRIPPED=MichiganSwimmingLSCOfficeCopy"><img src="buttonHome.gif" alt="Home Page contains Team selection and Team Information."></a>
+	
+	&nbsp;
+	<a href="aATHLETE.asp?DB=upload\MichiganSwimmingLSCOfficeCopy.mdb"><img src="buttonAthlete.gif"></a>
+      &nbsp;
+	  
+	      		<a href="aTeamResultsWithSeason.Asp?db=upload\MichiganSwimmingLSCOfficeCopy.mdb&TEAM=0&CODE=Michigan Swimming LSC Office Copy                           &STROKE=1&DISTANCE=100&FASTEST=1&theSORT=Score%>""><img src="buttonRank.gif" alt="Allows you to view Results Ranking by LSC."></a>
+				
+	      &nbsp;
+		 
+      <a href="aTeams.Asp?DB=upload\MichiganSwimmingLSCOfficeCopy.mdb&SEASON=on"><img src="buttonTeams.gif" alt="Allows you to view Results by Team."></a>
+      &nbsp;
+      <a href="aMEETS.asp?DB=upload\MichiganSwimmingLSCOfficeCopy.mdb"><img src="buttonMeetResults.gif"></a>
+      &nbsp;
+      <a href="aMEETS.asp?ENTRY=TRUE&DB=upload\MichiganSwimmingLSCOfficeCopy.mdb"><img src="buttonEntries.gif" alt="Teams may optionally show Entries for future meets."></a>
+      &nbsp;
+      <a href="aRECORDS.ASP?DB=upload\MichiganSwimmingLSCOfficeCopy.mdb"><img src="buttonRecords.gif" alt="Teams may optionally show any one record file."></a>
+      &nbsp;
+      <a href="aSTANDARDS.ASP?DB=upload\MichiganSwimmingLSCOfficeCopy.mdb"><img src="buttonStandards.gif" alt="Teams may optionally show any one set of Time Standards."></a>
+      &nbsp;
+      <a href="" onClick="javascript:help_window=window.open('http://www.sports-tek.com/tmonline/help/index.html','help_window','scrollbars=yes,menu=false,resizable=yes');help_window.focus(); return false"><img src="buttonHelp.gif"></a></td>
+    </tr>
+      
+  </table>
+</span>
+
+<div  style="margin-top:0; margin-left:0; float:left;" ID="noprint">
+    <TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0  width="911" height="48">
+      <tr valign="middle"> 
+        <td align=center  width="9" height="27" class="Label">
+         
+        <td align=left width="400" class="label" height="27">
+          
+				  <input type="hidden" name="hiddenDB" value="upload\MichiganSwimmingLSCOfficeCopy.mdb">
+  			  <input type="hidden" name="hiddenFirst" value="Benjamin">
+  			  <input type="hidden" name="hiddenLast" value="LaPorte">
+          
+			    <input type="hidden" name="Athhidden" value="11655">
+			    
+         <b><font color="#FFFF99" size="3">
+          Benjamin LaPorte
+        </font></b>
+         </td>
+        <td align=left width="433"  colspan="2" class="label" height="27">
+          <input type="button" class="abutton"  name="btnprint" title="If you are using Internet Explorer, you can select File from the main Menu and then Print Preview to see how your results will print." value="Print Results"  onClick="window.print()">
+          &nbsp;&nbsp;
+          <input type="button" class="abutton"  name="btnExport" value="Export to PSM-R"  onClick="PSMRExport()">
+           &nbsp;&nbsp;
+          <input type="button" class="abutton"  name="btngraph" title="Graph Results - must select 1 course/stroke/distance" value="Graph Results"  onClick="GraphIt()">
+         
+        </td>
+      </tr>
+      <tr valign="top"> 
+        <TD align=right width="9" height="27"> 
+
+      </td>
+        <TD align=left width="900" colspan="3" class="label" height="27"> 
+        Meet&nbsp; 
+          <select name=lstMeet  onChange="CheckProduct()">
+            <option value="" selected>&nbsp; 
+            
+                    </option>
+					<option value="1270" > 
+            		2/18/2012&nbsp;2012 MI PAC Crocodile Rock
+                    </option>
+					<option value="1272" > 
+            		2/17/2012&nbsp;2012 MI RDSC Romeo and Juliet
+                    </option>
+					<option value="1269" > 
+            		2/17/2012&nbsp;2012 MI SMAC 11th Last Chance 
+                    </option>
+					<option value="1273" > 
+            		2/11/2012&nbsp;Spartan Blizzard Bowl
+                    </option>
+					<option value="1265" > 
+            		2/11/2012&nbsp;2012 MI LL Guppy Bowl
+                    </option>
+					<option value="1274" > 
+            		2/10/2012&nbsp;2012 MI HVP Best ValenTimes Ev
+                    </option>
+					<option value="1247" > 
+            		2/3/2012&nbsp;2012 MI OLY Michigan Open
+                    </option>
+					<option value="1267" > 
+            		2/3/2012&nbsp;2012 MI DRD Groundhog Splash
+                    </option>
+					<option value="1257" > 
+            		1/28/2012&nbsp;2012 MI ROCK Super Splash
+                    </option>
+					<option value="1260" > 
+            		1/27/2012&nbsp;2012 MI GPG Romp In The Swamp 
+                    </option>
+					<option value="1253" > 
+            		1/21/2012&nbsp;2012 MI SLA Arctic Blast
+                    </option>
+					<option value="1242" > 
+            		1/20/2012&nbsp;2012 MI USSC Odd Age Group Dis
+                    </option>
+					<option value="1249" > 
+            		1/13/2012&nbsp;2012 MI PA Frost Fest
+                    </option>
+					<option value="1233" > 
+            		1/13/2012&nbsp;2012 MI RAYS JAWS GLTC
+                    </option>
+					<option value="1275" > 
+            		1/13/2012&nbsp;2012 MI BAC Winterfest
+                    </option>
+					<option value="1277" > 
+            		1/7/2012&nbsp;2012 MI AP EGRA vs. HEAT
+                    </option>
+					<option value="1268" > 
+            		12/18/2011&nbsp;2011 LE VSC Candy Cane Classic
+                    </option>
+					<option value="1279" > 
+            		12/17/2011&nbsp;2011 MI AP WMS Christmas Class
+                    </option>
+					<option value="1237" > 
+            		12/16/2011&nbsp;2011 MI CW  Holiday Invite
+                    </option>
+					<option value="1278" > 
+            		12/16/2011&nbsp;2011 MI OLY December Meet
+                    </option>
+					<option value="1258" > 
+            		12/10/2011&nbsp;2011 MI LAC Quad Meet
+                    </option>
+					<option value="1256" > 
+            		12/10/2011&nbsp;2011 OH BGSC Holiday Invitatio
+                    </option>
+					<option value="1226" > 
+            		12/9/2011&nbsp;2011 MI LL Snow Bowl
+                    </option>
+					<option value="1259" > 
+            		12/9/2011&nbsp;2011 OH MAKO Holiday Spirit In
+                    </option>
+					<option value="1230" > 
+            		12/9/2011&nbsp;2011 MI LCSC Snowball Splash
+                    </option>
+					<option value="1231" > 
+            		12/3/2011&nbsp;2011 MI HSS Shiver and Splash
+                    </option>
+					<option value="1229" > 
+            		12/2/2011&nbsp;2011 MI GLT Tsunami IMX Winter
+                    </option>
+					<option value="1221" > 
+            		12/2/2011&nbsp;2011 MI EGRA ABC WinterWashout
+                    </option>
+					<option value="1266" > 
+            		12/2/2011&nbsp;2011 LE Shaker Shark Invitatio
+                    </option>
+					<option value="1254" > 
+            		12/2/2011&nbsp;2011 IN FAST Santa Claus Class
+                    </option>
+					<option value="1255" > 
+            		11/25/2011&nbsp;2011 OH GTAC Turkey Meet
+                    </option>
+					<option value="1251" > 
+            		11/20/2011&nbsp;2011 MI BBD Day After Meet
+                    </option>
+					<option value="1214" > 
+            		11/19/2011&nbsp;2011 MI SAC Thanksgiving Class
+                    </option>
+					<option value="1244" > 
+            		11/19/2011&nbsp;2011 MI ROCK Fall Fiesta
+                    </option>
+					<option value="1240" > 
+            		11/18/2011&nbsp;2011 MI OB MHSAA D2G State Mee
+                    </option>
+					<option value="1241" > 
+            		11/18/2011&nbsp;2011 MI OB MHSAA D3G State Mee
+                    </option>
+					<option value="1215" > 
+            		11/18/2011&nbsp;2011 MI KAW Score Your Own Age
+                    </option>
+					<option value="1246" > 
+            		11/18/2011&nbsp;2011 MI OB MHSAA D1G State Mee
+                    </option>
+					<option value="1245" > 
+            		11/16/2011&nbsp;2011 MI CW Pro Duel
+                    </option>
+					<option value="1238" > 
+            		11/12/2011&nbsp;2011 MI OLY Fall Dual Meet
+                    </option>
+					<option value="1220" > 
+            		11/12/2011&nbsp;2011 MI PAC The Gobbler
+                    </option>
+					<option value="1218" > 
+            		11/11/2011&nbsp;2011 MI L Original SYOA
+                    </option>
+					<option value="1263" > 
+            		11/11/2011&nbsp;2011 MI DCAC Red White Blue Cl
+                    </option>
+					<option value="1234" > 
+            		11/5/2011&nbsp;2011 MI USSC vs NS Dual Meet
+                    </option>
+					<option value="1243" > 
+            		11/4/2011&nbsp;2011 MI CSW Harvest Classic
+                    </option>
+					<option value="1235" > 
+            		11/4/2011&nbsp;2011 MI OB NCAA MICH v FL v St
+                    </option>
+					<option value="1236" > 
+            		10/28/2011&nbsp;2011 MI OB NCAA MICH vs TX vs 
+                    </option>
+					<option value="1216" > 
+            		10/22/2011&nbsp;2011 MI SMAC  La-Z-Boy Classic
+                    </option>
+					<option value="1225" > 
+            		10/22/2011&nbsp;2011 MI WMS Boo Bash
+                    </option>
+					<option value="1250" > 
+            		10/21/2011&nbsp;2011 MI OLY Fall Classic
+                    </option>
+					<option value="1227" > 
+            		10/21/2011&nbsp;2011 MI OB NCAA MICH vs Toledo
+                    </option>
+					<option value="1211" > 
+            		10/14/2011&nbsp;2011 MI USSC TRICK OR TREAT GR
+                    </option>
+					<option value="1210" > 
+            		10/1/2011&nbsp;2011 MI S Pentathlon
+                    </option>
+					<option value="1202" > 
+            		8/20/2011&nbsp;Zukey Lake Open Water 2011
+                    </option>
+					<option value="1209" > 
+            		8/8/2011&nbsp;2011 US Speedo Junior National
+                    </option>
+					<option value="1188" > 
+            		8/8/2011&nbsp;2011 CZ 14 & U Open Water Cham
+                    </option>
+					<option value="1208" > 
+            		8/8/2011&nbsp;2011 US Speedo Junior National
+                    </option>
+					<option value="1189" > 
+            		8/5/2011&nbsp;2011 IN Central Zone 14 & U Ch
+                    </option>
+					<option value="1205" > 
+            		8/2/2011&nbsp;2011 US ConocoPhillips Nationa
+                    </option>
+					<option value="1178" > 
+            		7/30/2011&nbsp;2011 MI CSW USSC Summer Shorts
+                    </option>
+					<option value="1191" > 
+            		7/29/2011&nbsp;2011 MI PCC BAC 14&U LCM State
+                    </option>
+					<option value="1206" > 
+            		7/25/2011&nbsp;2011 YMCA National Long Course
+                    </option>
+					<option value="1190" > 
+            		7/22/2011&nbsp;2011 MI JAWS Open LCM State Ch
+                    </option>
+					<option value="1207" > 
+            		7/21/2011&nbsp;2011 LE Central Zone Sectional
+                    </option>
+					<option value="1200" > 
+            		7/16/2011&nbsp;2011 MI CW Closed Saturday Spe
+                    </option>
+					<option value="1198" > 
+            		7/16/2011&nbsp;2011 MI DRD July Open Meet
+                    </option>
+					<option value="1199" > 
+            		7/16/2011&nbsp;2011 MI S Last Chance July Mee
+                    </option>
+					<option value="1166" > 
+            		7/16/2011&nbsp;2011 MI MLA West Michigan Clas
+                    </option>
+					<option value="1201" > 
+            		7/14/2011&nbsp;2011 MI AP JAWS v EGRA
+                    </option>
+					<option value="1194" > 
+            		7/9/2011&nbsp;2011 MI OLY LC Closed Tri-Invi
+                    </option>
+					<option value="1197" > 
+            		7/8/2011&nbsp;2011 IN IA Summer Spectacular
+                    </option>
+					<option value="1193" > 
+            		7/8/2011&nbsp;2011MI EGRA 12&U Closed Meet
+                    </option>
+					<option value="1174" > 
+            		7/8/2011&nbsp;2011 MI BAYS Beat The Heat
+                    </option>
+					<option value="1157" > 
+            		7/7/2011&nbsp;2011 MI EGRA Calvin Summer Sen
+                    </option>
+					<option value="1192" > 
+            		7/1/2011&nbsp;2011 OH Peppe-Bruce Memorial I
+                    </option>
+					<option value="1164" > 
+            		6/25/2011&nbsp;2011 MI MLA Big Red Challange
+                    </option>
+					<option value="1187" > 
+            		6/24/2011&nbsp;2011 MI AP Zeeland Summer Clas
+                    </option>
+					<option value="1172" > 
+            		6/24/2011&nbsp;2011 MI JCAC Rose City Invitat
+                    </option>
+					<option value="1203" > 
+            		6/24/2011&nbsp;2011 OH CM "TYR Sport" Summer 
+                    </option>
+					<option value="1170" > 
+            		6/24/2011&nbsp;2011 MI CUDA Summer Sizzler
+                    </option>
+					<option value="1186" > 
+            		6/23/2011&nbsp;2011 MI AP EGRA vs. West Ottaw
+                    </option>
+					<option value="1184" > 
+            		6/17/2011&nbsp;2011 MI GLA Summer Solstice
+                    </option>
+					<option value="1185" > 
+            		6/17/2011&nbsp;2011 LE LESD Busbey Meet
+                    </option>
+					<option value="1168" > 
+            		6/17/2011&nbsp;2011 MI DRD Freeze or Fry
+                    </option>
+					<option value="1182" > 
+            		6/16/2011&nbsp;2011 MI AP EGRA vs. Rockford
+                    </option>
+					<option value="1183" > 
+            		6/16/2011&nbsp;2011 MI AP JAWS v WOSC
+                    </option>
+					<option value="1180" > 
+            		6/11/2011&nbsp;2011 OLY Closed Invite
+                    </option>
+					<option value="1165" > 
+            		6/10/2011&nbsp;2011 MI OLY Long Course Senior
+                    </option>
+					<option value="1169" > 
+            		6/10/2011&nbsp;2011 MI JAWS Sun & Fun ABC IMX
+                    </option>
+					<option value="1167" > 
+            		6/3/2011&nbsp;2011 MI CW Summerfeest AB
+                    </option>
+					<option value="1204" > 
+            		5/28/2011&nbsp;2011 NC AP 9th National Black 
+                    </option>
+					<option value="1179" > 
+            		5/28/2011&nbsp;2011 MI JAWS (CLOSED) First Ch
+                    </option>
+					<option value="1155" > 
+            		5/21/2011&nbsp;2011 MI CSW Memorial Open
+                    </option>
+					<option value="1175" > 
+            		5/20/2011&nbsp;2011 IN BA Early Bird
+                    </option>
+					<option value="1154" > 
+            		5/20/2011&nbsp;2011 MI LAC Spring Tune-up
+                    </option>
+					<option value="1173" > 
+            		5/14/2011&nbsp;2011 MI PCC CLOSED Meet
+                    </option>
+					<option value="1156" > 
+            		5/13/2011&nbsp;2011 MI PCC Cruisin' Into Summ
+                    </option>
+					<option value="1177" > 
+            		4/8/2011&nbsp;2011 Eric Namesnik Grand Prix
+                    </option>
+					<option value="1176" > 
+            		3/24/2011&nbsp;2011 Central Zone Section 3 Ch
+                    </option>
+					<option value="1128" > 
+            		3/19/2011&nbsp;2011 MI LATS 8 and Under Swim 
+                    </option>
+					<option value="1148" > 
+            		3/18/2011&nbsp;2011 MI CW TSSD 13 -14 & Open 
+                    </option>
+					<option value="1149" > 
+            		3/18/2011&nbsp;2011 OH AP Great Lakes Zone Ch
+                    </option>
+					<option value="1153" > 
+            		3/15/2011&nbsp;2011 FL AP NCSA Jr National Ch
+                    </option>
+					<option value="1147" > 
+            		3/13/2011&nbsp;2011 MI BBD Day After Meet
+                    </option>
+					<option value="1146" > 
+            		3/11/2011&nbsp;2011 MI OBS MHSAA B D3 State
+                    </option>
+					<option value="1145" > 
+            		3/11/2011&nbsp;2011 MI OBS MHSAA B D2 State
+                    </option>
+					<option value="1144" > 
+            		3/11/2011&nbsp;2011 MI OBS MHSAA B D1 State
+                    </option>
+					<option value="1132" > 
+            		3/11/2011&nbsp;2011 MI WMS/WOSC 12 & UNDER ST
+                    </option>
+					<option value="1143" > 
+            		3/4/2011&nbsp;2011 MI LAC JO West
+                    </option>
+					<option value="1123" > 
+            		3/4/2011&nbsp;2011 MI BBA JO East Meet
+                    </option>
+					<option value="1120" > 
+            		2/25/2011&nbsp;2011 MI JAWS District Champion
+                    </option>
+					<option value="1122" > 
+            		2/25/2011&nbsp;2011 MI USSC District Champion
+                    </option>
+					<option value="1121" > 
+            		2/25/2011&nbsp;2011 MI LCSC District Champion
+                    </option>
+					<option value="1135" > 
+            		2/18/2011&nbsp;2011 MI SMAC Last Chance Meet
+                    </option>
+					<option value="1102" > 
+            		2/18/2011&nbsp;2011 MI RDSC Romeo & Juliet
+                    </option>
+					<option value="1133" > 
+            		2/12/2011&nbsp;2011 MI LL Guppy Bowl
+                    </option>
+					<option value="1134" > 
+            		2/11/2011&nbsp;2011 MI OLY  Michigan Open
+                    </option>
+					<option value="1091" > 
+            		2/5/2011&nbsp;2011 MI S Spartan Blizzard Bow
+                    </option>
+					<option value="1084" > 
+            		2/4/2011&nbsp;2011 MI HVP Best ValenTimes Ev
+                    </option>
+					<option value="1095" > 
+            		1/29/2011&nbsp;2011 MI ROCK Super Splash
+                    </option>
+					<option value="1094" > 
+            		1/28/2011&nbsp;2011 MI GPG Romp In The Swamp 
+                    </option>
+					<option value="1125" > 
+            		1/28/2011&nbsp;2011 MI OB MICH  Men vs PSU, O
+                    </option>
+					<option value="1126" > 
+            		1/28/2011&nbsp;2011 IN Circle City Classic
+                    </option>
+					<option value="1083" > 
+            		1/21/2011&nbsp;2011 MI USSC Odd Age Group Dis
+                    </option>
+					<option value="1110" > 
+            		1/16/2011&nbsp;2011 MI OB MICH Men vs Purdue
+                    </option>
+					<option value="1109" > 
+            		1/15/2011&nbsp;2011 MI OB MICH Men vs EMU
+                    </option>
+					<option value="1082" > 
+            		1/14/2011&nbsp;2011 MI PA Frost Fest
+                    </option>
+					<option value="1117" > 
+            		1/14/2011&nbsp;2011 MI PA Frost Fest TimeTria
+                    </option>
+					<option value="1118" > 
+            		1/14/2011&nbsp;2011 MI BAC Winterfest Meet
+                    </option>
+					<option value="1112" > 
+            		1/14/2011&nbsp;2011 IN CSC Winter Invite
+                    </option>
+					<option value="1116" > 
+            		1/14/2011&nbsp;2011 MI RAYS JAWS GLTC
+                    </option>
+					<option value="1105" > 
+            		1/8/2011&nbsp;2011 IN Mid-States Quadrangula
+                    </option>
+					<option value="1111" > 
+            		1/8/2011&nbsp;2011 OH Northwest Ohio Winter 
+                    </option>
+					<option value="1097" > 
+            		12/18/2010&nbsp;2010 MI OLY Closed Tri-Meet
+                    </option>
+					<option value="1098" > 
+            		12/18/2010&nbsp;2010 MI JAWS Last Chance
+                    </option>
+					<option value="1077" > 
+            		12/17/2010&nbsp;2010 MI CW Holiday Invitationa
+                    </option>
+					<option value="1150" > 
+            		12/12/2010&nbsp;2010 US  Jr LC Invite
+                    </option>
+					<option value="1075" > 
+            		12/10/2010&nbsp;2010 MI LCSC Snowball Splash
+                    </option>
+					<option value="1069" > 
+            		12/10/2010&nbsp;2010 MI LL Snow Bowl
+                    </option>
+					<option value="1151" > 
+            		12/9/2010&nbsp;2010 US SC Jr Natls
+                    </option>
+					<option value="1072" > 
+            		12/4/2010&nbsp;2010 MI HSS Shiver and Splash
+                    </option>
+					<option value="1092" > 
+            		12/3/2010&nbsp;2010 MI GLT Tsunami Winter IMX
+                    </option>
+					<option value="1087" > 
+            		12/3/2010&nbsp;2010 IN FAST Santa Claus Class
+                    </option>
+					<option value="1057" > 
+            		12/3/2010&nbsp;2010 MI EGRA ABC Winter Washou
+                    </option>
+					<option value="1152" > 
+            		12/2/2010&nbsp;2010 US SCY Nationals
+                    </option>
+					<option value="1108" > 
+            		11/21/2010&nbsp;2010 MI BBD Fall Day After Mee
+                    </option>
+					<option value="1064" > 
+            		11/20/2010&nbsp;2010 MI ROCK Fall Fiesta Sprin
+                    </option>
+					<option value="1113" > 
+            		11/20/2010&nbsp;2010 IN USA-S IM Xtreme Games
+                    </option>
+					<option value="1061" > 
+            		11/20/2010&nbsp;2010 MI SAC Thanksgiving Class
+                    </option>
+					<option value="1141" > 
+            		11/19/2010&nbsp;2010 MI OB MHSAA G D3
+                    </option>
+					<option value="1140" > 
+            		11/19/2010&nbsp;2010 MI OB MHSAA G D2
+                    </option>
+					<option value="1139" > 
+            		11/19/2010&nbsp;2010 MI OB MHSAA G D1
+                    </option>
+					<option value="1063" > 
+            		11/19/2010&nbsp;2010 MI KAW Score Your Own Age
+                    </option>
+					<option value="1086" > 
+            		11/19/2010&nbsp;2010 LE The Mark J. Braun Fall
+                    </option>
+					<option value="1067" > 
+            		11/13/2010&nbsp;2010 MI DCAC - Red, White and 
+                    </option>
+					<option value="1056" > 
+            		11/12/2010&nbsp;2010 MI L The Original Swim Yo
+                    </option>
+					<option value="1051" > 
+            		11/6/2010&nbsp;2010 MI CSW Harvest Classic
+                    </option>
+					<option value="1053" > 
+            		11/6/2010&nbsp;2010 MI DRD Autumn Aquafest
+                    </option>
+					<option value="1049" > 
+            		10/23/2010&nbsp;2010 MI SMAC La-Z-Boy Classic
+                    </option>
+					<option value="1052" > 
+            		10/23/2010&nbsp;2010 MI WMS Boo Bash
+                    </option>
+					<option value="1076" > 
+            		10/22/2010&nbsp;2010 MI USSC Trick or Treat Gr
+                    </option>
+					<option value="1045" > 
+            		10/15/2010&nbsp;2010 MI OLY Fall Classic
+                    </option>
+					<option value="1068" > 
+            		10/8/2010&nbsp;2010 MI OB MICH W vs MINN W
+                    </option>
+					<option value="1042" > 
+            		10/2/2010&nbsp;2010 MI S Pentathlon
+                </option>
+			</select>
+		
+			<input type="hidden" name="chkSTD" size="1">
+		
+		&nbsp;&nbsp;&nbsp;Fastest
+          <select name=lstFastest  onChange="CheckProduct()">
+            <option value="1"  >1 
+                        </option>
+			<option value="2" >2 
+                        </option>
+			<option value="3" >3 
+                        </option>
+			<option value="4" >4 
+                        </option>
+			<option value="5" >5 
+                        </option>
+			<option value="" selected>All 
+                        </option>
+			</select>         
+			<select name=lstDistance STYLE="visibility:hidden " tabindex="10" onChange="ResetPage()">
+                    <option value="" selected></option>
+                    <option value="25" >25</option>
+                    <option value="50" >50</option>
+                    <option value="100" >100</option>
+                    <option value="200" >200</option>
+                    <option value="400" >400</option>
+                    <option value="500" >500</option>
+                    <option value="800" >800</option>
+                    <option value="1000" >100</option>
+                    <option value="1500" >150</option>
+                    <option value="1650" >165</option>
+                    <option value="9991" >1 M</option>
+                    <option value="9993" >3 M</option>
+                    <option value="9992" >Pla</option>
+			</select>
+			<select name=lstStroke tabindex="10" STYLE="visibility:hidden" onChange="ResetPage()">
+                    <option value="" selected></option>
+                    <option value="1" >Fre</option>
+                    <option value="2" >Bac</option>
+                    <option value="3" >Bre</option>
+                    <option value="4" >Fly</option>
+                    <option value="5" >IM</option>
+                    <option value="6" >6 </option>
+                    <option value="7" >11</option>
+			</select>
+          </td>
+      </tr>
+    </TABLE>
+	</div>
+	<div class="showprint">
+		<font size=3>Benjamin LaPorte</font>
+	</div>
+<div  style="margin-top:5; margin-left:0; width:120px; float:left;" ID="noprint">
+    <TABLE  BORDER=0 CELLPADDING=0 CELLSPACING=0  width="60px" height="200">
+      <tr valign="top"> 
+	  	<td colspan="2" align="center" height="25">
+		</td>
+		</tr>
+      <tr valign="top"> 
+	  	<td colspan="2" align="center" class="label"  height="25">
+       Course 
+          <select name=lstCourse onChange="ResetPage()">
+			<option value="Y" selected>Yards</option>
+			<option value="S" >SCM</option>
+			<option value="L" >LCM</option>
+			</select>
+		</td>
+		</tr>
+      <tr valign="top"> 
+		<td align=center colspan="2" class="label"> 
+		<input type="button" style="font-family: Arial, Helvetica, sans-serif;	font-size: 10px;width:120px"  name="btnRefresh0"  value="All Events" onClick="SetEvent(0,0)">
+		</td>
+		</tr>
+      <tr valign="top"> 
+		<td align=left class="label"> 
+		<input type="button"  class="eventbutton"  name="btnRefresh1"  value="25 Free" onClick="SetEvent(1,25)">
+		<input type="button"  class="eventbutton"  name="btnRefresh2"  value="50 Free" onClick="SetEvent(1,50)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="100 Free" onClick="SetEvent(1,100)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="200 Free" onClick="SetEvent(1,200)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="400 Free" onClick="SetEvent(1,400)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="500 Free" onClick="SetEvent(1,500)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="800 Free" onClick="SetEvent(1,800)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="1000 Free" onClick="SetEvent(1,1000)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="1500 Free" onClick="SetEvent(1,1500)">
+		<input type="button"  class="eventbutton"  name="btnRefresh4"  value="1650 Free" onClick="SetEvent(1,1650)">
+ 		<input type="button"  class="eventbutton"  name="btnRefresh5"  value="25 Back " onClick="SetEvent(2,25)">
+		<input type="button"  class="eventbutton"  name="btnRefresh6"  value="50 Back " onClick="SetEvent(2,50)">
+		<input type="button"  class="eventbutton"  name="btnRefresh7"  value="100 Back " onClick="SetEvent(2,100)">
+		<input type="button"  class="eventbutton"  name="btnRefresh8"  value="200 Back " onClick="SetEvent(2,200)">
+		</td>
+        <td  class="label" align=left> 
+		<input type="button"  class="eventbutton"  name="btnRefresh9"  value="25 Breast" onClick="SetEvent(3,25)">
+		<input type="button"  class="eventbutton"  name="btnRefresha"  value="50 Breast" onClick="SetEvent(3,50)">
+		<input type="button"  class="eventbutton"  name="btnRefreshb"  value="100 Breast" onClick="SetEvent(3,100)">
+		<input type="button"  class="eventbutton"  name="btnRefreshc"  value="200 Breast" onClick="SetEvent(3,200)">
+		<input type="button"  class="eventbutton"  name="btnRefresh9"  value="25 Fly" onClick="SetEvent(4,25)">
+		<input type="button"  class="eventbutton"  name="btnRefresha"  value="50 Fly" onClick="SetEvent(4,50)">
+		<input type="button"  class="eventbutton"  name="btnRefreshb"  value="100 Fly" onClick="SetEvent(4,100)">
+		<input type="button"  class="eventbutton"  name="btnRefreshc"  value="200 Fly" onClick="SetEvent(4,200)">
+		<input type="button"  class="eventbutton"  name="btnRefreshd"  value="100 IM" onClick="SetEvent(5,100)">
+		<input type="button"  class="eventbutton"  name="btnRefreshe"  value="200 IM" onClick="SetEvent(5,200)">
+		<input type="button"  class="eventbutton"  name="btnRefreshf"  value="400 IM" onClick="SetEvent(5,400)">
+		<input type="button"  class="eventbutton"  name="btnRefreshg"  value="1 Mtr Dive" onClick="SetEvent(6,9991)">
+		<input type="button"  class="eventbutton"  name="btnRefreshh"  value="3 Mtr Dive" onClick="SetEvent(6,9992)">
+		<input type="button"  class="eventbutton"  name="btnRefreshg"  value=" Platform " onClick="SetEvent(6,9993)">
+	</td>
+	</table>
+</div>
+	
+<div style="margin-top:15; margin-left:10; float:left;">
+	<TABLE summary="Results" border="0" cellspacing="1" cellpadding="2" bgcolor="#000000" id=FieldTable width="750" height="33">
+  	<tr><td colspan="11" align="center" class="TopRow">
+			<font size="3" color="#ffff99">
+			 
+			</font>
+	</td></tr>
+		<TR> 
+			<TH scope="col" width="31" align=center class="TopRow" height="16" id="noprint">&nbsp;</Th>
+			<TH scope="col" width="57" align=center class="TopRow" height="16">Dist</Th>
+			<TH scope="col" width="69" align=center class="TopRow" height="16"><a href="aATHRESULTSWithPSMR.ASP?db=upload\MichiganSwimmingLSCOfficeCopy.mdb&ATH=11655&Stroke=&Distance=&Course=Y&Fastest=&MEET=&Sort=intStroke">Stroke</a></Th>
+			<TH scope="col" width="21" align=center class="TopRow" height="16">P/F</Th>
+			<TH scope="col" width ="54" align=center class="TopRow" height="16">Time</TH>
+			
+				
+      <TH scope="col" width="27" align=center class="TopRow" height="16">
+					Std
+					</Th>
+			
+			<TH scope="col" width ="32" align=center class="TopRow" height="16">Place</TH>
+			<TH scope="col" width="23" align=center class="TopRow" height="16">Pts</TH>
+			<TH scope="col" width="43" align=center class="TopRow" height="16"><a href="aATHRESULTSWithPSMR.ASP?db=upload\MichiganSwimmingLSCOfficeCopy.mdb&ATH=11655&Stroke=&Distance=&Course=Y&Fastest=&MEET=&Sort=MEETDATE">Date</a></TH>
+			<TH scope="col" width="250" align=center class="TopRow" height="16">Meet</TH>
+		</TR>
+		
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348614&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">30.26</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1304098&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">30.55</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/19/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332088&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">30.59</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">12</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284275&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">30.69</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">11</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1278784&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">31.06</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">11</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI USSC TRICK OR TREAT GR</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323632&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">31.13</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23">7</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1329308&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">32.24</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32"></TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/11/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI DCAC Red White Blue Cl</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1110916&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">32.33</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/13/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI DCAC - Red, White and </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1202841&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">32.37</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">20</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/25/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC District Champion</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1167891&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">32.52</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/28/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GPG Romp In The Swamp </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1186340&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">32.74</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">19</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/18/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC Last Chance Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1119593&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">32.77</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/20/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1129325&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">33.14</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">8</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/10/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1155819&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">33.49</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23">3</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BAC Winterfest Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1085356&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">34.27</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">14</TD>
+				
+      <TD align=right class="trow"t width="23">17</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/2/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348618&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:06.66</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284279&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:06.97</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">7</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1304101&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:08.12</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">5</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/19/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332085&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:08.89</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">21</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1329213&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:09.45</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">9</TD>
+				
+      <TD align=right class="trow"t width="23">9</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/11/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI DCAC Red White Blue Cl</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1275692&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:09.58</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">15</TD>
+				
+      <TD align=right class="trow"t width="23">16</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/1/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1110919&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:10.89</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/13/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI DCAC - Red, White and </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1202844&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:11.26</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">12</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/25/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC District Champion</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1186342&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:11.28</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">15</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/18/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC Last Chance Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1119595&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:11.83</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/20/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1155815&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:12.16</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">5</TD>
+				
+      <TD align=right class="trow"t width="23">4</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BAC Winterfest Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1097997&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:12.16</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">7</TD>
+				
+      <TD align=right class="trow"t width="23">12</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/23/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SMAC La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1129323&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:13.04</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">9</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/10/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348612&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:21.96</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1278781&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:23.90</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI USSC TRICK OR TREAT GR</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1329211&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:24.65</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23">16</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/11/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI DCAC Red White Blue Cl</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332089&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:25.01</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">8</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1207506&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:28.70</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">24</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">3/4/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BBA JO East Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1119590&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:32.11</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/20/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1110918&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:33.62</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/13/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI DCAC - Red, White and </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1127487&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:35.26</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/3/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI GLT Tsunami Winter IMX</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1129326&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:35.48</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/10/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1155821&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:36.54</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">7</TD>
+				
+      <TD align=right class="trow"t width="23">2</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BAC Winterfest Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332080&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:21.11</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323627&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:23.12</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23">6</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1329210&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:26.16</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/11/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI DCAC Red White Blue Cl</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284278&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:26.18</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1278780&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:28.50</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI USSC TRICK OR TREAT GR</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1202846&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:34.84</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/25/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC District Champion</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1207507&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:40.62</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">14</TD>
+				
+      <TD align=right class="trow"t width="23">3</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">3/4/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BBA JO East Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1186339&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:46.88</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/18/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC Last Chance Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1167889&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:47.11</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/28/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GPG Romp In The Swamp </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1127486&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:50.15</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/3/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI GLT Tsunami Winter IMX</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1129320&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=500','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">500Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">6:52.75</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/10/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348611&ATHLETE=Benjamin LaPorte&STROKE=Free&DISTANCE=1000','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">1000Y</TD>
+				
+      <TD align=left class="trow" width="69">Free</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">12:37.68</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323635&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">35.41</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23">7</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1329214&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">36.43</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">8</TD>
+				
+      <TD align=right class="trow"t width="23">11</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/11/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI DCAC Red White Blue Cl</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332083&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">36.47</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">15</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284372&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">36.72</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32"></TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284281&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">36.87</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1202843&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">38.28</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">14</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/25/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC District Champion</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1186343&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">38.31</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">8</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/18/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC Last Chance Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1275690&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">38.33</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">16</TD>
+				
+      <TD align=right class="trow"t width="23">15</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/1/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1167890&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.04</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/28/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GPG Romp In The Swamp </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1129322&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.31</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">13</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/10/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1203019&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.32</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32"></TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/25/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC District Champion</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1119591&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.71</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/20/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1110920&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.75</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/13/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI DCAC - Red, White and </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1167967&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.82</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32"></TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/28/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GPG Romp In The Swamp </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1155816&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">40.70</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">7</TD>
+				
+      <TD align=right class="trow"t width="23">2</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BAC Winterfest Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1085354&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">43.09</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">16</TD>
+				
+      <TD align=right class="trow"t width="23">15</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/2/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323630&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:15.83</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23">7</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348617&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:15.84</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">10</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332086&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:17.30</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1304100&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:17.58</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/19/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1278782&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:17.70</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI USSC TRICK OR TREAT GR</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284276&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:18.72</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1186341&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:22.57</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">5</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/18/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC Last Chance Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1155820&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:23.93</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">7</TD>
+				
+      <TD align=right class="trow"t width="23">2</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BAC Winterfest Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1110917&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:24.79</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/13/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI DCAC - Red, White and </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1097998&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:25.88</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23">13</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/23/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SMAC La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1119594&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:25.99</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/20/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1129324&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:26.52</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">12</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/10/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1127489&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:26.69</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/3/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI GLT Tsunami Winter IMX</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348615&ATHLETE=Benjamin LaPorte&STROKE=Back&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">Back</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:40.24</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">7</TD>
+				
+      <TD align=right class="trow"t width="23">2</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1275691&ATHLETE=Benjamin LaPorte&STROKE=Breast&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Breast</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">46.86</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">19</TD>
+				
+      <TD align=right class="trow"t width="23">12</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/1/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1085355&ATHLETE=Benjamin LaPorte&STROKE=Breast&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Breast</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">48.91</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">18</TD>
+				
+      <TD align=right class="trow"t width="23">13</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/2/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323628&ATHLETE=Benjamin LaPorte&STROKE=Breast&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Breast</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:38.21</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23">3</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323631&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">34.10</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23">7</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332087&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">34.14</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348619&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">34.27</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284277&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">34.35</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1329212&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">34.54</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23">16</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/11/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI DCAC Red White Blue Cl</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1275689&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">35.39</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">14</TD>
+				
+      <TD align=right class="trow"t width="23">17</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/1/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1085353&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.59</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">14</TD>
+				
+      <TD align=right class="trow"t width="23">17</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/2/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1155817&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=50','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">50Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">39.60</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">9</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BAC Winterfest Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348613&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:18.65</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332084&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:19.24</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">5</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323634&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:20.29</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23">6</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284280&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:21.28</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1202845&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:26.79</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">5</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/25/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC District Champion</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1304099&ATHLETE=Benjamin LaPorte&STROKE=Fly&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">Fly</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">DQ</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32"></TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/19/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1348616&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:18.44</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/13/2012</TD>
+			
+      <TD align=left class="trow" width="250">2012 MI BAC Winterfest</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332082&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:20.50</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">18</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1278783&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:21.26</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">10</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI USSC TRICK OR TREAT GR</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284282&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:21.73</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">7</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1275693&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:22.43</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">15</TD>
+				
+      <TD align=right class="trow"t width="23">16</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/1/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1186344&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:23.39</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">15</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/18/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC Last Chance Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1202842&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:24.27</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">13</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">2/25/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC District Champion</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1127488&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:24.60</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/3/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI GLT Tsunami Winter IMX</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1167892&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:24.77</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/28/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GPG Romp In The Swamp </TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1129321&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:25.37</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/10/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1119592&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:25.96</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">3</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/20/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1155818&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:26.40</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">1/14/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI BAC Winterfest Meet</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1097999&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:26.40</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">1</TD>
+				
+      <TD align=right class="trow"t width="23">20</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/23/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI SMAC La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1085357&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">1:29.83</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">16</TD>
+				
+      <TD align=right class="trow"t width="23">15</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/2/2010</TD>
+			
+      <TD align=left class="trow" width="250">2010 MI S Pentathlon</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323629&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">100Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">DQ</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32"></TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1304097&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:46.76</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">4</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">11/19/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SAC Thanksgiving Class</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1332081&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:47.61</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">2</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/9/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI LCSC Snowball Splash</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1284274&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:47.96</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23"></TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">10/22/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI SMAC  La-Z-Boy Classic</TD>
+			</TR>
+			
+				<TR>
+				
+      <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1323633&ATHLETE=Benjamin LaPorte&STROKE=IM&DISTANCE=200','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
+				
+      <TD align=RIGHT class="trow" width="57">200Y</TD>
+				
+      <TD align=left class="trow" width="69">IM</TD>
+				
+      <TD align=center class="trow" width="21">F</TD>
+				
+      <TD align=right class="trow" width="54">2:49.06</TD>
+			
+      			<TD align=right class="trow" width="27">
+				</TD>
+			
+				
+      <TD align=right class="trow" width="32">6</TD>
+				
+      <TD align=right class="trow"t width="23">3</TD>
+			
+      		
+      <TD align=RIGHT class="trow" width="43">12/2/2011</TD>
+			
+      <TD align=left class="trow" width="250">2011 MI GLT Tsunami IMX Winter</TD>
+			</TR>
+			
+		<TR> 
+	</TABLE>
+	</div>
+	</div>
+  <input type="hidden" name="hiddenSQL" value=" AND RESULT.COURSE='Y'">
+</form>
+
+</BODY>
+
