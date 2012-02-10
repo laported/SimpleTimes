@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
-#import "DetailSwimmerViewController.h"
 
-@interface SimpleTimesAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@class DetailViewScrollController;
+
+//@interface SimpleTimesAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> 
+@interface SimpleTimesAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+{
 
 }
 
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (strong, nonatomic) UITabBarController *tabBarController;
 
 
 - (void)saveContext;
@@ -25,9 +27,9 @@
 // iOS 3 compatible
 - (NSString *)applicationStringDocumentsDirectory;
 
-@property (retain, nonatomic) IBOutlet UISplitViewController *splitViewController;
+@property (strong,nonatomic) IBOutlet UIWindow *window;
+@property (strong, nonatomic) UITabBarController *tabBarController;
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 @property (nonatomic, retain) IBOutlet RootViewController *rootVC;

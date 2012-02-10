@@ -39,6 +39,7 @@ typedef CUTS* PCUTS;
 
 - (int)      ageAtDate:(NSDate*)date ;
 - (void)     countCuts:(PCUTS)cuts;
+- (NSArray*) allResults;              // and array of all available RaceResult objects
 - (NSArray*) personalBests;           // an array of RaceResult objects
 - (NSArray*) allStrokesWithResults;   // an array of (unique) stroke names for which this athlete has results
 - (NSArray*) allDistancesForStroke:(int)stroke;

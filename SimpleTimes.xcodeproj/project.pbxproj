@@ -19,14 +19,13 @@
 		1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */; };
 		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
 		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
+		1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5614E43B05007F1760 /* clock_24.png */; };
 		1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */; };
 		1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */; };
 		1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A514D4EA22006D428C /* reload_v2.png */; };
 		1E6BF1AA14D4EE8B006D428C /* reload_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A914D4EE8B006D428C /* reload_v2@2x.png */; };
-		1E6BF1B314D576C8006D428C /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1B114D576C8006D428C /* MainWindow-iPad.xib */; };
 		1E6BF1B814D629E9006D428C /* DetailSwimmerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */; };
-		1E6BF1B914D629E9006D428C /* DetailSwimmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1B714D629E9006D428C /* DetailSwimmerViewController.xib */; };
-		1E6BF1BE14D6B252006D428C /* RootViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1BD14D6B252006D428C /* RootViewController_iPad.m */; };
+		1E6BF1BE14D6B252006D428C /* RootViewController_iPad_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1BD14D6B252006D428C /* RootViewController_iPad_old.m */; };
 		1E6BF1C014D71E44006D428C /* UnderWater-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */; };
 		1E6BF1C714D77D6C006D428C /* TopTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */; };
 		1E6BF1C814D77D6C006D428C /* TopTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1C614D77D6C006D428C /* TopTimesViewController.xib */; };
@@ -35,6 +34,14 @@
 		1E6BF1D014DB8124006D428C /* Swimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1CF14DB8123006D428C /* Swimming.m */; };
 		1E6BF1D514DB8A9D006D428C /* plus_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1D414DB8A9D006D428C /* plus_24.png */; };
 		1E6BF1D714DB8BC1006D428C /* star_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1D614DB8BC1006D428C /* star_24.png */; };
+		1E6BF21E14DC2D76006D428C /* DetailSwimmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */; };
+		1E6BF27F14DC45BC006D428C /* UnderWater-Portrait-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF27E14DC45BC006D428C /* UnderWater-Portrait-50.png */; };
+		1E6BF34514DD6F57006D428C /* calendar_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34414DD6F57006D428C /* calendar_24.png */; };
+		1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF34714DD70AA006D428C /* AllTimesViewController.m */; };
+		1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */; };
+		1E6BF35214DD8435006D428C /* DetailViewScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF35014DD8433006D428C /* DetailViewScrollController.m */; };
+		1E6BF35314DD8435006D428C /* DetailViewScrollController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF35114DD8434006D428C /* DetailViewScrollController.xib */; };
+		1E6BF35614DD8EA0006D428C /* ContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF35514DD8E9D006D428C /* ContentController.m */; };
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
 		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
 		1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */; };
@@ -89,16 +96,15 @@
 		1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTimesMI.h; sourceTree = "<group>"; };
 		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
+		1E3A6E5614E43B05007F1760 /* clock_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock_24.png; path = images/clock_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = ../Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1E6BF1A514D4EA22006D428C /* reload_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload_v2.png; path = ../reload_v2.png; sourceTree = "<group>"; };
 		1E6BF1A914D4EE8B006D428C /* reload_v2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reload_v2@2x.png"; path = "../reload_v2@2x.png"; sourceTree = "<group>"; };
-		1E6BF1B214D576C8006D428C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = "iPad/en.lproj/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		1E6BF1B514D629E9006D428C /* DetailSwimmerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSwimmerViewController.h; sourceTree = "<group>"; };
 		1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSwimmerViewController.m; sourceTree = "<group>"; };
-		1E6BF1B714D629E9006D428C /* DetailSwimmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailSwimmerViewController.xib; sourceTree = "<group>"; };
-		1E6BF1BC14D6B252006D428C /* RootViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController_iPad.h; sourceTree = "<group>"; };
-		1E6BF1BD14D6B252006D428C /* RootViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController_iPad.m; sourceTree = "<group>"; };
+		1E6BF1BC14D6B252006D428C /* RootViewController_iPad_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController_iPad_old.h; sourceTree = "<group>"; };
+		1E6BF1BD14D6B252006D428C /* RootViewController_iPad_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController_iPad_old.m; sourceTree = "<group>"; };
 		1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait.png"; path = "../UnderWater-Portrait.png"; sourceTree = "<group>"; };
 		1E6BF1C414D77D6C006D428C /* TopTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTimesViewController.h; sourceTree = "<group>"; };
 		1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTimesViewController.m; sourceTree = "<group>"; };
@@ -110,6 +116,17 @@
 		1E6BF1CF14DB8123006D428C /* Swimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimming.m; sourceTree = "<group>"; };
 		1E6BF1D414DB8A9D006D428C /* plus_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus_24.png; path = images/plus_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF1D614DB8BC1006D428C /* star_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_24.png; path = images/star_24.png; sourceTree = SOURCE_ROOT; };
+		1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailSwimmerViewController.xib; sourceTree = "<group>"; };
+		1E6BF27E14DC45BC006D428C /* UnderWater-Portrait-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UnderWater-Portrait-50.png"; sourceTree = SOURCE_ROOT; };
+		1E6BF34414DD6F57006D428C /* calendar_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_24.png; path = images/calendar_24.png; sourceTree = SOURCE_ROOT; };
+		1E6BF34614DD70A9006D428C /* AllTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTimesViewController.h; sourceTree = "<group>"; };
+		1E6BF34714DD70AA006D428C /* AllTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTimesViewController.m; sourceTree = "<group>"; };
+		1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllTimesViewController.xib; sourceTree = "<group>"; };
+		1E6BF34F14DD8432006D428C /* DetailViewScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewScrollController.h; sourceTree = "<group>"; };
+		1E6BF35014DD8433006D428C /* DetailViewScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewScrollController.m; sourceTree = "<group>"; };
+		1E6BF35114DD8434006D428C /* DetailViewScrollController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewScrollController.xib; sourceTree = "<group>"; };
+		1E6BF35414DD8E9C006D428C /* ContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentController.h; sourceTree = SOURCE_ROOT; };
+		1E6BF35514DD8E9D006D428C /* ContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentController.m; sourceTree = SOURCE_ROOT; };
 		1E71FCAC14CB21E80036D12B /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = ../GetBirthdayViewController.h; sourceTree = "<group>"; };
 		1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = ../GetBirthdayViewController.m; sourceTree = "<group>"; };
@@ -206,16 +223,21 @@
 			children = (
 				1E6BF1B514D629E9006D428C /* DetailSwimmerViewController.h */,
 				1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */,
-				1E6BF1B714D629E9006D428C /* DetailSwimmerViewController.xib */,
+				1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */,
+				1E6BF34F14DD8432006D428C /* DetailViewScrollController.h */,
+				1E6BF35014DD8433006D428C /* DetailViewScrollController.m */,
+				1E6BF35114DD8434006D428C /* DetailViewScrollController.xib */,
 				1E6BF1C914DA31DD006D428C /* EnterRaceResultController.h */,
 				1E6BF1CA14DA31DD006D428C /* EnterRaceResultController.m */,
 				1E6BF1CB14DA31DD006D428C /* EnterRaceResultController.xib */,
-				1E6BF1B114D576C8006D428C /* MainWindow-iPad.xib */,
-				1E6BF1BC14D6B252006D428C /* RootViewController_iPad.h */,
-				1E6BF1BD14D6B252006D428C /* RootViewController_iPad.m */,
+				1E6BF1BC14D6B252006D428C /* RootViewController_iPad_old.h */,
+				1E6BF1BD14D6B252006D428C /* RootViewController_iPad_old.m */,
 				1E6BF1C414D77D6C006D428C /* TopTimesViewController.h */,
 				1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */,
 				1E6BF1C614D77D6C006D428C /* TopTimesViewController.xib */,
+				1E6BF34614DD70A9006D428C /* AllTimesViewController.h */,
+				1E6BF34714DD70AA006D428C /* AllTimesViewController.m */,
+				1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -234,6 +256,9 @@
 		1E6BF1D114DB89C9006D428C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1E3A6E5614E43B05007F1760 /* clock_24.png */,
+				1E6BF34414DD6F57006D428C /* calendar_24.png */,
+				1E6BF27E14DC45BC006D428C /* UnderWater-Portrait-50.png */,
 				1E6BF1D614DB8BC1006D428C /* star_24.png */,
 				1E6BF1D414DB8A9D006D428C /* plus_24.png */,
 				1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */,
@@ -287,6 +312,8 @@
 		1EA228A214703E6C00283AD0 /* SimpleTimes */ = {
 			isa = PBXGroup;
 			children = (
+				1E6BF35414DD8E9C006D428C /* ContentController.h */,
+				1E6BF35514DD8E9D006D428C /* ContentController.m */,
 				1E6BF1B414D582FD006D428C /* iPhone */,
 				1E6BF1B014D576C4006D428C /* iPad */,
 				1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */,
@@ -448,13 +475,17 @@
 				1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */,
 				1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */,
 				1E6BF1AA14D4EE8B006D428C /* reload_v2@2x.png in Resources */,
-				1E6BF1B314D576C8006D428C /* MainWindow-iPad.xib in Resources */,
-				1E6BF1B914D629E9006D428C /* DetailSwimmerViewController.xib in Resources */,
 				1E6BF1C014D71E44006D428C /* UnderWater-Portrait.png in Resources */,
 				1E6BF1C814D77D6C006D428C /* TopTimesViewController.xib in Resources */,
 				1E6BF1CD14DA31DE006D428C /* EnterRaceResultController.xib in Resources */,
 				1E6BF1D514DB8A9D006D428C /* plus_24.png in Resources */,
 				1E6BF1D714DB8BC1006D428C /* star_24.png in Resources */,
+				1E6BF21E14DC2D76006D428C /* DetailSwimmerViewController.xib in Resources */,
+				1E6BF27F14DC45BC006D428C /* UnderWater-Portrait-50.png in Resources */,
+				1E6BF34514DD6F57006D428C /* calendar_24.png in Resources */,
+				1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */,
+				1E6BF35314DD8435006D428C /* DetailViewScrollController.xib in Resources */,
+				1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,24 +540,19 @@
 				1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */,
 				1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */,
 				1E6BF1B814D629E9006D428C /* DetailSwimmerViewController.m in Sources */,
-				1E6BF1BE14D6B252006D428C /* RootViewController_iPad.m in Sources */,
+				1E6BF1BE14D6B252006D428C /* RootViewController_iPad_old.m in Sources */,
 				1E6BF1C714D77D6C006D428C /* TopTimesViewController.m in Sources */,
 				1E6BF1CC14DA31DE006D428C /* EnterRaceResultController.m in Sources */,
 				1E6BF1D014DB8124006D428C /* Swimming.m in Sources */,
+				1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */,
+				1E6BF35214DD8435006D428C /* DetailViewScrollController.m in Sources */,
+				1E6BF35614DD8EA0006D428C /* ContentController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		1E6BF1B114D576C8006D428C /* MainWindow-iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1E6BF1B214D576C8006D428C /* en */,
-			);
-			name = "MainWindow-iPad.xib";
-			sourceTree = "<group>";
-		};
 		1EA228A514703E6C00283AD0 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

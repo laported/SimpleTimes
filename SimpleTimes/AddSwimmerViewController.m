@@ -63,6 +63,7 @@
             self.club = s.clubshort;
         }
         _madeSelection = true;
+        [self.navigationController popViewControllerAnimated:YES];
     } else if ([array count] > 1) {
         // dismiss the keyboard
         if([self.firstname isFirstResponder]){
@@ -85,9 +86,8 @@
         [self.progressIndicator setHidden:YES];
     } else {
         // no results found
-        // TODO
+        self.status.text = @"Not found. Select another name:";
     }
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)dealloc

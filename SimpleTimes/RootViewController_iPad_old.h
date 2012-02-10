@@ -12,7 +12,7 @@
 #import "AddSwimmerViewController.h"
 #import "GetBirthdayViewController.h"
 
-@interface RootViewController_iPad : UITableViewController {
+@interface RootViewController_iPad_old : UITableViewController {
     int _viewstate;
     AthleteCD* _addedAthleteCD;
 }

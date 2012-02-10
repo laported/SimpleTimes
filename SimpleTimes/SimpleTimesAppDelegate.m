@@ -7,18 +7,18 @@
 //
 
 #import "SimpleTimesAppDelegate.h"
-#import "DetailSwimmerViewController.h"
+#import "DetailViewScrollController.h"
+#import "AllTimesViewController.h"
 #import "EnterRaceResultController.h"
 
-#ifdef DEBUG
+//#ifdef DEBUG
 #import "Swimmers.h"
-#endif
+//#endif
 
 @implementation SimpleTimesAppDelegate
 
-@synthesize splitViewController = _splitViewController;
+@synthesize window = _window;
 @synthesize tabBarController = _tabBarController;
-@synthesize window=_window;
 
 @synthesize navigationController=_navigationController;
 
@@ -41,23 +41,49 @@
     //self.window.rootViewController = self.navigationController;
     
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
-        [self.window addSubview: self.splitViewController.view];
-        self.rootVC.managedObjectContext = self.managedObjectContext;
-        /*
-        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        //[self.window addSubview: self.splitViewController.view];
+        //self.rootVC.managedObjectContext = self.managedObjectContext;
+        
+//        [[NSBundle mainBundle] loadNibNamed:@"MainWindow_iPad" owner:self options:nil];
+        
+        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+        //[self.window setBackgroundColor:[UIColor redColor]];
         // Override point for customization after application launch.
-        UIViewController *viewController1 = [[DetailSwimmerViewController alloc] initWithNibName:@"DetailSwimmerViewController" bundle:nil];
-        UIViewController *viewController2 = [[EnterRaceResultController alloc] initWithNibName:@"EnterRaceResultController" bundle:nil];
-        self.tabBarController = [[UITabBarController alloc] init];
-        self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
-        self.window.rootViewController = self.tabBarController;
-         */
+        DetailViewScrollController* viewController1 = [[DetailViewScrollController alloc] initWithNSManagedObjectContext:self.managedObjectContext];
+        //DetailViewScrollController* viewController1 = [[DetailViewScrollController alloc] initWithNibName:@"DetailViewScrollController" bundle:nil];
+        
+        //DetailSwimmerViewController *viewController1 = [[DetailSwimmerViewController alloc] initWithNibName:@"DetailSwimmerViewController" bundle:nil];
+        
+        Swimmers* theSwimmers = [[Swimmers alloc] init];
+        [theSwimmers loadWithContext:[self managedObjectContext]];
+        
+        //[window addSubview:viewController1.view];
 
+//        self.rootVC = viewController1;
+//        [self setViewController:viewController1];
+//        [self.window setRootViewController:viewController1];
+    
+        //if ([theSwimmers.athletesCD count] > 0) {
+        //    [viewController1 setAthlete:[theSwimmers.athletesCD objectAtIndex:0]];
+        //    [viewController1 setMOC:[self managedObjectContext]];
+        //}
+        UIViewController *viewController2 = [[AllTimesViewController alloc] initWithNibName:@"AllTimesViewController" bundle:nil];
+        UIViewController *viewController3 = [[EnterRaceResultController alloc] initWithNibName:@"EnterRaceResultController" bundle:nil];
+        
+        self.tabBarController = [[UITabBarController alloc] init];
+        self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, nil];
+    
+        self.window.rootViewController = self.tabBarController;
+        // test to see if viewdidload is called when i add this
+        [self.window addSubview:self.window.rootViewController.view]; 
+         
     } else {
         [self.window addSubview: self.navigationController.view];
         self.rootVC.managedObjectContext = self.managedObjectContext;
     }
+    NSLog(@"self.window=%@",self.window);
     [self.window makeKeyAndVisible];
+    NSLog(@"self.window=%@",self.window);
     return YES;
 }
 
@@ -103,12 +129,12 @@
 - (void)dealloc
 {
     [_window release];
+    [_tabBarController release];
     [_navigationController release];
     [__managedObjectContext release];
     [__managedObjectModel release];
     [__persistentStoreCoordinator release];
     [_rootVC release];
-    [_splitViewController release];
     [super dealloc];
 }
 
@@ -214,6 +240,21 @@
     
     return __persistentStoreCoordinator;
 }
+
+/*
+ // Optional UITabBarControllerDelegate method.
+ - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+ {
+ }
+ */
+
+/*
+ // Optional UITabBarControllerDelegate method.
+ - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
+ {
+ }
+ */
+
 
 #pragma mark - Application's Documents directory
 

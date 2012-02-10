@@ -3,13 +3,14 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 12/2/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2011 laporte6.org. All rights reserved.
 //
 
 #import "AthleteCD.h"
 #import "TimeStandard.h"
 #import "RaceResult.h"
 #import "Swimmers.h"
+#import "Swimming.h"
 
 @implementation AthleteCD
 @dynamic club;
@@ -72,6 +73,41 @@
     }
 }
 
+// TODO 004
+- (NSArray*)allResults 
+{
+    NSMutableArray* all_requested_times = [NSMutableArray array];
+    NSArray*        all_sorted_requested_times = nil;
+    NSSet*          raceSet = self.races;
+    NSArray *       times = [raceSet allObjects];
+    
+    int distances[] = { 25, 50, 100, 200, 400, 500, 800, 1000, 1650 };
+    NSArray* strokes = [[Swimming sharedInstance] getStrokes];
+    
+    for (int i=0;i<sizeof(distances)/sizeof(distances[0]);i++) {
+        for (int j=0;j<[strokes count]; j++) {
+            RaceResult* race = nil;
+            for (int k=0;k<[times count];k++) {
+                race = [times objectAtIndex:k];
+                
+                if ([race.distance intValue] != distances[i])
+                    continue;
+                if ([Swimmers intStrokeValue:race.stroke] != [Swimmers intStrokeValue:[strokes objectAtIndex:j]])
+                    continue;
+            }
+            if (race != nil) {
+                [all_requested_times addObject:race];
+            }
+        }
+    }
+    
+    all_sorted_requested_times = [all_requested_times sortedArrayUsingSelector:@selector(compareByDistance:)];        
+    
+    NSLog(@"allResults:%@ times %08x, strokes %08x",self.firstname,(unsigned int)times,(unsigned int)strokes);
+    NSLog(@"allResults:%@ returning %08x",self.firstname,(unsigned int)all_sorted_requested_times);
+    return all_sorted_requested_times;
+}
+
 - (NSArray*)personalBests {
     NSMutableArray* all_requested_times = [NSMutableArray array];
     NSArray*        all_sorted_requested_times = nil;
@@ -79,7 +115,7 @@
     NSArray *       times = [raceSet allObjects];
     
     int distances[] = { 25, 50, 100, 200, 400, 500, 1000, 1650 };
-    NSArray* strokes   = [[NSArray alloc] initWithObjects:@"Fly", @"Back", @"Breast", @"Free", @"IM", nil];
+    NSArray* strokes = [[Swimming sharedInstance] getStrokes];
     
     for (int i=0;i<sizeof(distances)/sizeof(distances[0]);i++) {
         for (int j=0;j<[strokes count]; j++) {
@@ -114,7 +150,8 @@
     
     NSLog(@"personalBests:%@ times %08x, strokes %08x",self.firstname,(unsigned int)times,(unsigned int)strokes);
     NSLog(@"personalBests:%@ returning %08x",self.firstname,(unsigned int)all_sorted_requested_times);
-    [strokes release];
+    // using singleton instance now - no need to release 
+    // [strokes release];
     return all_sorted_requested_times;
 }
 

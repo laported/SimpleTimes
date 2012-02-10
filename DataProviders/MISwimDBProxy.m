@@ -459,29 +459,35 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             NSString* gender = [[parser cell:i :4] lowercaseString];
             NSString* dob = @""; // Get DOB from user later - it's not exposed by the MI Swim website
             NSString* miId = @"";
+            
+            if (([first caseInsensitiveCompare:@"first"] == NSOrderedSame) &&
+                ([last caseInsensitiveCompare:@"last"] == NSOrderedSame))
+                continue; // skip header row if exists
+
             if (i > 0) {
                 miId = [self getMiId:[parser rowLink:i-1]]; // -1 beacuse header row does not have a link assoc w/it
             }
-            if( ([firstname length] == 0) || [first_sanitized caseInsensitiveCompare:first] == NSOrderedSame ) {
-                if (([first caseInsensitiveCompare:@"first"] == NSOrderedSame) &&
-                    ([last caseInsensitiveCompare:@"last"] == NSOrderedSame))
-                    continue; // skip header row if exists
-                
+            if (([firstname length] == 0) // no first name entered (match all)
+                || 
+               [first_sanitized caseInsensitiveCompare:first] == NSOrderedSame ) 
+            {
                 NSLog(@"match row %d first %@ last %@ Club %@ %@ link %@",i,first,last,clubshort,clublong,[parser rowLink:i-1]);
-                if ([miId length] < 2) {
-                    for (int jj=0;jj<[parser numRows];jj++) {
-                        NSLog(@"link %d %@",jj,[parser rowLink:jj]);
-                    }
-                }
+                assert( [miId length] > 2 );
+
                 AddSwimmerResult* asr = [[AddSwimmerResult alloc] initWithFirst:first last:lastname miId:miId  clubshort:clubshort clublong:clublong gender:gender birthdate:dob];
+                
                 NSLog(@"first: %@",asr.first);
                 [all_athletes addObject:asr];
+                
             } else {
+                
                 NSLog(@"NO MATCH: %@",first);
                 AddSwimmerResult* asru = [[AddSwimmerResult alloc] initWithFirst:first last:lastname miId:miId  clubshort:clubshort clublong:clublong gender:gender birthdate:dob];
                 NSLog(@"first: %@",asru.first);
                 [all_unmatched_athletes addObject:asru];
+                
             }
+            
         }
     } else {
         // Log error;

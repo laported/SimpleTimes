@@ -16,4 +16,7 @@
 @property (readonly) NSArray* distances;
 
 + (id)sharedInstance;
+- (NSArray*) getStrokes;
+- (NSArray*) getDistances;
+
 @end

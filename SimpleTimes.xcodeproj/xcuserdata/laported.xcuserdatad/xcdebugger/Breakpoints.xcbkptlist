@@ -371,11 +371,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DataProviders/MISwimDBProxy.m"
-         timestampString = "349454159.625784"
+         timestampString = "350187587.785536"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "548"
-         endingLineNumber = "548"
+         startingLineNumber = "554"
+         endingLineNumber = "554"
          landmarkName = "@implementation MISwimDBProxy"
          landmarkType = "3">
       </FileBreakpoint>
@@ -385,11 +385,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DataProviders/MISwimDBProxy.m"
-         timestampString = "349454159.625784"
+         timestampString = "350187587.785536"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "551"
-         endingLineNumber = "551"
+         startingLineNumber = "557"
+         endingLineNumber = "557"
          landmarkName = "-extractElementFromString:::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -537,11 +537,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SimpleTimes/SimpleTimesAppDelegate.m"
-         timestampString = "349964932.081288"
+         timestampString = "350502402.425651"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "162"
-         endingLineNumber = "162"
+         startingLineNumber = "188"
+         endingLineNumber = "188"
          landmarkName = "-managedObjectModel"
          landmarkType = "5">
       </FileBreakpoint>
@@ -607,11 +607,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "349881387.70473"
+         timestampString = "350069509.545031"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "141"
-         endingLineNumber = "141"
+         startingLineNumber = "178"
+         endingLineNumber = "178"
          landmarkName = "@implementation AthleteCD"
          landmarkType = "3">
       </FileBreakpoint>
@@ -621,11 +621,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SimpleTimes/SimpleTimesAppDelegate.m"
-         timestampString = "349964932.081288"
+         timestampString = "350502402.425651"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "182"
-         endingLineNumber = "182"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
          landmarkName = "-persistentStoreCoordinator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -635,7 +635,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SimpleTimes/SimpleTimesAppDelegate.m"
-         timestampString = "349964509.032015"
+         timestampString = "350501811.914342"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "35"
@@ -775,11 +775,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DataProviders/MISwimDBProxy.m"
-         timestampString = "349454159.625784"
+         timestampString = "350187587.785536"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "478"
-         endingLineNumber = "478"
+         startingLineNumber = "480"
+         endingLineNumber = "480"
          landmarkName = "-findAthlete::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -817,11 +817,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "DataProviders/MISwimDBProxy.m"
-         timestampString = "349454159.625784"
+         timestampString = "350187587.785536"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "489"
-         endingLineNumber = "489"
+         startingLineNumber = "495"
+         endingLineNumber = "495"
          landmarkName = "-findAthlete::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -851,20 +851,6 @@
          startingLineNumber = "74"
          endingLineNumber = "74"
          landmarkName = "-addButtonSelected:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "DataProviders/MISwimDBProxy.m"
-         timestampString = "349454159.625784"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "476"
-         endingLineNumber = "476"
-         landmarkName = "-findAthlete::"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -990,34 +976,6 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "454"
          endingLineNumber = "454"
-         landmarkName = "-findAthlete::"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "DataProviders/MISwimDBProxy.m"
-         timestampString = "349454159.625784"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "473"
-         endingLineNumber = "473"
-         landmarkName = "-findAthlete::"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "DataProviders/MISwimDBProxy.m"
-         timestampString = "349454159.625784"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "471"
-         endingLineNumber = "471"
          landmarkName = "-findAthlete::"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1363,11 +1321,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "349881387.70473"
+         timestampString = "350000315.851025"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "73"
-         endingLineNumber = "73"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
          landmarkName = "-countCuts:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1377,11 +1335,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "348891096.166354"
+         timestampString = "350000315.851025"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "42"
-         endingLineNumber = "42"
+         startingLineNumber = "43"
+         endingLineNumber = "43"
          landmarkName = "-countCuts:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1391,11 +1349,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "348856696.423799"
+         timestampString = "350000315.851025"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
          landmarkName = "-ageAtDate:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1433,11 +1391,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "348891130.834179"
+         timestampString = "350000315.851025"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "51"
-         endingLineNumber = "51"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
          landmarkName = "-countCuts:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1769,11 +1727,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SimpleTimes/DetailSwimmerViewController.m"
-         timestampString = "349964800.628432"
+         timestampString = "350002312.809525"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
+         startingLineNumber = "137"
+         endingLineNumber = "137"
          landmarkName = "-setAthlete:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1839,11 +1797,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "349881387.70473"
+         timestampString = "350069509.545031"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "113"
-         endingLineNumber = "113"
+         startingLineNumber = "149"
+         endingLineNumber = "149"
          landmarkName = "-personalBests"
          landmarkType = "5">
       </FileBreakpoint>
@@ -1932,7 +1890,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -1960,7 +1918,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -1979,11 +1937,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SimpleTimes/EnterRaceResultController.h"
-         timestampString = "349930973.380603"
+         timestampString = "350000315.851025"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "17"
-         endingLineNumber = "17"
+         startingLineNumber = "19"
+         endingLineNumber = "19"
          landmarkName = "distancePicker"
          landmarkType = "19">
       </FileBreakpoint>
@@ -2007,11 +1965,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "349961867.591539"
+         timestampString = "350000315.851025"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
          landmarkName = "-countCuts:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2021,11 +1979,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "349961871.074826"
+         timestampString = "350069509.545031"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "90"
-         endingLineNumber = "90"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
          landmarkName = "-personalBests"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2035,11 +1993,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "AthleteCD.m"
-         timestampString = "349961876.434616"
+         timestampString = "350069509.545031"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "94"
-         endingLineNumber = "94"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
          landmarkName = "-personalBests"
          landmarkType = "5">
       </FileBreakpoint>
@@ -2055,6 +2013,272 @@
          startingLineNumber = "102"
          endingLineNumber = "102"
          landmarkName = "-timesDownloaded:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/SimpleTimesAppDelegate.m"
+         timestampString = "350501811.914342"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailSwimmerViewController.m"
+         timestampString = "350002312.809525"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
+         landmarkName = "-viewWillAppear:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailSwimmerViewController.m"
+         timestampString = "350069509.545031"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/EnterRaceResultController.m"
+         timestampString = "350000315.851025"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "49"
+         endingLineNumber = "49"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "AthleteCD.m"
+         timestampString = "350069509.545031"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "118"
+         endingLineNumber = "118"
+         landmarkName = "-personalBests"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "AthleteCD.m"
+         timestampString = "350069509.545031"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
+         landmarkName = "-personalBests"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailSwimmerViewController.m"
+         timestampString = "350002446.12477"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "104"
+         endingLineNumber = "104"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailViewScrollController.h"
+         timestampString = "350139784.383046"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "13"
+         endingLineNumber = "13"
+         landmarkName = "@interface DetailViewScrollController"
+         landmarkType = "2">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailViewScrollController.m"
+         timestampString = "350403680.977358"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "-initWithNSManagedObjectContext:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailViewScrollController.m"
+         timestampString = "350503479.186218"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
+         landmarkName = "@implementation DetailViewScrollController"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailSwimmerViewController.m"
+         timestampString = "350141107.274872"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "23"
+         endingLineNumber = "23"
+         landmarkName = "-initWithAthlete:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "DataProviders/MISwimDBProxy.m"
+         timestampString = "350187575.671061"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "467"
+         endingLineNumber = "467"
+         landmarkName = "-findAthlete::"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/SimpleTimesAppDelegate.m"
+         timestampString = "350502402.425651"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "85"
+         endingLineNumber = "85"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/SimpleTimesAppDelegate.m"
+         timestampString = "350501811.914342"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "49"
+         endingLineNumber = "49"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailViewScrollController.m"
+         timestampString = "350404011.466804"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "23"
+         endingLineNumber = "23"
+         landmarkName = "-initWithNSManagedObjectContext:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailViewScrollController.m"
+         timestampString = "350503479.186218"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "98"
+         endingLineNumber = "98"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/SimpleTimesAppDelegate.m"
+         timestampString = "350501811.914342"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
+         landmarkName = "-application:didFinishLaunchingWithOptions:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailViewScrollController.m"
+         timestampString = "350503479.186218"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
+         landmarkName = "-setupPage"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "SimpleTimes/DetailViewScrollController.m"
+         timestampString = "350578585.108414"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
+         landmarkName = "-setupPage"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

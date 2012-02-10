@@ -1,4 +1,11 @@
 TODO:
+[ ] 001 Need to figure out how CoreData handles schema migrations
+[ ] 002 Change iPhone interface to use tab view controller
+[ ] 003 Change iPad interface to use PageControl on Detail view
+[ ] 004 Replace AthleteCD:allResults loop hackery with a CoreData query
+[ ] 005 Figure out how to override default initializer (or specify a diff
+        initializer - 'designated initializer??) for a view so that I can
+        pass in view-specific data (i.e. NSManagedObjectContext, etc)
 [X] Refactor code in RootViewController refreshAllBestTimes() to use athlete personalBests()
 [X] Need to be able to specify birthdate when initially selecting a swimmer
 [X] Hard-code birthdate in order to test the cuts() function

@@ -37,6 +37,18 @@ static Swimming *sharedInstance = nil;
     return self;
 }
 
+- (NSArray*) getStrokes
+{
+    Swimming* s = [Swimming sharedInstance];
+    return s.strokes;
+}
+
+- (NSArray*) getDistances
+{
+    Swimming* s = [Swimming sharedInstance];
+    return s.distances;
+}
+ 
 // Your dealloc method will never be called, as the singleton survives for the duration of your app.
 // However, I like to include it so I know what memory I'm using (and incase, one day, I convert away from Singleton).
 -(void)dealloc

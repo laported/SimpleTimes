@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 laporte6.org. All rights reserved.
 //
 
-#import "RootViewController_iPad.h"
+#import "RootViewController_iPad_old.h"
 #import "AddSwimmerViewController.h"
 #import "SVProgressHUD.h"
 #import "DownloadTimesMI.h"
 
-@implementation RootViewController_iPad
+@implementation RootViewController_iPad_old
 
 @synthesize detailSwimmerViewController;
 @synthesize managedObjectContext;

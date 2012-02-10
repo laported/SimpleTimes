@@ -12,10 +12,12 @@
 
 @interface EnterRaceResultController : UIViewController {
     Swimming* _swimming;
+    int _distance_index;
+    int _stroke_index;
 }
 
 @property (nonatomic, retain) IBOutlet UIPickerView* distancePicker;
 @property (nonatomic, retain) IBOutlet UIPickerView* strokePicker;
 @property (nonatomic, retain) IBOutlet UIDatePicker* datePicker;
-
+@property (nonatomic, retain) IBOutlet UITextField* meet;
 @end

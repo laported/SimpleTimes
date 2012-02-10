@@ -12,6 +12,11 @@
 @synthesize distancePicker;
 @synthesize strokePicker;
 @synthesize datePicker;
+@synthesize meet;
+
+// tags for the two picker views
+#define TAG_DISTANCE 0
+#define TAG_STROKE   1
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,6 +24,8 @@
     if (self) {
         // Custom initialization
         _swimming = [Swimming sharedInstance];
+        self.tabBarItem.image = [UIImage imageNamed:@"plus_24"];
+        self.title = NSLocalizedString(@"Enter Times", @"Enter Times");
     }
     return self;
 }
@@ -36,7 +43,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _distance_index = 0;
+    _stroke_index = 0;
+
+    NSLog(@"%@",datePicker.frame);
     // Do any additional setup after loading the view from its nib.
+    for (UIView* subview in strokePicker.subviews) {
+        subview.frame = strokePicker.bounds;
+    }
+    for (UIView* subview in distancePicker.subviews) {
+        subview.frame = distancePicker.bounds;
+    }
+    // hack
+    [meet setText:@"DRD Groundhog Splash"];
 }
 
 - (void)viewDidUnload
@@ -71,12 +90,23 @@
 - (void)pickerView:(UIPickerView *)thePickerView
       didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if (thePickerView.tag == 0) {
-        NSLog(@"Selected distance: %@. Index of selected color: %i",
+    if (thePickerView.tag == TAG_DISTANCE) {
+        // need to update the layout for the splits entries??
+        if (_distance_index != row) {
+            NSString* sdist = [_swimming.distances objectAtIndex:row];
+            int distance = [sdist intValue];
+            _distance_index = row;
+            if (distance >= 100) {
+                // todo [self layout_splits];
+            }
+        }
+        NSLog(@"Selected distance: %@. Index of selected stroke: %i",
           [_swimming.distances objectAtIndex:row], row);
-    } else {
-        NSLog(@"Selected stroke: %@. Index of selected color: %i",
+    } else if (thePickerView.tag == TAG_STROKE) {
+        NSLog(@"Selected stroke: %@. Index of selected stroke: %i",
               [_swimming.strokes objectAtIndex:row], row);
+    } else {
+        assert( false );    // Must have added somehting to the .XIB file w/o adding code here
     }
 }
 @end
