@@ -6,24 +6,28 @@
 //  Copyright (c) 2012 laporte6.org. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "DetailSwimmerViewController.h"
 #import "TopTimesViewController.h"
 #import "TimeStandard.h"
-#import "Swimmers.h"
+#import "SVProgressHUD.h"
+#import "DownloadTimesMI.h"
 
 @implementation DetailSwimmerViewController
 @synthesize imageView;
 @synthesize labelTitle;
 @synthesize labelCuts;
-@synthesize pageControl;
+@synthesize swimmerPicker = _swimmerPicker;
+@synthesize swimmerPickerPopover = _swimmerPickerPopover;
 
 // load the view nib and initialize the pageNumber ivar
-- (id)initWithAthlete:(AthleteCD*)athlete
+- (id)initWithAthlete:(AthleteCD*)athlete andContext:(NSManagedObjectContext*)moc
 {
-    if (self = [super initWithNibName:@"DetailSwimmerView" bundle:nil])
+    if (self = [super initWithNibName:@"DetailSwimmerViewController" bundle:nil])
     {
         _athlete = athlete;
         _topTimes = nil;
+        _moc = moc;
         self.tabBarItem.image = [UIImage imageNamed:@"star_24"];
         self.title = NSLocalizedString(@"Top Times", @"Top Times");
     }
@@ -51,7 +55,8 @@
 
 - (void) drawTitleForSwimmer
 {    
-    [self.labelTitle setText:[NSString stringWithFormat:@"  Top Times for %@ %@", _athlete.firstname,_athlete.lastname]];
+    [self.labelTitle setText:[NSString stringWithFormat:@"%@\n%@", _athlete.firstname,_athlete.lastname]];
+    self.labelTitle.layer.cornerRadius = 15.0;
     
     if (_cuts.jos > 0 || _cuts.states > 0 || _cuts.sectionals > 0 || _cuts.nationals > 0) {
         NSString* jos = _cuts.jos > 0 ? [self cutsWithStars:_cuts.jos andPrefix:@"JO "] : @"";
@@ -71,10 +76,10 @@
     CGFloat screenWidth = isPortrait ? screenRect.size.width : screenRect.size.height;
     CGFloat screenHeight = isPortrait ? screenRect.size.height : screenRect.size.width;
     _topTimes.view.frame = CGRectMake(
-                                (int)(screenWidth-320)/3,
-                                80,
+                                50,
+                                275,
                                 320,
-                                (int)(screenHeight - 160));
+                                (int)(screenHeight - 275-100));
 }
 
 #pragma mark - View lifecycle
@@ -85,25 +90,26 @@
     // Do any additional setup after loading the view from its nib.
 
     //Add sub view for displaying top times
-    _topTimes = [[TopTimesViewController alloc] init];
-    [_topTimes setAthlete:_athlete];
-    UITableView* tv = [[[UITableView alloc] initWithFrame:CGRectMake(5,80,320,640) style:UITableViewStylePlain] autorelease];
-    tv.backgroundColor = [UIColor clearColor];
-    _topTimes.view = tv;
+    _topTimes = [[TopTimesViewController alloc] initWithStyle:UITableViewStylePlain];
+	[self.view addSubview:_topTimes.view];
     if (_athlete != nil) {
         [_topTimes setAthlete:_athlete];
         [_athlete countCuts:&_cuts];
         [self drawTitleForSwimmer];
         [self layoutTopTimes];
     }
-    [tv setDataSource:_topTimes];
-    [tv setDelegate:_topTimes];
-	[self.view addSubview:tv];
-    //[tv release];
     
-    _swimmers = [[Swimmers alloc] init];
-    [_swimmers loadWithContext:_moc];
-    [pageControl setNumberOfPages:[_swimmers count]];
+    UIToolbar* tb = [[UIToolbar alloc] initWithFrame:CGRectMake(0,0,768,44)];
+    tb.barStyle = UIBarStyleDefault;
+    UIBarButtonItem* bi = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reload_v2.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(refreshPressed:)];  
+    UIBarButtonItem* bi2 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"man_24.png"] style:UIBarButtonItemStyleBordered target:self action:@selector(pickerPressed:)];  
+    
+    //Add buttons to the array
+    NSArray *items = [NSArray arrayWithObjects: bi, bi2, nil];
+    [tb setItems:items];
+    [self.view addSubview:tb];
+
+    //[tv release];
 }
 
 - (void)viewDidUnload
@@ -132,25 +138,78 @@
     [self layoutTopTimes];
 }
 
-- (void) setAthlete:(AthleteCD *)a
+/* 
+ * timesDownloaded
+ *
+ * Invoked asynchronously when the user selects the 'Refresh' button 
+ */
+- (void)timesDownloaded:(NSArray*)times
 {
+    int numadded;
+    
+    // Updating results for single swimmer
+    numadded = [Swimmers updateAllRaceResultsForAthlete:_athlete withResults:times inContext:_moc];
+    
+    [_queue release];
+    
+    NSTimeInterval nsti = 3.5;
+    if (numadded > 0) {
+        [_topTimes reloadData];
+        NSString* msg = [NSString stringWithFormat:@"Added %d new race times",numadded];
+        [SVProgressHUD dismissWithSuccess:msg afterDelay:nsti];
+    } else {
+        [SVProgressHUD dismissWithSuccess:@"No new race times found" afterDelay:nsti];
+    }
+}
+
+- (void)swimmerSelected:(AthleteCD *)a {
+    /* TODO if ([color compare:@"Red"] == NSOrderedSame) {
+        _nameLabel.textColor = [UIColor redColor];
+    } else if ([color compare:@"Green"] == NSOrderedSame) {
+        _nameLabel.textColor = [UIColor greenColor];
+    } else if ([color compare:@"Blue"] == NSOrderedSame){
+        _nameLabel.textColor = [UIColor blueColor];
+    }*/
+    [_athlete release];
     _athlete = a;
-    [_topTimes setAthlete:a];
+    [_topTimes setAthlete:_athlete];
+    [_athlete countCuts:&_cuts];
     [self drawTitleForSwimmer];
+    
+    [self.swimmerPickerPopover dismissPopoverAnimated:YES];
 }
 
-- (void) setMOC:(NSManagedObjectContext *)managedObjectContext
+- (IBAction)pickerPressed:(id)sender
 {
-    _moc = managedObjectContext; 
+    if (_swimmerPicker == nil) {
+        //self.swimmerPicker = [[[SwimmerPickerController alloc] 
+                             //initWithStyle:UITableViewStylePlain] autorelease];
+        self.swimmerPicker = [[SwimmerPickerController alloc] initWithNSManagedObjectContext:_moc];
+        _swimmerPicker.delegate = self;
+        self.swimmerPickerPopover = [[[UIPopoverController alloc] 
+                                    initWithContentViewController:_swimmerPicker] autorelease];               
+    }
+    [self.swimmerPickerPopover presentPopoverFromBarButtonItem:sender 
+                                    permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];    
 }
 
-- (IBAction)changePage:(id)sender
+- (IBAction)refreshPressed:(id)sender
 {
-    int page = pageControl.currentPage;    
+    NSLog(@"Refresh pressed");
+    _queue = [[NSOperationQueue alloc] init];
+    
+    [SVProgressHUD showWithStatus:@"Checking for updated times"];
+    
+    // download all times and populate the database
+    DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:_athlete:self];
+    [_queue addOperation:dtm];
+    [dtm release];
 }
 
 - (void)dealloc {
-    [imageView release];
     [super dealloc];
+    [imageView release];
+    self.swimmerPicker = nil;
+    self.swimmerPickerPopover = nil;
 }
 @end

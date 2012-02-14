@@ -20,6 +20,7 @@
 @dynamic powerpoints;
 @dynamic distance;
 @dynamic athlete;
+@dynamic splits;
 
 - (NSComparisonResult)compareByTime:(RaceResult *)otherObject
 {

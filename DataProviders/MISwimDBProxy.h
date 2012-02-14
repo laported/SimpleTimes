@@ -13,7 +13,6 @@
 
 - (NSArray *) getAllTimesForAthlete:(int)athleteId;
 - (NSArray *) getAllTimesForAthlete:(int)athleteId:(int)stroke:(int)distance;
-- (NSArray *) getFastestTimesForAthlete:(int)athleteId;
 - (NSArray *) getSplitsForRace:(int)raceId;
 - (NSArray *) findAthlete:(NSString*)lastname;
 - (NSArray *) findAthlete:(NSString*)lastname:(NSString*)firstname;

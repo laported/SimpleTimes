@@ -20,6 +20,11 @@
 		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
 		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
 		1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5614E43B05007F1760 /* clock_24.png */; };
+		1E3A6E5B14E59453007F1760 /* SplitCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5A14E59453007F1760 /* SplitCD.m */; };
+		1E3A6E5D14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */; };
+		1E3A6E5F14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5E14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png */; };
+		1E3A6E6214E5D119007F1760 /* SwimmerPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A6E6114E5D118007F1760 /* SwimmerPickerController.m */; };
+		1E3A6E6414E5F354007F1760 /* man_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E6314E5F354007F1760 /* man_24.png */; };
 		1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */; };
 		1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */; };
 		1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A514D4EA22006D428C /* reload_v2.png */; };
@@ -39,8 +44,6 @@
 		1E6BF34514DD6F57006D428C /* calendar_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34414DD6F57006D428C /* calendar_24.png */; };
 		1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF34714DD70AA006D428C /* AllTimesViewController.m */; };
 		1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */; };
-		1E6BF35214DD8435006D428C /* DetailViewScrollController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF35014DD8433006D428C /* DetailViewScrollController.m */; };
-		1E6BF35314DD8435006D428C /* DetailViewScrollController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF35114DD8434006D428C /* DetailViewScrollController.xib */; };
 		1E6BF35614DD8EA0006D428C /* ContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF35514DD8E9D006D428C /* ContentController.m */; };
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
 		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
@@ -73,6 +76,9 @@
 		1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */; };
 		1EB19E1D148A68A200BE6620 /* RaceResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB19E1C148A68A200BE6620 /* RaceResult.m */; };
 		1EB19E20148A68CB00BE6620 /* AthleteCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB19E1F148A68CA00BE6620 /* AthleteCD.m */; };
+		1ECD4CB214E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */; };
+		1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */; };
+		1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */; };
 		1ED8168E14888142006268C2 /* iPhoneIcon_Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +103,14 @@
 		1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTimesMI.h; sourceTree = "<group>"; };
 		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
 		1E3A6E5614E43B05007F1760 /* clock_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock_24.png; path = images/clock_24.png; sourceTree = SOURCE_ROOT; };
+		1E3A6E5814E5919C007F1760 /* SimpleSwimModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimpleSwimModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		1E3A6E5914E59453007F1760 /* SplitCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitCD.h; sourceTree = "<group>"; };
+		1E3A6E5A14E59453007F1760 /* SplitCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitCD.m; sourceTree = "<group>"; };
+		1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-50.png"; path = "images/water-splash-ipad-wallpaper-50.png"; sourceTree = SOURCE_ROOT; };
+		1E3A6E5E14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-35.png"; path = "images/water-splash-ipad-wallpaper-35.png"; sourceTree = SOURCE_ROOT; };
+		1E3A6E6014E5D117007F1760 /* SwimmerPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwimmerPickerController.h; sourceTree = "<group>"; };
+		1E3A6E6114E5D118007F1760 /* SwimmerPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwimmerPickerController.m; sourceTree = "<group>"; };
+		1E3A6E6314E5F354007F1760 /* man_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = man_24.png; path = images/man_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = ../Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1E6BF1A514D4EA22006D428C /* reload_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload_v2.png; path = ../reload_v2.png; sourceTree = "<group>"; };
@@ -122,9 +136,6 @@
 		1E6BF34614DD70A9006D428C /* AllTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTimesViewController.h; sourceTree = "<group>"; };
 		1E6BF34714DD70AA006D428C /* AllTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTimesViewController.m; sourceTree = "<group>"; };
 		1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllTimesViewController.xib; sourceTree = "<group>"; };
-		1E6BF34F14DD8432006D428C /* DetailViewScrollController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewScrollController.h; sourceTree = "<group>"; };
-		1E6BF35014DD8433006D428C /* DetailViewScrollController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewScrollController.m; sourceTree = "<group>"; };
-		1E6BF35114DD8434006D428C /* DetailViewScrollController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewScrollController.xib; sourceTree = "<group>"; };
 		1E6BF35414DD8E9C006D428C /* ContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentController.h; sourceTree = SOURCE_ROOT; };
 		1E6BF35514DD8E9D006D428C /* ContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentController.m; sourceTree = SOURCE_ROOT; };
 		1E71FCAC14CB21E80036D12B /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
@@ -185,6 +196,9 @@
 		1EB19E1C148A68A200BE6620 /* RaceResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceResult.m; sourceTree = "<group>"; };
 		1EB19E1E148A68CA00BE6620 /* AthleteCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthleteCD.h; sourceTree = "<group>"; };
 		1EB19E1F148A68CA00BE6620 /* AthleteCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthleteCD.m; sourceTree = "<group>"; };
+		1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-gray.png"; path = "images/water-splash-ipad-wallpaper-gray.png"; sourceTree = SOURCE_ROOT; };
+		1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone.png"; path = "images/UnderWater-Portrait-iPhone.png"; sourceTree = SOURCE_ROOT; };
+		1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone@2x.png"; path = "images/UnderWater-Portrait-iPhone@2x.png"; sourceTree = SOURCE_ROOT; };
 		1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPhoneIcon_Small.png; path = SimpleTimes/iPhoneIcon_Small.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,9 +238,6 @@
 				1E6BF1B514D629E9006D428C /* DetailSwimmerViewController.h */,
 				1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */,
 				1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */,
-				1E6BF34F14DD8432006D428C /* DetailViewScrollController.h */,
-				1E6BF35014DD8433006D428C /* DetailViewScrollController.m */,
-				1E6BF35114DD8434006D428C /* DetailViewScrollController.xib */,
 				1E6BF1C914DA31DD006D428C /* EnterRaceResultController.h */,
 				1E6BF1CA14DA31DD006D428C /* EnterRaceResultController.m */,
 				1E6BF1CB14DA31DD006D428C /* EnterRaceResultController.xib */,
@@ -238,6 +249,8 @@
 				1E6BF34614DD70A9006D428C /* AllTimesViewController.h */,
 				1E6BF34714DD70AA006D428C /* AllTimesViewController.m */,
 				1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */,
+				1E3A6E6014E5D117007F1760 /* SwimmerPickerController.h */,
+				1E3A6E6114E5D118007F1760 /* SwimmerPickerController.m */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -256,6 +269,12 @@
 		1E6BF1D114DB89C9006D428C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */,
+				1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */,
+				1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */,
+				1E3A6E6314E5F354007F1760 /* man_24.png */,
+				1E3A6E5E14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png */,
+				1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */,
 				1E3A6E5614E43B05007F1760 /* clock_24.png */,
 				1E6BF34414DD6F57006D428C /* calendar_24.png */,
 				1E6BF27E14DC45BC006D428C /* UnderWater-Portrait-50.png */,
@@ -396,6 +415,8 @@
 				1EB19E1E148A68CA00BE6620 /* AthleteCD.h */,
 				1EB19E1F148A68CA00BE6620 /* AthleteCD.m */,
 				1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */,
+				1E3A6E5914E59453007F1760 /* SplitCD.h */,
+				1E3A6E5A14E59453007F1760 /* SplitCD.m */,
 				1EA228BD14703EB400283AD0 /* RaceResultMI.m */,
 				1EA228BC14703EB400283AD0 /* RaceResultMI.h */,
 				1E1FCCF5147975B600CD8316 /* Split.h */,
@@ -484,8 +505,13 @@
 				1E6BF27F14DC45BC006D428C /* UnderWater-Portrait-50.png in Resources */,
 				1E6BF34514DD6F57006D428C /* calendar_24.png in Resources */,
 				1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */,
-				1E6BF35314DD8435006D428C /* DetailViewScrollController.xib in Resources */,
 				1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */,
+				1E3A6E5D14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png in Resources */,
+				1E3A6E5F14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png in Resources */,
+				1E3A6E6414E5F354007F1760 /* man_24.png in Resources */,
+				1ECD4CB214E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png in Resources */,
+				1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */,
+				1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,8 +571,9 @@
 				1E6BF1CC14DA31DE006D428C /* EnterRaceResultController.m in Sources */,
 				1E6BF1D014DB8124006D428C /* Swimming.m in Sources */,
 				1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */,
-				1E6BF35214DD8435006D428C /* DetailViewScrollController.m in Sources */,
 				1E6BF35614DD8EA0006D428C /* ContentController.m in Sources */,
+				1E3A6E5B14E59453007F1760 /* SplitCD.m in Sources */,
+				1E3A6E6214E5D119007F1760 /* SwimmerPickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +714,7 @@
 		1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1E3A6E5814E5919C007F1760 /* SimpleSwimModel 2.xcdatamodel */,
 				1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */,
 			);
 			currentVersion = 1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */;

@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 laporte6.org. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "TopTimesViewController.h"
 #import "RaceResult.h"
 #import "TimeStandard.h"
@@ -13,14 +14,26 @@
 
 @implementation TopTimesViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithStyle:(UITableViewStyle)style andFrame:(CGRect)frame
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(5,80,320,480) style:UITableViewStylePlain] autorelease];
+        self.tableView.backgroundColor = [UIColor whiteColor];
+        self.tableView.alpha = 0.7;
+
+        [self.tableView setDataSource:self];
+        [self.tableView setDelegate:self];
+
         _races = nil;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        [self.tableView setSeparatorColor:[UIColor clearColor]];
+        //[self.tableView setSeparatorColor:[UIColor clearColor]];
+        CALayer *layer = self.tableView.layer;
+        layer.borderWidth = 3;
+        layer.borderColor = [[UIColor blueColor] CGColor];
+        layer.cornerRadius = 10;
+        layer.masksToBounds = YES;
     }
     return self;
 }
@@ -135,7 +148,7 @@
     }
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;  
-    cell.backgroundColor=[UIColor clearColor];
+    //cell.backgroundColor=[UIColor clearColor];
     [cell.textLabel setFont:[UIFont fontWithName:@"Helvetica" size:11.0]];
     
     return cell;

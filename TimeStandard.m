@@ -248,16 +248,9 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
     return ret; 
 }
 
-+(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time {
-    int distanceidx;
-    const char* sz_q1 [5][8] = { NULL };
-    const char* sz_q2 [5][8] = { NULL };
-    const char* sz_b [5][8] = { NULL };
-    
-    // quick sanity check on the array values
-    memcpy(sz_q1,sz_nine_ten_w_q1,sizeof(sz_q1));
-    assert( strcmp("31.49",sz_q1[0][1]) == 0);
-    
++(int) distanceIndex:(int)distance
+{
+    int distanceidx = 0;
     switch (distance) {
         case 25:   distanceidx = 0; break;
         case 50:   distanceidx = 1; break;
@@ -269,6 +262,87 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
         case 1650: distanceidx = 7; break;
         default: assert(false); distanceidx = 0; break;
     }
+    return distanceidx;
+}
+
++(int) ageAtDate:(NSDate*)date dob:(NSDate*)dob {
+    NSInteger years = [[[NSCalendar currentCalendar] components: NSYearCalendarUnit
+                                                       fromDate: dob
+                                                         toDate: date
+                                                        options: 0] year];
+    return (int)years;
+}
+
++(NSString*) getJoCutWithAge:(NSDate*)dob distance:(int)distance stroke:(int) stroke gender:(NSString*)gender
+{
+    const char* sz_q2 [5][8] = { NULL };
+    int distanceidx = [TimeStandard distanceIndex:distance];
+    NSDate* dateOfJOMeet;
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"yyyy-MM-dd"];    
+    dateOfJOMeet = [df dateFromString:@JO_DATE];
+    [df release];
+    int age = [self ageAtDate:dateOfJOMeet dob:dob];
+    switch (age) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_q2,sz_nine_ten_m_q2,sizeof(sz_q2));
+            } else {
+                memcpy(sz_q2,sz_nine_ten_w_q2,sizeof(sz_q2));
+            }
+            break;
+            
+        case 11:
+        case 12:
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_q2,sz_eleven_twelve_m_q2,sizeof(sz_q2));
+            } else {
+                memcpy(sz_q2,sz_eleven_twelve_w_q2,sizeof(sz_q2));
+            }
+            break;
+            
+        case 13:
+        case 14:
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_q2,sz_thirteen_fourteen_m_q2,sizeof(sz_q2));
+            } else {
+                memcpy(sz_q2,sz_thirteen_fourteen_w_q2,sizeof(sz_q2));
+            }
+            break;
+            
+        default:
+            // 15-18, or Open
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_q2,sz_fifteen_eighteen_m_q2,sizeof(sz_q2));
+            } else {
+                memcpy(sz_q2,sz_fifteen_eighteen_w_q2,sizeof(sz_q2));
+            }
+            break;
+    }
+    return [NSString stringWithFormat:@"%s",sz_q2[stroke-1][distanceidx]];
+}
+
++(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time {
+    int distanceidx;
+    const char* sz_q1 [5][8] = { NULL };
+    const char* sz_q2 [5][8] = { NULL };
+    const char* sz_b [5][8] = { NULL };
+    
+    // quick sanity check on the array values
+    memcpy(sz_q1,sz_nine_ten_w_q1,sizeof(sz_q1));
+    assert( strcmp("31.49",sz_q1[0][1]) == 0);
+    
+    distanceidx = [TimeStandard distanceIndex:distance];
    
     switch (age) {
         case 0:

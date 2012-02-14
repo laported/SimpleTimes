@@ -8,6 +8,8 @@
 
 #import "Swimmers.h"
 #import "AthleteCD.h"
+#import "SplitCD.h"
+#import "Split.h"
 #import "MISwimDBProxy.h"
 
 @implementation Swimmers
@@ -92,6 +94,20 @@
     race.powerpoints = [NSNumber numberWithInt:0]; // not suppored by MI DB
     race.distance    = [NSNumber numberWithInt:raceMI.distance];
     race.athlete     = athlete;
+    
+    if (raceMI.key > 0 && raceMI.splits == nil) {
+        MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+        raceMI.splits = [proxy getSplitsForRace:raceMI.key];
+    }
+    NSMutableSet* set1 = [[NSMutableSet alloc] initWithCapacity:[raceMI.splits count]];
+    for (Split*sMI in raceMI.splits) {
+        SplitCD* s = (SplitCD*)[NSEntityDescription insertNewObjectForEntityForName:@"SplitCD" inManagedObjectContext:context];
+        s.distance   = [[NSNumber alloc] initWithInt:[sMI.distance intValue]];
+        s.time       = sMI.time_split;
+        s.cumulative = sMI.time_cumulative;
+        [set1 addObject:s];
+    }
+    race.splits = set1;
     
     NSError *error;
     

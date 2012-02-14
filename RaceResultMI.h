@@ -12,7 +12,6 @@
 @interface RaceResultMI : NSObject {
     NSString* _time;
     NSString* _stroke;     
-    int _key;
     NSString* _course;
     int _age;
     int _powerpoints;
@@ -22,6 +21,8 @@
     BOOL _shortcourse; /* deprecated */
     NSDate* _date;
     NSString* _meet;
+    NSArray* _splits;
+    int _key;           // this is the key value we use to download the splits data from the MI website
 }
 
 @property (copy) NSString* meet;
@@ -35,8 +36,11 @@
 @property        int       age;
 @property        int       powerpoints;
 @property (copy) NSString* standard;
+@property (nonatomic, retain) NSArray* splits;
 
-- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard key:(int)key;
+- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits;
+
+- (void) setSplitsKey:(int)key;
 
 - (BOOL)hasSplits;
 

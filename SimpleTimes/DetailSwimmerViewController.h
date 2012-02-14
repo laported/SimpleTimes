@@ -11,24 +11,28 @@
 #import "AthleteCD.h"
 #import "TopTimesViewController.h"
 #import "Swimmers.h"
+#import "SwimmerPickerController.h"
 
-@interface DetailSwimmerViewController : UIViewController
+@interface DetailSwimmerViewController : UIViewController <SwimmerPickerDelegate>
 {
     AthleteCD* _athlete;
     CUTS _cuts;
     TopTimesViewController* _topTimes;
-    Swimmers* _swimmers;
+    NSOperationQueue* _queue;
     NSManagedObjectContext* _moc;
+    SwimmerPickerController *_swimmerPicker;
+    UIPopoverController *_swimmerPickerPopover;
 }
 @property (retain, nonatomic) IBOutlet UIImageView *imageView;
 @property (retain, nonatomic) IBOutlet UILabel* labelTitle;
 @property (retain, nonatomic) IBOutlet UILabel* labelCuts;
-@property (retain, nonatomic) IBOutlet UIPageControl* pageControl;
 
-- (IBAction)changePage:(id)sender;
-- (id)initWithAthlete:(AthleteCD*)athlete;
+@property (nonatomic, retain) SwimmerPickerController *swimmerPicker;
+@property (nonatomic, retain) UIPopoverController *swimmerPickerPopover;
 
-- (void) setAthlete:(AthleteCD*) a;
-- (void) setMOC:(NSManagedObjectContext *)managedObjectContext;
+- (IBAction) refreshPressed:(id)sender;
+- (IBAction) pickerPressed:(id)sender;
+
+- (id)initWithAthlete:(AthleteCD*)athlete andContext:(NSManagedObjectContext*)moc;
 
 @end

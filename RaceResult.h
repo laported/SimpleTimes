@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSNumber * powerpoints;
 @property (nonatomic, retain) NSNumber * distance;
 @property (nonatomic, retain) AthleteCD * athlete;
+@property (nonatomic, retain) NSSet*    splits;
 
 - (NSComparisonResult)compareByTime:(RaceResult *)otherObject;
 

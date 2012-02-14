@@ -22,8 +22,9 @@
 @synthesize powerpoints = _powerpoints;
 @synthesize standard = _standard;
 @synthesize key = _key;
+@synthesize splits = _splits;
 
-- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard key:(int)key
+- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits
 {
     if ((self = [super init])) {
         _time = [time copy];
@@ -33,7 +34,8 @@
         _meet = [meet copy];
         _stroke = [stroke copy];
         _course = [course copy];
-        _key = key;
+        //_key = key;
+        self.splits = splits;
         _standard = [standard copy];
         _age = age;
         _powerpoints = powerpoints;
@@ -41,8 +43,13 @@
     return self;
 }
 
+- (void) setSplitsKey:(int)key
+{
+    _key = key;
+}
+
 - (BOOL)hasSplits {
-    return (self.key > 0);
+    return [self.splits count] > 0;
 }
 
 - (NSComparisonResult)compareByTime:(RaceResultMI *)otherObject
@@ -65,7 +72,6 @@
      return NSOrderedSame;
 }
 
-
 - (void)dealloc {
     [_stroke release];
     _stroke = nil;
@@ -81,6 +87,7 @@
     _course = nil;
     [_standard release];
     _standard = nil;
+    [_splits release];
     [super dealloc];
 }
 

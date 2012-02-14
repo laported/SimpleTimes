@@ -18,6 +18,11 @@
 
 #define ASYNC_REFRESH
 
+#define SECTION_USS_SCY 0
+#define SECTION_MHSAA   1
+#define SECTION_USS_LCM 2
+#define SECTION_USS_SCM 3
+
 @implementation RootViewController
 
 @synthesize allTimes = _allTimes;
@@ -63,6 +68,8 @@
         self.title = self.CurrentTitle;
     }
     
+    self.view.backgroundColor = [UIColor clearColor];
+
     // TODO: This should be a class var not an ivar
     self.IMStrokes = [NSArray arrayWithObjects:@"Fly",@"Back",@"Breast",@"Freestyle", nil];
     
@@ -305,38 +312,50 @@
 // Customize the number of sections in the table view.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if (self.viewstate == VS_ATHLETES) {
+        return 4; // USS SCY, MHSAA, USS LCM, USS SCM
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    self.rows = 0;
-    switch (self.viewstate) {
-        case VS_ATHLETES:
-            self.rows = [self.theSwimmers count];
-            NSLog(@"numRows: %d",self.rows);
-            break;
-        case VS_STROKES:
-            self.rows = [self.strokes count];
-            break;
-        case VS_DISTANCE:
-            self.rows = [self.distances count];
-            break;
-        case VS_RESULTS:
-            self.rows = [_allTimes count];
-            break;
-        case VS_SPLITS:
-            self.rows = [_allSplits count];
-            break;
-        default:
-            NSLog(@"ERROR: numberOfRowsInSection UNKNOWN!!! for viewstate=%d",self.viewstate);
-            break;
+    if (section == SECTION_USS_SCY) { // SCY
+        self.rows = 0;
+        switch (self.viewstate) {
+            case VS_ATHLETES:
+                self.rows = [self.theSwimmers count];
+                NSLog(@"numRows: %d",self.rows);
+                break;
+            case VS_STROKES:
+                self.rows = [self.strokes count];
+                break;
+            case VS_DISTANCE:
+                self.rows = [self.distances count];
+                break;
+            case VS_RESULTS:
+                self.rows = [_allTimes count];
+                break;
+            case VS_SPLITS:
+                self.rows = [_allSplits count];
+                break;
+            default:
+                NSLog(@"ERROR: numberOfRowsInSection UNKNOWN!!! for viewstate=%d",self.viewstate);
+                break;
+        }
+        if(self.editing) { 
+            self.rows++;
+            NSLog(@"Editing=true, numRows: %d",self.rows);
+        }
+        return self.rows;
+    } else if (section == SECTION_USS_LCM) {
+        return 0;  // todo
+    } else if (section == SECTION_MHSAA) {
+        return 0;  // todo
+    } else {    // SECTION_USS_SCM
+        return 0; // todo
     }
-    if(self.editing) { 
-        self.rows++;
-        NSLog(@"Editing=true, numRows: %d",self.rows);
-    }
-    return self.rows;
 }
 
 - (NSString*) cutsWithStars:(int)numStars andPrefix:(NSString*)prefix
@@ -359,6 +378,18 @@
         shortname = longname;
     }
     return shortname;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == SECTION_USS_SCY)
+        return @"USS Short Course Yards";
+    else if (section == SECTION_USS_LCM)
+        return @"USS Long Course Meters";
+    else if (section == SECTION_MHSAA)
+        return @"Michigan High School";
+    else
+        return @"USS Short Course Meters";
 }
 
 // Customize the appearance of table view cells.
@@ -563,7 +594,7 @@
                 rvController.CurrentTitle = @"Distance";
                 rvController.viewstate = VS_DISTANCE;
             } else {
-                rvController.CurrentTitle = @"Top Times";
+                rvController.CurrentTitle = @"Personal Best";
                 NSLog(@"VS_STROKES->VS_RESULTS: %@",self.managedObjectContext);
                 rvController.viewstate = VS_RESULTS;
             }

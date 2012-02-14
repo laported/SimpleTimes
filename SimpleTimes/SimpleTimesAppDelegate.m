@@ -7,7 +7,7 @@
 //
 
 #import "SimpleTimesAppDelegate.h"
-#import "DetailViewScrollController.h"
+#import "DetailSwimmerViewController.h"
 #import "AllTimesViewController.h"
 #import "EnterRaceResultController.h"
 
@@ -41,43 +41,29 @@
     //self.window.rootViewController = self.navigationController;
     
     if (UI_USER_INTERFACE_IDIOM() ==  UIUserInterfaceIdiomPad) {
-        //[self.window addSubview: self.splitViewController.view];
-        //self.rootVC.managedObjectContext = self.managedObjectContext;
-        
-//        [[NSBundle mainBundle] loadNibNamed:@"MainWindow_iPad" owner:self options:nil];
-        
         self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-        //[self.window setBackgroundColor:[UIColor redColor]];
-        // Override point for customization after application launch.
-        DetailViewScrollController* viewController1 = [[DetailViewScrollController alloc] initWithNSManagedObjectContext:self.managedObjectContext];
-        //DetailViewScrollController* viewController1 = [[DetailViewScrollController alloc] initWithNibName:@"DetailViewScrollController" bundle:nil];
-        
-        //DetailSwimmerViewController *viewController1 = [[DetailSwimmerViewController alloc] initWithNibName:@"DetailSwimmerViewController" bundle:nil];
         
         Swimmers* theSwimmers = [[Swimmers alloc] init];
         [theSwimmers loadWithContext:[self managedObjectContext]];
         
-        //[window addSubview:viewController1.view];
-
-//        self.rootVC = viewController1;
-//        [self setViewController:viewController1];
-//        [self.window setRootViewController:viewController1];
-    
-        //if ([theSwimmers.athletesCD count] > 0) {
-        //    [viewController1 setAthlete:[theSwimmers.athletesCD objectAtIndex:0]];
-        //    [viewController1 setMOC:[self managedObjectContext]];
-        //}
+        DetailSwimmerViewController *viewController1 = [[DetailSwimmerViewController alloc] initWithAthlete:[theSwimmers.athletesCD objectAtIndex:0] andContext:[self managedObjectContext]];
+        
         UIViewController *viewController2 = [[AllTimesViewController alloc] initWithNibName:@"AllTimesViewController" bundle:nil];
-        UIViewController *viewController3 = [[EnterRaceResultController alloc] initWithNibName:@"EnterRaceResultController" bundle:nil];
+        UIViewController *viewController3 = [[EnterRaceResultController alloc]  initWithAthlete:[theSwimmers.athletesCD objectAtIndex:0] andContext:[self managedObjectContext]];
         
         self.tabBarController = [[UITabBarController alloc] init];
         self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, nil];
     
+        //UIToolbar* toolbar = [[UIToolbar alloc] init];
+        
         self.window.rootViewController = self.tabBarController;
-        // test to see if viewdidload is called when i add this
-        [self.window addSubview:self.window.rootViewController.view]; 
          
     } else {
+        UIView *backgroundView = [[UIView alloc] initWithFrame: self.window.frame];
+        backgroundView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"UnderWater-Portrait-iPhone.png"]];
+        [self.window addSubview:backgroundView];
+        [backgroundView release];
+        
         [self.window addSubview: self.navigationController.view];
         self.rootVC.managedObjectContext = self.managedObjectContext;
     }
@@ -209,7 +195,12 @@
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:  
+                             [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,  
+                             [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];  
+    
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.

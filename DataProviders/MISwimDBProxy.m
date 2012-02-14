@@ -164,6 +164,11 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         }
 #endif
         
+        if (table == nil) {
+            NSLog(@"No splits data available for '%d'",raceId);
+            return nil; // No Splits data available
+        }
+        
         // Parse the table
         ROHTMLTable* parser = [[ROHTMLTable alloc] init];
         [parser initFromString:table];
@@ -183,7 +188,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     
     sorted_results = [all_splits sortedArrayUsingSelector:@selector(compareByDistance:)];        
 
-    // RETURN ARRAY OF RaceResult Objects
+    // RETURN ARRAY OF Split Objects
     return sorted_results;
 }
 
@@ -263,7 +268,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                               age:14     // todo
                                                       powerpoints:0
                                                          standard:@"Q1"
-                                                              key:0
+                                                           splits:nil
                                 ] autorelease];
             [all_times addObject:r];
             RaceResultMI* r2 = [[[RaceResultMI alloc] initWithTime:@"2:00.95"
@@ -276,7 +281,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                                age:14     // todo
                                                        powerpoints:0
                                                           standard:@"Q2"
-                                                               key:0
+                                                            splits:nil
                                  ] autorelease];
             [all_times addObject:r2];
             NSDate *myDate2 = [df dateFromString:@"01/24/2012"];
@@ -290,9 +295,36 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                                age:14     // todo
                                                        powerpoints:0
                                                           standard:@"Q2"
-                                                               key:0
+                                                            splits:nil
                                  ] autorelease];
             [all_times addObject:r3];
+            NSDate *myDate3 = [df dateFromString:@"02/09/2012"];
+            // splits:
+            // 27.71,30.11,31.05,31.34,31.32,31.29,31.4,31.26,31.69,31.28
+            //
+            Split* s1 = [[Split alloc] initWithDistance:@"50" time_cumulative:@"27.71" time_split:@"27.71"];
+            Split* s2 = [[Split alloc] initWithDistance:@"100" time_cumulative:@"57.82" time_split:@"30.11"];
+            Split* s3 = [[Split alloc] initWithDistance:@"150" time_cumulative:@"1:28.87" time_split:@"31.05"];
+            Split* s4 = [[Split alloc] initWithDistance:@"200" time_cumulative:@"2:00.21" time_split:@"31.34"];
+            Split* s5 = [[Split alloc] initWithDistance:@"250" time_cumulative:@"2:31.53" time_split:@"31.32"];
+            Split* s6 = [[Split alloc] initWithDistance:@"300" time_cumulative:@"3:02.82" time_split:@"31.29"];
+            Split* s7 = [[Split alloc] initWithDistance:@"350" time_cumulative:@"3:34.22" time_split:@"31.40"];
+            Split* s8 = [[Split alloc] initWithDistance:@"400" time_cumulative:@"4:05.48" time_split:@"31.26"];
+            Split* s9 = [[Split alloc] initWithDistance:@"450" time_cumulative:@"4:37.17" time_split:@"31.69"];
+            Split* s10 = [[Split alloc] initWithDistance:@"500" time_cumulative:@"5:08.45" time_split:@"31.28"];
+            RaceResultMI* r4 = [[[RaceResultMI alloc] initWithTime:@"5:08.45"
+                                                              meet:@"SHS v Salem v Pioneer" 
+                                                              date:myDate3
+                                                            stroke:@"Free"
+                                                          distance:500
+                                                       shortcourse:YES    // todo
+                                                            course:@"SCY"
+                                                               age:14     // todo
+                                                       powerpoints:0
+                                                          standard:@"Q1"
+                                                            splits:[NSArray arrayWithObjects:s1,s2,s3,s4,s5,s6,s7,s8,s9,s10, nil]
+                                 ] autorelease];
+            [all_times addObject:r4];
         }
         ///// temp hack ---------------------------------------------------------
         
@@ -300,27 +332,27 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             //NSLog(@"Meet: %@ / %@\n",[parser cell:i :7],[parser cell:i :8]);
             //NSLog(@"   %@ %@ %@\n\n",[parser cell:i :1],[parser cell:i :2],[parser cell:i :4]);
             //NSLog(@"Splits: %@",[parser rowLink:i]);
-            
+            int splits_key = [self getSplitsKey:[parser rowLink:i]];
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             [df setDateFormat:@"MM/dd/yyyy"];
             NSDate *myDate = [df dateFromString:[parser cell:i :7]];
             
             if (myDate != nil) {
-               int dist = [[parser cell:i :1] intValue];
-               RaceResultMI* race = [[[RaceResultMI alloc] initWithTime:[parser cell:i :4]
+                int dist = [[parser cell:i :1] intValue];
+                RaceResultMI* race = [[[RaceResultMI alloc] initWithTime:[parser cell:i :4]
                                                                meet:[parser cell:i :8] 
                                                                date:myDate
                                                              stroke:[parser cell:i :2]
                                                            distance:dist
                                                         shortcourse:YES    // todo
                                                              course:@"SCY"
-                                                                age:10     // todo
+                                                                age:18     // todo
                                                             powerpoints:[[parser cell:i :6] intValue]
                                                            standard:@"??"
-                                                                key:((dist > 50) ? [self getSplitsKey:[parser rowLink:i]] : 0)
+                                                             splits:nil         // load this later when requested
                                     ] autorelease];
-            
-               [all_times addObject:race];
+                [race setSplitsKey:splits_key];
+                [all_times addObject:race];
             }
         
         }
@@ -330,93 +362,6 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
    
     // RETURN ARRAY OF RaceResult Objects sorted by time
     
-    return sorted_results;
-}
-
-/* TODO: Need to refactor this code and eliminate duplicate code with this func
-   and previous func
- */
-- (NSArray *)getFastestTimesForAthlete:(int)athleteId {
-    
-    NSMutableArray* all_times = [NSMutableArray array];
-    NSArray*        sorted_results = nil;
-    BOOL            requestOK = YES;
-    NSString*       response = NULL;
-    
-#if defined (ONLINETESTING)
-    NSString *sQueryUrl = [NSString stringWithFormat:FastestTimesQuery,athleteId];
-    NSLog(@"%@", sQueryUrl);
-    NSURL *urlQuery = [NSURL URLWithString:sQueryUrl];
-    
-    // Grab the times from the website
-    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:urlQuery];
-    [request startSynchronous];
-    NSError *error = [request error];
-    if (!error) {
-        response = [request responseString];
-    } else // try to load from local cache
-#else
-    response = [self loadFile:[NSString stringWithFormat:cachedFastestResultsFileStringFormat,athleteId]];
-#endif    
-    requestOK = ([response length] > 0);
-    if (requestOK == YES) {    
-        // Extract the <TABLE> element containing the times
-        //[self saveFile:@"TestTimes.html" text:response];
-        NSString *table = [self getTimesTable:response];
-        if ([table length] > 0) {
-            // cache the results locally
-            [self saveFile:[NSString stringWithFormat:cachedFastestResultsFileStringFormat,athleteId] text:table ];
-        }
-        
-        // Parse the table
-        ROHTMLTable* parser = [[ROHTMLTable alloc] init];
-        [parser initFromString:table];
-        //NSLog(@"%@", table);
-        
-        // Column defs
-        // 0 Link to splits data
-        // 1 Distance
-        // 2 Stroke
-        // 3 P/F ?????
-        // 4 Time
-        // 5 Place
-        // 6 Points
-        // 7 Date
-        // 8 Meet
-        for (int i=0;i<[parser numRows];i++) {
-            //NSLog(@"Meet: %@ / %@\n",[parser cell:i :7],[parser cell:i :8]);
-            //NSLog(@"   %@ %@ %@\n\n",[parser cell:i :1],[parser cell:i :2],[parser cell:i :4]);
-            //NSLog(@"Splits: %@",[parser rowLink:i]);
-                  
-            NSDateFormatter *df = [[NSDateFormatter alloc] init];
-            [df setDateFormat:@"MM/dd/yyyy"];
-            NSDate *myDate = [df dateFromString:[parser cell:i :7]];
-            
-            if (myDate != nil) {
-                int dist = [[parser cell:i :1] intValue];
-                RaceResultMI* race = [[[RaceResultMI alloc] 
-                    initWithTime:[parser cell:i :4]
-                            meet:[parser cell:i :8] 
-                            date:myDate
-                          stroke:[parser cell:i :2]
-                        distance:dist
-                     shortcourse:YES
-                          course:@"SCY"
-                             age:10
-                     powerpoints:0
-                        standard:@"??"
-                             key:((dist > 50) ? [self getSplitsKey:[parser rowLink:i]] : 0)
-                    ] autorelease];
-                
-                [all_times addObject:race];
-            }
-            
-        }
-        // new and shiny sorted array
-        sorted_results = [all_times sortedArrayUsingSelector:@selector(compareByDistance:)];        
-    }     
-    
-    // RETURN ARRAY OF RaceResultMI Objects sorted by time
     return sorted_results;
 }
 
