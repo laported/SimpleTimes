@@ -18,4 +18,6 @@
 @property (nonatomic, retain) NSString * cumulative;
 @property (nonatomic, retain) RaceResult *race;
 
+- (NSComparisonResult)compareByDistance:(SplitCD *)otherObject;
+
 @end

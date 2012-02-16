@@ -7,39 +7,43 @@
 //
 
 #import "DownloadTimesMI.h"
-#import "MISwimDBProxy.h"
+#import "../DataProviders/TeamManagerDBProxy.h"
 
 @implementation DownloadTimesMI
 
 @synthesize theAthlete;
-@synthesize listener;
+@synthesize theListener;
+@synthesize theDB;
 
-- (id)initWithAthlete:(AthleteCD*)athlete:(id)AndListener 
+- (id)initWithAthlete:(AthleteCD*)athlete andListener:(id)listener andTmDB:(NSString*)db
 {
     if (![super init]) return nil;
     NSLog(@"MI Id: %d",[[athlete miswimid] intValue]);
     [self setTheAthlete:athlete];
-    [self setListener:AndListener];
+    [self setTheListener:listener];
+    [self setTheDB:db];
     return self;
 }
 
 - (void)dealloc {
-    [theAthlete release];
-    theAthlete = nil;
-    [listener release];
-    listener = nil;
+    [_theAthlete release];
+    _theAthlete = nil;
+    [_theListener release];
+    _theListener = nil;
+    [_theDB release];
+    _theDB = nil;
     [super dealloc];
 }
 
 - (void)main 
 {
-    MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+    TeamManagerDBProxy* proxy = [[[TeamManagerDBProxy alloc] initWithDBName:theDB] autorelease];
 
     NSLog(@"+DownloadTimesMI: id=%d",[[theAthlete miswimid] intValue]);
     NSArray* times = [proxy getAllTimesForAthlete:[[theAthlete miswimid] intValue]];
     NSLog(@"-DownloadTimesMI: id=%d",[[theAthlete miswimid] intValue]);
 
-    [self.listener performSelectorOnMainThread:@selector(timesDownloaded:)
+    [self.theListener performSelectorOnMainThread:@selector(timesDownloaded:)
                                                       withObject:times
                                                    waitUntilDone:YES];
 }

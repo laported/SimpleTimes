@@ -10,6 +10,24 @@
 
 @implementation TimeStandard
 
+const char* sz_m_mhsaa_misca [5][8] = {
+    // 25     50       100        200        400      500        1000     1650
+    {  NULL,  "23.63", "51.79",   "1:54.77", NULL,    "5:14.71", NULL,    NULL   },  // free
+    {  NULL,  NULL,    "1:01.35", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
+    {  NULL,  NULL,    "1:07.89", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
+    {  NULL,  NULL,    "58.89",   NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
+    {  NULL,  NULL,    NULL,      "2:12.08", NULL,    NULL,      NULL,    NULL   }   // IM
+};
+
+const char* sz_m_mhsaa_state [5][8] = {
+    // 25     50       100        200        400      500        1000     1650
+    {  NULL,  "22.69", "49.59",   "1:48.79", NULL,    "4:57.79", NULL,    NULL   },  // free
+    {  NULL,  NULL,    "56.69",   NULL,      NULL,    NULL,      NULL,    NULL   },  // back
+    {  NULL,  NULL,    "1:02.89", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
+    {  NULL,  NULL,    "55.39",   NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
+    {  NULL,  NULL,    NULL,      "2:03.79", NULL,    NULL,      NULL,    NULL   }   // IM
+};
+
 const char* sz_nine_ten_w_q1 [5][8] = {
     // 25     50       100        200        400      500        1000     1650
     {  NULL,  "31.49", "1:09.49", "2:31.59", NULL,    "6:50.59", NULL,    NULL   },  // free
@@ -330,6 +348,31 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
             break;
     }
     return [NSString stringWithFormat:@"%s",sz_q2[stroke-1][distanceidx]];
+}
+
++(NSString*) getTimeStandardForMHSAAWithDistance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time
+{
+    const char* sz_misca [5][8] = { NULL };
+    const char* sz_state [5][8] = { NULL };
+    int distanceidx = [TimeStandard distanceIndex:distance];
+    
+    if ([gender isEqualToString:@"m"]) {
+        memcpy(sz_misca,sz_m_mhsaa_misca,sizeof(sz_misca));
+        memcpy(sz_state,sz_m_mhsaa_state,sizeof(sz_state));
+    }
+    if (sz_state != NULL) {
+        float fQ1 = [TimeStandard getFloatTimeFromCStringTime:sz_state[stroke-1][distanceidx]];
+        float fQ2 = [TimeStandard getFloatTimeFromCStringTime:sz_misca[stroke-1][distanceidx]];
+        if (time <= fQ1) {
+            return @"STATE";
+        }
+        if (time <= fQ2) {
+            return [NSString stringWithFormat:@"MISCA (ST+%2.2f)",time-fQ1];
+        }
+        
+    }
+    
+    return @"";
 }
 
 +(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time {

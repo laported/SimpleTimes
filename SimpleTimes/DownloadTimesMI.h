@@ -10,13 +10,15 @@
 #import "AthleteCD.h"
 
 @interface DownloadTimesMI : NSOperation {
-    AthleteCD* theAthlete;
-    id listener;
+    AthleteCD* _theAthlete;
+    id _theListener;
+    NSString* _theDB;
 }
 
 @property(retain) AthleteCD* theAthlete;
-@property(retain) id         listener;
+@property(retain) id         theListener;
+@property(retain) NSString*  theDB;
 
-- (id)initWithAthlete:(AthleteCD*)athlete:(id)AndListener;
+- (id)initWithAthlete:(AthleteCD*)athlete andListener:(id)listener andTmDB:(NSString*)db;
 
 @end

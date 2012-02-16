@@ -23,8 +23,9 @@
 @synthesize standard = _standard;
 @synthesize key = _key;
 @synthesize splits = _splits;
+@synthesize tmDatabase = _tmDatabase;
 
-- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits
+- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits db:(NSString*)db
 {
     if ((self = [super init])) {
         _time = [time copy];
@@ -39,6 +40,7 @@
         _standard = [standard copy];
         _age = age;
         _powerpoints = powerpoints;
+        _tmDatabase = [db copy];
     }
     return self;
 }
@@ -88,6 +90,8 @@
     [_standard release];
     _standard = nil;
     [_splits release];
+    [_tmDatabase release];
+    _tmDatabase = nil;
     [super dealloc];
 }
 

@@ -6,7 +6,7 @@
 //  Copyright 2011 laporte6.org. All rights reserved.
 //
 
-#import "MISwimDBProxy.h"
+#import "TeamManagerDBProxy.h"
 #import "ASIHTTPRequest.h"
 #import "ROHTMLTable.h"
 #import "AthleteCD.h"
@@ -14,17 +14,29 @@
 #import "Split.h"
 #import "AddSwimmerResult.h"
 
-NSString* const findByLastName = @"http://www.sports-tek.com/TMOnline/aATHLETE.asp?aGroup=&SubGroup=&Class=&SEX=M&TEAM=&thePage=1&PageSize=2000&Letter=%C&SEARCH=%@&DB=upload%%5CMichiganSwimmingLSCOfficeCopy.mdb";
+// MISCA database
+// http://www.sports-tek.com/tmonline/aATHRESULTSWithPSMR.ASP?ATH=342&Stroke=&Distance=&Course=Y&Fastest=&MEET=&STD=false&DB=upload\MHSAAMISCAOfficeCopy.mdb
 
-NSString* const AthletesQuery = @"http://www.sports-tek.com/TMOnline/aATHLETE.asp?aGroup=&SubGroup=&Class=&SEX=&TEAM=&thePage=1&PageSize=2000&Letter=%C&SEARCH=&DB=upload%%5CMichiganSwimmingLSCOfficeCopy.mdb";
 
-NSString* const AthleteQuery = @"http://www.sports-tek.com/TMOnline/aATHLETE.asp?aGroup=&SubGroup=&Class=&SEX=&TEAM=&thePage=1&PageSize=2000&SEARCH=%@&DB=upload%%5CMichiganSwimmingLSCOfficeCopy.mdb";
+// Course Selection
+// Short Course Yards 'COURSE=Y' (Default)
+// Long Course Meters 'COURSE=L'
+// Short Course Meters 'COURSE=S'
 
-NSString* const AllTimesQuery = @"http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=upload%%5CMichiganSwimmingLSCOfficeCopy.mdb&ATH=%d&FASTEST=&PageSize=2000";
+// MI Swimming DB: upload%%5CMichiganSwimmingLSCOfficeCopy.mdb
+// MISCA DB:       upload%%5CMHSAAMISCAOfficeCopy.mdb
 
-NSString* const FastestTimesQuery = @"http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=upload%%5CMichiganSwimmingLSCOfficeCopy.mdb&ATH=%d&FASTEST=1";
+NSString* const findByLastName = @"http://www.sports-tek.com/TMOnline/aATHLETE.asp?aGroup=&SubGroup=&Class=&SEX=M&TEAM=&thePage=1&PageSize=2000&Letter=%C&SEARCH=%@&DB=%@";
 
-NSString* const SplitsQuery = @"http://www.sports-tek.com/TMOnline/aSPLITS.asp?db=upload%%5CMichiganSwimmingLSCOfficeCopy.mdb&RESULT=%d";
+NSString* const AthletesQuery = @"http://www.sports-tek.com/TMOnline/aATHLETE.asp?aGroup=&SubGroup=&Class=&SEX=&TEAM=&thePage=1&PageSize=2000&Letter=%C&SEARCH=&DB=%@";
+
+NSString* const AthleteQuery = @"http://www.sports-tek.com/TMOnline/aATHLETE.asp?aGroup=&SubGroup=&Class=&SEX=&TEAM=&thePage=1&PageSize=2000&SEARCH=%@&DB=%@";
+
+NSString* const AllTimesQuery = @"http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=%@&ATH=%d&FASTEST=&PageSize=2000";
+
+NSString* const FastestTimesQuery = @"http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=%@&ATH=%d&FASTEST=1";
+
+NSString* const SplitsQuery = @"http://www.sports-tek.com/TMOnline/aSPLITS.asp?db=%@&RESULT=%d";
 
 NSString* const cachedResultsFileStringFormat        = @"%d.%d.%d.times.table.html";
 NSString* const cachedSplitsFileStringFormat         = @"%d.splits.table.html";
@@ -32,7 +44,7 @@ NSString* const cachedFastestResultsFileStringFormat = @"%d.fastest.times.table.
 NSString* const cachedAthleteFileStringFormat        = @"%@.%@.html";
 
 // Query for all times with a given stroke and distance
-NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=upload%%5CMichiganSwimmingLSCOfficeCopy.mdb&ATH=%d&Stroke=%d&Distance=%d&Course=Y&Fastest=&MEET=&Sort=intStroke&STD=true";
+NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=%@&ATH=%d&Stroke=%d&Distance=%d&Course=Y&Fastest=&MEET=&Sort=intStroke&STD=true";
 
 // http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=upload\MichiganSwimmingLSCOfficeCopy.mdb&ATH=11657&
 // Stroke=1&Distance=100&Course=Y&Fastest=&MEET=&Sort=intStroke
@@ -45,7 +57,22 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
  <TD align=right  width="31" class="trow" id="noprint"><a href="" onClick="javascript:split_window=window.open('aSPLITS.asp?db=upload/\MichiganSwimmingLSCOfficeCopy.mdb&RESULT=1297319&ATHLETE=Mathew LaPorte&STROKE=Free&DISTANCE=100','SPLIT_WINDOW','scrollbars=yes,width=600,height=150,menu=false,resizable=yes');split_window.focus(); return false">Splits</a></TD>
  */
 
-@implementation MISwimDBProxy
+@implementation TeamManagerDBProxy
+
+- (id) initWithDBName:(NSString *)dbName
+{
+    [super init];
+    _dbName = dbName;
+    [_dbName retain];
+    return self;
+}
+
+-(void) dealloc
+{
+    [super dealloc];
+    [_dbName release];
+    _dbName = nil;
+}
 
 - (int)saveFile:(NSString*)file text:(NSString*)text
 {
@@ -134,7 +161,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     
 #if defined (ONLINETESTING)
     NSString *sQueryUrl;
-    sQueryUrl = [NSString stringWithFormat:SplitsQuery,raceId];
+    sQueryUrl = [NSString stringWithFormat:SplitsQuery,_dbName,raceId];
     NSLog(@"%@", sQueryUrl);
     NSURL *urlQuery = [NSURL URLWithString:sQueryUrl];
     
@@ -198,13 +225,14 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     NSArray*        sorted_results = nil;
     BOOL            requestOK = YES;
     NSString*       response = NULL;
+    NSString*       dbMISCA = [NSString stringWithCString:MISCA_SWIM_DB encoding:NSUTF8StringEncoding];
     
 #if defined (ONLINETESTING)
     NSString *sQueryUrl;
     if (stroke == 0 && distance == 0)
-        sQueryUrl = [NSString stringWithFormat:AllTimesQuery,athleteId];
+        sQueryUrl = [NSString stringWithFormat:AllTimesQuery,_dbName, athleteId];
     else
-        sQueryUrl = [NSString stringWithFormat:AllTimesQuery2,athleteId,stroke,distance];
+        sQueryUrl = [NSString stringWithFormat:AllTimesQuery2,_dbName,athleteId,stroke,distance];
     NSLog(@"%@", sQueryUrl);
     NSURL *urlQuery = [NSURL URLWithString:sQueryUrl];
     
@@ -252,7 +280,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         // 8 Meet
         
         ///// temp hack ---------------------------------------------------------
-        if (athleteId == 11657) {
+        if (athleteId == 342) {
             // add matthew's HS times
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             [df setDateFormat:@"MM/dd/yyyy"];
@@ -264,11 +292,12 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                            stroke:@"Free"
                                                          distance:500
                                                       shortcourse:YES    // todo
-                                                           course:@"SCY"
+                                                           course:@"MHSAA"
                                                               age:14     // todo
                                                       powerpoints:0
-                                                         standard:@"Q1"
+                                                         standard:@"MISCA"
                                                            splits:nil
+                                                               db:_dbName
                                 ] autorelease];
             [all_times addObject:r];
             RaceResultMI* r2 = [[[RaceResultMI alloc] initWithTime:@"2:00.95"
@@ -277,11 +306,12 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                             stroke:@"Free"
                                                           distance:200
                                                        shortcourse:YES    // todo
-                                                            course:@"SCY"
+                                                            course:@"MHSAA"
                                                                age:14     // todo
                                                        powerpoints:0
-                                                          standard:@"Q2"
+                                                          standard:@""
                                                             splits:nil
+                                                                db:_dbName
                                  ] autorelease];
             [all_times addObject:r2];
             NSDate *myDate2 = [df dateFromString:@"01/24/2012"];
@@ -291,11 +321,12 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                             stroke:@"Free"
                                                           distance:100
                                                        shortcourse:YES    // todo
-                                                            course:@"SCY"
+                                                            course:@"MHSAA"
                                                                age:14     // todo
                                                        powerpoints:0
-                                                          standard:@"Q2"
+                                                          standard:@""
                                                             splits:nil
+                                                                db:_dbName
                                  ] autorelease];
             [all_times addObject:r3];
             NSDate *myDate3 = [df dateFromString:@"02/09/2012"];
@@ -318,11 +349,12 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                             stroke:@"Free"
                                                           distance:500
                                                        shortcourse:YES    // todo
-                                                            course:@"SCY"
+                                                            course:@"MHSAA"
                                                                age:14     // todo
                                                        powerpoints:0
-                                                          standard:@"Q1"
+                                                          standard:@"MISCA"
                                                             splits:[NSArray arrayWithObjects:s1,s2,s3,s4,s5,s6,s7,s8,s9,s10, nil]
+                                                                db:_dbName
                                  ] autorelease];
             [all_times addObject:r4];
         }
@@ -336,20 +368,27 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             [df setDateFormat:@"MM/dd/yyyy"];
             NSDate *myDate = [df dateFromString:[parser cell:i :7]];
-            
+            NSString* theCourse = @"SCY";   // TODO: LCM, SCM ???
+                
+            if ([dbMISCA caseInsensitiveCompare:_dbName] == NSOrderedSame) {
+                theCourse = @"MHSAA";
+            }
+                
             if (myDate != nil) {
                 int dist = [[parser cell:i :1] intValue];
+                NSLog(@"Powerpoints: %d",[[parser cell:i :6] intValue]);
                 RaceResultMI* race = [[[RaceResultMI alloc] initWithTime:[parser cell:i :4]
                                                                meet:[parser cell:i :8] 
                                                                date:myDate
                                                              stroke:[parser cell:i :2]
                                                            distance:dist
                                                         shortcourse:YES    // todo
-                                                             course:@"SCY"
+                                                             course:theCourse
                                                                 age:18     // todo
                                                             powerpoints:[[parser cell:i :6] intValue]
-                                                           standard:@"??"
+                                                           standard:@""
                                                              splits:nil         // load this later when requested
+                                                                 db:_dbName
                                     ] autorelease];
                 [race setSplitsKey:splits_key];
                 [all_times addObject:race];
@@ -376,7 +415,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     /* MI website removes single-quotes in names. E.g. O'Dowd becomes ODowd */ 
     NSString* first_sanitized = [firstname stringByReplacingOccurrencesOfString:@"'"withString:@""];
     NSString* last_sanitized = [lastname stringByReplacingOccurrencesOfString:@"'"withString:@""];
-    NSString *sQuery = [NSString stringWithFormat:AthleteQuery,last_sanitized];
+    NSString *sQuery = [NSString stringWithFormat:AthleteQuery,last_sanitized,_dbName];
     NSString *sQueryUrl = sQuery; 
     NSLog(@"%@", sQueryUrl);
     NSURL *urlQuery = [NSURL URLWithString:sQueryUrl];
@@ -436,6 +475,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         }
     } else {
         // Log error;
+        NSLog(@"ERROR: ASIHTTPRequest error code %d",error.code);
     }
     return [all_athletes count] > 0 ? all_athletes : all_unmatched_athletes;
 }

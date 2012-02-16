@@ -1,5 +1,5 @@
 //
-//  MISwimDBProxy.h
+//  TeamManagerDBProxy.h
 //  simpletimes
 //
 //  Created by David LaPorte on 7/2/11.
@@ -8,8 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MISwimDBProxy : NSObject {
+#define MI_SWIM_DB    "upload%5CMichiganSwimmingLSCOfficeCopy.mdb"
+#define MISCA_SWIM_DB "upload%5CMHSAAMISCAOfficeCopy.mdb"
+
+@interface TeamManagerDBProxy : NSObject {
+    NSString* _dbName;
 }
+
+- (id) initWithDBName:(NSString *)dbName;
 
 - (NSArray *) getAllTimesForAthlete:(int)athleteId;
 - (NSArray *) getAllTimesForAthlete:(int)athleteId:(int)stroke:(int)distance;

@@ -7,7 +7,7 @@
 //
 
 #import "AddSwimmerViewController.h"
-#import "MISwimDBProxy.h"
+#import "TeamManagerDBProxy.h"
 
 @implementation AddSwimmerViewController
 
@@ -23,19 +23,22 @@
 @synthesize club          = _club;
 @synthesize birthdate     = _birthdate; 
 @synthesize madeSelection = _madeSelection;
+@synthesize database      = _database;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) initWithDatabaseName:(NSString*)database 
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"AddSwimmerViewController" bundle:[NSBundle mainBundle]];
     if (self) {
         // Custom initialization
         _multipleResults = nil;
         _madeSelection = false;
+        self.database = database;
     }
     return self;
 }
 
-- (void) setPropertiesFromSwimmer:(AddSwimmerResult*)swimmer {
+- (void) setPropertiesFromSwimmer:(AddSwimmerResult*)swimmer 
+{
     self.firstname.text = swimmer.first;
     self.lastname.text = swimmer.last;
     self.miSwimId = [swimmer.miId intValue];
@@ -51,7 +54,7 @@
     self.status.text = @"Searching...";
     [self.progressIndicator setHidden:NO];
     [self.status setHidden:NO];
-    MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+    TeamManagerDBProxy* proxy = [[[TeamManagerDBProxy alloc] initWithDBName:_database] autorelease];
     array = [proxy findAthlete:lastname.text:firstname.text];
     if ([array count] == 1) {
         for (AddSwimmerResult* s in array) { 
@@ -97,6 +100,7 @@
     [status release];
     [progressIndicator release];
     [athletes release];
+    [_database release];
     if (_multipleResults != nil)
         [_multipleResults release];
     [super dealloc];
@@ -226,6 +230,8 @@
     _gender = nil;
     [_club release];
     _club = nil;
+    [_database release];
+    _database = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

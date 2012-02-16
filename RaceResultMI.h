@@ -23,6 +23,7 @@
     NSString* _meet;
     NSArray* _splits;
     int _key;           // this is the key value we use to download the splits data from the MI website
+    NSString* _tmDatabase;
 }
 
 @property (copy) NSString* meet;
@@ -37,11 +38,11 @@
 @property        int       powerpoints;
 @property (copy) NSString* standard;
 @property (nonatomic, retain) NSArray* splits;
+@property (copy) NSString* tmDatabase;
 
-- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits;
+- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits db:(NSString*)db;
 
 - (void) setSplitsKey:(int)key;
-
 - (BOOL)hasSplits;
 
 @end

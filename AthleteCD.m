@@ -31,6 +31,35 @@
     return (int)years;
 }
 
+- (void) countCutsMHSAA:(PMHSAACUTS)cuts
+{
+    NSArray* times = [self personalBests];
+    
+    cuts->miscas = 0;
+    cuts->states = 0;
+    
+    for (int k=0;k<[times count];k++) {
+        RaceResult* race = [times objectAtIndex:k];
+        
+        float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+        int nStroke = [Swimmers intStrokeValue:race.stroke];
+        
+        NSString *timestd = [TimeStandard getTimeStandardForMHSAAWithDistance:[race.distance intValue] stroke:nStroke gender:self.gender time:ftime];
+        
+        if ([timestd hasPrefix:@"STATE"]) {
+            cuts->states++;
+            continue;
+        }
+        
+        timestd = [TimeStandard getTimeStandardForMHSAAWithDistance:[race.distance intValue] stroke:nStroke gender:self.gender time:ftime];
+        
+        if ([timestd hasPrefix:@"MISCA"]) {
+            //NSLog(@"JO Cut: %@ %@ : %@ : %@",self.lastname, race.distance,race.stroke,race.time);
+            cuts->miscas++;
+        }
+    }
+}
+
 - (void) countCuts:(PCUTS)cuts {
     NSArray* times = [self personalBests];
     NSDate* dateOfJOMeet;
@@ -67,7 +96,7 @@
         timestd = [TimeStandard getTimeStandardWithAge:[self ageAtDate:dateOfJOMeet] distance:[race.distance intValue] stroke:nStroke gender:self.gender time:ftime];
         
         if ([timestd hasPrefix:@"Q2"]) {
-            NSLog(@"JO Cut: %@ %@ : %@ : %@",self.lastname, race.distance,race.stroke,race.time);
+            //NSLog(@"JO Cut: %@ %@ : %@ : %@",self.lastname, race.distance,race.stroke,race.time);
             cuts->jos++;
         }
     }
@@ -106,6 +135,20 @@
     NSLog(@"allResults:%@ times %08x, strokes %08x",self.firstname,(unsigned int)times,(unsigned int)strokes);
     NSLog(@"allResults:%@ returning %08x",self.firstname,(unsigned int)all_sorted_requested_times);
     return all_sorted_requested_times;
+}
+
+- (NSArray*) allResultsByDate 
+{
+    NSSortDescriptor* sortDescriptor1;
+    NSSortDescriptor* sortDescriptor2;
+    NSSortDescriptor* sortDescriptor3;
+    NSArray *sortDescriptors;
+    
+    sortDescriptor1 = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];  
+    sortDescriptor2 = [NSSortDescriptor sortDescriptorWithKey:@"meet" ascending:YES];  
+    sortDescriptor3 = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];  
+    sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor1,sortDescriptor2,sortDescriptor3, nil];   
+    return [self.races sortedArrayUsingDescriptors:sortDescriptors];
 }
 
 - (NSArray*)personalBests {

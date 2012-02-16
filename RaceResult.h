@@ -27,5 +27,7 @@
 @property (nonatomic, retain) NSSet*    splits;
 
 - (NSComparisonResult)compareByTime:(RaceResult *)otherObject;
+// --- This will strip leading year prefixes off of a meet name (Ex: '2012 Winter Splash' --> 'Winter Splash')
+- (NSString*) shortenMeetName;
 
 @end

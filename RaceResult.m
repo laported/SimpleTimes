@@ -42,4 +42,15 @@
     return NSOrderedSame;
 }
 
+- (NSString*) shortenMeetName
+{
+    NSString* shortname;
+    if ([self.meet hasPrefix:@"201"] || [self.meet hasPrefix:@"200"]) {
+        shortname = [self.meet substringWithRange:NSMakeRange(5, [self.meet length]-5)];
+    } else {
+        shortname = self.meet;
+    }
+    return shortname;
+}
+
 @end

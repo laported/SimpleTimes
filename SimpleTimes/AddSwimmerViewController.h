@@ -26,9 +26,10 @@
     NSString* _club;
     NSDate* _birthdate;
     bool _madeSelection;
-    
+    NSString* _database;
 }
 
+- (id) initWithDatabaseName:(NSString*)database;
 - (IBAction)addButtonSelected:(id)sender;
 - (void)    setPropertiesFromSwimmer:(AddSwimmerResult*)swimmer;
 
@@ -43,5 +44,7 @@
 @property (nonatomic, retain) UITableView* athletes;
 @property (nonatomic, retain) UIActivityIndicatorView* progressIndicator;
 @property (nonatomic, retain) NSDate*      birthdate;
+@property (nonatomic, retain) NSString*    database;
 @property (nonatomic) bool                 madeSelection;
+
 @end

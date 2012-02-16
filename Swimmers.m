@@ -10,7 +10,7 @@
 #import "AthleteCD.h"
 #import "SplitCD.h"
 #import "Split.h"
-#import "MISwimDBProxy.h"
+#import "DataProviders/TeamManagerDBProxy.h"
 
 @implementation Swimmers
 
@@ -29,6 +29,22 @@
     
     [fetchRequest release];
     
+}
+
+-(void) loadAllWithContext:(NSManagedObjectContext*)context withResultsHavingCourse:(NSString*)course
+{
+    // Load all AthleteCD objects from the store
+    NSError *error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSPredicate *filter = [NSPredicate predicateWithFormat:@"ANY races.course MATCHES[c] %@",course];
+    [fetchRequest setPredicate:filter];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AthleteCD" 
+                                              inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    self.athletesCD = [context executeFetchRequest:fetchRequest error:&error];
+    NSLog(@"Swimmers:loadWithContext() athletesCD=%08x, fetchRequest=%08x",(unsigned int)self.athletesCD,(unsigned int)fetchRequest);
+    
+    [fetchRequest release];
 }
 
 -(int) count {
@@ -91,12 +107,12 @@
     race.meet        = raceMI.meet;
     race.date        = raceMI.date;
     race.splitskey   = [NSNumber numberWithInt:raceMI.key];
-    race.powerpoints = [NSNumber numberWithInt:0]; // not suppored by MI DB
+    race.powerpoints = [NSNumber numberWithInt:raceMI.powerpoints]; 
     race.distance    = [NSNumber numberWithInt:raceMI.distance];
     race.athlete     = athlete;
     
     if (raceMI.key > 0 && raceMI.splits == nil) {
-        MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
+        TeamManagerDBProxy* proxy = [[[TeamManagerDBProxy alloc] initWithDBName:raceMI.tmDatabase] autorelease];
         raceMI.splits = [proxy getSplitsForRace:raceMI.key];
     }
     NSMutableSet* set1 = [[NSMutableSet alloc] initWithCapacity:[raceMI.splits count]];
@@ -118,8 +134,8 @@
     }
 }
 
--(void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext *)context {
-    // algorithm for fetching from MI SWIM website:
+-(void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete fromTMDatabase:(NSString*)db inContext:(NSManagedObjectContext *)context {
+    // algorithm for fetching from TM Online website:
     //
     // with the athlete id:
     //   getAllTimesForAthlete()
@@ -130,9 +146,7 @@
     //         insertDBRecord()
     //      }
     //   }
-    MISwimDBProxy* proxy = [[[MISwimDBProxy alloc] init] autorelease];
-    //USASwimmingDBProxy* proxy = [[[USASwimmingDBProxy alloc] init] autorelease];
-    
+    TeamManagerDBProxy* proxy = [[[TeamManagerDBProxy alloc] initWithDBName:db] autorelease];    
     NSArray* times = [proxy getAllTimesForAthlete:[athlete.miswimid intValue]];
     [Swimmers updateAllRaceResultsForAthlete:athlete withResults:times inContext:context];
 }
@@ -205,7 +219,7 @@
 
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM-dd-yyyy"];
-    
+    /*
     AthleteCD *ath1 = [NSEntityDescription
                        insertNewObjectForEntityForName:@"AthleteCD" 
                        inManagedObjectContext:context];
@@ -215,17 +229,17 @@
     ath1.birthdate = [dateFormatter dateFromString:@"01-29-2000"];
     ath1.miswimid = [[NSNumber alloc] initWithInt:11655];
     ath1.gender = @"m";
-    
+    */
     AthleteCD *ath2 = [NSEntityDescription
                        insertNewObjectForEntityForName:@"AthleteCD" 
                        inManagedObjectContext:context];
-    ath2.firstname = @"Matthew";
+    ath2.firstname = @"Matt";
     ath2.lastname = @"LaPorte";
-    ath2.club = @"LCSC";
+    ath2.club = @"LSTEV";
     ath2.birthdate = [dateFormatter dateFromString:@"07-10-1997"];
-    ath2.miswimid = [[NSNumber alloc] initWithInt:11657];
+    ath2.miswimid = [[NSNumber alloc] initWithInt:342];
     ath2.gender= @"m";
-    
+    /*
     AthleteCD *ath3 = [NSEntityDescription
                        insertNewObjectForEntityForName:@"AthleteCD" 
                        inManagedObjectContext:context];
@@ -235,7 +249,7 @@
     ath3.birthdate = [dateFormatter dateFromString:@"07-23-1995"];
     ath3.miswimid = [[NSNumber alloc] initWithInt:11656];
     ath3.gender = @"f";
-    
+    */
     NSError *error;
     if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);

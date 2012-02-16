@@ -21,6 +21,8 @@
 
 +(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time;
 
++(NSString*) getTimeStandardForMHSAAWithDistance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time;
+
 +(NSString*) getJoCutWithAge:(NSDate*)dob distance:(int)distance stroke:(int) stroke gender:(NSString*)gender ;
 
 @end

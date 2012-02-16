@@ -18,6 +18,7 @@
 @property (retain) NSArray *athletesCD;
 
 - (void) loadWithContext:(NSManagedObjectContext *)context;
+-(void) loadAllWithContext:(NSManagedObjectContext*)context withResultsHavingCourse:(NSString*)course;
 - (int)  count;
 
 #ifdef DEBUG
@@ -34,6 +35,6 @@
 
 + (BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 ;
 
-- (void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext *)context;
+- (void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete fromTMDatabase:(NSString*)db inContext:(NSManagedObjectContext *)context;
 
 @end

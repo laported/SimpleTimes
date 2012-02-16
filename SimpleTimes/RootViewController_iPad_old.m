@@ -10,6 +10,7 @@
 #import "AddSwimmerViewController.h"
 #import "SVProgressHUD.h"
 #import "DownloadTimesMI.h"
+#import "TeamManagerDBProxy.h"
 
 @implementation RootViewController_iPad_old
 
@@ -322,7 +323,7 @@
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Push a new view controller for athlete selection here
         _viewstate = VS_ADDSWIMMER;
-        self.asViewController = [[AddSwimmerViewController alloc] initWithNibName:@"AddSwimmerViewController" bundle:[NSBundle mainBundle]];
+        self.asViewController = [[AddSwimmerViewController alloc] initWithDatabaseName:[NSString stringWithCString:MI_SWIM_DB encoding:NSUTF8StringEncoding]];
         [self.navigationController pushViewController:self.asViewController animated:YES];
     }
 }

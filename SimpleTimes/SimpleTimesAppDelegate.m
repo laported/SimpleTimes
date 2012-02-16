@@ -13,6 +13,7 @@
 
 //#ifdef DEBUG
 #import "Swimmers.h"
+#import "TeamManagerDBProxy.h"
 //#endif
 
 @implementation SimpleTimesAppDelegate
@@ -33,8 +34,16 @@
 #ifdef DEBUG
     //[Swimmers deleteAllUsingContext:[self managedObjectContext]];
     //[Swimmers seedTestDataUsingContext:[self managedObjectContext]];
-    //Swimmers* theSwimmers = [[Swimmers alloc] init];
-    //[theSwimmers loadWithContext:[self managedObjectContext]];
+    /*
+    Swimmers* theSwimmers = [[Swimmers alloc] init];
+    [theSwimmers loadAllWithContext:[self managedObjectContext] withResultsHavingCourse:@"MHSAA" ];
+    if ([theSwimmers.athletesCD count] == 1) {
+        TeamManagerDBProxy* proxy = [[[TeamManagerDBProxy alloc] init] autorelease];
+        
+        NSArray* times = [proxy getAllTimesForAthlete:342];
+        [Swimmers updateAllRaceResultsForAthlete:[theSwimmers.athletesCD objectAtIndex:0]  withResults:times inContext:[self managedObjectContext]] ;
+    }
+*/
 #endif
     // Override point for customization after application launch.
     // Add the navigation controller's view to the window and display.
