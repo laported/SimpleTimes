@@ -571,6 +571,8 @@
                 cell.textLabel.text = [NSString stringWithFormat:@"%@\n%@", raceDateString, meetShort];
                 if (([race.distance intValue]>50) && (([race.splits count] > 0) || ([race.splitskey intValue] > 0))) { 
                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                } else {
+                    cell.accessoryType = UITableViewCellAccessoryNone; 
                 }
                 cell.textLabel.numberOfLines = 2;
                 cell.textLabel.lineBreakMode = UILineBreakModeTailTruncation;//  WordWrap; 
