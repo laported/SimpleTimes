@@ -9,7 +9,7 @@
 #import "USASwimmingDBProxy.h"
 #import "ASIFormDataRequest.h"
 #import "ROHTMLTable.h"
-#import "RaceResultMI.h" 
+#import "RaceResultTeamManager.h" 
 
 // URL used to POST form data to get all times with a given stroke and distance
 NSString* const usaAllTimesPostUrl = @"http://www.usaswimming.org/DesktopDefault.aspx?TabId=1470&Alias=Rainbow&Lang=en-US";
@@ -156,7 +156,7 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
             NSDate *myDate = [df dateFromString:[parser cell:i :7]];
             
             if (myDate != nil) {
-               RaceResultMI* race = [[[RaceResultMI alloc] initWithTime:[parser cell:i :4]
+               RaceResultTeamManager* race = [[[RaceResultTeamManager alloc] initWithTime:[parser cell:i :4]
                                                                meet:[parser cell:i :8] 
                                                                date:myDate
                                                              stroke:[parser cell:i :2]
@@ -171,7 +171,7 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
         sorted_results = [all_times sortedArrayUsingSelector:@selector(compareByTime:)];        
     }     
    
-    // RETURN ARRAY OF RaceResultMI Objects sorted by time
+    // RETURN ARRAY OF RaceResultTeamManager Objects sorted by time
     
     return sorted_results;
 }

@@ -72,7 +72,7 @@
 		1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */; };
 		1EBE0F0A14F01CC900ED4DB5 /* AthleteCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */; };
 		1EBE0F0B14F01CC900ED4DB5 /* RaceResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */; };
-		1EBE0F0C14F01CC900ED4DB5 /* RaceResultMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFD14F01CC900ED4DB5 /* RaceResultMI.m */; };
+		1EBE0F0C14F01CC900ED4DB5 /* RaceResultTeamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFD14F01CC900ED4DB5 /* RaceResultTeamManager.m */; };
 		1EBE0F0D14F01CC900ED4DB5 /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFF14F01CC900ED4DB5 /* Split.m */; };
 		1EBE0F0E14F01CC900ED4DB5 /* SplitCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0114F01CC900ED4DB5 /* SplitCD.m */; };
 		1EBE0F0F14F01CC900ED4DB5 /* Swimmers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0314F01CC900ED4DB5 /* Swimmers.m */; };
@@ -190,8 +190,8 @@
 		1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AthleteCD.m; path = Models/AthleteCD.m; sourceTree = "<group>"; };
 		1EBE0EFA14F01CC900ED4DB5 /* RaceResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RaceResult.h; path = Models/RaceResult.h; sourceTree = "<group>"; };
 		1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RaceResult.m; path = Models/RaceResult.m; sourceTree = "<group>"; };
-		1EBE0EFC14F01CC900ED4DB5 /* RaceResultMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RaceResultMI.h; path = Models/RaceResultMI.h; sourceTree = "<group>"; };
-		1EBE0EFD14F01CC900ED4DB5 /* RaceResultMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RaceResultMI.m; path = Models/RaceResultMI.m; sourceTree = "<group>"; };
+		1EBE0EFC14F01CC900ED4DB5 /* RaceResultTeamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; name = RaceResultTeamManager.h; path = Models/RaceResultTeamManager.h; sourceTree = "<group>"; };
+		1EBE0EFD14F01CC900ED4DB5 /* RaceResultTeamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RaceResultTeamManager.m; path = Models/RaceResultTeamManager.m; sourceTree = "<group>"; };
 		1EBE0EFE14F01CC900ED4DB5 /* Split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Split.h; path = Models/Split.h; sourceTree = "<group>"; };
 		1EBE0EFF14F01CC900ED4DB5 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Split.m; path = Models/Split.m; sourceTree = "<group>"; };
 		1EBE0F0014F01CC900ED4DB5 /* SplitCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplitCD.h; path = Models/SplitCD.h; sourceTree = "<group>"; };
@@ -425,8 +425,8 @@
 				1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */,
 				1EBE0EFA14F01CC900ED4DB5 /* RaceResult.h */,
 				1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */,
-				1EBE0EFC14F01CC900ED4DB5 /* RaceResultMI.h */,
-				1EBE0EFD14F01CC900ED4DB5 /* RaceResultMI.m */,
+				1EBE0EFC14F01CC900ED4DB5 /* RaceResultTeamManager.h */,
+				1EBE0EFD14F01CC900ED4DB5 /* RaceResultTeamManager.m */,
 				1EBE0EFE14F01CC900ED4DB5 /* Split.h */,
 				1EBE0EFF14F01CC900ED4DB5 /* Split.m */,
 				1EBE0F0014F01CC900ED4DB5 /* SplitCD.h */,
@@ -583,7 +583,7 @@
 				1E8ABA2114ED1F7E0096E096 /* CutsViewDataItem.m in Sources */,
 				1EBE0F0A14F01CC900ED4DB5 /* AthleteCD.m in Sources */,
 				1EBE0F0B14F01CC900ED4DB5 /* RaceResult.m in Sources */,
-				1EBE0F0C14F01CC900ED4DB5 /* RaceResultMI.m in Sources */,
+				1EBE0F0C14F01CC900ED4DB5 /* RaceResultTeamManager.m in Sources */,
 				1EBE0F0D14F01CC900ED4DB5 /* Split.m in Sources */,
 				1EBE0F0E14F01CC900ED4DB5 /* SplitCD.m in Sources */,
 				1EBE0F0F14F01CC900ED4DB5 /* Swimmers.m in Sources */,

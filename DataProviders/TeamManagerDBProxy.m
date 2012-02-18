@@ -10,7 +10,7 @@
 #import "ASIHTTPRequest.h"
 #import "ROHTMLTable.h"
 #import "AthleteCD.h"
-#import "RaceResultMI.h"
+#import "RaceResultTeamManager.h"
 #import "Split.h"
 #import "AddSwimmerResult.h"
 
@@ -286,7 +286,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             [df setDateFormat:@"MM/dd/yyyy"];
             NSDate *myDate = [df dateFromString:@"01/26/2012"];
             
-            RaceResultMI* r = [[[RaceResultMI alloc] initWithTime:@"5:12.75"
+            RaceResultTeamManager* r = [[[RaceResultTeamManager alloc] initWithTime:@"5:12.75"
                                                              meet:@"SHS @ Novi HS" 
                                                              date:myDate
                                                            stroke:@"Free"
@@ -299,7 +299,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                                                db:_dbName
                                 ] autorelease];
             [all_times addObject:r];
-            RaceResultMI* r2 = [[[RaceResultMI alloc] initWithTime:@"2:00.95"
+            RaceResultTeamManager* r2 = [[[RaceResultTeamManager alloc] initWithTime:@"2:00.95"
                                                               meet:@"SHS @ Novi HS" 
                                                               date:myDate
                                                             stroke:@"Free"
@@ -313,7 +313,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                  ] autorelease];
             [all_times addObject:r2];
             NSDate *myDate2 = [df dateFromString:@"01/24/2012"];
-            RaceResultMI* r3 = [[[RaceResultMI alloc] initWithTime:@"57.22"
+            RaceResultTeamManager* r3 = [[[RaceResultTeamManager alloc] initWithTime:@"57.22"
                                                               meet:@"SHS v Churchill HS" 
                                                               date:myDate2
                                                             stroke:@"Free"
@@ -341,7 +341,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             Split* s8 = [[Split alloc] initWithDistance:@"400" time_cumulative:@"4:05.48" time_split:@"31.26"];
             Split* s9 = [[Split alloc] initWithDistance:@"450" time_cumulative:@"4:37.17" time_split:@"31.69"];
             Split* s10 = [[Split alloc] initWithDistance:@"500" time_cumulative:@"5:08.45" time_split:@"31.28"];
-            RaceResultMI* r4 = [[[RaceResultMI alloc] initWithTime:@"5:08.45"
+            RaceResultTeamManager* r4 = [[[RaceResultTeamManager alloc] initWithTime:@"5:08.45"
                                                               meet:@"SHS v Salem v Pioneer" 
                                                               date:myDate3
                                                             stroke:@"Free"
@@ -355,7 +355,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
                                  ] autorelease];
             [all_times addObject:r4];
             // 
-            RaceResultMI* r5 = [[[RaceResultMI alloc] initWithTime:@"2:00.26"
+            RaceResultTeamManager* r5 = [[[RaceResultTeamManager alloc] initWithTime:@"2:00.26"
                                                               meet:@"SHS v Salem v Pioneer" 
                                                               date:myDate3
                                                             stroke:@"Free"
@@ -388,7 +388,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             if (myDate != nil) {
                 int dist = [[parser cell:i :1] intValue];
                 //NSLog(@"Powerpoints: %d",[[parser cell:i :6] intValue]);
-                RaceResultMI* race = [[[RaceResultMI alloc] initWithTime:[parser cell:i :4]
+                RaceResultTeamManager* race = [[[RaceResultTeamManager alloc] initWithTime:[parser cell:i :4]
                                                                meet:[parser cell:i :8] 
                                                                date:myDate
                                                              stroke:[parser cell:i :2]

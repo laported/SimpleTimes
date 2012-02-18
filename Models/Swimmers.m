@@ -3,7 +3,7 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 11/27/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 laport6.org. All rights reserved.
 //
 
 #import "Swimmers.h"
@@ -51,7 +51,7 @@
     return [self.athletesCD count];
 }
 
-+(BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 {
++(BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultTeamManager*)r2 {
     unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
     NSCalendar* calendar = [NSCalendar currentCalendar];
     
@@ -80,7 +80,7 @@
     return TRUE;
 }
 
-+(BOOL) isRaceInStore:(RaceResultMI*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete 
++(BOOL) isRaceInStore:(RaceResultTeamManager*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete 
 {    
     BOOL isInStore = FALSE;
     // athlete.races is a list of all the athlete's races    
@@ -97,7 +97,7 @@
     return isInStore;
 }
 
-+(void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context downloadSplits:(BOOL)downloadSplits 
++(void) storeRace:(RaceResultTeamManager *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context downloadSplits:(BOOL)downloadSplits 
 {
     RaceResult *race = (RaceResult *)[NSEntityDescription insertNewObjectForEntityForName:@"RaceResult" inManagedObjectContext:context];
     race.time        = raceMI.time;
@@ -154,7 +154,7 @@
 +(int) updateAllRaceResultsForAthlete:(AthleteCD*)athlete withResults:(NSArray*)times inContext:(NSManagedObjectContext *)context 
 {
     int added = 0;
-    for (RaceResultMI *result in times) {
+    for (RaceResultTeamManager *result in times) {
         // Is this in the DB already????
         if (![self isRaceInStore:result inContext:context athlete:athlete]) {
             [self storeRace:result forAthlete:athlete inContext:context downloadSplits:NO];

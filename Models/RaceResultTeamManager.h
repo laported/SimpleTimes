@@ -8,7 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RaceResultMI : NSObject {
+/* 
+ * RaceResultTeamManager
+ * ---------------------
+ * This model class represents the swim race result data provided by 
+ * Hy-Tek's 'Team Stats Online' websites
+ *
+ * http://www.hy-tekltd.com/swim/tmonline.html
+ *
+ */
+@interface RaceResultTeamManager : NSObject {
     NSString* _time;
     NSString* _stroke;     
     NSString* _course;

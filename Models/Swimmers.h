@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AthleteCD.h"
 #import "RaceResult.h"
-#import "RaceResultMI.h"
+#import "RaceResultTeamManager.h"
 
 @interface Swimmers : NSObject {
     NSArray*        _athletesCD;
@@ -30,10 +30,10 @@
 
 // Int values 1 = Freestyle, 2 = Back, 3 = Breast, 4 = Fly, 5 = IM
 + (int)  intStrokeValue:(NSString*)stroke;
-+ (BOOL) isRaceInStore:(RaceResultMI*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete;
-+ (void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context downloadSplits:(BOOL)splits;
++ (BOOL) isRaceInStore:(RaceResultTeamManager*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete;
++ (void) storeRace:(RaceResultTeamManager *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context downloadSplits:(BOOL)splits;
 
-+ (BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 ;
++ (BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultTeamManager*)r2 ;
 
 - (void) updateAllRaceResultsForAthlete:(AthleteCD*)athlete fromTMDatabase:(NSString*)db inContext:(NSManagedObjectContext *)context;
 

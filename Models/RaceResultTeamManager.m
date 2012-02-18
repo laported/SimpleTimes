@@ -6,9 +6,9 @@
 //  Copyright 2011 laporte6.org. All rights reserved.
 //
 
-#import "RaceResultMI.h"
+#import "RaceResultTeamManager.h"
 
-@implementation RaceResultMI
+@implementation RaceResultTeamManager
 
 @synthesize meet = _meet;
 @synthesize date = _date;
@@ -51,12 +51,12 @@
     return [self.splits count] > 0;
 }
 
-- (NSComparisonResult)compareByTime:(RaceResultMI *)otherObject
+- (NSComparisonResult)compareByTime:(RaceResultTeamManager *)otherObject
 {
     return [otherObject.time caseInsensitiveCompare:self.time];
 }
 
-- (NSComparisonResult)compareByDistance:(RaceResultMI *)otherObject
+- (NSComparisonResult)compareByDistance:(RaceResultTeamManager *)otherObject
 {
      if (self.distance > otherObject.distance)
      {
