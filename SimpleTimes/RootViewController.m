@@ -34,6 +34,8 @@
 #define STROKE_CUTS          97
 #define STROKE_FIRST_META    STROKE_CUTS
 
+#define TAG_CUTPROGRESS      1234
+
 @implementation RootViewController
 
 @synthesize allTimes = _allTimes;
@@ -435,11 +437,25 @@
             UIProgressView* cutPV = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
             cutPV.frame = CGRectMake(280,10, 125,50);
             cutPV.progress = fCutProgress;
+            cutPV.tag = TAG_CUTPROGRESS;
             [cell.contentView addSubview:cutPV];
             [cutPV release];
         }
     } else {
         // TODO
+    }
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if ((toInterfaceOrientation == UIInterfaceOrientationPortrait) ||
+        (toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)) 
+    {
+        // We are in portrait orientation. Make sure we clear any exiting progress bar in this cell
+        UIView* progress = nil;
+        while((progress = [self.tableView viewWithTag:TAG_CUTPROGRESS]) != nil) {
+            [progress removeFromSuperview];
+        }
     }
 }
 
