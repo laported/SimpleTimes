@@ -10,7 +10,7 @@
 #import "AthleteCD.h"
 #import "SplitCD.h"
 #import "Split.h"
-#import "DataProviders/TeamManagerDBProxy.h"
+#import "TeamManagerDBProxy.h"
 
 @implementation Swimmers
 

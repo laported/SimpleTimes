@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E1FCCF7147975B600CD8316 /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCF6147975B600CD8316 /* Split.m */; };
-		1E1FCCFB1479E85600CD8316 /* TimeStandard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCFA1479E85600CD8316 /* TimeStandard.m */; };
 		1E1FCD011480009C00CD8316 /* AddSwimmerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCCFF1480009C00CD8316 /* AddSwimmerViewController.m */; };
 		1E1FCD021480009C00CD8316 /* AddSwimmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */; };
-		1E1FCD051482B65100CD8316 /* Swimmers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD041482B65100CD8316 /* Swimmers.m */; };
 		1E1FCD0F1487009500CD8316 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1FCD0E1487009400CD8316 /* CoreData.framework */; };
 		1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */; };
 		1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */; };
@@ -20,7 +17,6 @@
 		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
 		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
 		1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5614E43B05007F1760 /* clock_24.png */; };
-		1E3A6E5B14E59453007F1760 /* SplitCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5A14E59453007F1760 /* SplitCD.m */; };
 		1E3A6E5D14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */; };
 		1E3A6E5F14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5E14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png */; };
 		1E3A6E6214E5D119007F1760 /* SwimmerPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A6E6114E5D118007F1760 /* SwimmerPickerController.m */; };
@@ -36,7 +32,6 @@
 		1E6BF1C814D77D6C006D428C /* TopTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1C614D77D6C006D428C /* TopTimesViewController.xib */; };
 		1E6BF1CC14DA31DE006D428C /* EnterRaceResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1CA14DA31DD006D428C /* EnterRaceResultController.m */; };
 		1E6BF1CD14DA31DE006D428C /* EnterRaceResultController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1CB14DA31DD006D428C /* EnterRaceResultController.xib */; };
-		1E6BF1D014DB8124006D428C /* Swimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1CF14DB8123006D428C /* Swimming.m */; };
 		1E6BF1D514DB8A9D006D428C /* plus_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1D414DB8A9D006D428C /* plus_24.png */; };
 		1E6BF1D714DB8BC1006D428C /* star_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1D614DB8BC1006D428C /* star_24.png */; };
 		1E6BF21E14DC2D76006D428C /* DetailSwimmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */; };
@@ -44,14 +39,12 @@
 		1E6BF34514DD6F57006D428C /* calendar_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34414DD6F57006D428C /* calendar_24.png */; };
 		1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF34714DD70AA006D428C /* AllTimesViewController.m */; };
 		1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */; };
-		1E6BF35614DD8EA0006D428C /* ContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF35514DD8E9D006D428C /* ContentController.m */; };
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
 		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
 		1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */; };
 		1E89ACEB14ECB00500DA97D2 /* CutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E89ACEA14ECB00500DA97D2 /* CutsViewController.m */; };
 		1E8ABA1D14ED1B450096E096 /* RecentRacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8ABA1C14ED1B450096E096 /* RecentRacesViewController.m */; };
 		1E8ABA2114ED1F7E0096E096 /* CutsViewDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8ABA2014ED1F7E0096E096 /* CutsViewDataItem.m */; };
-		1E8ABA2414EEE58B0096E096 /* TimeStandardUssScy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8ABA2314EEE58B0096E096 /* TimeStandardUssScy.m */; };
 		1E8AE75C14C1D71700E01C50 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8AE75B14C1D71700E01C50 /* libz.dylib */; };
 		1EA2289D14703E6C00283AD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289C14703E6C00283AD0 /* UIKit.framework */; };
 		1EA2289F14703E6C00283AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289E14703E6C00283AD0 /* Foundation.framework */; };
@@ -62,7 +55,6 @@
 		1EA228B014703E6C00283AD0 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EA228AE14703E6C00283AD0 /* MainWindow.xib */; };
 		1EA228B314703E6C00283AD0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228B214703E6C00283AD0 /* RootViewController.m */; };
 		1EA228B614703E6C00283AD0 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EA228B414703E6C00283AD0 /* RootViewController.xib */; };
-		1EA228BE14703EB400283AD0 /* RaceResultMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228BD14703EB400283AD0 /* RaceResultMI.m */; };
 		1EA228D6147053B400283AD0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228C0147053B400283AD0 /* Reachability.m */; };
 		1EA228D7147053B400283AD0 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228C3147053B400283AD0 /* ASINetworkQueue.m */; };
 		1EA228D8147053B400283AD0 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228C5147053B400283AD0 /* ASIInputStream.m */; };
@@ -78,8 +70,15 @@
 		1EA228E91470555600283AD0 /* TeamManagerDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228E81470555600283AD0 /* TeamManagerDBProxy.m */; };
 		1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EC14706C7500283AD0 /* ROHTMLTable.m */; };
 		1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */; };
-		1EB19E1D148A68A200BE6620 /* RaceResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB19E1C148A68A200BE6620 /* RaceResult.m */; };
-		1EB19E20148A68CB00BE6620 /* AthleteCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB19E1F148A68CA00BE6620 /* AthleteCD.m */; };
+		1EBE0F0A14F01CC900ED4DB5 /* AthleteCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */; };
+		1EBE0F0B14F01CC900ED4DB5 /* RaceResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */; };
+		1EBE0F0C14F01CC900ED4DB5 /* RaceResultMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFD14F01CC900ED4DB5 /* RaceResultMI.m */; };
+		1EBE0F0D14F01CC900ED4DB5 /* Split.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFF14F01CC900ED4DB5 /* Split.m */; };
+		1EBE0F0E14F01CC900ED4DB5 /* SplitCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0114F01CC900ED4DB5 /* SplitCD.m */; };
+		1EBE0F0F14F01CC900ED4DB5 /* Swimmers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0314F01CC900ED4DB5 /* Swimmers.m */; };
+		1EBE0F1014F01CC900ED4DB5 /* Swimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0514F01CC900ED4DB5 /* Swimming.m */; };
+		1EBE0F1114F01CC900ED4DB5 /* TimeStandard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0714F01CC900ED4DB5 /* TimeStandard.m */; };
+		1EBE0F1214F01CC900ED4DB5 /* TimeStandardUssScy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0914F01CC900ED4DB5 /* TimeStandardUssScy.m */; };
 		1ECD4CB214E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */; };
 		1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */; };
 		1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */; };
@@ -87,15 +86,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E1FCCF5147975B600CD8316 /* Split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Split.h; sourceTree = "<group>"; };
-		1E1FCCF6147975B600CD8316 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Split.m; sourceTree = "<group>"; };
-		1E1FCCF91479E85600CD8316 /* TimeStandard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeStandard.h; sourceTree = "<group>"; };
-		1E1FCCFA1479E85600CD8316 /* TimeStandard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeStandard.m; sourceTree = "<group>"; };
 		1E1FCCFE1480009B00CD8316 /* AddSwimmerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSwimmerViewController.h; sourceTree = "<group>"; };
 		1E1FCCFF1480009C00CD8316 /* AddSwimmerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSwimmerViewController.m; sourceTree = "<group>"; };
 		1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSwimmerViewController.xib; sourceTree = "<group>"; };
-		1E1FCD031482B65100CD8316 /* Swimmers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swimmers.h; sourceTree = "<group>"; };
-		1E1FCD041482B65100CD8316 /* Swimmers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimmers.m; sourceTree = "<group>"; };
 		1E1FCD0E1487009400CD8316 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleSwimModel.xcdatamodel; sourceTree = "<group>"; };
 		1E26FCF3148CE65D002F6FE7 /* AddSwimmerResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSwimmerResult.h; sourceTree = "<group>"; };
@@ -108,8 +101,6 @@
 		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
 		1E3A6E5614E43B05007F1760 /* clock_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock_24.png; path = images/clock_24.png; sourceTree = SOURCE_ROOT; };
 		1E3A6E5814E5919C007F1760 /* SimpleSwimModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimpleSwimModel 2.xcdatamodel"; sourceTree = "<group>"; };
-		1E3A6E5914E59453007F1760 /* SplitCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitCD.h; sourceTree = "<group>"; };
-		1E3A6E5A14E59453007F1760 /* SplitCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitCD.m; sourceTree = "<group>"; };
 		1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-50.png"; path = "images/water-splash-ipad-wallpaper-50.png"; sourceTree = SOURCE_ROOT; };
 		1E3A6E5E14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-35.png"; path = "images/water-splash-ipad-wallpaper-35.png"; sourceTree = SOURCE_ROOT; };
 		1E3A6E6014E5D117007F1760 /* SwimmerPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwimmerPickerController.h; sourceTree = "<group>"; };
@@ -130,8 +121,6 @@
 		1E6BF1C914DA31DD006D428C /* EnterRaceResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterRaceResultController.h; sourceTree = "<group>"; };
 		1E6BF1CA14DA31DD006D428C /* EnterRaceResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterRaceResultController.m; sourceTree = "<group>"; };
 		1E6BF1CB14DA31DD006D428C /* EnterRaceResultController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterRaceResultController.xib; sourceTree = "<group>"; };
-		1E6BF1CE14DB8122006D428C /* Swimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Swimming.h; sourceTree = "<group>"; };
-		1E6BF1CF14DB8123006D428C /* Swimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Swimming.m; sourceTree = "<group>"; };
 		1E6BF1D414DB8A9D006D428C /* plus_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus_24.png; path = images/plus_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF1D614DB8BC1006D428C /* star_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_24.png; path = images/star_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailSwimmerViewController.xib; sourceTree = "<group>"; };
@@ -140,8 +129,6 @@
 		1E6BF34614DD70A9006D428C /* AllTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTimesViewController.h; sourceTree = "<group>"; };
 		1E6BF34714DD70AA006D428C /* AllTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTimesViewController.m; sourceTree = "<group>"; };
 		1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllTimesViewController.xib; sourceTree = "<group>"; };
-		1E6BF35414DD8E9C006D428C /* ContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentController.h; sourceTree = SOURCE_ROOT; };
-		1E6BF35514DD8E9D006D428C /* ContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentController.m; sourceTree = SOURCE_ROOT; };
 		1E71FCAC14CB21E80036D12B /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = ../GetBirthdayViewController.h; sourceTree = "<group>"; };
 		1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = ../GetBirthdayViewController.m; sourceTree = "<group>"; };
@@ -152,8 +139,6 @@
 		1E8ABA1C14ED1B450096E096 /* RecentRacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentRacesViewController.m; sourceTree = "<group>"; };
 		1E8ABA1F14ED1F7E0096E096 /* CutsViewDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutsViewDataItem.h; sourceTree = "<group>"; };
 		1E8ABA2014ED1F7E0096E096 /* CutsViewDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutsViewDataItem.m; sourceTree = "<group>"; };
-		1E8ABA2214EEE58B0096E096 /* TimeStandardUssScy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeStandardUssScy.h; sourceTree = "<group>"; };
-		1E8ABA2314EEE58B0096E096 /* TimeStandardUssScy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeStandardUssScy.m; sourceTree = "<group>"; };
 		1E8AE75B14C1D71700E01C50 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1E8F7D7814C9E8D20054486E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1EA2289814703E6C00283AD0 /* SimpleTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,8 +155,6 @@
 		1EA228B114703E6C00283AD0 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		1EA228B214703E6C00283AD0 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		1EA228B514703E6C00283AD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
-		1EA228BC14703EB400283AD0 /* RaceResultMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceResultMI.h; sourceTree = "<group>"; };
-		1EA228BD14703EB400283AD0 /* RaceResultMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceResultMI.m; sourceTree = "<group>"; };
 		1EA228C0147053B400283AD0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ASIHTTPRequest/Reachability.m; sourceTree = "<group>"; };
 		1EA228C1147053B400283AD0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ASIHTTPRequest/Reachability.h; sourceTree = "<group>"; };
 		1EA228C2147053B400283AD0 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASIProgressDelegate.h; path = ASIHTTPRequest/ASIProgressDelegate.h; sourceTree = "<group>"; };
@@ -197,17 +180,30 @@
 		1EA228DF1470548200283AD0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		1EA228E11470549200283AD0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		1EA228E3147054A000283AD0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		1EA228E5147054B100283AD0 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		1EA228E71470555600283AD0 /* TeamManagerDBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeamManagerDBProxy.h; path = DataProviders/TeamManagerDBProxy.h; sourceTree = SOURCE_ROOT; };
 		1EA228E81470555600283AD0 /* TeamManagerDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TeamManagerDBProxy.m; path = DataProviders/TeamManagerDBProxy.m; sourceTree = SOURCE_ROOT; };
 		1EA228EB14706C7500283AD0 /* ROHTMLTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ROHTMLTable.h; path = DataProviders/ROHTMLTable.h; sourceTree = SOURCE_ROOT; };
 		1EA228EC14706C7500283AD0 /* ROHTMLTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROHTMLTable.m; path = DataProviders/ROHTMLTable.m; sourceTree = SOURCE_ROOT; };
 		1EA228EE1474293E00283AD0 /* USASwimmingDBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USASwimmingDBProxy.h; path = DataProviders/USASwimmingDBProxy.h; sourceTree = SOURCE_ROOT; };
 		1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = USASwimmingDBProxy.m; path = DataProviders/USASwimmingDBProxy.m; sourceTree = SOURCE_ROOT; };
-		1EB19E1B148A68A200BE6620 /* RaceResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceResult.h; sourceTree = "<group>"; };
-		1EB19E1C148A68A200BE6620 /* RaceResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceResult.m; sourceTree = "<group>"; };
-		1EB19E1E148A68CA00BE6620 /* AthleteCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthleteCD.h; sourceTree = "<group>"; };
-		1EB19E1F148A68CA00BE6620 /* AthleteCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthleteCD.m; sourceTree = "<group>"; };
+		1EBE0EF814F01CC900ED4DB5 /* AthleteCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AthleteCD.h; path = Models/AthleteCD.h; sourceTree = "<group>"; };
+		1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AthleteCD.m; path = Models/AthleteCD.m; sourceTree = "<group>"; };
+		1EBE0EFA14F01CC900ED4DB5 /* RaceResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RaceResult.h; path = Models/RaceResult.h; sourceTree = "<group>"; };
+		1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RaceResult.m; path = Models/RaceResult.m; sourceTree = "<group>"; };
+		1EBE0EFC14F01CC900ED4DB5 /* RaceResultMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RaceResultMI.h; path = Models/RaceResultMI.h; sourceTree = "<group>"; };
+		1EBE0EFD14F01CC900ED4DB5 /* RaceResultMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RaceResultMI.m; path = Models/RaceResultMI.m; sourceTree = "<group>"; };
+		1EBE0EFE14F01CC900ED4DB5 /* Split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Split.h; path = Models/Split.h; sourceTree = "<group>"; };
+		1EBE0EFF14F01CC900ED4DB5 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Split.m; path = Models/Split.m; sourceTree = "<group>"; };
+		1EBE0F0014F01CC900ED4DB5 /* SplitCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplitCD.h; path = Models/SplitCD.h; sourceTree = "<group>"; };
+		1EBE0F0114F01CC900ED4DB5 /* SplitCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplitCD.m; path = Models/SplitCD.m; sourceTree = "<group>"; };
+		1EBE0F0214F01CC900ED4DB5 /* Swimmers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Swimmers.h; path = Models/Swimmers.h; sourceTree = "<group>"; };
+		1EBE0F0314F01CC900ED4DB5 /* Swimmers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Swimmers.m; path = Models/Swimmers.m; sourceTree = "<group>"; };
+		1EBE0F0414F01CC900ED4DB5 /* Swimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Swimming.h; path = Models/Swimming.h; sourceTree = "<group>"; };
+		1EBE0F0514F01CC900ED4DB5 /* Swimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Swimming.m; path = Models/Swimming.m; sourceTree = "<group>"; };
+		1EBE0F0614F01CC900ED4DB5 /* TimeStandard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeStandard.h; path = Models/TimeStandard.h; sourceTree = "<group>"; };
+		1EBE0F0714F01CC900ED4DB5 /* TimeStandard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeStandard.m; path = Models/TimeStandard.m; sourceTree = "<group>"; };
+		1EBE0F0814F01CC900ED4DB5 /* TimeStandardUssScy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeStandardUssScy.h; path = Models/TimeStandardUssScy.h; sourceTree = "<group>"; };
+		1EBE0F0914F01CC900ED4DB5 /* TimeStandardUssScy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeStandardUssScy.m; path = Models/TimeStandardUssScy.m; sourceTree = "<group>"; };
 		1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-gray.png"; path = "images/water-splash-ipad-wallpaper-gray.png"; sourceTree = SOURCE_ROOT; };
 		1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone.png"; path = "images/UnderWater-Portrait-iPhone.png"; sourceTree = SOURCE_ROOT; };
 		1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone@2x.png"; path = "images/UnderWater-Portrait-iPhone@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -313,7 +309,6 @@
 				1E8AE75B14C1D71700E01C50 /* libz.dylib */,
 				1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */,
 				1E1FCD0E1487009400CD8316 /* CoreData.framework */,
-				1EA228E5147054B100283AD0 /* libz.1.2.3.dylib */,
 				1E6BF1D114DB89C9006D428C /* images */,
 				1E27E4AD14CBB24C001D4F5F /* SVProgressHUD */,
 				1EA228E3147054A000283AD0 /* MobileCoreServices.framework */,
@@ -349,8 +344,6 @@
 		1EA228A214703E6C00283AD0 /* SimpleTimes */ = {
 			isa = PBXGroup;
 			children = (
-				1E6BF35414DD8E9C006D428C /* ContentController.h */,
-				1E6BF35514DD8E9D006D428C /* ContentController.m */,
 				1E6BF1B414D582FD006D428C /* iPhone */,
 				1E6BF1B014D576C4006D428C /* iPad */,
 				1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */,
@@ -428,27 +421,27 @@
 		1EA228F414759DB300283AD0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1EB19E1B148A68A200BE6620 /* RaceResult.h */,
-				1EB19E1C148A68A200BE6620 /* RaceResult.m */,
-				1EB19E1E148A68CA00BE6620 /* AthleteCD.h */,
-				1EB19E1F148A68CA00BE6620 /* AthleteCD.m */,
+				1EBE0EF814F01CC900ED4DB5 /* AthleteCD.h */,
+				1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */,
+				1EBE0EFA14F01CC900ED4DB5 /* RaceResult.h */,
+				1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */,
+				1EBE0EFC14F01CC900ED4DB5 /* RaceResultMI.h */,
+				1EBE0EFD14F01CC900ED4DB5 /* RaceResultMI.m */,
+				1EBE0EFE14F01CC900ED4DB5 /* Split.h */,
+				1EBE0EFF14F01CC900ED4DB5 /* Split.m */,
+				1EBE0F0014F01CC900ED4DB5 /* SplitCD.h */,
+				1EBE0F0114F01CC900ED4DB5 /* SplitCD.m */,
+				1EBE0F0214F01CC900ED4DB5 /* Swimmers.h */,
+				1EBE0F0314F01CC900ED4DB5 /* Swimmers.m */,
+				1EBE0F0414F01CC900ED4DB5 /* Swimming.h */,
+				1EBE0F0514F01CC900ED4DB5 /* Swimming.m */,
+				1EBE0F0614F01CC900ED4DB5 /* TimeStandard.h */,
+				1EBE0F0714F01CC900ED4DB5 /* TimeStandard.m */,
+				1EBE0F0814F01CC900ED4DB5 /* TimeStandardUssScy.h */,
+				1EBE0F0914F01CC900ED4DB5 /* TimeStandardUssScy.m */,
 				1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */,
-				1E3A6E5914E59453007F1760 /* SplitCD.h */,
-				1E3A6E5A14E59453007F1760 /* SplitCD.m */,
-				1EA228BD14703EB400283AD0 /* RaceResultMI.m */,
-				1EA228BC14703EB400283AD0 /* RaceResultMI.h */,
-				1E1FCCF5147975B600CD8316 /* Split.h */,
-				1E1FCCF6147975B600CD8316 /* Split.m */,
-				1E1FCCF91479E85600CD8316 /* TimeStandard.h */,
-				1E1FCCFA1479E85600CD8316 /* TimeStandard.m */,
-				1E8ABA2214EEE58B0096E096 /* TimeStandardUssScy.h */,
-				1E8ABA2314EEE58B0096E096 /* TimeStandardUssScy.m */,
-				1E1FCD031482B65100CD8316 /* Swimmers.h */,
-				1E1FCD041482B65100CD8316 /* Swimmers.m */,
 				1E26FCF3148CE65D002F6FE7 /* AddSwimmerResult.h */,
 				1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */,
-				1E6BF1CE14DB8122006D428C /* Swimming.h */,
-				1E6BF1CF14DB8123006D428C /* Swimming.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -561,7 +554,6 @@
 				1EA228AA14703E6C00283AD0 /* main.m in Sources */,
 				1EA228AD14703E6C00283AD0 /* SimpleTimesAppDelegate.m in Sources */,
 				1EA228B314703E6C00283AD0 /* RootViewController.m in Sources */,
-				1EA228BE14703EB400283AD0 /* RaceResultMI.m in Sources */,
 				1EA228D6147053B400283AD0 /* Reachability.m in Sources */,
 				1EA228D7147053B400283AD0 /* ASINetworkQueue.m in Sources */,
 				1EA228D8147053B400283AD0 /* ASIInputStream.m in Sources */,
@@ -574,13 +566,8 @@
 				1EA228E91470555600283AD0 /* TeamManagerDBProxy.m in Sources */,
 				1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */,
 				1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */,
-				1E1FCCF7147975B600CD8316 /* Split.m in Sources */,
-				1E1FCCFB1479E85600CD8316 /* TimeStandard.m in Sources */,
 				1E1FCD011480009C00CD8316 /* AddSwimmerViewController.m in Sources */,
-				1E1FCD051482B65100CD8316 /* Swimmers.m in Sources */,
 				1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */,
-				1EB19E1D148A68A200BE6620 /* RaceResult.m in Sources */,
-				1EB19E20148A68CB00BE6620 /* AthleteCD.m in Sources */,
 				1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */,
 				1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */,
 				1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */,
@@ -589,15 +576,20 @@
 				1E6BF1BE14D6B252006D428C /* RootViewController_iPad_old.m in Sources */,
 				1E6BF1C714D77D6C006D428C /* TopTimesViewController.m in Sources */,
 				1E6BF1CC14DA31DE006D428C /* EnterRaceResultController.m in Sources */,
-				1E6BF1D014DB8124006D428C /* Swimming.m in Sources */,
 				1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */,
-				1E6BF35614DD8EA0006D428C /* ContentController.m in Sources */,
-				1E3A6E5B14E59453007F1760 /* SplitCD.m in Sources */,
 				1E3A6E6214E5D119007F1760 /* SwimmerPickerController.m in Sources */,
 				1E89ACEB14ECB00500DA97D2 /* CutsViewController.m in Sources */,
 				1E8ABA1D14ED1B450096E096 /* RecentRacesViewController.m in Sources */,
 				1E8ABA2114ED1F7E0096E096 /* CutsViewDataItem.m in Sources */,
-				1E8ABA2414EEE58B0096E096 /* TimeStandardUssScy.m in Sources */,
+				1EBE0F0A14F01CC900ED4DB5 /* AthleteCD.m in Sources */,
+				1EBE0F0B14F01CC900ED4DB5 /* RaceResult.m in Sources */,
+				1EBE0F0C14F01CC900ED4DB5 /* RaceResultMI.m in Sources */,
+				1EBE0F0D14F01CC900ED4DB5 /* Split.m in Sources */,
+				1EBE0F0E14F01CC900ED4DB5 /* SplitCD.m in Sources */,
+				1EBE0F0F14F01CC900ED4DB5 /* Swimmers.m in Sources */,
+				1EBE0F1014F01CC900ED4DB5 /* Swimming.m in Sources */,
+				1EBE0F1114F01CC900ED4DB5 /* TimeStandard.m in Sources */,
+				1EBE0F1214F01CC900ED4DB5 /* TimeStandardUssScy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
