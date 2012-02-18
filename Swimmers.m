@@ -97,7 +97,7 @@
     return isInStore;
 }
 
-+(void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context 
++(void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context downloadSplits:(BOOL)downloadSplits 
 {
     RaceResult *race = (RaceResult *)[NSEntityDescription insertNewObjectForEntityForName:@"RaceResult" inManagedObjectContext:context];
     race.time        = raceMI.time;
@@ -111,7 +111,7 @@
     race.distance    = [NSNumber numberWithInt:raceMI.distance];
     race.athlete     = athlete;
     
-    if (raceMI.key > 0 && raceMI.splits == nil) {
+    if (raceMI.key > 0 && (raceMI.splits == nil) && downloadSplits) {
         TeamManagerDBProxy* proxy = [[[TeamManagerDBProxy alloc] initWithDBName:raceMI.tmDatabase] autorelease];
         raceMI.splits = [proxy getSplitsForRace:raceMI.key];
     }
@@ -157,7 +157,7 @@
     for (RaceResultMI *result in times) {
         // Is this in the DB already????
         if (![self isRaceInStore:result inContext:context athlete:athlete]) {
-            [self storeRace:result forAthlete:athlete inContext:context];
+            [self storeRace:result forAthlete:athlete inContext:context downloadSplits:NO];
             added++;
         }
     }

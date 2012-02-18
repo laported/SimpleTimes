@@ -3,11 +3,10 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 11/13/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 laporte6.org. All rights reserved.
 //
 
 #import "RaceResultMI.h"
-
 
 @implementation RaceResultMI
 
@@ -16,7 +15,6 @@
 @synthesize stroke = _stroke;
 @synthesize time = _time;
 @synthesize distance = _distance; 
-@synthesize shortcourse = _shortcourse;
 @synthesize course = _course;
 @synthesize age = _age;
 @synthesize powerpoints = _powerpoints;
@@ -25,12 +23,11 @@
 @synthesize splits = _splits;
 @synthesize tmDatabase = _tmDatabase;
 
-- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance shortcourse:(BOOL)shortcourse course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits db:(NSString*)db
+- (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits db:(NSString*)db
 {
     if ((self = [super init])) {
         _time = [time copy];
         _distance = distance;
-        _shortcourse = shortcourse;
         _date = [date copy];
         _meet = [meet copy];
         _stroke = [stroke copy];
@@ -84,7 +81,6 @@
     [_time release];
     _time = nil;
     _distance = 0;
-    _shortcourse = YES;
     [_course release];
     _course = nil;
     [_standard release];

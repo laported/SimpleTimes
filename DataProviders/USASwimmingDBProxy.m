@@ -161,7 +161,7 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
                                                                date:myDate
                                                              stroke:[parser cell:i :2]
                                                            distance:[[parser cell:i :1] intValue]
-                                                        shortcourse:YES] autorelease];
+                                    ] autorelease];
             
                [all_times addObject:race];
             }

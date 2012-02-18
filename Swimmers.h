@@ -31,7 +31,7 @@
 // Int values 1 = Freestyle, 2 = Back, 3 = Breast, 4 = Fly, 5 = IM
 + (int)  intStrokeValue:(NSString*)stroke;
 + (BOOL) isRaceInStore:(RaceResultMI*)race inContext:(NSManagedObjectContext *)context athlete:(AthleteCD*)athlete;
-+ (void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context;
++ (void) storeRace:(RaceResultMI *)raceMI forAthlete:(AthleteCD*)athlete inContext:(NSManagedObjectContext*)context downloadSplits:(BOOL)splits;
 
 + (BOOL) isSameRaceInDB:(RaceResult*)r1 asMIRace:(RaceResultMI*)r2 ;
 

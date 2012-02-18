@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-#define JO_DATE         "2012-03-01" // TODO
-#define STATE_DATE      "2012-03-14" // TODO
-#define SECTIONALS_DATE "2012-03-21" // TODO
-#define NATIONALS_DATE  "2012-04-14" // TODO
-
 @interface TimeStandard : NSObject {
     
 }
 
++(int) ageAtDate:(NSDate*)date dob:(NSDate*)dob;
+
++(int) distanceIndex:(int)distance;
+
++(float) getFloatTimeFromCStringTime:(const char*)sz;
 +(float) getFloatTimeFromStringTime:(NSString*)sTime;
 
 +(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time;
@@ -24,5 +24,7 @@
 +(NSString*) getTimeStandardForMHSAAWithDistance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time;
 
 +(NSString*) getJoCutWithAge:(NSDate*)dob distance:(int)distance stroke:(int) stroke gender:(NSString*)gender ;
+
++(NSDate*) dateObjectFromString:(NSString*)s;
 
 @end

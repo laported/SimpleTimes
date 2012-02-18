@@ -18,7 +18,9 @@
 #import "DownloadTimesMI.h"
 #import "SplitCD.h"
 #import "SVProgressHUD.h"
-#import "RecentResultsViewController.h"
+#import "RecentRacesViewController.h"
+#import "CutsViewController.h"
+#import "TimeStandardUssScy.h"
 
 #define ASYNC_REFRESH
 
@@ -29,7 +31,8 @@
 
 #define STROKE_PERSONAL_BEST 99
 #define STROKE_RECENT        98
-#define STROKE_FIRST_META    STROKE_RECENT
+#define STROKE_CUTS          97
+#define STROKE_FIRST_META    STROKE_CUTS
 
 @implementation RootViewController
 
@@ -44,7 +47,7 @@
 @synthesize selectedStroke = _selectedStroke;
 @synthesize selectedDistance = _selectedDistance;
 @synthesize tmDatabaseSelected = _tmDatabaseSelected;
-@synthesize CurrentTitle = _currentTitle;
+@synthesize currentTitle = _currentTitle;
 @synthesize selectedRace = _selectedRace;
 @synthesize selectedSection = _selectedSection;
 @synthesize IMStrokes = _IMStrokes;
@@ -69,7 +72,7 @@
     
     assert( self.managedObjectContext != nil );
     
-    if (nil == self.CurrentTitle) {
+    if (nil == self.currentTitle) {
         self.title = @"Swimmers";
         self.viewstate = VS_ATHLETES;
         self.theSwimmers = [[Swimmers alloc] init];
@@ -77,7 +80,7 @@
         self.theMHSAASwimmers = [[Swimmers alloc] init];
         [self.theMHSAASwimmers loadAllWithContext:self.managedObjectContext withResultsHavingCourse:@"MHSAA"];        
     } else {
-        self.title = self.CurrentTitle;
+        self.title = self.currentTitle;
     }
     
     self.view.backgroundColor = [UIColor clearColor];
@@ -103,7 +106,8 @@
     } else if (self.selectedStroke == 0) {
         self.strokes =  [NSArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"Personal Best", @"99", nil],
-                        [NSArray arrayWithObjects:@"Recent Results", @"98", nil],
+                        [NSArray arrayWithObjects:@"All Times", @"98", nil],
+                        [NSArray arrayWithObjects:@"Cut List", @"97", nil],
                         [NSArray arrayWithObjects:@"Freestyle", @"1", nil],
                         [NSArray arrayWithObjects:@"Backstroke", @"2", nil],
                         [NSArray arrayWithObjects:@"Breaststroke", @"3", nil],
@@ -172,9 +176,17 @@
     if (self.viewstate == VS_ATHLETES) {
         // adding results for new swimmer
         numadded = [Swimmers updateAllRaceResultsForAthlete:_addedAthleteCD withResults:times inContext:self.managedObjectContext];
+        
+        // reload
+        [self.theSwimmers release];
+        self.theSwimmers = [[Swimmers alloc] init];        
+        [self.theSwimmers loadAllWithContext:self.managedObjectContext withResultsHavingCourse:@"SCY"];
+        [self.theMHSAASwimmers release];
+        [self.theMHSAASwimmers loadAllWithContext:self.managedObjectContext withResultsHavingCourse:@"MHSAA"];
+        
         [self.tableView reloadData];
     } else {
-        // Updating results for single swimmer
+        // Updating results for swimmer
         numadded = [Swimmers updateAllRaceResultsForAthlete:self.selectedAthleteCD withResults:times inContext:self.managedObjectContext];
         [self refresh];
     }
@@ -260,13 +272,6 @@
         _addedAthleteCD = ath1;
         self.tmDatabaseSelected = self.asController.database;
         
-        // reload
-        [self.theSwimmers release];
-        self.theSwimmers = [[Swimmers alloc] init];        
-        [self.theSwimmers loadAllWithContext:self.managedObjectContext withResultsHavingCourse:@"SCY"];
-        [self.theMHSAASwimmers release];
-        [self.theMHSAASwimmers loadAllWithContext:self.managedObjectContext withResultsHavingCourse:@"MHSAA"];
-
 #ifdef ASYNC_REFRESH
         self.queue = [[NSOperationQueue alloc] init];
         
@@ -274,9 +279,6 @@
         DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:ath1 andListener:self andTmDB:self.tmDatabaseSelected];
         [self.queue addOperation:dtm];
         [dtm release];
-        
-        // TODO 20120123 
-        // ------------- Need to debug adding new swimer asynchronously
         
 #else
         // download all times and populate the database
@@ -369,7 +371,7 @@
         }
         if(self.editing) { 
             self.rows++;
-            NSLog(@"Editing=true, numRows: %d",self.rows);
+            //NSLog(@"Editing=true, numRows: %d",self.rows);
         }
         return self.rows;
     } else if (section == SECTION_USS_LCM) {
@@ -413,6 +415,34 @@
     }
 }
 
+-(void) showCutProgessInCell:(UITableViewCell *)cell forRace:(RaceResult*)race
+{
+    if (self.selectedSection == SECTION_USS_SCY) {
+        int nStroke = [Swimmers intStrokeValue:race.stroke];
+        float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+        float fQ1 = [TimeStandardUssScy q1TimeForEvent:[race.distance intValue] stroke:nStroke gender:self.selectedAthleteCD.gender birthday:self.selectedAthleteCD.birthdate];
+        float fQ2 = [TimeStandardUssScy q2TimeForEvent:[race.distance intValue] stroke:nStroke gender:self.selectedAthleteCD.gender birthday:self.selectedAthleteCD.birthdate];
+        float fB = [TimeStandardUssScy bTimeForEvent:[race.distance intValue] stroke:nStroke gender:self.selectedAthleteCD.gender birthday:self.selectedAthleteCD.birthdate];
+        float fCutProgress = 0.0;
+        if ((ftime > fQ2) && (ftime <= fB)) {
+            // 0.0====Q1=====Q2===ftime==B=====
+            fCutProgress = (fB - ftime) / (fB - fQ2);
+        } else if ((ftime > fQ1) && (ftime <= fQ2)) {
+            // 0.0====Q1==ftime===Q2=====B=====
+            fCutProgress = (fQ2 - ftime) / (fQ2 - fQ1);
+        } 
+        if (fCutProgress > 0) {
+            UIProgressView* cutPV = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+            cutPV.frame = CGRectMake(280,10, 125,50);
+            cutPV.progress = fCutProgress;
+            [cell.contentView addSubview:cutPV];
+            [cutPV release];
+        }
+    } else {
+        // TODO
+    }
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -441,7 +471,7 @@
     }
     
     // Are we in edit mode????
-    NSLog(@"cellForRowAtIndexPath/self.rows=%d, indexPath=%d",self.rows,indexPath.row);
+    //NSLog(@"cellForRowAtIndexPath/self.rows=%d, indexPath=%d",self.rows,indexPath.row);
     if (self.editing && (indexPath.section == SECTION_USS_SCY) && (indexPath.row == (self.rows-1))) {
         NSLog(@"%@",@"cellForRowAtIndexPath/'Add new Swimmer'");
         cell.textLabel.text = @"Add new swimmer";
@@ -453,6 +483,7 @@
         return cell;
     } else {
         switch (self.viewstate) {
+            case VS_ADDSWIMMER:
             case VS_ATHLETES:
                 // We are displaying the athlete list
                 if (indexPath.section == SECTION_USS_SCY) {
@@ -483,7 +514,7 @@
                        cell.detailTextLabel.text = athlete.club; 
                    }
                 }
-                NSLog(@"cellForRowAtIndexPath/last=%@,first=%@",athlete.lastname,athlete.firstname);
+                //NSLog(@"cellForRowAtIndexPath/last=%@,first=%@",athlete.lastname,athlete.firstname);
                 cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",athlete.firstname, athlete.lastname];    
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
@@ -519,14 +550,18 @@
                 cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
             
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@\n%@ %@", [race.distance intValue], race.stroke, race.time, timestd]; 
-                NSLog(@"%@",race.meet);
+                //NSLog(@"Dist: %@ splitskey:%d splits count:%d",race.distance,[race.splitskey intValue],[race.splits count]);
                 NSString* meetShort = [race shortenMeetName];
                 cell.textLabel.text = [NSString stringWithFormat:@"%@\n%@", raceDateString, meetShort];
-                if (([race.splits count] > 0) || ([race.splitskey intValue] > 0)) { 
+                if (([race.distance intValue]>50) && (([race.splits count] > 0) || ([race.splitskey intValue] > 0))) { 
                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 }
                 cell.textLabel.numberOfLines = 2;
-                cell.textLabel.lineBreakMode = UILineBreakModeTailTruncation;//  WordWrap;             
+                cell.textLabel.lineBreakMode = UILineBreakModeTailTruncation;//  WordWrap; 
+                UIDeviceOrientation o = [[UIApplication sharedApplication] statusBarOrientation];
+                if (UIDeviceOrientationIsLandscape(o)) {
+                    [self showCutProgessInCell:cell forRace:(RaceResult*)race];
+                }
                 break;
                 
             case VS_SPLITS:                
@@ -536,20 +571,17 @@
                 //splits = [unsortedSplits sortedArrayUsingSelector:@selector(compareByDistance:)];        
 
                 split = [splits objectAtIndex:indexPath.row];
+                int splitDistance = (indexPath.row+1)*(self.selectedDistance/[splits count]);
                 /* Is this an IM???? */
                 if (self.selectedStroke == 5) {
                     // IM: Add the current stroke for this split
-                    int divisor = self.selectedDistance / 4;
-                    int stroke_index = ([split.distance intValue]-1) / divisor;
-                    // 100 IMs will probably not have splits on the 25s, so we may need
-                    // to adjust the display to show combined strokes
-                    if (([split.distance intValue] == 100) && ([self.selectedRace.splits count] == 2)) {
-                        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@ + %@)", split.distance, split.cumulative,[self.IMStrokes objectAtIndex:stroke_index],[self.IMStrokes objectAtIndex:stroke_index+1]]; 
-                    } else {
-                        cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@  (%@)", split.distance, split.cumulative,[self.IMStrokes objectAtIndex:stroke_index]]; 
-                    }
+                    int stroke_index = (splitDistance-1)/(self.selectedDistance/4);
+                    assert( stroke_index < 4 );
+                    NSString* stroke = [self.IMStrokes objectAtIndex:stroke_index];
+                    //NSLog(@"%d, %d, %@, %@",[splits count],indexPath.row,stroke,split);
+                    cell.textLabel.text = [NSString stringWithFormat:@"%d : %@  (%@)", (indexPath.row+1)*(self.selectedDistance/[splits count]), split.cumulative, stroke]; 
                 } else {
-                    cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", split.distance, split.cumulative];
+                    cell.textLabel.text = [NSString stringWithFormat:@"%d : %@", splitDistance, split.cumulative];
                 }
                 // If these are 25 splits, combine into 50s as well
                 if ((self.selectedDistance / 25 == [self.selectedRace.splits count]) && (indexPath.row % 2)) {
@@ -625,7 +657,7 @@
                 rvController.tmDatabaseSelected = [NSString stringWithCString:MI_SWIM_DB encoding:NSUTF8StringEncoding];
                 rvController.selectedAthleteCD = [self.theSwimmers.athletesCD objectAtIndex:indexPath.row];
             }
-            rvController.CurrentTitle = rvController.selectedAthleteCD.firstname;
+            rvController.currentTitle = rvController.selectedAthleteCD.firstname;
             
             //Push the new table view on the stack
             [self.navigationController pushViewController:rvController animated:YES];
@@ -640,9 +672,13 @@
             
             self.selectedStroke = [[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
             if (self.selectedStroke == STROKE_RECENT) {
-                RecentResultsViewController* recent = [[RecentResultsViewController alloc] initWithAthlete:self.selectedAthleteCD andContext:self.managedObjectContext];
+                RecentRacesViewController* recent = [[RecentRacesViewController alloc] initWithAthlete:self.selectedAthleteCD];
                 [self.navigationController pushViewController:recent animated:YES];
                 [recent release];
+            } else if (self.selectedStroke == STROKE_CUTS) {
+                CutsViewController* cuts = [[CutsViewController alloc] initWithAthlete:self.selectedAthleteCD];
+                [self.navigationController pushViewController:cuts animated:YES];
+                [cuts release];
             } else {    
 
                 //Prepare to tableview.
@@ -656,10 +692,10 @@
                 rvController.tmDatabaseSelected = self.tmDatabaseSelected;
                 if (rvController.selectedStroke < STROKE_FIRST_META) {
                     NSLog(@"VS_STROKES->VS_DISTANCE: %@",self.managedObjectContext);
-                    rvController.CurrentTitle = @"Distance";
+                    rvController.currentTitle = @"Distance";
                     rvController.viewstate = VS_DISTANCE;
                 } else if (rvController.selectedStroke == STROKE_PERSONAL_BEST) {
-                    rvController.CurrentTitle = @"Personal Best";
+                    rvController.currentTitle = @"Personal Best";
                     NSLog(@"VS_STROKES->VS_RESULTS: %@",self.managedObjectContext);
                     rvController.viewstate = VS_RESULTS;
                 } else {
@@ -690,7 +726,7 @@
             NSLog(@"VS_DISTANCE->VS_RESULTS: %@",self.managedObjectContext);
             
             //Set the title;
-            rvController.CurrentTitle = @"Times";            
+            rvController.currentTitle = @"Times";            
             //Push the new table view on the stack
             [self.navigationController pushViewController:rvController animated:YES];
             
@@ -716,7 +752,7 @@
                 rvController.selectedSection = self.selectedSection;
                 NSLog(@"VS_RESULTS->VS_SPLITS: %@",self.managedObjectContext);
                 //Set the title;
-                rvController.CurrentTitle = @"Split Times";
+                rvController.currentTitle = @"Split Times";
                 rvController.viewstate = VS_SPLITS;
                 
                 [self loadSplitTimes]; 
@@ -876,23 +912,17 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
             
         }
 
-        // remove from the data store
+        // reload from the data store
         if (indexPath.section == SECTION_MHSAA) {
             [self.theMHSAASwimmers loadAllWithContext:self.managedObjectContext withResultsHavingCourse:@"MHSAA"];
         } else {
             [self.theSwimmers loadAllWithContext:self.managedObjectContext withResultsHavingCourse:@"SCY"];
         }
         
-        // ----------
-        // todo: remove results from data store and cached document results??
-        // ----------
-        
         // remove from the table view
         // Delete the row from the data source.
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
-        //[tableView reloadData];
-        
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         NSString* db;
         if (indexPath.section == SECTION_MHSAA) {
@@ -900,6 +930,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         } else {
             db = [NSString stringWithCString:MI_SWIM_DB encoding:NSUTF8StringEncoding];
         }
+        // exit edit mode
+        [self completeEditing];
         // Push a new view controller for athlete selection here
         self.asController = [[AddSwimmerViewController alloc] initWithDatabaseName:db];
         self.viewstate = VS_ADDSWIMMER;
@@ -914,7 +946,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     // Determine the editing style based on whether the cell is a placeholder for adding content or already
     // existing content. Existing content can be deleted.
     if (indexPath.section == SECTION_MHSAA) {
-        if (self.editing && indexPath.row == 0 /* TODO MHSAA */) {
+        if (self.editing && indexPath.row == [self.theMHSAASwimmers count]) {
             return UITableViewCellEditingStyleInsert;
         } else {
             return UITableViewCellEditingStyleDelete;
@@ -929,19 +961,26 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleNone;
 }
 
+- (void) completeEditing
+{
+    UITableView* tableView = (UITableView*)[self view];
+    NSString* title = [self.theSwimmers count] == 0 ? @"Add Swimmer" : @"Edit";
+    [super setEditing:NO animated:NO];
+    [tableView setEditing:NO animated:NO];
+    [tableView reloadData];
+    [self.navigationItem.leftBarButtonItem setTitle:title];
+    [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
+}
+
 - (IBAction) EditTable:(id)sender {
     UITableView* tableView = (UITableView*)[self view];
     if(self.editing)
     {
-        NSString* title = [self.theSwimmers count] == 0 ? @"Add Swimmer" : @"Edit";
-        [super setEditing:NO animated:NO];
-        [tableView setEditing:NO animated:NO];
-        [tableView reloadData];
-        [self.navigationItem.leftBarButtonItem setTitle:title];
-        [self.navigationItem.leftBarButtonItem setStyle:UIBarButtonItemStylePlain];
+        [self completeEditing];
     }
     else
     {
+        // start editing mode
         [super setEditing:YES animated:YES];
         [tableView setEditing:YES animated:YES];
         [tableView reloadData];

@@ -1,44 +1,17 @@
 //
-//  TimeStandard.m
+//  TimeStandardUssScy.m
 //  SimpleTimes
 //
-//  Created by David LaPorte on 11/20/11.
-//  Copyright 2011 org.laporte6. All rights reserved.
+//  Created by David LaPorte on 2/17/12.
+//  Copyright (c) 2012 laporte6.org. All rights reserved.
 //
 
-#import "TimeStandard.h"
+#import "TimeStandardUssScy.h"
 
-@implementation TimeStandard
+@implementation TimeStandardUssScy
 
-#define TODO_JO_DATE         @"2012-03-02"
-#define TODO_STATE_DATE      @"2012-03-09"
-#define TODO_SECTIONALS_DATE @"2012-03-21" // TODO
-#define TODO_NATIONALS_DATE  @"2012-04-14" // TODO
-
-#define TIMESTD_USS_SCY 1       // USA Swimming Short Course Yards
-#define TIMESTD_USS_LCM 2       // USA Swimming Long Course Meters
-#define TIMESTD_USS_SCM 3       // USA Swimming Short Course Meters
-#define TIMESTD_MHSAA   4       // Michigan High School Athletic Association
-
-const char* sz_m_mhsaa_misca [5][8] = {
-    // 25     50       100        200        400      500        1000     1650
-    {  NULL,  "23.63", "51.79",   "1:54.77", NULL,    "5:14.71", NULL,    NULL   },  // free
-    {  NULL,  NULL,    "1:01.35", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
-    {  NULL,  NULL,    "1:07.89", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
-    {  NULL,  NULL,    "58.89",   NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
-    {  NULL,  NULL,    NULL,      "2:12.08", NULL,    NULL,      NULL,    NULL   }   // IM
-};
-
-const char* sz_m_mhsaa_state [5][8] = {
-    // 25     50       100        200        400      500        1000     1650
-    {  NULL,  "22.69", "49.59",   "1:48.79", NULL,    "4:57.79", NULL,    NULL   },  // free
-    {  NULL,  NULL,    "56.69",   NULL,      NULL,    NULL,      NULL,    NULL   },  // back
-    {  NULL,  NULL,    "1:02.89", NULL,      NULL,    NULL,      NULL,    NULL   },  // breast
-    {  NULL,  NULL,    "55.39",   NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
-    {  NULL,  NULL,    NULL,      "2:03.79", NULL,    NULL,      NULL,    NULL   }   // IM
-};
-
-const char* sz_nine_ten_w_q1 [5][8] = {
+NSArray* _standardStrings = nil;
+static const char* sz_nine_ten_w_q1 [5][8] = {
     // 25     50       100        200        400      500        1000     1650
     {  NULL,  "31.49", "1:09.49", "2:31.59", NULL,    "6:50.59", NULL,    NULL   },  // free
     {  NULL,  "37.09", "1:20.09", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
@@ -47,7 +20,7 @@ const char* sz_nine_ten_w_q1 [5][8] = {
     {  NULL,  NULL,    "1:19.99", "2:54.39", NULL,    NULL,      NULL,    NULL   }   // IM
 };
 
-const char* sz_nine_ten_w_q2 [5][8] = {
+static const char* sz_nine_ten_w_q2 [5][8] = {
     // 25     50        100        200        400      500        1000    1650
     {  NULL,   "33.59", "1:15.99", "2:50.09", NULL,    "7:42.89", NULL,    NULL   },  // free
     {  NULL,   "40.39", "1:27.79", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
@@ -55,7 +28,7 @@ const char* sz_nine_ten_w_q2 [5][8] = {
     {  NULL,   "39.79", "1:40.99", NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
     {  NULL,   NULL,    "1:26.59", "3:16.09", NULL,    NULL,      NULL,    NULL   }   // IM
 };
-const char* sz_nine_ten_w_b [5][8] = {
+static const char* sz_nine_ten_w_b [5][8] = {
     // 25     50        100        200        400      500        1000    1650
     {  NULL,   "39.79", "1:31.29", "3:20.19", NULL,    "8:30.49", NULL,   NULL   },  // free
     {  NULL,   "48.79", "1:45.69", NULL,      NULL,    NULL,      NULL,   NULL   },  // back
@@ -64,7 +37,7 @@ const char* sz_nine_ten_w_b [5][8] = {
     {  NULL,   NULL,    "1:44.99", "3:42.69", NULL,    NULL,      NULL,   NULL   }   // IM
 };
 
-const char* sz_nine_ten_m_q1 [5][8] = {
+static const char* sz_nine_ten_m_q1 [5][8] = {
     // 25     50       100        200        400      500        1000     1650
     {  NULL,  "31.59", "1:10.29", "2:34.99", NULL,    "6:55.99", NULL,    NULL   },  // free
     {  NULL,  "37.39", "1:20.59", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
@@ -72,7 +45,7 @@ const char* sz_nine_ten_m_q1 [5][8] = {
     {  NULL,  "36.89", "1:29.99", NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
     {  NULL,  NULL,    "1:21.09", "2:56.49", NULL,    NULL,      NULL,    NULL   }   // IM
 };
-const char* sz_nine_ten_m_q2 [5][8] = {
+static const char* sz_nine_ten_m_q2 [5][8] = {
     // 25     50        100        200        400      500        1000    1650
     {  NULL,   "34.59", "1:19.09", "2:55.69", NULL,    "8:05.99", NULL,    NULL   },  // free
     {  NULL,   "41.69", "1:32.29", NULL,      NULL,    NULL,      NULL,    NULL   },  // back
@@ -80,7 +53,7 @@ const char* sz_nine_ten_m_q2 [5][8] = {
     {  NULL,   "42.69", "1:40.59", NULL,      NULL,    NULL,      NULL,    NULL   },  // fly
     {  NULL,   NULL,    "1:30.99", "3:24.69", NULL,    NULL,      NULL,    NULL   }   // IM
 };
-const char* sz_nine_ten_m_b [5][8] = {
+static const char* sz_nine_ten_m_b [5][8] = {
     // 25     50        100        200        400      500        1000    1650
     {  NULL,   "38.89", "1:29.19", "3:09.89", NULL,    "8:25.79", NULL,   NULL   },  // free
     {  NULL,   "49.19", "1:42.89", NULL,      NULL,    NULL,      NULL,   NULL   },  // back
@@ -89,7 +62,7 @@ const char* sz_nine_ten_m_b [5][8] = {
     {  NULL,   NULL,    "1:41.29", "3:40.89", NULL,    NULL,      NULL,   NULL   }   // IM
 };
 
-const char* sz_eleven_twelve_m_q1 [5][8] = {
+static const char* sz_eleven_twelve_m_q1 [5][8] = {
     // 25      50     100          200        400       500        1000    1650
     {  NULL,   "28.09", "1:01.59", "2:14.59", NULL,     "6:00.59", NULL,   NULL   },  // free
     {  NULL,   "33.29", "1:11.69", "2:34.79", NULL,      NULL,     NULL,   NULL   },  // back
@@ -98,7 +71,7 @@ const char* sz_eleven_twelve_m_q1 [5][8] = {
     {  NULL,   NULL,    "1:12.79", "2:35.49", "5:35.79", NULL,     NULL,   NULL   }   // IM
 };
 
-const char* sz_eleven_twelve_m_q2 [5][8] = {
+static const char* sz_eleven_twelve_m_q2 [5][8] = {
     // 25     50       100        200        400        500        1000    1650
     {  NULL,  "30.59", "1:09.19", "2:32.99", NULL,      "6:42.19", NULL,   NULL   },  // free
     {  NULL,  "37.09", "1:20.19", "3:09.59", NULL,      NULL,      NULL,   NULL   },  // back
@@ -107,7 +80,7 @@ const char* sz_eleven_twelve_m_q2 [5][8] = {
     {  NULL,   NULL,   "1:20.29", "2:55.69", "6:30.89", NULL,      NULL,   NULL   }   // IM
 };
 
-const char* sz_eleven_twelve_m_b [5][8] = {
+static const char* sz_eleven_twelve_m_b [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "33.39", "1:13.09", "2:38.89", NULL,      "7:05.49", "14:50.09", "24:57.49"   },  // free
     {  NULL,  "39.49", "1:25.79", "2:58.39", NULL,      NULL,      NULL,       NULL         },  // back
@@ -116,7 +89,7 @@ const char* sz_eleven_twelve_m_b [5][8] = {
     {  NULL,  NULL,    "1:23.69", "3:03.09", "6:23.69", NULL,      NULL,       NULL         }   // IM
 };
 
-const char* sz_eleven_twelve_w_q1 [5][8] = {
+static const char* sz_eleven_twelve_w_q1 [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "27.89", "1:00.79", "2:13.39", NULL,      "5:53.49", "15:00.29", "25:16.19" },  // free
     {  NULL,  "32.59", "1:10.09", "2:30.89", NULL,      NULL,      NULL,       NULL       },  // back
@@ -124,7 +97,7 @@ const char* sz_eleven_twelve_w_q1 [5][8] = {
     {  NULL,  "31.09", "1:11.29", "2:45.49", NULL,      NULL,      NULL,       NULL       },  // fly
     {  NULL,  NULL,    "1:10.79", "2:32.09", "5:25.59", NULL,      NULL,       NULL       }   // IM
 };
-const char* sz_eleven_twelve_w_q2 [5][8] = {
+static const char* sz_eleven_twelve_w_q2 [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "29.09", "1:05.09", "2:24.39", NULL,      "6:27.99", NULL,       NULL       },  // free
     {  NULL,  "35.09", "1:16.39", "2:48.09", NULL,      NULL,      NULL,       NULL       },  // back
@@ -132,7 +105,7 @@ const char* sz_eleven_twelve_w_q2 [5][8] = {
     {  NULL,  "34.19", "1:22.99", "3:12.59", NULL,      NULL,      NULL,       NULL       },  // fly
     {  NULL,  NULL,    "1:16.29", "2:47.59", "6:19.89", NULL,      NULL,       NULL       }   // IM
 };
-const char* sz_eleven_twelve_w_b [5][8] = {
+static const char* sz_eleven_twelve_w_b [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "34.29", "1:13.59", "2:43.19", NULL,      "7:10.79", "15:00.29", "25:16.19" },  // free
     {  NULL,  "39.59", "1:27.99", "3:01.89", NULL,      NULL,      NULL,       NULL       },  // back
@@ -142,7 +115,7 @@ const char* sz_eleven_twelve_w_b [5][8] = {
 };
 
 // 13-14 M ---------------------------------------------------------------------
-const char* sz_thirteen_fourteen_m_q1 [5][8] = {
+static const char* sz_thirteen_fourteen_m_q1 [5][8] = {
     // 25     50        100        200        400      500        1000        1650
     {  NULL,   "25.29", "54.89",   "1:59.99", NULL,    "5:25.09", "11:19.99", "19:17.99" },  // free
     {  NULL,   NULL,    "1:04.09", "2:18.09", NULL,    NULL,    NULL,    NULL   },  // back
@@ -151,7 +124,7 @@ const char* sz_thirteen_fourteen_m_q1 [5][8] = {
     {  NULL,   NULL,    NULL,      "2:16.89", "4:59.99", NULL,    NULL,  NULL   }   // IM
 };
 
-const char* sz_thirteen_fourteen_m_q2 [5][8] = {
+static const char* sz_thirteen_fourteen_m_q2 [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "27.09", "58.89",   "2:11.09", NULL,      "5:53.69", "12:35.59", "21:19.99" },  // free
     {  NULL,   NULL,   "1:10.99", "2:35.99", NULL,      NULL,      NULL,       NULL   },  // back
@@ -159,7 +132,7 @@ const char* sz_thirteen_fourteen_m_q2 [5][8] = {
     {  NULL,   NULL,   "1:09.99", "2:41.99", NULL,      NULL,      NULL,       NULL  },  // fly
     {  NULL,   NULL,   NULL,      "2:28.99", "5:24.99", NULL,      NULL,       NULL   }   // IM
 };
-const char* sz_thirteen_fourteen_m_b [5][8] = {
+static const char* sz_thirteen_fourteen_m_b [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "30.69", "1:06.99", "2:26.09", NULL,      "6:31.09", "13:32.49", "22:28.29" },  // free
     {  NULL,   NULL,   "1:14.89", "2:41.29", NULL,      NULL,      NULL,       NULL   },  // back
@@ -167,7 +140,7 @@ const char* sz_thirteen_fourteen_m_b [5][8] = {
     {  NULL,   NULL,   "1:13.29", "2:43.69", NULL,      NULL,      NULL,       NULL  },  // fly
     {  NULL,   NULL,   NULL,      "2:43.69", "5:50.59", NULL,      NULL,       NULL   }   // IM
 };
-const char* sz_thirteen_fourteen_w_q1 [5][8] = {
+static const char* sz_thirteen_fourteen_w_q1 [5][8] = {
     // 25     50        100        200        400      500        1000        1650
     {  NULL,   "26.39", "57.09",   "2:03.89", NULL,    "5:32.99", "11:35.99", "19:35.99" },  // free
     {  NULL,   NULL,    "1:05.09", "2:20.99", NULL,    NULL,    NULL,    NULL   },  // back
@@ -176,7 +149,7 @@ const char* sz_thirteen_fourteen_w_q1 [5][8] = {
     {  NULL,   NULL,    NULL,      "2:22.09", "5:03.89", NULL,    NULL,  NULL   }   // IM
 };
 
-const char* sz_thirteen_fourteen_w_q2 [5][8] = {
+static const char* sz_thirteen_fourteen_w_q2 [5][8] = {
     // 25     50        100        200       400        500         1000       1650
     {  NULL,  "27.59", "59.89",   "2:11.69", NULL,      "5:50.99", "12:33.39", "20:57.09" },  // free
     {  NULL,   NULL,   "1:09.59", "2:29.89", NULL,      NULL,      NULL,       NULL   },  // back
@@ -184,7 +157,7 @@ const char* sz_thirteen_fourteen_w_q2 [5][8] = {
     {  NULL,   NULL,   "1:10.29", "2:48.59", NULL,      NULL,      NULL,       NULL  },  // fly
     {  NULL,   NULL,   NULL,      "2:28.99", "5:26.89", NULL,      NULL,       NULL   }   // IM
 };
-const char* thirteen_fourteen_w_b [5][8] = {
+static const char* sz_thirteen_fourteen_w_b [5][8] = {
     // 25     50       100         200       400        500        1000        1650
     {  NULL,  "33.39", "1:12.49", "2:36.09", NULL,      "6:51.79", "14:08.89", "23:34.19" },  // free
     {  NULL,   NULL,   "1:19.89", "2:51.79", NULL,      NULL,      NULL,       NULL   },  // back
@@ -193,7 +166,7 @@ const char* thirteen_fourteen_w_b [5][8] = {
     {  NULL,   NULL,   NULL,      "2:55.49", "6:10.79", NULL,      NULL,       NULL   }   // IM
 };
 
-const char* sz_fifteen_eighteen_m_q1 [5][8] = {
+static const char* sz_fifteen_eighteen_m_q1 [5][8] = {
     // 25     50        100        200        400        500        1000        1650
     {  NULL,   "23.29", "50.59",   "1:51.89", NULL,      "5:03.99", "10:40.19", "18:10.49" },  // free
     {  NULL,   NULL,    "58.99",   "2:09.19", NULL,      NULL,    NULL,    NULL   },  // back
@@ -201,7 +174,7 @@ const char* sz_fifteen_eighteen_m_q1 [5][8] = {
     {  NULL,   NULL,    "57.09",   "2:15.99", NULL,      NULL,    NULL,    NULL   },  // fly
     {  NULL,   NULL,    NULL,      "2:06.99", "4:40.99", NULL,    NULL,    NULL   }   // IM
 };
-const char* sz_fifteen_eighteen_m_q2 [5][8] = {
+static const char* sz_fifteen_eighteen_m_q2 [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "27.09", "58.89",   "2:11.09", NULL,      "5:53.69", "12:35.59", "21:19.99" },  // free
     {  NULL,   NULL,   "1:10.99", "2:35.99", NULL,      NULL,      NULL,       NULL   },  // back
@@ -209,7 +182,7 @@ const char* sz_fifteen_eighteen_m_q2 [5][8] = {
     {  NULL,   NULL,   "1:09.99", "2:41.99", NULL,      NULL,      NULL,       NULL  },  // fly
     {  NULL,   NULL,   NULL,      "2:28.99", "5:24.99", NULL,      NULL,       NULL   }   // IM
 };
-const char* sz_fifteen_eighteen_m_b [5][8] = {
+static const char* sz_fifteen_eighteen_m_b [5][8] = {
     // 25     50        100        200        400        500        1000        1650
     {  NULL,   "29.49", "1:04.39", "2:20.09", NULL,      "6:18.39", "13:04.19", "21:55.89" },  // free
     {  NULL,   NULL,    "1:11.29", "2:34.39", NULL,      NULL,    NULL,    NULL   },  // back
@@ -218,7 +191,7 @@ const char* sz_fifteen_eighteen_m_b [5][8] = {
     {  NULL,   NULL,    NULL,      "2:37.69", "5:35.79", NULL,    NULL,    NULL   }   // IM
 };
 
-const char* sz_fifteen_eighteen_w_q1 [5][8] = {
+static const char* sz_fifteen_eighteen_w_q1 [5][8] = {
     // 25     50        100        200        400        500        1000        1650
     {  NULL,   "25.59", "55.59",   "2:00.79", NULL,      "5:23.29", "11:20.99", "18:58.89" },  // free
     {  NULL,   NULL,    "1:03.09", "2:16.99", NULL,      NULL,    NULL,    NULL   },  // back
@@ -226,7 +199,7 @@ const char* sz_fifteen_eighteen_w_q1 [5][8] = {
     {  NULL,   NULL,    "1:02.09", "2:23.39", NULL,      NULL,    NULL,    NULL   },  // fly
     {  NULL,   NULL,    NULL,      "2:16.99", "4:54.29", NULL,    NULL,    NULL   }   // IM
 };
-const char* sz_fifteen_eighteen_w_q2 [5][8] = {
+static const char* sz_fifteen_eighteen_w_q2 [5][8] = {
     // 25     50     100    200     400    500      1000    1650
     {  NULL,  "27.59", "59.89",   "2:11.69", NULL,      "5:50.99", "12:33.39", "20:57.09" },  // free
     {  NULL,   NULL,   "1:09.59", "2:29.89", NULL,      NULL,      NULL,       NULL   },  // back
@@ -234,7 +207,7 @@ const char* sz_fifteen_eighteen_w_q2 [5][8] = {
     {  NULL,   NULL,   "1:10.29", "2:48.59", NULL,      NULL,      NULL,       NULL  },  // fly
     {  NULL,   NULL,   NULL,      "2:28.99", "5:26.89", NULL,      NULL,       NULL   }   // IM
 };
-const char* sz_fifteen_eighteen_w_b [5][8] = {
+static const char* sz_fifteen_eighteen_w_b [5][8] = {
     // 25     50        100        200        400        500         1000       1650
     {  NULL,   "32.69", "1:10.89", "2:32.09", NULL,      "6:45.29", "13:55.19", "23:18.79" },  // free
     {  NULL,   NULL,    "1:17.69", "2:47.89", NULL,      NULL,      NULL,    NULL   },  // back
@@ -243,75 +216,101 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
     {  NULL,   NULL,    NULL,      "2:51.49", "6:01.49", NULL,      NULL,    NULL   }   // IM
 };
 
-+(float) getFloatTimeFromCStringTime:(const char*)sz 
-{
-    NSString* s = [NSString stringWithUTF8String:sz == NULL ? "0" : sz];
-    return [TimeStandard getFloatTimeFromStringTime:s];
++(NSArray*) standardStrings {
+    if (nil == _standardStrings) {
+        _standardStrings = [NSArray arrayWithObjects:@"C", @"B", "Q2", "Q1", nil];
+    }
+    return _standardStrings;
 }
 
-+(float) getFloatTimeFromStringTime:(NSString*)sTime {
++ (NSDate*) dateOfJoMeet
+{
+    return [TimeStandard dateObjectFromString:JO_DATE];
+}
 
-    float ret = 0;
-    int idx = 0;
++(NSDate*)  dateOf12UStateMeet
+{
+    return [TimeStandard dateObjectFromString:STATE12U_DATE];
+}
+
++(NSDate*)  dateOf13OStateMeet
+{
+    return [TimeStandard dateObjectFromString:STATE13O_DATE];
+}
+
++(float) bTimeForEvent:(int)distance stroke:(int)stroke gender:(NSString*)gender birthday:(NSDate*)birthday
+{
+    float fB = 0.0;
+    int distanceidx;
+    int age = [TimeStandard ageAtDate:[self dateOfJoMeet] dob:birthday];
+    const char* sz_b [5][8] = { NULL };
     
-    if([sTime isEqualToString:@"DQ"]){
-        return 9999999999;
+    distanceidx = [TimeStandard distanceIndex:distance];
+    
+    switch (age) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_b,sz_nine_ten_m_b,sizeof(sz_b));
+            } else {
+                memcpy(sz_b,sz_nine_ten_w_b,sizeof(sz_b));
+            }
+            break;
+            
+        case 11:
+        case 12:
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_b,sz_eleven_twelve_m_b,sizeof(sz_b));
+            } else {
+                memcpy(sz_b,sz_eleven_twelve_w_b,sizeof(sz_b));
+            }
+            break;
+            
+        case 13:
+        case 14:
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_b,sz_thirteen_fourteen_m_b,sizeof(sz_b));
+            } else {
+                memcpy(sz_b,sz_thirteen_fourteen_w_b,sizeof(sz_b));
+            }
+            break;
+            
+        default:
+            // 15-18, or Open
+            if ([gender isEqualToString:@"m"]) {
+                memcpy(sz_b,sz_fifteen_eighteen_m_b,sizeof(sz_b));
+            } else {
+                memcpy(sz_b,sz_fifteen_eighteen_w_b,sizeof(sz_b));
+            }
+            
+            break;
     }
     
-    NSArray* parts = [sTime componentsSeparatedByString:@":"];
-    if ([parts count] == 2) {
-        // get the minutes
-        ret = [[parts objectAtIndex:0] floatValue] * 60.0;
-        idx++;
+    if (sz_b != NULL) {
+        fB = [TimeStandard getFloatTimeFromCStringTime:sz_b[stroke-1][distanceidx]];        
     }
-    // get the seconds
-    NSArray* p2 = [[parts objectAtIndex:idx] componentsSeparatedByString:@"."];
-    ret += [[p2 objectAtIndex:0] floatValue];
-    if ([p2 count] == 2) {
-        // milliseconds
-        int places = [[p2 objectAtIndex:1] length];
-        float denom = (float)pow(10,places);
-        ret += ([[p2 objectAtIndex:1] floatValue])/denom;
-    }
-    return ret; 
+    
+    return fB;
 }
 
-+(int) distanceIndex:(int)distance
++(float) q2TimeForEvent:(int)distance stroke:(int)stroke gender:(NSString*)gender birthday:(NSDate*)birthday
 {
-    int distanceidx = 0;
-    switch (distance) {
-        case 25:   distanceidx = 0; break;
-        case 50:   distanceidx = 1; break;
-        case 100:  distanceidx = 2; break;
-        case 200:  distanceidx = 3; break;
-        case 400:  distanceidx = 4; break;
-        case 500:  distanceidx = 5; break;
-        case 1000: distanceidx = 6; break;
-        case 1650: distanceidx = 7; break;
-        default: assert(false); distanceidx = 0; break;
-    }
-    return distanceidx;
-}
-
-+(int) ageAtDate:(NSDate*)date dob:(NSDate*)dob {
-    NSInteger years = [[[NSCalendar currentCalendar] components: NSYearCalendarUnit
-                                                       fromDate: dob
-                                                         toDate: date
-                                                        options: 0] year];
-    return (int)years;
-}
-
-// TODO: MOVE TO USS TimeStd class
-+(NSString*) getJoCutWithAge:(NSDate*)dob distance:(int)distance stroke:(int) stroke gender:(NSString*)gender
-{
+    float fQ2 = 0.0;
+    int distanceidx;
+    int age = [TimeStandard ageAtDate:[self dateOfJoMeet] dob:birthday];
     const char* sz_q2 [5][8] = { NULL };
-    int distanceidx = [TimeStandard distanceIndex:distance];
-    NSDate* dateOfJOMeet;
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd"];    
-    dateOfJOMeet = [df dateFromString:TODO_JO_DATE];
-    [df release];
-    int age = [self ageAtDate:dateOfJOMeet dob:dob];
+    
+    distanceidx = [TimeStandard distanceIndex:distance];
+    
     switch (age) {
         case 0:
         case 1:
@@ -356,48 +355,26 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
             } else {
                 memcpy(sz_q2,sz_fifteen_eighteen_w_q2,sizeof(sz_q2));
             }
+            
             break;
     }
-    return [NSString stringWithFormat:@"%s",sz_q2[stroke-1][distanceidx]];
+    
+    if (sz_q2 != NULL) {
+        fQ2 = [TimeStandard getFloatTimeFromCStringTime:sz_q2[stroke-1][distanceidx]];        
+    }
+    
+    return fQ2;
 }
 
-+(NSString*) getTimeStandardForMHSAAWithDistance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time
++(float) q1TimeForEvent:(int)distance stroke:(int)stroke gender:(NSString*)gender birthday:(NSDate*)birthday
 {
-    const char* sz_misca [5][8] = { NULL };
-    const char* sz_state [5][8] = { NULL };
-    int distanceidx = [TimeStandard distanceIndex:distance];
-    
-    if ([gender isEqualToString:@"m"]) {
-        memcpy(sz_misca,sz_m_mhsaa_misca,sizeof(sz_misca));
-        memcpy(sz_state,sz_m_mhsaa_state,sizeof(sz_state));
-    }
-    if (sz_state != NULL) {
-        float fQ1 = [TimeStandard getFloatTimeFromCStringTime:sz_state[stroke-1][distanceidx]];
-        float fQ2 = [TimeStandard getFloatTimeFromCStringTime:sz_misca[stroke-1][distanceidx]];
-        if (time <= fQ1) {
-            return @"STATE";
-        }
-        if (time <= fQ2) {
-            return [NSString stringWithFormat:@"MISCA (ST+%2.2f)",time-fQ1];
-        }
-        
-    }
-    
-    return @"";
-}
-
-+(NSString*) getTimeStandardWithAge:(int)age distance:(int)distance stroke:(int)stroke gender:(NSString*)gender time:(float)time {
+    float fQ1 = 0.0;
     int distanceidx;
+    int age = [TimeStandard ageAtDate:[self dateOfJoMeet] dob:birthday];
     const char* sz_q1 [5][8] = { NULL };
-    const char* sz_q2 [5][8] = { NULL };
-    const char* sz_b [5][8] = { NULL };
-    
-    // quick sanity check on the array values
-    memcpy(sz_q1,sz_nine_ten_w_q1,sizeof(sz_q1));
-    assert( strcmp("31.49",sz_q1[0][1]) == 0);
     
     distanceidx = [TimeStandard distanceIndex:distance];
-   
+    
     switch (age) {
         case 0:
         case 1:
@@ -411,26 +388,18 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
         case 9:
         case 10:
             if ([gender isEqualToString:@"m"]) {
-               memcpy(sz_q1,sz_nine_ten_m_q1,sizeof(sz_q1));
-               memcpy(sz_q2,sz_nine_ten_m_q2,sizeof(sz_q2));
-               memcpy(sz_b,sz_nine_ten_m_b,sizeof(sz_b));
+                memcpy(sz_q1,sz_nine_ten_m_q1,sizeof(sz_q1));
             } else {
                 memcpy(sz_q1,sz_nine_ten_w_q1,sizeof(sz_q1));
-                memcpy(sz_q2,sz_nine_ten_w_q2,sizeof(sz_q2));
-                memcpy(sz_b,sz_nine_ten_w_b,sizeof(sz_b));
             }
             break;
-          
+            
         case 11:
         case 12:
             if ([gender isEqualToString:@"m"]) {
                 memcpy(sz_q1,sz_eleven_twelve_m_q1,sizeof(sz_q1));
-                memcpy(sz_q2,sz_eleven_twelve_m_q2,sizeof(sz_q2));
-                memcpy(sz_b,sz_eleven_twelve_m_b,sizeof(sz_b));
             } else {
                 memcpy(sz_q1,sz_eleven_twelve_w_q1,sizeof(sz_q1));
-                memcpy(sz_q2,sz_eleven_twelve_w_q2,sizeof(sz_q2));
-                memcpy(sz_b,sz_eleven_twelve_w_b,sizeof(sz_b));
             }
             break;
             
@@ -438,61 +407,27 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
         case 14:
             if ([gender isEqualToString:@"m"]) {
                 memcpy(sz_q1,sz_thirteen_fourteen_m_q1,sizeof(sz_q1));
-                memcpy(sz_q2,sz_thirteen_fourteen_m_q2,sizeof(sz_q2));
-                memcpy(sz_b,sz_thirteen_fourteen_m_b,sizeof(sz_b));
             } else {
                 memcpy(sz_q1,sz_thirteen_fourteen_w_q1,sizeof(sz_q1));
-                memcpy(sz_q2,sz_thirteen_fourteen_w_q2,sizeof(sz_q2));
-                memcpy(sz_b,sz_thirteen_fourteen_m_b,sizeof(sz_b));
             }
             break;
-          
+            
         default:
             // 15-18, or Open
             if ([gender isEqualToString:@"m"]) {
                 memcpy(sz_q1,sz_fifteen_eighteen_m_q1,sizeof(sz_q1));
-                memcpy(sz_q2,sz_fifteen_eighteen_m_q2,sizeof(sz_q2));
-                memcpy(sz_b,sz_fifteen_eighteen_m_b,sizeof(sz_b));
             } else {
                 memcpy(sz_q1,sz_fifteen_eighteen_w_q1,sizeof(sz_q1));
-                memcpy(sz_q2,sz_fifteen_eighteen_w_q2,sizeof(sz_q2));
-                memcpy(sz_b,sz_fifteen_eighteen_w_b,sizeof(sz_b));
             }
             
             break;
     }
     
     if (sz_q1 != NULL) {
-        float fQ1 = [TimeStandard getFloatTimeFromCStringTime:sz_q1[stroke-1][distanceidx]];
-        float fQ2 = [TimeStandard getFloatTimeFromCStringTime:sz_q2[stroke-1][distanceidx]];
-        float fB = [TimeStandard getFloatTimeFromCStringTime:sz_b[stroke-1][distanceidx]];
-        if (time <= fQ1) {
-            return @"Q1";
-        }
-        if (time <= fQ2) {
-            return [NSString stringWithFormat:@"Q2 (Q1+%2.2f)",time-fQ1];
-        }
-        if (time <= fB) {
-            return [NSString stringWithFormat:@"B (Q2+%2.2f)",time-fQ2];
-        }
-
+        fQ1 = [TimeStandard getFloatTimeFromCStringTime:sz_q1[stroke-1][distanceidx]];        
     }
-   
-    return @"";
-}
-
-+(NSDate*) dateObjectFromString:(NSString*)s
-{
-    NSDate* date;
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
     
-    [df setDateFormat:@"yyyy-MM-dd"];    
-    date = [df dateFromString:s];
-    [df release];  
-    
-    return date;
+    return fQ1;
 }
-
 
 @end
-

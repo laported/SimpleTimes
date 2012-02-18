@@ -11,6 +11,7 @@
 #import "RaceResult.h"
 #import "Swimmers.h"
 #import "Swimming.h"
+#import "TimeStandardUssScy.h"
 
 @implementation AthleteCD
 @dynamic club;
@@ -60,6 +61,7 @@
     }
 }
 
+// TODO MOVE TO TIMESTDUSS class
 - (void) countCuts:(PCUTS)cuts {
     NSArray* times = [self personalBests];
     NSDate* dateOfJOMeet;
@@ -74,10 +76,10 @@
     cuts->sectionals = 0;
     cuts->nationals = 0;
 
-    dateOfJOMeet = [df dateFromString:@JO_DATE];
-    dateOfStateMeet = [df dateFromString:@STATE_DATE];
-    dateOfSectionalsMeet = [df dateFromString: @SECTIONALS_DATE];
-    dateOfNationalsMeet = [df dateFromString: @NATIONALS_DATE];
+    dateOfJOMeet = [df dateFromString:JO_DATE];
+    dateOfStateMeet = [df dateFromString:STATE12U_DATE]; // TODO Use 13 Over if needed
+    dateOfSectionalsMeet = [df dateFromString: SECTIONALS_DATE];
+    dateOfNationalsMeet = [df dateFromString: NATIONALS_DATE];
     [df release];
 
     for (int k=0;k<[times count];k++) {
@@ -191,8 +193,8 @@
     //NSLog(@"personalBests: releasing %08x",(unsigned int)all_requested_times);
     //[all_requested_times release];
     
-    NSLog(@"personalBests:%@ times %08x, strokes %08x",self.firstname,(unsigned int)times,(unsigned int)strokes);
-    NSLog(@"personalBests:%@ returning %08x",self.firstname,(unsigned int)all_sorted_requested_times);
+    //NSLog(@"personalBests:%@ times %08x, strokes %08x",self.firstname,(unsigned int)times,(unsigned int)strokes);
+    //NSLog(@"personalBests:%@ returning %08x",self.firstname,(unsigned int)all_sorted_requested_times);
     // using singleton instance now - no need to release 
     // [strokes release];
     return all_sorted_requested_times;
@@ -213,8 +215,19 @@
 
 - (NSArray*) allDistancesForStroke:(int)stroke
 {
-    // TODO We should be able to do a query against the DB for this....something like
-    // select distinct(distance) from raceSet where stroke = s 
+    NSMutableArray* distances = [NSMutableArray array];
+    NSString* strokeString = [[Swimming getStrokes] objectAtIndex:stroke-1];
+    for (RaceResult* r in self.races) {
+        if ([r.stroke isEqualToString:strokeString]) {
+            [distances addObject:r.distance];
+        }
+    }
+    // Get a unique set of distances
+    NSSet *uniqueDistances = [NSSet setWithArray:distances];
+    // Then sort that
+    //NSArray* sorted = [uniqueDistances sortedArrayUsingDescriptors:<#(NSArray *)#> arra sortUsingSelector: @selector(compare];
+   
+    // TODO
     return NULL;    // todo 
 }
 

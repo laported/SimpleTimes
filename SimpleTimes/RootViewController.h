@@ -58,7 +58,7 @@
 @property (retain) Swimmers* theMHSAASwimmers;
 @property int selectedStroke;
 @property int selectedDistance;
-@property (retain) NSString *CurrentTitle;
+@property (retain) NSString *currentTitle;
 @property int viewstate;
 @property int rows;
 @property int selectedSection;
@@ -73,5 +73,6 @@
 - (void)refresh ;
 - (void)loadSplitTimes ;
 - (void)refreshAllBestTimes;
+- (void) completeEditing;
 
 @end
