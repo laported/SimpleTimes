@@ -139,6 +139,12 @@
     return all_sorted_requested_times;
 }
 
+- (NSArray*) allResultsSinceDate:(NSDate*)date 
+{
+// todo
+    assert( false );
+}
+
 - (NSArray*) allResultsByDate 
 {
     NSSortDescriptor* sortDescriptor1;

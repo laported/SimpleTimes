@@ -230,7 +230,7 @@
     [super viewWillAppear:animated];
     
     /* Are we coming back from the 'Add Swimmer' dialog ? */
-    if (self.viewstate == VS_ADDSWIMMER) {
+    if ((self.viewstate == VS_ADDSWIMMER) && (self.selectedSection != SECTION_MHSAA)) {
         
         // Did the user pick a swimmer??
         if (self.asController.madeSelection) {
@@ -242,14 +242,14 @@
                 self.getbdayController = [[GetBirthdayViewController alloc] initWithNibName:@"GetBirthdayViewController" bundle:[NSBundle mainBundle]];
                 [self.navigationController pushViewController:self.getbdayController animated:YES];
             } else {
-                assert( false );    // TODO: Recode if we support other data providers
+                // MHSAA doesn't need a birthday 
             }
         } else {
             // nothing selected
             self.viewstate = VS_ATHLETES;
         }
         
-    } else if (self.viewstate == VS_GETBIRTHDATE) {
+    } else if ((self.viewstate == VS_GETBIRTHDATE) || ((self.viewstate == VS_ADDSWIMMER) && (self.selectedSection == SECTION_MHSAA))) {
         self.viewstate = VS_ATHLETES;
         NSLog(@"firstname: %@ lastname: %@ miID:%d",self.asController.firstname.text,self.asController.lastname.text,self.asController.miSwimId);
         // 1. Add swimmer name to list of athletes
@@ -518,7 +518,7 @@
                         cell.detailTextLabel.text = athlete.club; 
                     }
                } else if (indexPath.section == SECTION_MHSAA) {
-                    athlete = [self.theMHSAASwimmers.athletesCD objectAtIndex:indexPath.row];
+                   athlete = [self.theMHSAASwimmers.athletesCD objectAtIndex:indexPath.row];
                    [athlete countCutsMHSAA:&mhsaacuts];
                    if (mhsaacuts.miscas > 0 || cuts.states > 0) {
                        NSString* miscas = mhsaacuts.miscas > 0 ? [self cutsWithStars:mhsaacuts.miscas andPrefix:@"MISCA "] : @"";
@@ -649,6 +649,23 @@
 }
 */
 
+- (NSString*) courseStringFromSection:(int)section
+{
+    switch (section) {
+        case SECTION_MHSAA:
+            return @"MHSAA";
+        case SECTION_USS_LCM:
+            return @"LCM";
+        case SECTION_USS_SCM:
+            return @"SCM";
+        case SECTION_USS_SCY:
+            return @"SCY";
+        default:
+            assert(false);
+    }
+    return @"SCY";
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RootViewController *rvController;
@@ -690,7 +707,8 @@
             
             self.selectedStroke = [[[self.strokes objectAtIndex:indexPath.row] objectAtIndex:1] intValue];
             if (self.selectedStroke == STROKE_RECENT) {
-                RecentRacesViewController* recent = [[RecentRacesViewController alloc] initWithAthlete:self.selectedAthleteCD];
+                NSString* c = [self courseStringFromSection:indexPath.section];
+                RecentRacesViewController* recent = [[RecentRacesViewController alloc] initWithAthlete:self.selectedAthleteCD andContext:self.managedObjectContext course:c];
                 [self.navigationController pushViewController:recent animated:YES];
                 [recent release];
             } else if (self.selectedStroke == STROKE_CUTS) {
@@ -948,6 +966,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
         } else {
             db = [NSString stringWithCString:MI_SWIM_DB encoding:NSUTF8StringEncoding];
         }
+        self.selectedSection = indexPath.section;
         // exit edit mode
         [self completeEditing];
         // Push a new view controller for athlete selection here

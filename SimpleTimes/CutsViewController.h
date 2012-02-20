@@ -14,11 +14,12 @@
 @interface CutsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> 
 {
     UITableView* myTableView;
-    NSArray*  _cutlists;        // array of CutsViewDataItem* objects
+    NSArray*  _cutlist;        // array of CutsViewDataItem* objects
 }
 
 @property (retain) UITableView* myTableView;
 
 - (id) initWithAthlete:(AthleteCD*)athlete;
+- (NSArray*) allocCutListFor:(AthleteCD*)athlete;
 
 @end

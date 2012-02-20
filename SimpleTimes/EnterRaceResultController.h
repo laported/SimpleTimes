@@ -3,7 +3,7 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 2/1/12.
-//  Copyright (c) 2012 Burroughs. All rights reserved.
+//  Copyright (c) 2012 laporte6.org. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

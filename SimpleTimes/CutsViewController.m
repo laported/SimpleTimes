@@ -13,6 +13,11 @@
 
 @synthesize myTableView;
 
+- (NSArray*) allocCutListFor:(AthleteCD*)athlete
+{
+    NSArray* pb = [athlete personalBests];
+}
+
 - (id) initWithAthlete:(AthleteCD*)athlete
 {
     self = [super init];//[super initWithNibName:@"CutsViewController" bundle:nil];
@@ -33,7 +38,7 @@
         [self.myTableView setDataSource:self];
         [self.myTableView setDelegate:self];
         
-        _cutlists = [NSArray array];
+        _cutlist = [self allocCutListFor:athlete];
     }
     return self;
 }
@@ -81,19 +86,19 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return [_cutlists count];
+    return [_cutlist count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    CutsViewDataItem* item = [_cutlists objectAtIndex:section];
+    CutsViewDataItem* item = [_cutlist objectAtIndex:section];
     return [item.cuts count];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    CutsViewDataItem* item = [_cutlists objectAtIndex:section];
+    CutsViewDataItem* item = [_cutlist objectAtIndex:section];
     if (item != nil) {
         return item.standard;
     }

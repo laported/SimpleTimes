@@ -70,6 +70,8 @@
 		1EA228E91470555600283AD0 /* TeamManagerDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228E81470555600283AD0 /* TeamManagerDBProxy.m */; };
 		1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EC14706C7500283AD0 /* ROHTMLTable.m */; };
 		1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */; };
+		1EB1937A14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EB1937814F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m */; };
+		1EB1937B14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EB1937914F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib */; };
 		1EBE0F0A14F01CC900ED4DB5 /* AthleteCD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */; };
 		1EBE0F0B14F01CC900ED4DB5 /* RaceResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */; };
 		1EBE0F0C14F01CC900ED4DB5 /* RaceResultTeamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0EFD14F01CC900ED4DB5 /* RaceResultTeamManager.m */; };
@@ -79,6 +81,8 @@
 		1EBE0F1014F01CC900ED4DB5 /* Swimming.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0514F01CC900ED4DB5 /* Swimming.m */; };
 		1EBE0F1114F01CC900ED4DB5 /* TimeStandard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0714F01CC900ED4DB5 /* TimeStandard.m */; };
 		1EBE0F1214F01CC900ED4DB5 /* TimeStandardUssScy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0914F01CC900ED4DB5 /* TimeStandardUssScy.m */; };
+		1EBE0F1914F0478300ED4DB5 /* AddMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F1714F0478300ED4DB5 /* AddMeetViewController.m */; };
+		1EBE0F1A14F0478300ED4DB5 /* AddMeetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EBE0F1814F0478300ED4DB5 /* AddMeetViewController.xib */; };
 		1ECD4CB214E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */; };
 		1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */; };
 		1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */; };
@@ -186,11 +190,14 @@
 		1EA228EC14706C7500283AD0 /* ROHTMLTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ROHTMLTable.m; path = DataProviders/ROHTMLTable.m; sourceTree = SOURCE_ROOT; };
 		1EA228EE1474293E00283AD0 /* USASwimmingDBProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = USASwimmingDBProxy.h; path = DataProviders/USASwimmingDBProxy.h; sourceTree = SOURCE_ROOT; };
 		1EA228EF1474293E00283AD0 /* USASwimmingDBProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = USASwimmingDBProxy.m; path = DataProviders/USASwimmingDBProxy.m; sourceTree = SOURCE_ROOT; };
+		1EB1937714F1517500F2CDED /* EnterRaceResultsiPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterRaceResultsiPhoneViewController.h; sourceTree = "<group>"; };
+		1EB1937814F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterRaceResultsiPhoneViewController.m; sourceTree = "<group>"; };
+		1EB1937914F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterRaceResultsiPhoneViewController.xib; sourceTree = "<group>"; };
 		1EBE0EF814F01CC900ED4DB5 /* AthleteCD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AthleteCD.h; path = Models/AthleteCD.h; sourceTree = "<group>"; };
 		1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AthleteCD.m; path = Models/AthleteCD.m; sourceTree = "<group>"; };
 		1EBE0EFA14F01CC900ED4DB5 /* RaceResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RaceResult.h; path = Models/RaceResult.h; sourceTree = "<group>"; };
 		1EBE0EFB14F01CC900ED4DB5 /* RaceResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RaceResult.m; path = Models/RaceResult.m; sourceTree = "<group>"; };
-		1EBE0EFC14F01CC900ED4DB5 /* RaceResultTeamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; name = RaceResultTeamManager.h; path = Models/RaceResultTeamManager.h; sourceTree = "<group>"; };
+		1EBE0EFC14F01CC900ED4DB5 /* RaceResultTeamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RaceResultTeamManager.h; path = Models/RaceResultTeamManager.h; sourceTree = "<group>"; };
 		1EBE0EFD14F01CC900ED4DB5 /* RaceResultTeamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RaceResultTeamManager.m; path = Models/RaceResultTeamManager.m; sourceTree = "<group>"; };
 		1EBE0EFE14F01CC900ED4DB5 /* Split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Split.h; path = Models/Split.h; sourceTree = "<group>"; };
 		1EBE0EFF14F01CC900ED4DB5 /* Split.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Split.m; path = Models/Split.m; sourceTree = "<group>"; };
@@ -204,6 +211,9 @@
 		1EBE0F0714F01CC900ED4DB5 /* TimeStandard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeStandard.m; path = Models/TimeStandard.m; sourceTree = "<group>"; };
 		1EBE0F0814F01CC900ED4DB5 /* TimeStandardUssScy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeStandardUssScy.h; path = Models/TimeStandardUssScy.h; sourceTree = "<group>"; };
 		1EBE0F0914F01CC900ED4DB5 /* TimeStandardUssScy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeStandardUssScy.m; path = Models/TimeStandardUssScy.m; sourceTree = "<group>"; };
+		1EBE0F1614F0478300ED4DB5 /* AddMeetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMeetViewController.h; sourceTree = "<group>"; };
+		1EBE0F1714F0478300ED4DB5 /* AddMeetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMeetViewController.m; sourceTree = "<group>"; };
+		1EBE0F1814F0478300ED4DB5 /* AddMeetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMeetViewController.xib; sourceTree = "<group>"; };
 		1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-gray.png"; path = "images/water-splash-ipad-wallpaper-gray.png"; sourceTree = SOURCE_ROOT; };
 		1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone.png"; path = "images/UnderWater-Portrait-iPhone.png"; sourceTree = SOURCE_ROOT; };
 		1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone@2x.png"; path = "images/UnderWater-Portrait-iPhone@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -276,6 +286,12 @@
 				1EA228B114703E6C00283AD0 /* RootViewController.h */,
 				1EA228B214703E6C00283AD0 /* RootViewController.m */,
 				1EA228B414703E6C00283AD0 /* RootViewController.xib */,
+				1EBE0F1614F0478300ED4DB5 /* AddMeetViewController.h */,
+				1EBE0F1714F0478300ED4DB5 /* AddMeetViewController.m */,
+				1EBE0F1814F0478300ED4DB5 /* AddMeetViewController.xib */,
+				1EB1937714F1517500F2CDED /* EnterRaceResultsiPhoneViewController.h */,
+				1EB1937814F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m */,
+				1EB1937914F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -525,6 +541,8 @@
 				1ECD4CB214E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png in Resources */,
 				1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */,
 				1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */,
+				1EBE0F1A14F0478300ED4DB5 /* AddMeetViewController.xib in Resources */,
+				1EB1937B14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +608,8 @@
 				1EBE0F1014F01CC900ED4DB5 /* Swimming.m in Sources */,
 				1EBE0F1114F01CC900ED4DB5 /* TimeStandard.m in Sources */,
 				1EBE0F1214F01CC900ED4DB5 /* TimeStandardUssScy.m in Sources */,
+				1EBE0F1914F0478300ED4DB5 /* AddMeetViewController.m in Sources */,
+				1EB1937A14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
