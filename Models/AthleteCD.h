@@ -52,6 +52,7 @@ typedef MHSAACUTS* PMHSAACUTS;
 - (NSArray*) allResultsSinceDate:(NSDate*)date ;
 - (int)      countOfRacesWithStroke:(int)stroke andDistance:(int)distance;
 - (NSArray*) personalBests;           // an array of RaceResult objects
+- (NSArray*) personalBestsSinceDate:(NSDate*)date;  // an array of RaceResult objects
 - (NSArray*) allStrokesWithResults;   // an array of (unique) stroke names for which this athlete has results
 - (NSArray*) allDistancesForStroke:(int)stroke;
 

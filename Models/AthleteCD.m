@@ -141,8 +141,14 @@
 
 - (NSArray*) allResultsSinceDate:(NSDate*)date 
 {
-// todo
-    assert( false );
+    NSArray* sortedByDate = [self allResultsByDate];
+    NSMutableArray* sinceDate = [NSMutableArray array];
+    for (RaceResult* r in sortedByDate) {
+        if(!([r.date compare:date] == NSOrderedAscending)) {
+            [sinceDate addObject:r]; 
+        }
+    }
+    return (NSArray*)sinceDate;
 }
 
 - (NSArray*) allResultsByDate 
@@ -159,7 +165,13 @@
     return [self.races sortedArrayUsingDescriptors:sortDescriptors];
 }
 
-- (NSArray*)personalBests {
+- (NSArray*)personalBests
+{
+    return [self personalBestsSinceDate:self.birthdate];
+}
+
+- (NSArray*)personalBestsSinceDate:(NSDate*)date
+{
     NSMutableArray* all_requested_times = [NSMutableArray array];
     NSArray*        all_sorted_requested_times = nil;
     NSSet*          raceSet = self.races;
@@ -176,6 +188,8 @@
             for (int k=0;k<[times count];k++) {
                 race = [times objectAtIndex:k];
                 
+                if ([race.date compare:date] == NSOrderedAscending)
+                    continue; 
                 if ([race.distance intValue] != distances[i])
                     continue;
                 if ([Swimmers intStrokeValue:race.stroke] != [Swimmers intStrokeValue:[strokes objectAtIndex:j]])
