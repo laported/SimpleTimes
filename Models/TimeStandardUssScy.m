@@ -228,6 +228,11 @@ static const char* sz_fifteen_eighteen_w_b [5][8] = {
     return [TimeStandard dateObjectFromString:JO_DATE];
 }
 
++(NSDate*)  dateOfJoMeetEligibility
+{
+   return [TimeStandard dateObjectFromString:JO_ELG_DATE]; 
+}
+
 +(NSDate*)  dateOf12UStateMeet
 {
     return [TimeStandard dateObjectFromString:STATE12U_DATE];
