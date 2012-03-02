@@ -8,15 +8,12 @@
 
 #import "CutsViewController.h"
 #import "RaceResult.h"
+#import "TimeStandardUssScy.h"
+#import "Swimmers.h"
 
 @implementation CutsViewController
 
 @synthesize myTableView;
-
-- (NSArray*) allocCutListFor:(AthleteCD*)athlete
-{
-    NSArray* pb = [athlete personalBests];
-}
 
 - (id) initWithAthlete:(AthleteCD*)athlete
 {
@@ -38,9 +35,64 @@
         [self.myTableView setDataSource:self];
         [self.myTableView setDelegate:self];
         
-        _cutlist = [self allocCutListFor:athlete];
+        _athlete = athlete;
+        _cutlist = [NSMutableArray array];
+        [_cutlist retain];
+        CutsViewDataItem* joCuts = [[CutsViewDataItem alloc] initWithStandard:@"Junior Olympics"];
+        [joCuts retain];
+        NSArray* times = [_athlete personalBestsSinceDate:[TimeStandardUssScy dateOfJoMeetEligibility]];
+        for (int k=0;k<[times count];k++) {
+            RaceResult* race = [times objectAtIndex:k];
+            
+            float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+            int nStroke = [Swimmers intStrokeValue:race.stroke];
+            
+            NSString* timestd = [TimeStandard getTimeStandardWithAge:[_athlete ageAtDate:[TimeStandardUssScy dateOfJoMeet]] distance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
+            
+            if ([timestd hasPrefix:@"Q2"]) {
+                NSString* cut = [NSString stringWithFormat:@"%@ %@ Best Time=%@",race.distance,race.stroke,race.time];
+                NSLog(@"CutsView: adding JO cut: %@",cut);
+                [joCuts addCut:cut];
+            }
+        }
+        NSLog(@"CutsView: %d JO cuts",[joCuts.cuts count]);
+        if ([joCuts.cuts count] > 0) {
+            [_cutlist addObject:joCuts];
+        }
+        [joCuts release];
+        // State Cuts
+        CutsViewDataItem* stateCuts = [[CutsViewDataItem alloc] initWithStandard:@"MI State"];
+        [stateCuts retain];
+        // TODO assumes that State meet eligibility is same as JO
+        for (int k=0;k<[times count];k++) {
+            RaceResult* race = [times objectAtIndex:k];
+            
+            float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+            int nStroke = [Swimmers intStrokeValue:race.stroke];
+            
+            //NSDate* meetDate = 
+            NSString* timestd = [TimeStandard getTimeStandardWithAge:[_athlete ageAtDate:[TimeStandardUssScy dateOf13OStateMeet]] distance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
+            
+            if ([timestd hasPrefix:@"Q1"]) {
+                NSString* cut = [NSString stringWithFormat:@"%@ %@",race.distance,race.stroke];
+                NSLog(@"CutsView: adding State cut: %@",cut);
+                [stateCuts addCut:cut];
+            }
+        }
+        NSLog(@"CutsView: %d State cuts",[stateCuts.cuts count]);
+        if ([stateCuts.cuts count] > 0) {
+            [_cutlist addObject:stateCuts]; 
+        }
+        [stateCuts release];
     }
     return self;
+}
+
+- (void)dealloc 
+{
+    [super dealloc];
+    [_cutlist release];
+    _cutlist = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,6 +138,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
+    NSLog(@"CutsView: %d sections",[_cutlist count]);
     return [_cutlist count];
 }
 
@@ -93,6 +146,8 @@
 {
     // Return the number of rows in the section.
     CutsViewDataItem* item = [_cutlist objectAtIndex:section];
+    NSLog(@"%d cuts",[item.cuts count]);
+    NSMutableArray* ma = item.cuts;
     return [item.cuts count];
 }
 
@@ -111,7 +166,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     /*
     RaceResult* race = nil;
@@ -138,7 +193,8 @@
     cell.textLabel.numberOfLines = 2;
     cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     */
-    cell.textLabel.text = @"TODO";
+    CutsViewDataItem* cuts = [_cutlist objectAtIndex:indexPath.section];
+    cell.textLabel.text = [cuts.cuts objectAtIndex:indexPath.row];
     return cell;
 }
 

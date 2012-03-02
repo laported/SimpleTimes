@@ -11,13 +11,15 @@
 @implementation CutsViewDataItem
 
 @synthesize standard;
-@synthesize cuts;
+@synthesize cuts = _cuts;
 
 -(id) initWithStandard:(NSString*)std
 {
     self = [super init];
     if (self) {
         self.standard = std;
+        _cuts = [NSMutableArray array];
+        [_cuts retain];
     }
     return self;
 }
@@ -25,7 +27,13 @@
 -(void) dealloc
 {
     standard = nil;
-    cuts = nil;
+    [_cuts release];
+    _cuts = nil;
+}
+
+-(void) addCut:(NSString*)cut 
+{
+    [_cuts addObject:cut];
 }
 
 @end

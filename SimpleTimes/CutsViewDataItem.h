@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface CutsViewDataItem : NSObject
+{
+    NSMutableArray* _cuts;
+}
 
 @property (retain) NSString* standard;
-@property (retain) NSArray*  cuts;         // Array of NSStrings
+@property (retain) NSMutableArray*  cuts;         // Array of NSStrings
 
 -(id) initWithStandard:(NSString*)std;
+-(void) addCut:(NSString*)cut ;
 
 @end

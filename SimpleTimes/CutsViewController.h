@@ -14,7 +14,8 @@
 @interface CutsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> 
 {
     UITableView* myTableView;
-    NSArray*  _cutlist;        // array of CutsViewDataItem* objects
+    NSMutableArray*  _cutlist;        // array of CutsViewDataItem* objects
+    AthleteCD* _athlete;
 }
 
 @property (retain) UITableView* myTableView;
