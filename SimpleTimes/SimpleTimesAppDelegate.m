@@ -55,16 +55,20 @@
         Swimmers* theSwimmers = [[Swimmers alloc] init];
         [theSwimmers loadWithContext:[self managedObjectContext]];
         
-        DetailSwimmerViewController *viewController1 = [[DetailSwimmerViewController alloc] initWithAthlete:[theSwimmers.athletesCD objectAtIndex:0] andContext:[self managedObjectContext]];
+        int numSwimmers = [theSwimmers.athletesCD count];
         
-        UIViewController *viewController2 = [[AllTimesViewController alloc] initWithNibName:@"AllTimesViewController" bundle:nil];
-        UIViewController *viewController3 = [[EnterRaceResultController alloc]  initWithAthlete:[theSwimmers.athletesCD objectAtIndex:0] andContext:[self managedObjectContext]];
-        
-        self.tabBarController = [[UITabBarController alloc] init];
-        self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, nil];
+        if (false) { //numSwimmers == 0) {
+            
+        } else {
+            DetailSwimmerViewController *viewController1 = [[DetailSwimmerViewController alloc] initWithAthlete:(numSwimmers == 0) ? nil : [theSwimmers.athletesCD objectAtIndex:0] andContext:[self managedObjectContext]];
+            
+            UIViewController *viewController2 = [[AllTimesViewController alloc] initWithNibName:@"AllTimesViewController" bundle:nil];
+            UIViewController *viewController3 = [[EnterRaceResultController alloc]  initWithAthlete:(numSwimmers == 0) ? nil : [theSwimmers.athletesCD objectAtIndex:0] andContext:[self managedObjectContext]];
+            
+            self.tabBarController = [[UITabBarController alloc] init];
+            self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, viewController3, nil];
+        }
     
-        //UIToolbar* toolbar = [[UIToolbar alloc] init];
-        
         self.window.rootViewController = self.tabBarController;
          
     } else {

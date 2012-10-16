@@ -76,7 +76,7 @@
         if([self.lastname isFirstResponder]){
             [self.lastname resignFirstResponder];
         }
-        // populate the treeview
+        // populate the tableview
         _multipleResults = [NSMutableArray array];
         for (AddSwimmerResult* s in array) {
             int insertIdx = 0; 

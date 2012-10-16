@@ -39,6 +39,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    time.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -83,6 +84,35 @@
     } else { 
         self.stroke = row;
         NSLog(@"Stroke: %d",self.stroke);
+    }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    NSLog(@"text.tag=%d text=%@ replacement: %@",textField.tag, textField.text,string);
+    if (textField == time) {
+        NSUInteger newLength = [textField.text length] + [string length] - range.length;
+        
+        if (newLength == 4) {
+            NSRange dot = [string rangeOfString:@"." options:(NSCaseInsensitiveSearch)];
+            if (dot.location == NSNotFound) {
+                // Insert the "." into the time string
+                NSMutableString *mu = [NSMutableString stringWithString:textField.text];
+                [mu insertString:@"." atIndex:2];
+                [mu appendString:string];
+                textField.text = [NSString stringWithString:mu];
+                return NO;
+            }
+        } 
+    }
+    return YES;
+}
+
+// Catch return key and dismiss keyboard
+-(IBAction) userDoneEnteringText:(id)sender
+{
+    if (sender == time) {
+        [time resignFirstResponder];
     }
 }
 

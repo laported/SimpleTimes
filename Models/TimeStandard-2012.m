@@ -10,10 +10,10 @@
 
 @implementation TimeStandard
 
-#define TODO_JO_DATE         @"2012-03-02"
-#define TODO_STATE_DATE      @"2012-03-09"
-#define TODO_SECTIONALS_DATE @"2012-03-21" // TODO
-#define TODO_NATIONALS_DATE  @"2012-04-14" // TODO
+#define TODO_JO_DATE         @"2013-03-02"
+#define TODO_STATE_DATE      @"2013-03-09"
+#define TODO_SECTIONALS_DATE @"2013-03-21" // TODO
+#define TODO_NATIONALS_DATE  @"2013-04-14" // TODO
 
 #define TIMESTD_USS_SCY 1       // USA Swimming Short Course Yards
 #define TIMESTD_USS_LCM 2       // USA Swimming Long Course Meters
@@ -288,7 +288,10 @@ const char* sz_fifteen_eighteen_w_b [5][8] = {
         case 500:  distanceidx = 5; break;
         case 1000: distanceidx = 6; break;
         case 1650: distanceidx = 7; break;
-        default: assert(false); distanceidx = 0; break;
+        default: 
+            assert(false); 
+            distanceidx = 0; 
+            break;
     }
     return distanceidx;
 }

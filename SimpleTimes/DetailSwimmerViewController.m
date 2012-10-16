@@ -88,10 +88,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    
     //Add sub view for displaying top times
     _topTimes = [[TopTimesViewController alloc] initWithStyle:UITableViewStylePlain];
 	[self.view addSubview:_topTimes.view];
+    if (_athlete == nil) {
+        
+    }
     if (_athlete != nil) {
         [_topTimes setAthlete:_athlete];
         [_athlete countCuts:&_cuts];

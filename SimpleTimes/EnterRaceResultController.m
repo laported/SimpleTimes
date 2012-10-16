@@ -31,7 +31,7 @@
         self.tabBarItem.image = [UIImage imageNamed:@"plus_24"];
         self.title = NSLocalizedString(@"Enter Times", @"Enter Times");
         _stroke_index = 1;
-        joCutTime.text = [TimeStandard getJoCutWithAge:_athlete.birthdate distance:25 stroke:1 gender:_athlete.gender];
+        joCutTime.text = (_athlete == nil) ? @"???" : [TimeStandard getJoCutWithAge:_athlete.birthdate distance:25 stroke:1 gender:_athlete.gender];
     }
     return self;
 }

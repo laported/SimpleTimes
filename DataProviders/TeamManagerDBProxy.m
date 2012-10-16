@@ -280,6 +280,52 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         // 8 Meet
         
         ///// temp hack ---------------------------------------------------------
+        if (athleteId == 11655) {
+            // add benjamin's times
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"MM/dd/yyyy"];
+            NSDate *myDate = [df dateFromString:@"02/17/2012"];
+            
+            RaceResultTeamManager* r = [[[RaceResultTeamManager alloc] initWithTime:@"6:08.58"
+                                                                               meet:@"2012 SMAC Last Chance" 
+                                                                               date:myDate
+                                                                             stroke:@"Free"
+                                                                           distance:500
+                                                                             course:@"SCY"
+                                                                                age:12     // todo
+                                                                        powerpoints:0
+                                                                           standard:@"Q2"
+                                                                             splits:nil
+                                                                                 db:_dbName
+                                         ] autorelease];
+            [all_times addObject:r];
+            RaceResultTeamManager* r2 = [[[RaceResultTeamManager alloc] initWithTime:@"2:42.22"
+                                                                               meet:@"2012 SMAC Last Chance" 
+                                                                               date:myDate
+                                                                             stroke:@"IM"
+                                                                           distance:200
+                                                                             course:@"SCY"
+                                                                                age:12     // todo
+                                                                        powerpoints:0
+                                                                           standard:@"Q2"
+                                                                             splits:nil
+                                                                                 db:_dbName
+                                         ] autorelease];
+            [all_times addObject:r2];
+            RaceResultTeamManager* r3 = [[[RaceResultTeamManager alloc] initWithTime:@"1:15.23"
+                                                                               meet:@"2012 SMAC Last Chance" 
+                                                                               date:myDate
+                                                                             stroke:@"Back"
+                                                                           distance:100
+                                                                             course:@"SCY"
+                                                                                age:12     // todo
+                                                                        powerpoints:0
+                                                                           standard:@"Q2"
+                                                                             splits:nil
+                                                                                 db:_dbName
+                                         ] autorelease];
+            [all_times addObject:r3];
+        }
         if (athleteId == 342) {
             // add matthew's HS times
             NSDateFormatter *df = [[NSDateFormatter alloc] init];

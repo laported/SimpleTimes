@@ -2,8 +2,12 @@
 //  SwimmerPickerController.h
 //  SimpleTimes
 //
+//  This class provides functionality that lets the
+//  user choose from a list of swimmers (presented as a
+//  popover view)
+//
 //  Created by David LaPorte on 2/10/12.
-//  Copyright (c) 2012 Burroughs. All rights reserved.
+//  Copyright (c) 2012 David LaPorte. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

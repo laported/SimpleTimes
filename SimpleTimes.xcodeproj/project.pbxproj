@@ -12,8 +12,6 @@
 		1E1FCD0F1487009500CD8316 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1FCD0E1487009400CD8316 /* CoreData.framework */; };
 		1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */; };
 		1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */; };
-		1E27E4B114CBB24C001D4F5F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E27E4AE14CBB24C001D4F5F /* SVProgressHUD.bundle */; };
-		1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */; };
 		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
 		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
 		1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5614E43B05007F1760 /* clock_24.png */; };
@@ -21,6 +19,8 @@
 		1E3A6E5F14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5E14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png */; };
 		1E3A6E6214E5D119007F1760 /* SwimmerPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E3A6E6114E5D118007F1760 /* SwimmerPickerController.m */; };
 		1E3A6E6414E5F354007F1760 /* man_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E6314E5F354007F1760 /* man_24.png */; };
+		1E4C5A1E14FBF5C1003FA4B6 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E4C5A1B14FBF5C1003FA4B6 /* SVProgressHUD.bundle */; };
+		1E4C5A1F14FBF5C1003FA4B6 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C5A1D14FBF5C1003FA4B6 /* SVProgressHUD.m */; };
 		1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */; };
 		1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */; };
 		1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A514D4EA22006D428C /* reload_v2.png */; };
@@ -42,10 +42,13 @@
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
 		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
 		1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */; };
+		1E856D7814F840C200B08181 /* SplitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E856D7614F840C200B08181 /* SplitsViewController.m */; };
+		1E856D7914F840C200B08181 /* SplitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E856D7714F840C200B08181 /* SplitsViewController.xib */; };
 		1E89ACEB14ECB00500DA97D2 /* CutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E89ACEA14ECB00500DA97D2 /* CutsViewController.m */; };
 		1E8ABA1D14ED1B450096E096 /* RecentRacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8ABA1C14ED1B450096E096 /* RecentRacesViewController.m */; };
 		1E8ABA2114ED1F7E0096E096 /* CutsViewDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8ABA2014ED1F7E0096E096 /* CutsViewDataItem.m */; };
 		1E8AE75C14C1D71700E01C50 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8AE75B14C1D71700E01C50 /* libz.dylib */; };
+		1E90731B15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E90731A15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib */; };
 		1EA2289D14703E6C00283AD0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289C14703E6C00283AD0 /* UIKit.framework */; };
 		1EA2289F14703E6C00283AD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA2289E14703E6C00283AD0 /* Foundation.framework */; };
 		1EA228A114703E6C00283AD0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EA228A014703E6C00283AD0 /* CoreGraphics.framework */; };
@@ -97,9 +100,6 @@
 		1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleSwimModel.xcdatamodel; sourceTree = "<group>"; };
 		1E26FCF3148CE65D002F6FE7 /* AddSwimmerResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSwimmerResult.h; sourceTree = "<group>"; };
 		1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSwimmerResult.m; sourceTree = "<group>"; };
-		1E27E4AE14CBB24C001D4F5F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		1E27E4AF14CBB24C001D4F5F /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTimesMI.h; sourceTree = "<group>"; };
 		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
@@ -110,6 +110,9 @@
 		1E3A6E6014E5D117007F1760 /* SwimmerPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwimmerPickerController.h; sourceTree = "<group>"; };
 		1E3A6E6114E5D118007F1760 /* SwimmerPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwimmerPickerController.m; sourceTree = "<group>"; };
 		1E3A6E6314E5F354007F1760 /* man_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = man_24.png; path = images/man_24.png; sourceTree = SOURCE_ROOT; };
+		1E4C5A1B14FBF5C1003FA4B6 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
+		1E4C5A1C14FBF5C1003FA4B6 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
+		1E4C5A1D14FBF5C1003FA4B6 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
 		1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = ../Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1E6BF1A514D4EA22006D428C /* reload_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload_v2.png; path = ../reload_v2.png; sourceTree = "<group>"; };
@@ -137,6 +140,9 @@
 		1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = ../GetBirthdayViewController.h; sourceTree = "<group>"; };
 		1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = ../GetBirthdayViewController.m; sourceTree = "<group>"; };
 		1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GetBirthdayViewController.xib; path = ../GetBirthdayViewController.xib; sourceTree = "<group>"; };
+		1E856D7514F840C200B08181 /* SplitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitsViewController.h; sourceTree = "<group>"; };
+		1E856D7614F840C200B08181 /* SplitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitsViewController.m; sourceTree = "<group>"; };
+		1E856D7714F840C200B08181 /* SplitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplitsViewController.xib; sourceTree = "<group>"; };
 		1E89ACE914ECB00500DA97D2 /* CutsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CutsViewController.h; sourceTree = "<group>"; };
 		1E89ACEA14ECB00500DA97D2 /* CutsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutsViewController.m; sourceTree = "<group>"; };
 		1E8ABA1B14ED1B450096E096 /* RecentRacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentRacesViewController.h; sourceTree = "<group>"; };
@@ -145,6 +151,7 @@
 		1E8ABA2014ED1F7E0096E096 /* CutsViewDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CutsViewDataItem.m; sourceTree = "<group>"; };
 		1E8AE75B14C1D71700E01C50 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		1E8F7D7814C9E8D20054486E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1E90731A15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNewSwimmerViewController_iPad.xib; sourceTree = "<group>"; };
 		1EA2289814703E6C00283AD0 /* SimpleTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EA2289C14703E6C00283AD0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1EA2289E14703E6C00283AD0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -243,9 +250,9 @@
 		1E27E4AD14CBB24C001D4F5F /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				1E27E4AE14CBB24C001D4F5F /* SVProgressHUD.bundle */,
-				1E27E4AF14CBB24C001D4F5F /* SVProgressHUD.h */,
-				1E27E4B014CBB24C001D4F5F /* SVProgressHUD.m */,
+				1E4C5A1B14FBF5C1003FA4B6 /* SVProgressHUD.bundle */,
+				1E4C5A1C14FBF5C1003FA4B6 /* SVProgressHUD.h */,
+				1E4C5A1D14FBF5C1003FA4B6 /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
 			sourceTree = "<group>";
@@ -269,6 +276,7 @@
 				1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */,
 				1E3A6E6014E5D117007F1760 /* SwimmerPickerController.h */,
 				1E3A6E6114E5D118007F1760 /* SwimmerPickerController.m */,
+				1E90731A15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -277,21 +285,24 @@
 			isa = PBXGroup;
 			children = (
 				1EA228AE14703E6C00283AD0 /* MainWindow.xib */,
+				1EBE0F1614F0478300ED4DB5 /* AddMeetViewController.h */,
+				1EBE0F1714F0478300ED4DB5 /* AddMeetViewController.m */,
+				1EBE0F1814F0478300ED4DB5 /* AddMeetViewController.xib */,
 				1E89ACE914ECB00500DA97D2 /* CutsViewController.h */,
 				1E89ACEA14ECB00500DA97D2 /* CutsViewController.m */,
 				1E8ABA1F14ED1F7E0096E096 /* CutsViewDataItem.h */,
 				1E8ABA2014ED1F7E0096E096 /* CutsViewDataItem.m */,
+				1EB1937714F1517500F2CDED /* EnterRaceResultsiPhoneViewController.h */,
+				1EB1937814F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m */,
+				1EB1937914F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib */,
 				1E8ABA1B14ED1B450096E096 /* RecentRacesViewController.h */,
 				1E8ABA1C14ED1B450096E096 /* RecentRacesViewController.m */,
 				1EA228B114703E6C00283AD0 /* RootViewController.h */,
 				1EA228B214703E6C00283AD0 /* RootViewController.m */,
 				1EA228B414703E6C00283AD0 /* RootViewController.xib */,
-				1EBE0F1614F0478300ED4DB5 /* AddMeetViewController.h */,
-				1EBE0F1714F0478300ED4DB5 /* AddMeetViewController.m */,
-				1EBE0F1814F0478300ED4DB5 /* AddMeetViewController.xib */,
-				1EB1937714F1517500F2CDED /* EnterRaceResultsiPhoneViewController.h */,
-				1EB1937814F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m */,
-				1EB1937914F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib */,
+				1E856D7514F840C200B08181 /* SplitsViewController.h */,
+				1E856D7614F840C200B08181 /* SplitsViewController.m */,
+				1E856D7714F840C200B08181 /* SplitsViewController.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -520,7 +531,6 @@
 				1ED8168E14888142006268C2 /* iPhoneIcon_Small.png in Resources */,
 				1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */,
 				1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */,
-				1E27E4B114CBB24C001D4F5F /* SVProgressHUD.bundle in Resources */,
 				1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */,
 				1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */,
 				1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */,
@@ -543,6 +553,9 @@
 				1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */,
 				1EBE0F1A14F0478300ED4DB5 /* AddMeetViewController.xib in Resources */,
 				1EB1937B14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib in Resources */,
+				1E856D7914F840C200B08181 /* SplitsViewController.xib in Resources */,
+				1E4C5A1E14FBF5C1003FA4B6 /* SVProgressHUD.bundle in Resources */,
+				1E90731B15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,7 +573,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export CODESIGN_ALLOCATE=/Developer/Platforms/iPhoneOS.platform/Developer/usr/bin/codesign_allocate\nif [ \"${PLATFORM_NAME}\" == \"iphoneos\" ]; then\n/Developer/iphoneentitlements401/gen_entitlements.py \"my.company.${PROJECT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\";\ncodesign -f -s \"iPhone Developer\" --entitlements \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${PROJECT_NAME}.xcent\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/\"\nfi";
+			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -588,7 +601,6 @@
 				1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */,
 				1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */,
 				1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */,
-				1E27E4B214CBB24C001D4F5F /* SVProgressHUD.m in Sources */,
 				1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */,
 				1E6BF1B814D629E9006D428C /* DetailSwimmerViewController.m in Sources */,
 				1E6BF1BE14D6B252006D428C /* RootViewController_iPad_old.m in Sources */,
@@ -610,6 +622,8 @@
 				1EBE0F1214F01CC900ED4DB5 /* TimeStandardUssScy.m in Sources */,
 				1EBE0F1914F0478300ED4DB5 /* AddMeetViewController.m in Sources */,
 				1EB1937A14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.m in Sources */,
+				1E856D7814F840C200B08181 /* SplitsViewController.m in Sources */,
+				1E4C5A1F14FBF5C1003FA4B6 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +670,8 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				"HEADER_SEARCH_PATHS[arch=*]" = ./SVProgressHUD/SVProgressHUD;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -671,7 +686,8 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				"HEADER_SEARCH_PATHS[arch=*]" = ./SVProgressHUD/SVProgressHUD;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};

@@ -300,6 +300,7 @@
         cell.detailTextLabel.numberOfLines = 2;
         cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
 
+        // \u263A = unicode smiley face
         if ([race.powerpoints intValue] > 0) {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%d %@\n%@  (%d Points) %@", [race.distance intValue], race.stroke, race.time, [race.powerpoints intValue], [pb boolValue] ? @"\u263A" : @""];
         } else {
@@ -356,7 +357,6 @@
              _amvc = [[AddMeetViewController alloc] initWithNibName:@"AddMeetViewController" bundle:[NSBundle mainBundle]];
              [self.navigationController pushViewController:_amvc animated:YES];
          } else {
-             NSLog(@"TODO: INSERT Here");
              _state = ST_GETTING_RACE_TIME;
              _errvc = [[EnterRaceResultsiPhoneViewController alloc] initWithNibName:@"EnterRaceResultsiPhoneViewController" bundle:[NSBundle mainBundle]];
              [self.navigationController pushViewController:_errvc animated:YES];
