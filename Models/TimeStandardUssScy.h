@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "TimeStandard.h"
 
-#define JO_DATE         @"2012-03-02"
-#define JO_ELG_DATE     @"2011-01-01"
-#define STATE12U_DATE   @"2012-03-09"
-#define STATE13O_DATE   @"2012-03-16"
-#define SECTIONALS_DATE @"2012-03-21" // TODO
-#define NATIONALS_DATE  @"2012-04-14" // TODO
+#define JO_DATE         @"2013-03-02"
+#define JO_ELG_DATE     @"2012-01-01"
+#define STATE12U_DATE   @"2013-03-09"
+#define STATE13O_DATE   @"2013-03-16"
+#define SECTIONALS_DATE @"2013-03-21" // TODO
+#define NATIONALS_DATE  @"2013-04-14" // TODO
 
 @interface TimeStandardUssScy : TimeStandard
 

@@ -234,7 +234,7 @@
 }
 
 - (NSArray*) allDistancesForStroke:(int)stroke
-{
+{/* todo
     NSMutableArray* distances = [NSMutableArray array];
     NSString* strokeString = [[Swimming getStrokes] objectAtIndex:stroke-1];
     for (RaceResult* r in self.races) {
@@ -245,8 +245,9 @@
     // Get a unique set of distances
     NSSet *uniqueDistances = [NSSet setWithArray:distances];
     // Then sort that
+    [uniqueDistances sortedArrayUsingDescriptors:descriptors];
     //NSArray* sorted = [uniqueDistances sortedArrayUsingDescriptors:<#(NSArray *)#> arra sortUsingSelector: @selector(compare];
-   
+*/   
     // TODO
     return NULL;    // todo 
 }

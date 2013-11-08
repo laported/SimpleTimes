@@ -5,6 +5,7 @@
 //  Created by David LaPorte on 2/17/12.
 //  Copyright (c) 2012 laporte6.org. All rights reserved.
 //
+//  2012-10-15 Updated with 2012-2013 Time Standards
 
 #import "TimeStandardUssScy.h"
 
@@ -115,15 +116,17 @@ static const char* sz_eleven_twelve_w_b [5][8] = {
 };
 
 // 13-14 M ---------------------------------------------------------------------
+// verified 10-15-2012
 static const char* sz_thirteen_fourteen_m_q1 [5][8] = {
     // 25     50        100        200        400      500        1000        1650
     {  NULL,   "25.29", "54.89",   "1:59.99", NULL,    "5:25.09", "11:19.99", "19:17.99" },  // free
-    {  NULL,   NULL,    "1:04.09", "2:18.09", NULL,    NULL,    NULL,    NULL   },  // back
+    {  NULL,   NULL,    "1:03.89", "2:18.09", NULL,    NULL,    NULL,    NULL   },  // back
     {  NULL,   NULL,    "1:12.49", "2:38.09", NULL,    NULL,    NULL,    NULL   },  // breast
     {  NULL,   NULL,    "1:02.39", "2:26.69", NULL,    NULL,    NULL,    NULL  },  // fly
     {  NULL,   NULL,    NULL,      "2:16.89", "4:59.99", NULL,    NULL,  NULL   }   // IM
 };
 
+// verified 10-15-2012
 static const char* sz_thirteen_fourteen_m_q2 [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "27.09", "58.89",   "2:11.09", NULL,      "5:53.69", "12:35.59", "21:19.99" },  // free
@@ -140,15 +143,16 @@ static const char* sz_thirteen_fourteen_m_b [5][8] = {
     {  NULL,   NULL,   "1:13.29", "2:43.69", NULL,      NULL,      NULL,       NULL  },  // fly
     {  NULL,   NULL,   NULL,      "2:43.69", "5:50.59", NULL,      NULL,       NULL   }   // IM
 };
+// verified 2012-10-15
 static const char* sz_thirteen_fourteen_w_q1 [5][8] = {
     // 25     50        100        200        400      500        1000        1650
-    {  NULL,   "26.39", "57.09",   "2:03.89", NULL,    "5:32.99", "11:35.99", "19:35.99" },  // free
-    {  NULL,   NULL,    "1:05.09", "2:20.99", NULL,    NULL,    NULL,    NULL   },  // back
+    {  NULL,   "26.39", "57.09",   "2:03.89", NULL,    "5:31.99", "11:35.99", "19:35.99" },  // free
+    {  NULL,   NULL,    "1:04.79", "2:18.99", NULL,    NULL,    NULL,    NULL   },  // back
     {  NULL,   NULL,    "1:13.99", "2:41.99", NULL,    NULL,    NULL,    NULL   },  // breast
     {  NULL,   NULL,    "1:04.79", "2:27.99", NULL,    NULL,    NULL,    NULL  },  // fly
     {  NULL,   NULL,    NULL,      "2:22.09", "5:03.89", NULL,    NULL,  NULL   }   // IM
 };
-
+// verified 10-15-2012
 static const char* sz_thirteen_fourteen_w_q2 [5][8] = {
     // 25     50        100        200       400        500         1000       1650
     {  NULL,  "27.59", "59.89",   "2:11.69", NULL,      "5:50.99", "12:33.39", "20:57.09" },  // free
@@ -165,15 +169,16 @@ static const char* sz_thirteen_fourteen_w_b [5][8] = {
     {  NULL,   NULL,   "1:19.09", "2:53.39", NULL,      NULL,      NULL,       NULL  },  // fly
     {  NULL,   NULL,   NULL,      "2:55.49", "6:10.79", NULL,      NULL,       NULL   }   // IM
 };
-
+// verified 2012-10-15
 static const char* sz_fifteen_eighteen_m_q1 [5][8] = {
     // 25     50        100        200        400        500        1000        1650
     {  NULL,   "23.29", "50.59",   "1:51.89", NULL,      "5:03.99", "10:40.19", "18:10.49" },  // free
     {  NULL,   NULL,    "58.99",   "2:09.19", NULL,      NULL,    NULL,    NULL   },  // back
     {  NULL,   NULL,    "1:06.69", "2:27.99", NULL,      NULL,    NULL,    NULL   },  // breast
-    {  NULL,   NULL,    "57.09",   "2:15.99", NULL,      NULL,    NULL,    NULL   },  // fly
+    {  NULL,   NULL,    "56.59",   "2:13.99", NULL,      NULL,    NULL,    NULL   },  // fly
     {  NULL,   NULL,    NULL,      "2:06.99", "4:40.99", NULL,    NULL,    NULL   }   // IM
 };
+// verified 2012-10-15
 static const char* sz_fifteen_eighteen_m_q2 [5][8] = {
     // 25     50       100        200        400        500        1000        1650
     {  NULL,  "27.09", "58.89",   "2:11.09", NULL,      "5:53.69", "12:35.59", "21:19.99" },  // free
@@ -190,15 +195,16 @@ static const char* sz_fifteen_eighteen_m_b [5][8] = {
     {  NULL,   NULL,    "1:10.09", "2:35.59", NULL,      NULL,    NULL,    NULL   },  // fly
     {  NULL,   NULL,    NULL,      "2:37.69", "5:35.79", NULL,    NULL,    NULL   }   // IM
 };
-
+// verified 2012-10-15
 static const char* sz_fifteen_eighteen_w_q1 [5][8] = {
     // 25     50        100        200        400        500        1000        1650
-    {  NULL,   "25.59", "55.59",   "2:00.79", NULL,      "5:23.29", "11:20.99", "18:58.89" },  // free
+    {  NULL,   "25.59", "55.59",   "1:59.99", NULL,      "5:23.29", "11:20.99", "18:58.89" },  // free
     {  NULL,   NULL,    "1:03.09", "2:16.99", NULL,      NULL,    NULL,    NULL   },  // back
-    {  NULL,   NULL,    "1:13.09", "2:39.69", NULL,      NULL,    NULL,    NULL   },  // breast
+    {  NULL,   NULL,    "1:12.39", "2:39.69", NULL,      NULL,    NULL,    NULL   },  // breast
     {  NULL,   NULL,    "1:02.09", "2:23.39", NULL,      NULL,    NULL,    NULL   },  // fly
     {  NULL,   NULL,    NULL,      "2:16.99", "4:54.29", NULL,    NULL,    NULL   }   // IM
 };
+// verified 2012-10-15
 static const char* sz_fifteen_eighteen_w_q2 [5][8] = {
     // 25     50     100    200     400    500      1000    1650
     {  NULL,  "27.59", "59.89",   "2:11.69", NULL,      "5:50.99", "12:33.39", "20:57.09" },  // free

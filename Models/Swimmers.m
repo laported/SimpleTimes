@@ -44,6 +44,16 @@
     self.athletesCD = [context executeFetchRequest:fetchRequest error:&error];
     NSLog(@"Swimmers:loadWithContext() athletesCD=%08x, fetchRequest=%08x",(unsigned int)self.athletesCD,(unsigned int)fetchRequest);
     
+    // Debug code
+    NSLog(@"Dumping athlete results:");
+    for (AthleteCD *ath in self.athletesCD) {
+        NSLog(@"  %@ %@ :",ath.firstname,ath.lastname);
+        for (RaceResult *race in ath.races) {
+            NSLog(@"    Race course: %@",race.course);
+        }
+    }
+    NSLog(@"OK.");
+
     [fetchRequest release];
 }
 
