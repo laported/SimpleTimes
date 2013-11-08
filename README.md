@@ -1,7 +1,7 @@
 SimpleTimes
 ===========
 
-Keeps track of competitive swim times. Supports hand-entered times, or downloaded times.
+iOS Application that keeps track of competitive swim times. Supports hand-entered times, or downloaded times.
 
 Online downloads
 ----------------
