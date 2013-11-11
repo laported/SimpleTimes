@@ -14,6 +14,7 @@
 		1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */; };
 		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
 		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
+		1E2DE6B2182C715800345A97 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1E2DE6B1182C715800345A97 /* README.md */; };
 		1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5614E43B05007F1760 /* clock_24.png */; };
 		1E3A6E5D14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */; };
 		1E3A6E5F14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E5E14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png */; };
@@ -42,6 +43,7 @@
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
 		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
 		1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */; };
+		1E7D49DD16A5616E00D3D3E7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */; };
 		1E856D7814F840C200B08181 /* SplitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E856D7614F840C200B08181 /* SplitsViewController.m */; };
 		1E856D7914F840C200B08181 /* SplitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E856D7714F840C200B08181 /* SplitsViewController.xib */; };
 		1E89ACEB14ECB00500DA97D2 /* CutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E89ACEA14ECB00500DA97D2 /* CutsViewController.m */; };
@@ -103,6 +105,7 @@
 		1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTimesMI.h; sourceTree = "<group>"; };
 		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
+		1E2DE6B1182C715800345A97 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		1E3A6E5614E43B05007F1760 /* clock_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock_24.png; path = images/clock_24.png; sourceTree = SOURCE_ROOT; };
 		1E3A6E5814E5919C007F1760 /* SimpleSwimModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SimpleSwimModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-50.png"; path = "images/water-splash-ipad-wallpaper-50.png"; sourceTree = SOURCE_ROOT; };
@@ -140,6 +143,7 @@
 		1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = ../GetBirthdayViewController.h; sourceTree = "<group>"; };
 		1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = ../GetBirthdayViewController.m; sourceTree = "<group>"; };
 		1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GetBirthdayViewController.xib; path = ../GetBirthdayViewController.xib; sourceTree = "<group>"; };
+		1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1E856D7514F840C200B08181 /* SplitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitsViewController.h; sourceTree = "<group>"; };
 		1E856D7614F840C200B08181 /* SplitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitsViewController.m; sourceTree = "<group>"; };
 		1E856D7714F840C200B08181 /* SplitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplitsViewController.xib; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 		1EA2288D14703E6C00283AD0 = {
 			isa = PBXGroup;
 			children = (
+				1E2DE6B1182C715800345A97 /* README.md */,
+				1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */,
 				1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */,
 				1E8AE75B14C1D71700E01C50 /* libz.dylib */,
 				1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */,
@@ -552,10 +558,12 @@
 				1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */,
 				1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */,
 				1EBE0F1A14F0478300ED4DB5 /* AddMeetViewController.xib in Resources */,
+				1E2DE6B2182C715800345A97 /* README.md in Resources */,
 				1EB1937B14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib in Resources */,
 				1E856D7914F840C200B08181 /* SplitsViewController.xib in Resources */,
 				1E4C5A1E14FBF5C1003FA4B6 /* SVProgressHUD.bundle in Resources */,
 				1E90731B15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib in Resources */,
+				1E7D49DD16A5616E00D3D3E7 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
