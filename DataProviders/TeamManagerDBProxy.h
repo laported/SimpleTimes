@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define MI_SWIM_DB    "upload%5CMichiganSwimmingLSCOfficeCopy.mdb"
+//#define MI_SWIM_DB    "upload%5CMichiganSwimmingLSCOfficeCopy.mdb"
+//%7B = '{'
+#define MI_SWIM_DB    "upload%5CMichiganSwimmingLSC%7B.mdb"
 #define MISCA_SWIM_DB "upload%5CMHSAAMISCAOfficeCopy.mdb"
 
 @interface TeamManagerDBProxy : NSObject {
@@ -18,7 +20,11 @@
 - (id) initWithDBName:(NSString *)dbName;
 
 - (NSArray *) getAllTimesForAthlete:(int)athleteId;
+
+#define STROKE_ALL   0
+#define DISTANCE_ALL 0
 - (NSArray *) getAllTimesForAthlete:(int)athleteId:(int)stroke:(int)distance;
+
 - (NSArray *) getSplitsForRace:(int)raceId;
 - (NSArray *) findAthlete:(NSString*)lastname;
 - (NSArray *) findAthlete:(NSString*)lastname:(NSString*)firstname;

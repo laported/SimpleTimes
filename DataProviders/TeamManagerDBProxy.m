@@ -23,6 +23,8 @@
 // Long Course Meters 'COURSE=L'
 // Short Course Meters 'COURSE=S'
 
+//http://www.sports-tek.com/TMOnline/aATHRESULTSWithPSMR.ASP?db=upload%5CMichiganSwimmingLSCOfficeCopy.mdb&ATH=11655&FASTEST=&PageSize=2000
+
 // MI Swimming DB: upload%%5CMichiganSwimmingLSCOfficeCopy.mdb
 // MISCA DB:       upload%%5CMHSAAMISCAOfficeCopy.mdb
 
@@ -83,7 +85,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     
     myPath = [myPath stringByAppendingPathComponent:file];
     
-    if(![[NSFileManager defaultManager] fileExistsAtPath:myPath])        
+    if(false) //![[NSFileManager defaultManager] fileExistsAtPath:myPath])
     {
         [[NSFileManager defaultManager] createFileAtPath:myPath contents:nil attributes:nil];        
         [text writeToFile:myPath atomically:NO encoding:NSUTF8StringEncoding error:err];        
@@ -229,7 +231,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     
 #if defined (ONLINETESTING)
     NSString *sQueryUrl;
-    if (stroke == 0 && distance == 0)
+    if (stroke == STROKE_ALL && distance == DISTANCE_ALL)
         sQueryUrl = [NSString stringWithFormat:AllTimesQuery,_dbName, athleteId];
     else
         sQueryUrl = [NSString stringWithFormat:AllTimesQuery2,_dbName,athleteId,stroke,distance];
@@ -243,9 +245,9 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     if (!error) {
         response = [request responseString];
     } else {
-        // try to load from local cache
-        response = [self loadFile:[NSString stringWithFormat:cachedResultsFileStringFormat,athleteId,stroke,distance]];
-        requestOK = ([response length] > 0);
+        NSString* strError = [error localizedDescription];
+        NSLog(@"%@",strError);
+        requestOK = NO;//([response length] > 0);
     }
 #else
     response = [self loadFile:[NSString stringWithFormat:cachedResultsFileStringFormat,athleteId,stroke,distance]];
@@ -328,6 +330,17 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         }
         if (athleteId == 342) {
             // add matthew's HS times
+            /*
+             MISCA 2/11/2012
+             39 LaPorte, Matt    09 LSTEV             Seed 5:12.46    Finals 5:14.16
+             27.35                 57.65 (30.30)
+             1:28.71 (31.06)     2:00.58 (31.87)
+             2:32.60 (32.02)     3:05.01 (32.41)
+             3:37.52 (32.51)     4:10.18 (32.66)
+             4:42.62 (32.44)     5:14.16 (31.54)
+             
+             
+             */
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             [df setDateFormat:@"MM/dd/yyyy"];
             NSDate *myDate = [df dateFromString:@"01/26/2012"];

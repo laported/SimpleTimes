@@ -109,7 +109,7 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
         NSLog(@"ERROR! Must supply stroke and distance values for USASwimming:getAllTikmesFotAthlete");
         return NULL;
     } else {
-        sPostUrl = [NSString stringWithFormat:usaAllTimesPostUrl,athleteId,stroke,distance];
+        sPostUrl = usaAllTimesPostUrl; //[NSString stringWithFormat:[usaAllTimesPostUrl]]; //],athleteId,stroke,distance];
     }
     NSLog(@"%@", sPostUrl);
     NSURL *urlPost = [NSURL URLWithString:sPostUrl];
