@@ -23,14 +23,14 @@
 
 #define STROKE_ALL   0
 #define DISTANCE_ALL 0
-- (NSArray *) getAllTimesForAthlete:(int)athleteId:(int)stroke:(int)distance;
+- (NSArray *) getAllTimesForAthlete:(int)athleteId stroke:(int)stroke distance:(int)distance;
 
 - (NSArray *) getSplitsForRace:(int)raceId;
 - (NSArray *) findAthlete:(NSString*)lastname;
-- (NSArray *) findAthlete:(NSString*)lastname:(NSString*)firstname;
+- (NSArray *) findAthlete:(NSString*)lastname firstname:(NSString*)firstname;
 
 
-- (NSString *) extractElementFromString:(NSString*)source:(NSString*)prefix:(NSString*)postfix;
+- (NSString *) extractElementFromString:(NSString*)source prefix:(NSString*)prefix postfix:(NSString*)postfix;
 - (NSString *) getAthleteTable:(NSString *)srcString ;
 - (NSString *) getTimesTable:(NSString*)srcString ;
 - (NSString *) getSplitsTable:(NSString *)srcString;

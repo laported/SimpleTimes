@@ -93,10 +93,10 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
 #define USAONLINETESTING
 
 - (NSArray*)getAllTimesForAthlete:(int)athleteId {
-    return [self getAllTimesForAthlete:athleteId :0 :0];
+    return [self getAllTimesForAthlete:athleteId stroke:0 distance:0];
 }
 
-- (NSArray *)getAllTimesForAthlete:(int)athleteId:(int)stroke:(int)distance {
+- (NSArray *)getAllTimesForAthlete:(int)athleteId stroke:(int)stroke distance:(int)distance {
 
     NSMutableArray* all_times = [NSMutableArray array];
     NSArray *sorted_results = nil;
