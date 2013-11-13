@@ -89,7 +89,7 @@
     self.tableView.alpha = 0.7;
     
     // TODO: This should be a class var not an ivar
-    self.IMStrokes = [NSArray arrayWithObjects:@"Fly",@"Back",@"Breast",@"Freestyle", nil];
+    self.IMStrokes = [NSMutableArray arrayWithObjects:@"Fly",@"Back",@"Breast",@"Freestyle", nil];
     
     if (self.viewstate == VS_ATHLETES) {
         
@@ -106,7 +106,7 @@
         }
         
     } else if (self.selectedStroke == 0) {
-        self.strokes =  [NSArray arrayWithObjects:
+        self.strokes =  [NSMutableArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"Personal Best", @"99", nil],
                         [NSArray arrayWithObjects:@"All Times", @"98", nil],
                         [NSArray arrayWithObjects:@"Cut List", @"97", nil],
@@ -119,7 +119,7 @@
     } else if ((self.selectedDistance == 0) && (self.selectedStroke < STROKE_FIRST_META)) {
         switch (self.selectedStroke) {
             case 1: // Free
-                self.distances = [NSArray arrayWithObjects:
+                self.distances = [NSMutableArray arrayWithObjects:
                         [NSArray arrayWithObjects:@"25", @"25", nil],
                         [NSArray arrayWithObjects:@"50", @"50", nil],
                         [NSArray arrayWithObjects:@"100", @"100", nil],
@@ -130,14 +130,14 @@
                         nil];
                 break;
             case 5: // IM
-                self.distances = [NSArray arrayWithObjects:
+                self.distances = [NSMutableArray arrayWithObjects:
                                   [NSArray arrayWithObjects:@"100", @"100", nil],
                                   [NSArray arrayWithObjects:@"200", @"200", nil],
                                   [NSArray arrayWithObjects:@"400", @"400", nil],
                                   nil];
                 break;
             default: // Fly, Breast, Back
-                self.distances = [NSArray arrayWithObjects:
+                self.distances = [NSMutableArray arrayWithObjects:
                                   [NSArray arrayWithObjects:@"25", @"25", nil],
                                   [NSArray arrayWithObjects:@"50", @"50", nil],
                                   [NSArray arrayWithObjects:@"100", @"100", nil],
@@ -199,6 +199,8 @@
     if (numadded > 0) {
         NSString* msg = [NSString stringWithFormat:@"Added %d new race times",numadded];
         [SVProgressHUD dismissWithSuccess:msg afterDelay:nsti];
+    } else if ([times count] == 0) {
+        [SVProgressHUD dismissWithError:@"Unable to contact server" afterDelay:nsti];
     } else {
         [SVProgressHUD dismissWithSuccess:@"No new race times found" afterDelay:nsti];
     }
@@ -225,9 +227,9 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     /* Are we coming back from the 'Add Swimmer' dialog ? */
     if ((self.viewstate == VS_ADDSWIMMER) && (self.selectedSection != SECTION_MHSAA)) {
@@ -309,9 +311,9 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -504,6 +506,7 @@
                 // We are displaying the athlete list
                 if (indexPath.section == SECTION_USS_SCY) {
                     athlete = [self.theSwimmers.athletesCD objectAtIndex:indexPath.row];
+                    NSLog(@"athlete: %@ %@",athlete.firstname,athlete.lastname);
                     [athlete countCuts:&cuts];
                     if (cuts.jos > 0 || cuts.states > 0 || cuts.sectionals > 0 || cuts.nationals > 0) {
                         NSString* jos = cuts.jos > 0 ? [self cutsWithStars:cuts.jos andPrefix:@"JO "] : @"";
@@ -712,7 +715,7 @@
                 [self.navigationController pushViewController:recent animated:YES];
                 [recent release];
             } else if (self.selectedStroke == STROKE_CUTS) {
-                CutsViewController* cuts = [[CutsViewController alloc] initWithAthlete:self.selectedAthleteCD];
+                CutsViewController* cuts = [[CutsViewController alloc] initWithAthlete:self.selectedAthleteCD standard:self.selectedSection];
                 [self.navigationController pushViewController:cuts animated:YES];
                 [cuts release];
             } else {    

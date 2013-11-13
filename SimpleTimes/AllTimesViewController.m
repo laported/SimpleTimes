@@ -70,13 +70,13 @@
 
 - (void) layoutData
 {
-    int row = 0;
-    int col = 0;
+    //int row = 0;
+    //int col = 0;
     
     // TODO: release label array data if not ni
     _labels = [[NSMutableArray alloc] init];
     for (RaceResult* race in _races) {
-        NSString* text = [NSString stringWithFormat:@"%@ %d %@ %@",race.date, race.distance, race.stroke, race.time];
+        NSString* text = [NSString stringWithFormat:@"%@ %@ %@ %@",race.date, race.distance, race.stroke, race.time];
         UILabel* label = [self stringLabel:text];
         [_labels addObject:label];
     }

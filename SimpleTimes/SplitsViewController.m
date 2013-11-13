@@ -109,7 +109,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    int section = indexPath.section;
+    //int section = indexPath.section;
     Swimming* swimming = [Swimming sharedInstance];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -125,7 +125,7 @@
     SplitCD* split = [_splits objectAtIndex:indexPath.row];
     if (split != nil) {
         NSSortDescriptor* sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES];  
-        NSArray* sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];   
+        //NSArray* sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
         int splitDistance = (indexPath.row+1)*([self.race.distance intValue]/[_splits count]);
         int raceDistance = [race.distance intValue];
         /* Is this an IM???? */

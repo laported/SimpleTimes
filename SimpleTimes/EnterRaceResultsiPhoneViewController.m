@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _dot_entered = FALSE;
     }
     return self;
 }
@@ -90,9 +91,21 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSLog(@"text.tag=%d text=%@ replacement: %@",textField.tag, textField.text,string);
+    // TODO
+    return YES;
+    
     if (textField == time) {
         NSUInteger newLength = [textField.text length] + [string length] - range.length;
         
+        // If user manually entered a decimal, don't auto-add characters
+        if (_dot_entered == TRUE) {
+            return YES;
+        }
+        
+        // 87654321
+        //  5:01.86
+        //    27.64
+        // 10.08.29
         if (newLength == 4) {
             NSRange dot = [string rangeOfString:@"." options:(NSCaseInsensitiveSearch)];
             if (dot.location == NSNotFound) {

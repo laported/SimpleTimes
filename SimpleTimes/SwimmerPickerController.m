@@ -3,7 +3,7 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 2/10/12.
-//  Copyright (c) 2012 Burroughs. All rights reserved.
+//  Copyright (c) 2012 David LaPorte. All rights reserved.
 //
 
 #import "SwimmerPickerController.h"

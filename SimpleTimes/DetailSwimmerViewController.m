@@ -73,7 +73,7 @@
 {
     BOOL isPortrait = UIDeviceOrientationIsPortrait(self.interfaceOrientation);
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = isPortrait ? screenRect.size.width : screenRect.size.height;
+    //CGFloat screenWidth = isPortrait ? screenRect.size.width : screenRect.size.height;
     CGFloat screenHeight = isPortrait ? screenRect.size.height : screenRect.size.width;
     _topTimes.view.frame = CGRectMake(
                                 50,
@@ -155,9 +155,9 @@
     
     [_queue release];
     
-    NSTimeInterval nsti = 3.5;
+    NSTimeInterval nsti = 3.5; // amount of time to leave the modal dialog displayed (in seconds)
     if (numadded > 0) {
-        [_topTimes reloadData];
+        [_topTimes setAthlete:_athlete];
         NSString* msg = [NSString stringWithFormat:@"Added %d new race times",numadded];
         [SVProgressHUD dismissWithSuccess:msg afterDelay:nsti];
     } else {
@@ -204,9 +204,11 @@
     [SVProgressHUD showWithStatus:@"Checking for updated times"];
     
     // download all times and populate the database
-    DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:_athlete:self];
-    [_queue addOperation:dtm];
-    [dtm release];
+    /* TODO: iPAD - need access to the root view controler's DB and itself as listener
+    DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:_athlete:self andListener:rvController and TmDB:rvsTMDB]; */
+
+    // TODO: iPAD [_queue addOperation:dtm];
+    // TODO: iPAD [dtm release];
 }
 
 - (void)dealloc {

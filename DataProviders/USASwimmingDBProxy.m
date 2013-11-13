@@ -148,22 +148,25 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
         // 7 Date
         // 8 Meet
         for (int i=0;i<[parser numRows];i++) {
-            NSLog(@"Meet: %@ / %@\n",[parser cell:i :7],[parser cell:i :8]);
-            NSLog(@"   %@ %@ %@\n\n",[parser cell:i :1],[parser cell:i :2],[parser cell:i :4]);
+            NSLog(@"Meet: %@ / %@\n",[parser cell:i col:7],[parser cell:i col:8]);
+            NSLog(@"   %@ %@ %@\n\n",[parser cell:i col:1],[parser cell:i col:2],[parser cell:i col:4]);
             
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             [df setDateFormat:@"MM/dd/yyyy"];
-            NSDate *myDate = [df dateFromString:[parser cell:i :7]];
+            NSDate *myDate = [df dateFromString:[parser cell:i col:7]];
             
             if (myDate != nil) {
-               RaceResultTeamManager* race = [[[RaceResultTeamManager alloc] initWithTime:[parser cell:i :4]
-                                                               meet:[parser cell:i :8] 
+/* TODO: USA Swimming results
+               RaceResultTeamManager* race = [[[RaceResultTeamManager alloc] initWithTime:[parser cell:i col:4]
+                           meet:[parser cell:i col:8]
                                                                date:myDate
-                                                             stroke:[parser cell:i :2]
-                                                           distance:[[parser cell:i :1] intValue]
+                                                             stroke:[parser cell:i col:2]
+                                                           distance:[[parser cell:i col:1] intValue]
                                     ] autorelease];
-            
+ 
+ - (id)initWithTime:(NSString*)time meet:(NSString*)meet date:(NSDate*)date stroke:(NSString*)stroke distance:(int)distance course:(NSString*)course age:(int)age powerpoints:(int)powerpoints standard:(NSString*)standard splits:(NSArray*)splits db:(NSString*)db;
                [all_times addObject:race];
+ */
             }
         
         }
@@ -177,10 +180,10 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
 }
 
 - (NSArray *)findAthlete:(NSString*)lastname {
-    return [self findAthlete:lastname:@""];
+    return [self findAthlete:@""];
 }
 
-- (NSArray *)findAthlete:(NSString*)lastname:(NSString*)firstname {
+- (NSArray *)findAthlete:(NSString*)lastname firstname:(NSString*)firstname {
     return NULL;
     /*
     NSString *sQuery = [NSString stringWithFormat:usaAthleteQuery,lastname];
@@ -250,11 +253,11 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
 - (NSString *) getAthleteTable:(NSString *)srcString {
     NSString* prefix = @"<TABLE summary=\"Athletes\"";
     NSString* postfix =  @"</TABLE>";
-    NSString* table = [self extractElementFromString:srcString:prefix:postfix];
+    NSString* table = [self extractElementFromString:srcString prefix:prefix postfix:postfix];
 	return table;
 }
 
-- (NSString *)extractElementFromString:(NSString*)source:(NSString*)prefix:(NSString*)postfix {
+- (NSString *)extractElementFromString:(NSString*)source prefix:(NSString*)prefix postfix:(NSString*)postfix {
     NSRange start = [source rangeOfString:prefix options:(NSCaseInsensitiveSearch)];
     NSRange end;
     if (start.location != NSNotFound) {
@@ -292,7 +295,7 @@ NSString* const searchPostDataMin = @"ctl00%24ctl63%24txtSearchLastName=laporte&
 -(NSString*)getTimesTable:(NSString*)srcString {
     NSString* prefix = @"<table cellspacing=\"0\" cellpadding=\"2\" rules=\"all\" border=\"1\" id=\"ctl00_ctl63_dgSearchResults\" style=\"width:100%;border-collapse:collapse;\">";
     NSString* postfix =  @"</table>";
-    NSString* table = [self extractElementFromString:srcString:prefix:postfix];
+    NSString* table = [self extractElementFromString:srcString prefix:prefix postfix:postfix];
     if (table == NULL) {
         NSLog(@"ERROR: Did not find table. Dumping srcString (%d bytes)...",[srcString length]);
         NSLog(@"%@", srcString);

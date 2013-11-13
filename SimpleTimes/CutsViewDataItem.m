@@ -29,6 +29,7 @@
     standard = nil;
     [_cuts release];
     _cuts = nil;
+    [super dealloc];
 }
 
 -(void) addCut:(NSString*)cut 

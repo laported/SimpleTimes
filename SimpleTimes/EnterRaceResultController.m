@@ -52,7 +52,7 @@
     _distance_index = 0;
     _stroke_index = 0;
 
-    NSLog(@"%@",datePicker.frame);
+    //NSLog(@"%@",datePicker.frame);
     // Do any additional setup after loading the view from its nib.
     for (UIView* subview in strokePicker.subviews) {
         subview.frame = strokePicker.bounds;

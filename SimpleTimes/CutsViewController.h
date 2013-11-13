@@ -3,7 +3,7 @@
 //  SimpleTimes
 //
 //  Created by David LaPorte on 2/15/12.
-//  Copyright (c) 2012 Burroughs. All rights reserved.
+//  Copyright (c) 2012 David LaPorte. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -20,7 +20,6 @@
 
 @property (retain) UITableView* myTableView;
 
-- (id) initWithAthlete:(AthleteCD*)athlete;
-- (NSArray*) allocCutListFor:(AthleteCD*)athlete;
+- (id) initWithAthlete:(AthleteCD*)athlete standard:(int)standard;
 
 @end

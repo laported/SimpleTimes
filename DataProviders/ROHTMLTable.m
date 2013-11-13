@@ -58,7 +58,7 @@
     return (row < c) ? (NSString*)[rowLinks objectAtIndex:row] : @"";
 }
 
-- (NSString*) cell:(int)row:(int)col {
+- (NSString*) cell:(int)row col:(int)col {
     int r = [rows count];
     if (row < r) {
         NSArray* cols = [rows objectAtIndex:row];

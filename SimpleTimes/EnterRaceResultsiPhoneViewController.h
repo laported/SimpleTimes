@@ -11,6 +11,7 @@
 @interface EnterRaceResultsiPhoneViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 {
     NSMutableString* _rawTimeText;
+    BOOL            _dot_entered;
 }
 
 @property (retain) IBOutlet UIPickerView* pickerView;

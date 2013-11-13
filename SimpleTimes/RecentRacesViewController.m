@@ -52,6 +52,10 @@
     if (NULL != isPersonalBest) {
         for (int i=[self.results count]-1;i>=0;i--) {
             RaceResult* race = [self.results objectAtIndex:i];
+            NSLog(@"%@ %@ %@ %@",race.date,race.stroke,race.distance,race.time);
+            if ([race.distance intValue] == 0) {
+                continue;   // bad record in DB during development???
+            }
             int distidx = [TimeStandard distanceIndex:[race.distance intValue]];    // 0-based
             int nStroke = [Swimmers intStrokeValue:race.stroke]-1;  // 1-based
             assert(distidx < 8);

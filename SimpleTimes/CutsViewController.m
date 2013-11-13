@@ -15,7 +15,7 @@
 
 @synthesize myTableView;
 
-- (id) initWithAthlete:(AthleteCD*)athlete
+- (id) initWithAthlete:(AthleteCD*)athlete standard:(int)standard
 {
     self = [super init];//[super initWithNibName:@"CutsViewController" bundle:nil];
     if (self) {
@@ -38,52 +38,105 @@
         _athlete = athlete;
         _cutlist = [NSMutableArray array];
         [_cutlist retain];
-        CutsViewDataItem* joCuts = [[CutsViewDataItem alloc] initWithStandard:@"Junior Olympics"];
-        [joCuts retain];
-        NSArray* times = [_athlete personalBestsSinceDate:[TimeStandardUssScy dateOfJoMeetEligibility]];
-        for (int k=0;k<[times count];k++) {
-            RaceResult* race = [times objectAtIndex:k];
-            
-            float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
-            int nStroke = [Swimmers intStrokeValue:race.stroke];
-            
-            NSString* timestd = [TimeStandard getTimeStandardWithAge:[_athlete ageAtDate:[TimeStandardUssScy dateOfJoMeet]] distance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
-            
-            if ([timestd hasPrefix:@"Q2"]) {
-                NSString* cut = [NSString stringWithFormat:@"%@ %@ Best Time=%@",race.distance,race.stroke,race.time];
-                NSLog(@"CutsView: adding JO cut: %@",cut);
-                [joCuts addCut:cut];
+        if (standard == 0) { // USA SCY
+            CutsViewDataItem* joCuts = [[CutsViewDataItem alloc] initWithStandard:@"Junior Olympics"];
+            [joCuts retain];
+            NSArray* times = [_athlete personalBestsSinceDate:[TimeStandardUssScy dateOfJoMeetEligibility]];
+            for (int k=0;k<[times count];k++) {
+                RaceResult* race = [times objectAtIndex:k];
+                
+                float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+                int nStroke = [Swimmers intStrokeValue:race.stroke];
+                
+                NSString* timestd = [TimeStandard getTimeStandardWithAge:[_athlete ageAtDate:[TimeStandardUssScy dateOfJoMeet]] distance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
+                
+                if ([timestd hasPrefix:@"Q2"]) {
+                    NSString* cut = [NSString stringWithFormat:@"%@ %@ : %@",race.distance,race.stroke,race.time];
+                    NSLog(@"CutsView: adding JO cut: %@",cut);
+                    [joCuts addCut:cut];
+                }
             }
-        }
-        NSLog(@"CutsView: %d JO cuts",[joCuts.cuts count]);
-        if ([joCuts.cuts count] > 0) {
-            [_cutlist addObject:joCuts];
-        }
-        [joCuts release];
-        // State Cuts
-        CutsViewDataItem* stateCuts = [[CutsViewDataItem alloc] initWithStandard:@"MI State"];
-        [stateCuts retain];
-        // TODO assumes that State meet eligibility is same as JO
-        for (int k=0;k<[times count];k++) {
-            RaceResult* race = [times objectAtIndex:k];
-            
-            float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
-            int nStroke = [Swimmers intStrokeValue:race.stroke];
-            
-            //NSDate* meetDate = 
-            NSString* timestd = [TimeStandard getTimeStandardWithAge:[_athlete ageAtDate:[TimeStandardUssScy dateOf13OStateMeet]] distance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
-            
-            if ([timestd hasPrefix:@"Q1"]) {
-                NSString* cut = [NSString stringWithFormat:@"%@ %@",race.distance,race.stroke];
-                NSLog(@"CutsView: adding State cut: %@",cut);
-                [stateCuts addCut:cut];
+            NSLog(@"CutsView: %d JO cuts",[joCuts.cuts count]);
+            if ([joCuts.cuts count] > 0) {
+                [_cutlist addObject:joCuts];
             }
+            [joCuts release];
+            // State Cuts
+            CutsViewDataItem* stateCuts = [[CutsViewDataItem alloc] initWithStandard:@"MI State"];
+            [stateCuts retain];
+            // TODO assumes that State meet eligibility is same as JO
+            for (int k=0;k<[times count];k++) {
+                RaceResult* race = [times objectAtIndex:k];
+                
+                float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+                int nStroke = [Swimmers intStrokeValue:race.stroke];
+                
+                //NSDate* meetDate = 
+                NSString* timestd = [TimeStandard getTimeStandardWithAge:[_athlete ageAtDate:[TimeStandardUssScy dateOf13OStateMeet]] distance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
+                
+                if ([timestd hasPrefix:@"Q1"]) {
+                    NSString* cut = [NSString stringWithFormat:@"%@ %@",race.distance,race.stroke];
+                    NSLog(@"CutsView: adding State cut: %@",cut);
+                    [stateCuts addCut:cut];
+                }
+            }
+            NSLog(@"CutsView: %d State cuts",[stateCuts.cuts count]);
+            if ([stateCuts.cuts count] > 0) {
+                [_cutlist addObject:stateCuts]; 
+            }
+            [stateCuts release];
+        } else if (standard == 1) { // MHSAA
+            NSDateFormatter *mmddccyy = [[NSDateFormatter alloc] init];
+            mmddccyy.timeStyle = NSDateFormatterNoStyle;
+            mmddccyy.dateFormat = @"MM/dd/yyyy";
+            NSDate *dateThisSeason = [athlete.gender isEqualToString:@"m"] ? [mmddccyy dateFromString:@"11/11/2012"] : [mmddccyy dateFromString:@"08/31/2012"];
+            CutsViewDataItem* miscaCuts = [[CutsViewDataItem alloc] initWithStandard:@"MISCA"];
+            [miscaCuts retain];
+            NSArray* times = [_athlete personalBestsSinceDate:dateThisSeason];
+            for (int k=0;k<[times count];k++) {
+                RaceResult* race = [times objectAtIndex:k];
+                
+                float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+                int nStroke = [Swimmers intStrokeValue:race.stroke];
+                
+                NSString* timestd = [TimeStandard getTimeStandardForMHSAAWithDistance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
+                
+                if ([timestd hasPrefix:@"MISCA"]) {
+                    NSString* cut = [NSString stringWithFormat:@"%@ %@ : %@",race.distance,race.stroke,race.time];
+                    NSLog(@"CutsView: adding MISCA cut: %@",cut);
+                    [miscaCuts addCut:cut];
+                }
+            }
+            NSLog(@"CutsView: %d MISCA cuts",[miscaCuts.cuts count]);
+            if ([miscaCuts.cuts count] > 0) {
+                [_cutlist addObject:miscaCuts];
+            }
+            [miscaCuts release];
+            // State Cuts
+            CutsViewDataItem* stateCuts = [[CutsViewDataItem alloc] initWithStandard:@"MHSAA State"];
+            [stateCuts retain];
+            for (int k=0;k<[times count];k++) {
+                RaceResult* race = [times objectAtIndex:k];
+                
+                float ftime = [TimeStandard getFloatTimeFromStringTime:race.time];
+                int nStroke = [Swimmers intStrokeValue:race.stroke];
+                
+                //NSDate* meetDate =
+                NSString* timestd = [TimeStandard getTimeStandardForMHSAAWithDistance:[race.distance intValue] stroke:nStroke gender:_athlete.gender time:ftime];
+                
+                if ([timestd hasPrefix:@"STATE"]) {
+                    NSString* cut = [NSString stringWithFormat:@"%@ %@ %@",race.distance,race.stroke,race.time];
+                    NSLog(@"CutsView: adding State cut: %@",cut);
+                    [stateCuts addCut:cut];
+                }
+            }
+            NSLog(@"CutsView: %d State cuts",[stateCuts.cuts count]);
+            if ([stateCuts.cuts count] > 0) {
+                [_cutlist addObject:stateCuts];
+            }
+            [stateCuts release];
         }
-        NSLog(@"CutsView: %d State cuts",[stateCuts.cuts count]);
-        if ([stateCuts.cuts count] > 0) {
-            [_cutlist addObject:stateCuts]; 
-        }
-        [stateCuts release];
+        
     }
     return self;
 }
@@ -147,7 +200,7 @@
     // Return the number of rows in the section.
     CutsViewDataItem* item = [_cutlist objectAtIndex:section];
     NSLog(@"%d cuts",[item.cuts count]);
-    NSMutableArray* ma = item.cuts;
+    //NSMutableArray* ma = item.cuts;
     return [item.cuts count];
 }
 

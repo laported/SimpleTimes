@@ -55,7 +55,7 @@
     [self.progressIndicator setHidden:NO];
     [self.status setHidden:NO];
     TeamManagerDBProxy* proxy = [[[TeamManagerDBProxy alloc] initWithDBName:_database] autorelease];
-    array = [proxy findAthlete:lastname.text:firstname.text];
+    array = [proxy findAthlete:lastname.text firstname:firstname.text];
     if ([array count] == 1) {
         for (AddSwimmerResult* s in array) { 
             //[self setPropertiesFromSwimmer:s];
