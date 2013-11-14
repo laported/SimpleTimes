@@ -119,7 +119,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
 #define ONLINETESTING
 
 - (NSArray*)getAllTimesForAthlete:(int)athleteId {
-    return [self getAllTimesForAthlete:athleteId :0 :0];
+    return [self getAllTimesForAthlete:athleteId stroke:0 distance:0];
 }
 
 /* Need to pull out the RESULT= value from text like this:
@@ -207,11 +207,11 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         // Row 2 = Cumulative Splits
         // Row 3 = splits - could be 50s or 25s        
         for (int i=0;i<[parser numCols];i++) {
-            Split* split = [[[Split alloc] initWithDistance:[parser cell:0 :i]
-                                            time_cumulative:[parser cell:1 :i]
-                                                 time_split:[parser cell:2 :i]] autorelease];
+            Split* split = [[[Split alloc] initWithDistance:[parser cell:0 col:i]
+                                            time_cumulative:[parser cell:1 col:i]
+                                                 time_split:[parser cell:2 col:i]] autorelease];
             [all_splits addObject:split];
-            NSLog(@"%@", [parser cell:2 :i]);
+            NSLog(@"%@", [parser cell:2 col:i]);
         }
     }     
     
@@ -221,7 +221,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
     return sorted_results;
 }
 
-- (NSArray *)getAllTimesForAthlete:(int)athleteId:(int)stroke:(int)distance {
+- (NSArray *)getAllTimesForAthlete:(int)athleteId stroke:(int)stroke distance:(int)distance {
 
     NSMutableArray* all_times = [NSMutableArray array];
     NSArray*        sorted_results = nil;
@@ -437,7 +437,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             int splits_key = [self getSplitsKey:[parser rowLink:i]];
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
             [df setDateFormat:@"MM/dd/yyyy"];
-            NSDate *myDate = [df dateFromString:[parser cell:i :7]];
+            NSDate *myDate = [df dateFromString:[parser cell:i col:7]];
             NSString* theCourse = @"SCY";   // TODO: LCM, SCM ???
                 
             if ([dbMISCA caseInsensitiveCompare:_dbName] == NSOrderedSame) {
@@ -445,16 +445,16 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
             }
                 
             if (myDate != nil) {
-                int dist = [[parser cell:i :1] intValue];
+                int dist = [[parser cell:i col:1] intValue];
                 //NSLog(@"Powerpoints: %d",[[parser cell:i :6] intValue]);
-                RaceResultTeamManager* race = [[[RaceResultTeamManager alloc] initWithTime:[parser cell:i :4]
-                                                               meet:[parser cell:i :8] 
+                RaceResultTeamManager* race = [[[RaceResultTeamManager alloc] initWithTime:[parser cell:i col:4]
+                                                               meet:[parser cell:i col:8]
                                                                date:myDate
-                                                             stroke:[parser cell:i :2]
+                                                             stroke:[parser cell:i col:2]
                                                            distance:dist
                                                              course:theCourse
                                                                 age:18     // todo
-                                                            powerpoints:[[parser cell:i :6] intValue]
+                                                            powerpoints:[[parser cell:i col:6] intValue]
                                                            standard:@""
                                                              splits:nil         // load this later when requested
                                                                  db:_dbName
@@ -474,10 +474,10 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
 }
 
 - (NSArray *)findAthlete:(NSString*)lastname {
-    return [self findAthlete:lastname:@""];
+    return [self findAthlete:lastname firstname:@""];
 }
 
-- (NSArray *)findAthlete:(NSString*)lastname:(NSString*)firstname {
+- (NSArray *)findAthlete:(NSString*)lastname firstname:(NSString*)firstname {
     
     NSMutableArray* all_athletes = [NSMutableArray array];
     NSMutableArray* all_unmatched_athletes = [NSMutableArray array];
@@ -505,11 +505,11 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
         // Search results are last-name only, so we need to parse the results
         // and match the first name
         for (int i=0;i<[parser numRows];i++) {
-            NSString* first = [parser cell:i :2];
-            NSString* last = [parser cell:i :1];
-            NSString* clubshort = [parser cell:i :8];
-            NSString* clublong = [parser cell:i :9];
-            NSString* gender = [[parser cell:i :4] lowercaseString];
+            NSString* first = [parser cell:i col:2];
+            NSString* last = [parser cell:i col:1];
+            NSString* clubshort = [parser cell:i col:8];
+            NSString* clublong = [parser cell:i col:9];
+            NSString* gender = [[parser cell:i col:4] lowercaseString];
             NSString* dob = @""; // Get DOB from user later - it's not exposed by the MI Swim website
             NSString* miId = @"";
             
@@ -595,18 +595,18 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
 - (NSString *) getAthleteTable:(NSString *)srcString {
     NSString* prefix = @"<TABLE summary=\"Athletes\"";
     NSString* postfix =  @"</TABLE>";
-    NSString* table = [self extractElementFromString:srcString:prefix:postfix];
+    NSString* table = [self extractElementFromString:srcString prefix:prefix postfix:postfix];
 	return table;
 }
 
 - (NSString *) getSplitsTable:(NSString *)srcString {
     NSString* prefix = @"<TABLE summary=\"Splits\"";
     NSString* postfix =  @"</table>";
-    NSString* table = [self extractElementFromString:srcString:prefix:postfix];
+    NSString* table = [self extractElementFromString:srcString prefix:prefix postfix:postfix];
 	return table;
 }
 
-- (NSString *)extractElementFromString:(NSString*)source:(NSString*)prefix:(NSString*)postfix {
+- (NSString *)extractElementFromString:(NSString*)source prefix:(NSString*)prefix postfix:(NSString*)postfix {
     NSRange start = [source rangeOfString:prefix options:(NSCaseInsensitiveSearch)];
     NSRange end;
     if (start.location != NSNotFound) {
@@ -645,7 +645,7 @@ NSString* const AllTimesQuery2 = @"http://www.sports-tek.com/TMOnline/aATHRESULT
 -(NSString*)getTimesTable:(NSString*)srcString {
     NSString* prefix = @"<TABLE summary=\"Results\" border=\"0\" cellspacing=\"1\"";
     NSString* postfix =  @"</TABLE>";
-    NSString* table = [self extractElementFromString:srcString:prefix:postfix];
+    NSString* table = [self extractElementFromString:srcString prefix:prefix postfix:postfix];
 	return table;
 }
 
