@@ -409,13 +409,13 @@
         return self.selectedRace.meet;
     } else {
         if(theSection == SECTION_USS_SCY)
-            return @"USS Short Course Yards";
+            return @"USA Short Course Yards";
         else if (theSection == SECTION_USS_LCM)
-            return @"USS Long Course Meters";
+            return @"USA Long Course Meters";
         else if (theSection == SECTION_MHSAA)
             return @"Michigan High School";
         else
-            return @"USS Short Course Meters";
+            return @"USA Short Course Meters";
     }
 }
 
