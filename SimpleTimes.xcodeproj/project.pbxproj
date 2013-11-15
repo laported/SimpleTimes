@@ -27,7 +27,6 @@
 		1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A514D4EA22006D428C /* reload_v2.png */; };
 		1E6BF1AA14D4EE8B006D428C /* reload_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A914D4EE8B006D428C /* reload_v2@2x.png */; };
 		1E6BF1B814D629E9006D428C /* DetailSwimmerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */; };
-		1E6BF1BE14D6B252006D428C /* RootViewController_iPad_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1BD14D6B252006D428C /* RootViewController_iPad_old.m */; };
 		1E6BF1C014D71E44006D428C /* UnderWater-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */; };
 		1E6BF1C714D77D6C006D428C /* TopTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */; };
 		1E6BF1C814D77D6C006D428C /* TopTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1C614D77D6C006D428C /* TopTimesViewController.xib */; };
@@ -88,6 +87,7 @@
 		1EBE0F1214F01CC900ED4DB5 /* TimeStandardUssScy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F0914F01CC900ED4DB5 /* TimeStandardUssScy.m */; };
 		1EBE0F1914F0478300ED4DB5 /* AddMeetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EBE0F1714F0478300ED4DB5 /* AddMeetViewController.m */; };
 		1EBE0F1A14F0478300ED4DB5 /* AddMeetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EBE0F1814F0478300ED4DB5 /* AddMeetViewController.xib */; };
+		1EC38DBC18353FD300918FA1 /* matthew_48.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EC38DBB18353FD300918FA1 /* matthew_48.png */; };
 		1ECD4CB214E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */; };
 		1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */; };
 		1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */; };
@@ -122,8 +122,6 @@
 		1E6BF1A914D4EE8B006D428C /* reload_v2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reload_v2@2x.png"; path = "../reload_v2@2x.png"; sourceTree = "<group>"; };
 		1E6BF1B514D629E9006D428C /* DetailSwimmerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSwimmerViewController.h; sourceTree = "<group>"; };
 		1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSwimmerViewController.m; sourceTree = "<group>"; };
-		1E6BF1BC14D6B252006D428C /* RootViewController_iPad_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController_iPad_old.h; sourceTree = "<group>"; };
-		1E6BF1BD14D6B252006D428C /* RootViewController_iPad_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController_iPad_old.m; sourceTree = "<group>"; };
 		1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait.png"; path = "../UnderWater-Portrait.png"; sourceTree = "<group>"; };
 		1E6BF1C414D77D6C006D428C /* TopTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTimesViewController.h; sourceTree = "<group>"; };
 		1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTimesViewController.m; sourceTree = "<group>"; };
@@ -225,6 +223,7 @@
 		1EBE0F1614F0478300ED4DB5 /* AddMeetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMeetViewController.h; sourceTree = "<group>"; };
 		1EBE0F1714F0478300ED4DB5 /* AddMeetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMeetViewController.m; sourceTree = "<group>"; };
 		1EBE0F1814F0478300ED4DB5 /* AddMeetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMeetViewController.xib; sourceTree = "<group>"; };
+		1EC38DBB18353FD300918FA1 /* matthew_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = matthew_48.png; path = images/matthew_48.png; sourceTree = SOURCE_ROOT; };
 		1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "water-splash-ipad-wallpaper-gray.png"; path = "images/water-splash-ipad-wallpaper-gray.png"; sourceTree = SOURCE_ROOT; };
 		1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone.png"; path = "images/UnderWater-Portrait-iPhone.png"; sourceTree = SOURCE_ROOT; };
 		1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-iPhone@2x.png"; path = "images/UnderWater-Portrait-iPhone@2x.png"; sourceTree = SOURCE_ROOT; };
@@ -270,8 +269,6 @@
 				1E6BF1C914DA31DD006D428C /* EnterRaceResultController.h */,
 				1E6BF1CA14DA31DD006D428C /* EnterRaceResultController.m */,
 				1E6BF1CB14DA31DD006D428C /* EnterRaceResultController.xib */,
-				1E6BF1BC14D6B252006D428C /* RootViewController_iPad_old.h */,
-				1E6BF1BD14D6B252006D428C /* RootViewController_iPad_old.m */,
 				1E6BF1C414D77D6C006D428C /* TopTimesViewController.h */,
 				1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */,
 				1E6BF1C614D77D6C006D428C /* TopTimesViewController.xib */,
@@ -314,6 +311,7 @@
 		1E6BF1D114DB89C9006D428C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1EC38DBB18353FD300918FA1 /* matthew_48.png */,
 				1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */,
 				1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */,
 				1ECD4CB114E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png */,
@@ -507,6 +505,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				TargetAttributes = {
+					1EA2289714703E6C00283AD0 = {
+						DevelopmentTeam = UGMPZ45TST;
+					};
+				};
 			};
 			buildConfigurationList = 1EA2289214703E6C00283AD0 /* Build configuration list for PBXProject "SimpleTimes" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -538,6 +541,7 @@
 				1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */,
 				1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */,
 				1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */,
+				1EC38DBC18353FD300918FA1 /* matthew_48.png in Resources */,
 				1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */,
 				1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */,
 				1E6BF1AA14D4EE8B006D428C /* reload_v2@2x.png in Resources */,
@@ -611,7 +615,6 @@
 				1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */,
 				1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */,
 				1E6BF1B814D629E9006D428C /* DetailSwimmerViewController.m in Sources */,
-				1E6BF1BE14D6B252006D428C /* RootViewController_iPad_old.m in Sources */,
 				1E6BF1C714D77D6C006D428C /* TopTimesViewController.m in Sources */,
 				1E6BF1CC14DA31DE006D428C /* EnterRaceResultController.m in Sources */,
 				1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */,
@@ -709,7 +712,8 @@
 					armv6,
 					armv7,
 				);
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David LaPorte (CKAA45DV4H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -718,6 +722,7 @@
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -732,7 +737,8 @@
 					armv7,
 					armv6,
 				);
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David LaPorte (CKAA45DV4H)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SimpleTimes/SimpleTimes-Prefix.pch";
@@ -740,6 +746,7 @@
 				INFOPLIST_FILE = "SimpleTimes/SimpleTimes-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
