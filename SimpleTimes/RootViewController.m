@@ -12,17 +12,16 @@
 #import "AddSwimmerViewController.h"
 #import "RaceResult.h"
 #import "Split.h"
-#import "../Dataproviders/TeamManagerDBProxy.h"
+#import "TeamManagerDBProxy.h"
 #import "USASwimmingDBProxy.h"
 #import "TimeStandard.h"
 #import "DownloadTimesMI.h"
 #import "SplitCD.h"
-#import "SVProgressHUD.h"
 #import "RecentRacesViewController.h"
 #import "CutsViewController.h"
 #import "TimeStandardUssScy.h"
 
-#define ASYNC_REFRESH
+#import "SVProgressHUD.h"       // (git submodule)
 
 #define SECTION_USS_SCY 0
 #define SECTION_MHSAA   1
@@ -208,7 +207,6 @@
 
 - (void)onRefresh:(id)sender {
 
-#ifdef ASYNC_REFRESH
     self.queue = [[NSOperationQueue alloc] init];
     
     [SVProgressHUD showWithStatus:@"Checking for updated times"];
@@ -217,13 +215,6 @@
     DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:self.selectedAthleteCD andListener:self andTmDB:self.tmDatabaseSelected];
     [self.queue addOperation:dtm];
     [dtm release];
-    
-#else
-    [self.theSwimmers updateAllRaceResultsForAthlete:self.selectedAthleteCD inContext:self.managedObjectContext];
-
-    // update the display
-    //[self refresh];
-#endif
     
 }
 
@@ -276,22 +267,12 @@
         _addedAthleteCD = ath1;
         self.tmDatabaseSelected = self.asController.database;
         
-#ifdef ASYNC_REFRESH
         self.queue = [[NSOperationQueue alloc] init];
         
         // download all times into the database for the new swimmer
         DownloadTimesMI* dtm = [[DownloadTimesMI alloc] initWithAthlete:ath1 andListener:self andTmDB:self.tmDatabaseSelected];
         [self.queue addOperation:dtm];
         [dtm release];
-        
-#else
-        // download all times and populate the database
-        [self.theSwimmers updateAllRaceResultsForAthlete:ath1 inContext:self.managedObjectContext];
-        [self.theSwimmers loadWithContext:self.managedObjectContext]; 
-        [self.tableView reloadData];
-        
-        [SVProgressHUD dismiss];
-#endif
         
     } else if (self.viewstate == VS_STROKES) {
        /* Add a Reload button that will re-download results from the web */
