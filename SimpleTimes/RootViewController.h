@@ -19,7 +19,6 @@
 
 @interface RootViewController : UITableViewController {
     NSMutableArray *_allTimes; 
-    //NSMutableArray *_allSplits; 
     NSMutableArray *_allRaceIds;
     NSMutableArray *_allStrokes;
     NSMutableArray *_allDistances;
@@ -45,7 +44,6 @@
 }
 
 @property (retain) NSMutableArray *allTimes;
-//@property (retain) NSMutableArray *allSplits;
 @property (retain) NSMutableArray *allRaceIds;
 @property (retain) NSOperationQueue *queue;
 @property (retain) NSMutableArray *strokes;
@@ -68,11 +66,11 @@
 
 - (IBAction) EditTable:(id)sender;
 // onRefresh is invoked when the refresh button is pressed
-- (void)onRefresh:(id)sender ;
+- (void) onRefresh:(id)sender ;
 // refresh is for updating the view
-- (void)refresh ;
-- (void)loadSplitTimes ;
-- (void)refreshAllBestTimes;
+- (void) refresh ;
+- (void) loadSplitTimes ;
+- (void) refreshAllBestTimes;
 - (void) completeEditing;
 
 @end

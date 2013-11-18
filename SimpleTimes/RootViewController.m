@@ -37,27 +37,6 @@
 
 @implementation RootViewController
 
-@synthesize allTimes = _allTimes;
-@synthesize allRaceIds = _allRaceIds;
-@synthesize strokes = _strokes;
-@synthesize distances = _distances;
-@synthesize queue = _queue;
-@synthesize selectedAthleteCD = _selectedAthleteCD;
-@synthesize theSwimmers = _theSwimmers;
-@synthesize theMHSAASwimmers = _theMHSAASwimmers;
-@synthesize selectedStroke = _selectedStroke;
-@synthesize selectedDistance = _selectedDistance;
-@synthesize tmDatabaseSelected = _tmDatabaseSelected;
-@synthesize currentTitle = _currentTitle;
-@synthesize selectedRace = _selectedRace;
-@synthesize selectedSection = _selectedSection;
-@synthesize IMStrokes = _IMStrokes;
-@synthesize viewstate = _viewstate;
-@synthesize rows = _rows;
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize asController = _asController;
-@synthesize getbdayController = _getbdayController;
-
 // VIEWSTATEs
 #define VS_ATHLETES     1
 #define VS_STROKES      2
@@ -1017,16 +996,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     _allTimes = nil;
     [_queue release];
     _queue = nil;
-    //[_selectedAthlete release];
-    //_selectedAthlete = nil;
     [_selectedAthleteCD release];
     _selectedAthleteCD = nil;
-    // TODO: Crashing here ------------
-    // [_managedObjectContext release];
-    // _managedObjectContext = nil;
-    // --------------------------------
-    //[_athletes release];
-    //_athletes = nil;
     [_IMStrokes release];
     _IMStrokes = nil;
 }
