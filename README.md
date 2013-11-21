@@ -14,4 +14,7 @@ The following Team Manager downloads are supported:
 Screenshots
 -----------
 
-![Main screen showing list of swimmers](./images/screenshots/Screenshot-main.png)
+<img src="./images/screenshots/Screenshot-main.png" alt="Main screen showing list of swimmers" style="width: 320px;"/>
+<img src="./images/screenshots/Screenshot-options.png" alt="Available reports" style="width: 320px;"/>
+<img src="./images/screenshots/Screenshot-pb.png" alt="Personal Bests" style="width: 320px;"/>
+<img src="./images/screenshots/Screenshot-splits.png" alt="Race with split times" style="width: 320px;"/>
