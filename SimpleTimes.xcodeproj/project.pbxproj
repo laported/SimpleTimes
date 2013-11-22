@@ -24,12 +24,14 @@
 		1E5714C0183EF69200899460 /* AddSwimmerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5714BE183EF69200899460 /* AddSwimmerResult.m */; };
 		1E5714C4183EF6F600899460 /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E5714C2183EF6F600899460 /* GetBirthdayViewController.xib */; };
 		1E5714C5183EF6F600899460 /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5714C3183EF6F600899460 /* GetBirthdayViewController.m */; };
+		1E5714C9183EF89E00899460 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E5714C6183EF89E00899460 /* Default-568h@2x.png */; };
+		1E5714CA183EF89E00899460 /* reload_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E5714C7183EF89E00899460 /* reload_v2.png */; };
+		1E5714CB183EF89E00899460 /* reload_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E5714C8183EF89E00899460 /* reload_v2@2x.png */; };
+		1E5714CE183EF8B800899460 /* UnderWater-Portrait-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E5714CC183EF8B800899460 /* UnderWater-Portrait-50.png */; };
+		1E5714CF183EF8B800899460 /* UnderWater-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E5714CD183EF8B800899460 /* UnderWater-Portrait.png */; };
 		1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */; };
 		1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */; };
-		1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A514D4EA22006D428C /* reload_v2.png */; };
-		1E6BF1AA14D4EE8B006D428C /* reload_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A914D4EE8B006D428C /* reload_v2@2x.png */; };
 		1E6BF1B814D629E9006D428C /* DetailSwimmerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */; };
-		1E6BF1C014D71E44006D428C /* UnderWater-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */; };
 		1E6BF1C714D77D6C006D428C /* TopTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */; };
 		1E6BF1C814D77D6C006D428C /* TopTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1C614D77D6C006D428C /* TopTimesViewController.xib */; };
 		1E6BF1CC14DA31DE006D428C /* EnterRaceResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF1CA14DA31DD006D428C /* EnterRaceResultController.m */; };
@@ -37,12 +39,10 @@
 		1E6BF1D514DB8A9D006D428C /* plus_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1D414DB8A9D006D428C /* plus_24.png */; };
 		1E6BF1D714DB8BC1006D428C /* star_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1D614DB8BC1006D428C /* star_24.png */; };
 		1E6BF21E14DC2D76006D428C /* DetailSwimmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */; };
-		1E6BF27F14DC45BC006D428C /* UnderWater-Portrait-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF27E14DC45BC006D428C /* UnderWater-Portrait-50.png */; };
 		1E6BF34514DD6F57006D428C /* calendar_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34414DD6F57006D428C /* calendar_24.png */; };
 		1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF34714DD70AA006D428C /* AllTimesViewController.m */; };
 		1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */; };
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
-		1E7D49DD16A5616E00D3D3E7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */; };
 		1E856D7814F840C200B08181 /* SplitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E856D7614F840C200B08181 /* SplitsViewController.m */; };
 		1E856D7914F840C200B08181 /* SplitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E856D7714F840C200B08181 /* SplitsViewController.xib */; };
 		1E89ACEB14ECB00500DA97D2 /* CutsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E89ACEA14ECB00500DA97D2 /* CutsViewController.m */; };
@@ -119,13 +119,15 @@
 		1E5714C1183EF6F600899460 /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = iPad/GetBirthdayViewController.h; sourceTree = SOURCE_ROOT; };
 		1E5714C2183EF6F600899460 /* GetBirthdayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GetBirthdayViewController.xib; path = iPad/GetBirthdayViewController.xib; sourceTree = SOURCE_ROOT; };
 		1E5714C3183EF6F600899460 /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = iPad/GetBirthdayViewController.m; sourceTree = SOURCE_ROOT; };
+		1E5714C6183EF89E00899460 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "images/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
+		1E5714C7183EF89E00899460 /* reload_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload_v2.png; path = images/reload_v2.png; sourceTree = SOURCE_ROOT; };
+		1E5714C8183EF89E00899460 /* reload_v2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reload_v2@2x.png"; path = "images/reload_v2@2x.png"; sourceTree = SOURCE_ROOT; };
+		1E5714CC183EF8B800899460 /* UnderWater-Portrait-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait-50.png"; path = "images/UnderWater-Portrait-50.png"; sourceTree = SOURCE_ROOT; };
+		1E5714CD183EF8B800899460 /* UnderWater-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait.png"; path = "images/UnderWater-Portrait.png"; sourceTree = SOURCE_ROOT; };
 		1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = ../Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
-		1E6BF1A514D4EA22006D428C /* reload_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload_v2.png; path = ../reload_v2.png; sourceTree = "<group>"; };
-		1E6BF1A914D4EE8B006D428C /* reload_v2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reload_v2@2x.png"; path = "../reload_v2@2x.png"; sourceTree = "<group>"; };
 		1E6BF1B514D629E9006D428C /* DetailSwimmerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSwimmerViewController.h; sourceTree = "<group>"; };
 		1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSwimmerViewController.m; sourceTree = "<group>"; };
-		1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "UnderWater-Portrait.png"; path = "../UnderWater-Portrait.png"; sourceTree = "<group>"; };
 		1E6BF1C414D77D6C006D428C /* TopTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopTimesViewController.h; sourceTree = "<group>"; };
 		1E6BF1C514D77D6C006D428C /* TopTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopTimesViewController.m; sourceTree = "<group>"; };
 		1E6BF1C614D77D6C006D428C /* TopTimesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopTimesViewController.xib; sourceTree = "<group>"; };
@@ -135,13 +137,11 @@
 		1E6BF1D414DB8A9D006D428C /* plus_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus_24.png; path = images/plus_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF1D614DB8BC1006D428C /* star_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_24.png; path = images/star_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailSwimmerViewController.xib; sourceTree = "<group>"; };
-		1E6BF27E14DC45BC006D428C /* UnderWater-Portrait-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UnderWater-Portrait-50.png"; sourceTree = SOURCE_ROOT; };
 		1E6BF34414DD6F57006D428C /* calendar_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar_24.png; path = images/calendar_24.png; sourceTree = SOURCE_ROOT; };
 		1E6BF34614DD70A9006D428C /* AllTimesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllTimesViewController.h; sourceTree = "<group>"; };
 		1E6BF34714DD70AA006D428C /* AllTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTimesViewController.m; sourceTree = "<group>"; };
 		1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllTimesViewController.xib; sourceTree = "<group>"; };
 		1E71FCAC14CB21E80036D12B /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
-		1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1E856D7514F840C200B08181 /* SplitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitsViewController.h; sourceTree = "<group>"; };
 		1E856D7614F840C200B08181 /* SplitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitsViewController.m; sourceTree = "<group>"; };
 		1E856D7714F840C200B08181 /* SplitsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplitsViewController.xib; sourceTree = "<group>"; };
@@ -314,6 +314,11 @@
 		1E6BF1D114DB89C9006D428C /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1E5714CC183EF8B800899460 /* UnderWater-Portrait-50.png */,
+				1E5714CD183EF8B800899460 /* UnderWater-Portrait.png */,
+				1E5714C6183EF89E00899460 /* Default-568h@2x.png */,
+				1E5714C7183EF89E00899460 /* reload_v2.png */,
+				1E5714C8183EF89E00899460 /* reload_v2@2x.png */,
 				1EC38DBB18353FD300918FA1 /* matthew_48.png */,
 				1ECD4CB414E9F15000AEB935 /* UnderWater-Portrait-iPhone.png */,
 				1ECD4CB514E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png */,
@@ -323,12 +328,8 @@
 				1E3A6E5C14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png */,
 				1E3A6E5614E43B05007F1760 /* clock_24.png */,
 				1E6BF34414DD6F57006D428C /* calendar_24.png */,
-				1E6BF27E14DC45BC006D428C /* UnderWater-Portrait-50.png */,
 				1E6BF1D614DB8BC1006D428C /* star_24.png */,
 				1E6BF1D414DB8A9D006D428C /* plus_24.png */,
-				1E6BF1BF14D71E44006D428C /* UnderWater-Portrait.png */,
-				1E6BF1A914D4EE8B006D428C /* reload_v2@2x.png */,
-				1E6BF1A514D4EA22006D428C /* reload_v2.png */,
 			);
 			name = images;
 			path = SimpleTimes;
@@ -338,7 +339,6 @@
 			isa = PBXGroup;
 			children = (
 				1E2DE6B1182C715800345A97 /* README.md */,
-				1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */,
 				1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */,
 				1E8AE75B14C1D71700E01C50 /* libz.dylib */,
 				1ED8168D14888142006268C2 /* iPhoneIcon_Small.png */,
@@ -542,22 +542,23 @@
 				1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */,
 				1EC38DBC18353FD300918FA1 /* matthew_48.png in Resources */,
 				1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */,
-				1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */,
-				1E6BF1AA14D4EE8B006D428C /* reload_v2@2x.png in Resources */,
-				1E6BF1C014D71E44006D428C /* UnderWater-Portrait.png in Resources */,
 				1E6BF1C814D77D6C006D428C /* TopTimesViewController.xib in Resources */,
 				1E6BF1CD14DA31DE006D428C /* EnterRaceResultController.xib in Resources */,
 				1E6BF1D514DB8A9D006D428C /* plus_24.png in Resources */,
+				1E5714CB183EF89E00899460 /* reload_v2@2x.png in Resources */,
 				1E6BF1D714DB8BC1006D428C /* star_24.png in Resources */,
 				1E6BF21E14DC2D76006D428C /* DetailSwimmerViewController.xib in Resources */,
-				1E6BF27F14DC45BC006D428C /* UnderWater-Portrait-50.png in Resources */,
 				1E6BF34514DD6F57006D428C /* calendar_24.png in Resources */,
 				1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */,
 				1E3A6E5714E43B05007F1760 /* clock_24.png in Resources */,
 				1E3A6E5D14E5C008007F1760 /* water-splash-ipad-wallpaper-50.png in Resources */,
 				1E3A6E5F14E5C109007F1760 /* water-splash-ipad-wallpaper-35.png in Resources */,
+				1E5714CF183EF8B800899460 /* UnderWater-Portrait.png in Resources */,
 				1E3A6E6414E5F354007F1760 /* man_24.png in Resources */,
 				1ECD4CB214E8479C00AEB935 /* water-splash-ipad-wallpaper-gray.png in Resources */,
+				1E5714C9183EF89E00899460 /* Default-568h@2x.png in Resources */,
+				1E5714CA183EF89E00899460 /* reload_v2.png in Resources */,
+				1E5714CE183EF8B800899460 /* UnderWater-Portrait-50.png in Resources */,
 				1ECD4CB614E9F15000AEB935 /* UnderWater-Portrait-iPhone.png in Resources */,
 				1ECD4CB714E9F15000AEB935 /* UnderWater-Portrait-iPhone@2x.png in Resources */,
 				1EBE0F1A14F0478300ED4DB5 /* AddMeetViewController.xib in Resources */,
@@ -567,7 +568,6 @@
 				1E4C5A1E14FBF5C1003FA4B6 /* SVProgressHUD.bundle in Resources */,
 				1E5714C4183EF6F600899460 /* GetBirthdayViewController.xib in Resources */,
 				1E90731B15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib in Resources */,
-				1E7D49DD16A5616E00D3D3E7 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
