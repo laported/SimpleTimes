@@ -3,6 +3,12 @@ SimpleTimes
 
 iOS Application that keeps track of competitive swim times. Supports hand-entered times, or downloaded times.
 
+Technologies used:
+
+* Web scraping/HTML parsing
+* Core Data for local storage
+* `UITableView`s
+
 Online downloads
 ----------------
 
