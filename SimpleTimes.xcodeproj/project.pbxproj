@@ -11,7 +11,6 @@
 		1E1FCD021480009C00CD8316 /* AddSwimmerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */; };
 		1E1FCD0F1487009500CD8316 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1FCD0E1487009400CD8316 /* CoreData.framework */; };
 		1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */; };
-		1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */; };
 		1E27E4B514CBB27A001D4F5F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */; };
 		1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */; };
 		1E2DE6B2182C715800345A97 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1E2DE6B1182C715800345A97 /* README.md */; };
@@ -22,6 +21,9 @@
 		1E3A6E6414E5F354007F1760 /* man_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A6E6314E5F354007F1760 /* man_24.png */; };
 		1E4C5A1E14FBF5C1003FA4B6 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E4C5A1B14FBF5C1003FA4B6 /* SVProgressHUD.bundle */; };
 		1E4C5A1F14FBF5C1003FA4B6 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4C5A1D14FBF5C1003FA4B6 /* SVProgressHUD.m */; };
+		1E5714C0183EF69200899460 /* AddSwimmerResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5714BE183EF69200899460 /* AddSwimmerResult.m */; };
+		1E5714C4183EF6F600899460 /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E5714C2183EF6F600899460 /* GetBirthdayViewController.xib */; };
+		1E5714C5183EF6F600899460 /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5714C3183EF6F600899460 /* GetBirthdayViewController.m */; };
 		1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */; };
 		1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */; };
 		1E6BF1A614D4EA22006D428C /* reload_v2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF1A514D4EA22006D428C /* reload_v2.png */; };
@@ -40,8 +42,6 @@
 		1E6BF34914DD70AB006D428C /* AllTimesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E6BF34714DD70AA006D428C /* AllTimesViewController.m */; };
 		1E6BF34A14DD70AB006D428C /* AllTimesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */; };
 		1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCAC14CB21E80036D12B /* TODO.txt */; };
-		1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */; };
-		1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */; };
 		1E7D49DD16A5616E00D3D3E7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */; };
 		1E856D7814F840C200B08181 /* SplitsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E856D7614F840C200B08181 /* SplitsViewController.m */; };
 		1E856D7914F840C200B08181 /* SplitsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E856D7714F840C200B08181 /* SplitsViewController.xib */; };
@@ -100,8 +100,6 @@
 		1E1FCD001480009C00CD8316 /* AddSwimmerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddSwimmerViewController.xib; sourceTree = "<group>"; };
 		1E1FCD0E1487009400CD8316 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1E1FCD111487010600CD8316 /* SimpleSwimModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SimpleSwimModel.xcdatamodel; sourceTree = "<group>"; };
-		1E26FCF3148CE65D002F6FE7 /* AddSwimmerResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSwimmerResult.h; sourceTree = "<group>"; };
-		1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSwimmerResult.m; sourceTree = "<group>"; };
 		1E27E4B414CBB27A001D4F5F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1E27E4B614CC43F7001D4F5F /* DownloadTimesMI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadTimesMI.h; sourceTree = "<group>"; };
 		1E27E4B714CC43F7001D4F5F /* DownloadTimesMI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadTimesMI.m; sourceTree = "<group>"; };
@@ -116,6 +114,11 @@
 		1E4C5A1B14FBF5C1003FA4B6 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		1E4C5A1C14FBF5C1003FA4B6 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
 		1E4C5A1D14FBF5C1003FA4B6 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
+		1E5714BE183EF69200899460 /* AddSwimmerResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddSwimmerResult.m; path = Models/AddSwimmerResult.m; sourceTree = "<group>"; };
+		1E5714BF183EF69200899460 /* AddSwimmerResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddSwimmerResult.h; path = Models/AddSwimmerResult.h; sourceTree = "<group>"; };
+		1E5714C1183EF6F600899460 /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = iPad/GetBirthdayViewController.h; sourceTree = SOURCE_ROOT; };
+		1E5714C2183EF6F600899460 /* GetBirthdayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GetBirthdayViewController.xib; path = iPad/GetBirthdayViewController.xib; sourceTree = SOURCE_ROOT; };
+		1E5714C3183EF6F600899460 /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = iPad/GetBirthdayViewController.m; sourceTree = SOURCE_ROOT; };
 		1E6BF19E14D48802006D428C /* Storyboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_iPad.storyboard; sourceTree = "<group>"; };
 		1E6BF1A114D49615006D428C /* Storyboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iPhone.storyboard; path = ../Storyboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1E6BF1A514D4EA22006D428C /* reload_v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload_v2.png; path = ../reload_v2.png; sourceTree = "<group>"; };
@@ -138,9 +141,6 @@
 		1E6BF34714DD70AA006D428C /* AllTimesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllTimesViewController.m; sourceTree = "<group>"; };
 		1E6BF34814DD70AA006D428C /* AllTimesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllTimesViewController.xib; sourceTree = "<group>"; };
 		1E71FCAC14CB21E80036D12B /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
-		1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GetBirthdayViewController.h; path = ../GetBirthdayViewController.h; sourceTree = "<group>"; };
-		1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GetBirthdayViewController.m; path = ../GetBirthdayViewController.m; sourceTree = "<group>"; };
-		1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GetBirthdayViewController.xib; path = ../GetBirthdayViewController.xib; sourceTree = "<group>"; };
 		1E7D49DC16A5616D00D3D3E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1E856D7514F840C200B08181 /* SplitsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitsViewController.h; sourceTree = "<group>"; };
 		1E856D7614F840C200B08181 /* SplitsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplitsViewController.m; sourceTree = "<group>"; };
@@ -263,6 +263,9 @@
 		1E6BF1B014D576C4006D428C /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				1E5714C1183EF6F600899460 /* GetBirthdayViewController.h */,
+				1E5714C2183EF6F600899460 /* GetBirthdayViewController.xib */,
+				1E5714C3183EF6F600899460 /* GetBirthdayViewController.m */,
 				1E6BF1B514D629E9006D428C /* DetailSwimmerViewController.h */,
 				1E6BF1B614D629E9006D428C /* DetailSwimmerViewController.m */,
 				1E6BF21C14DC2D76006D428C /* DetailSwimmerViewController.xib */,
@@ -377,9 +380,6 @@
 			children = (
 				1E6BF1B414D582FD006D428C /* iPhone */,
 				1E6BF1B014D576C4006D428C /* iPad */,
-				1E71FCB114CB5B590036D12B /* GetBirthdayViewController.h */,
-				1E71FCB214CB5B590036D12B /* GetBirthdayViewController.m */,
-				1E71FCB314CB5B590036D12B /* GetBirthdayViewController.xib */,
 				1EA228EB14706C7500283AD0 /* ROHTMLTable.h */,
 				1EA228EC14706C7500283AD0 /* ROHTMLTable.m */,
 				1EA228AB14703E6C00283AD0 /* SimpleTimesAppDelegate.h */,
@@ -452,6 +452,8 @@
 		1EA228F414759DB300283AD0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1E5714BE183EF69200899460 /* AddSwimmerResult.m */,
+				1E5714BF183EF69200899460 /* AddSwimmerResult.h */,
 				1EBE0EF814F01CC900ED4DB5 /* AthleteCD.h */,
 				1EBE0EF914F01CC900ED4DB5 /* AthleteCD.m */,
 				1EBE0EFA14F01CC900ED4DB5 /* RaceResult.h */,
@@ -471,8 +473,6 @@
 				1EBE0F0814F01CC900ED4DB5 /* TimeStandardUssScy.h */,
 				1EBE0F0914F01CC900ED4DB5 /* TimeStandardUssScy.m */,
 				1E1FCD101487010600CD8316 /* SimpleSwimModel.xcdatamodeld */,
-				1E26FCF3148CE65D002F6FE7 /* AddSwimmerResult.h */,
-				1E26FCF4148CE65D002F6FE7 /* AddSwimmerResult.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -539,7 +539,6 @@
 				1E1FCD021480009C00CD8316 /* AddSwimmerViewController.xib in Resources */,
 				1ED8168E14888142006268C2 /* iPhoneIcon_Small.png in Resources */,
 				1E71FCAD14CB21E80036D12B /* TODO.txt in Resources */,
-				1E71FCB514CB5B590036D12B /* GetBirthdayViewController.xib in Resources */,
 				1E6BF19F14D48802006D428C /* Storyboard_iPad.storyboard in Resources */,
 				1EC38DBC18353FD300918FA1 /* matthew_48.png in Resources */,
 				1E6BF1A214D49615006D428C /* Storyboard_iPhone.storyboard in Resources */,
@@ -566,6 +565,7 @@
 				1EB1937B14F1517500F2CDED /* EnterRaceResultsiPhoneViewController.xib in Resources */,
 				1E856D7914F840C200B08181 /* SplitsViewController.xib in Resources */,
 				1E4C5A1E14FBF5C1003FA4B6 /* SVProgressHUD.bundle in Resources */,
+				1E5714C4183EF6F600899460 /* GetBirthdayViewController.xib in Resources */,
 				1E90731B15B0D08A00EAB0DE /* AddNewSwimmerViewController_iPad.xib in Resources */,
 				1E7D49DD16A5616E00D3D3E7 /* Default-568h@2x.png in Resources */,
 			);
@@ -599,6 +599,7 @@
 				1EA228B314703E6C00283AD0 /* RootViewController.m in Sources */,
 				1EA228D6147053B400283AD0 /* Reachability.m in Sources */,
 				1EA228D7147053B400283AD0 /* ASINetworkQueue.m in Sources */,
+				1E5714C5183EF6F600899460 /* GetBirthdayViewController.m in Sources */,
 				1EA228D8147053B400283AD0 /* ASIInputStream.m in Sources */,
 				1EA228D9147053B400283AD0 /* ASIHTTPRequest.m in Sources */,
 				1EA228DA147053B400283AD0 /* ASIFormDataRequest.m in Sources */,
@@ -606,13 +607,12 @@
 				1EA228DC147053B400283AD0 /* ASIDataDecompressor.m in Sources */,
 				1EA228DD147053B400283AD0 /* ASIDataCompressor.m in Sources */,
 				1EA228DE147053B400283AD0 /* ASIAuthenticationDialog.m in Sources */,
+				1E5714C0183EF69200899460 /* AddSwimmerResult.m in Sources */,
 				1EA228E91470555600283AD0 /* TeamManagerDBProxy.m in Sources */,
 				1EA228ED14706C7500283AD0 /* ROHTMLTable.m in Sources */,
 				1EA228F01474293E00283AD0 /* USASwimmingDBProxy.m in Sources */,
 				1E1FCD011480009C00CD8316 /* AddSwimmerViewController.m in Sources */,
 				1E1FCD121487010600CD8316 /* SimpleSwimModel.xcdatamodeld in Sources */,
-				1E26FCF5148CE65D002F6FE7 /* AddSwimmerResult.m in Sources */,
-				1E71FCB414CB5B590036D12B /* GetBirthdayViewController.m in Sources */,
 				1E27E4B814CC43F7001D4F5F /* DownloadTimesMI.m in Sources */,
 				1E6BF1B814D629E9006D428C /* DetailSwimmerViewController.m in Sources */,
 				1E6BF1C714D77D6C006D428C /* TopTimesViewController.m in Sources */,
